@@ -7,7 +7,7 @@ import { TrendingUp, DollarSign, Activity, CreditCard, CheckCircle, ClipboardLis
 import { Archivo, Roboto } from "next/font/google";
 import "swiper/css";
 import "swiper/css/pagination";
-import TestimonialsSlider from "@/components/TestimonialsSlider";
+import TestimonialsSlider from "@/components/Testimonials";
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -153,7 +153,7 @@ export default function InvestmentLoanPage() {
                 <div
                   className={`text-[#d8d8d8] text-justify text-[16px] md:text-[16px] font-normal ${roboto.className} leading-[25px] md:leading-[28px] tracking-[-1%]`}
                 >
-                  Investing in property is one of the most effective ways to build long-term wealth in Australia. Whether you're purchasing your first investment property or expanding your portfolio, the right loan structure can make a significant difference to your cash flow and tax strategy.At Kubaer Finance, we help both new and seasoned investors navigate the complexities of investment lending, including loan structuring, interest-only options, and equity access—all while comparing offers from over 35+ lenders
+                  Investing in property is one of the most effective ways to build long-term wealth in Australia. Whether you are purchasing your first investment property or expanding your portfolio, the right loan structure can make a significant difference to your cash flow and tax strategy.At Kubaer Finance, we help both new and seasoned investors navigate the complexities of investment lending, including loan structuring, interest-only options, and equity access—all while comparing offers from over 35+ lenders
                 </div>
 
                 {/* Call Button */}
@@ -357,7 +357,7 @@ export default function InvestmentLoanPage() {
               data-aos-duration="800"
               data-aos-delay="300"
               data-aos-once="true">
-              <TestimonialsSlider testimonials={InvestmentLoanTestimonials} />
+              <TestimonialsSlider showTitle={false} testimonials={InvestmentLoanTestimonials} />
             </div>
           </div>
         </div>

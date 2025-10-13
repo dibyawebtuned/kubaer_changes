@@ -13,7 +13,7 @@ export default function Refinancing() {
           Refinancing: Optimise Your Existing Loan
         </h1>
         <p className="text-gray-700 mb-4">
-          Is your current home loan still working for you? Many Australians could save thousands by refinancing – that is, switching your existing home loan to a new one, either with your current lender or a new one. Life changes, interest rates shift, and better deals emerge. Refinancing with Kubaer Finance is about ensuring your mortgage always aligns with your financial goals and the current market.
+          Is your current home loan still working for you? Many Australians could save thousands by refinancing that is, switching your existing home loan to a new one, either with your current lender or a new one. Life changes, interest rates shift, and better deals emerge. Refinancing with Kubaer Finance is about ensuring your mortgage always aligns with your financial goals and the current market.
         </p>
         {/* Optional: Mortgage Calculator */}
         <div className="my-6">
@@ -56,7 +56,7 @@ export default function Refinancing() {
           The Refinancing Journey with Us
         </h2>
         <p className="text-gray-700 mb-4">
-          We make the refinancing process simple and transparent. We'll assess your current loan, compare it against hundreds of products from our panel of lenders, and identify opportunities for savings or improved features. We handle all the paperwork and liaise with your new lender, ensuring a seamless transition. Our goal is to put more money back in your pocket.
+          We make the refinancing process simple and transparent. We will assess your current loan, compare it against hundreds of products from our panel of lenders, and identify opportunities for savings or improved features. We handle all the paperwork and liaise with your new lender, ensuring a seamless transition. Our goal is to put more money back in your pocket.
         </p>
       </section>
 
@@ -67,7 +67,7 @@ export default function Refinancing() {
         </h2>
         <div className="space-y-6 text-gray-700">
           <blockquote className="border-l-4 border-purple-500 pl-4 italic">
-            “I hadn't reviewed my mortgage in years. Kubaer Finance showed me how much I could save by refinancing and handled everything. It was surprisingly easy and now I have a much better rate!” – Eleanor S., Canberra ACT
+            I had not reviewed my mortgage in years. Kubaer Finance showed me how much I could save by refinancing and handled everything. It was surprisingly easy and now I have a much better rate! Eleanor S., Canberra ACT
           </blockquote>
         </div>
       </section>

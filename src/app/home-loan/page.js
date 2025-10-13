@@ -7,7 +7,7 @@ import { TrendingUp, DollarSign, Activity, CreditCard, CheckCircle, ClipboardLis
 import { Archivo, Roboto } from "next/font/google";
 import "swiper/css";
 import "swiper/css/pagination";
-import TestimonialsSlider from "@/components/TestimonialsSlider";
+import TestimonialsSlider from "@/components/Testimonials";
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -145,13 +145,13 @@ export default function HomeLoanPage() {
                   className={`text-[#d8d8d8] text-justify text-[16px] md:text-[16px] font-normal ${roboto.className} leading-[25px] md:leading-[28px] tracking-[-1%]`}
                 >
                   Embarking on the journey to buy your first home in Australia is an
-                  exciting milestone. It’s also a significant financial commitment, and
+                  exciting milestone. It also a significant financial commitment, and
                   understanding the landscape is key. The Australian government, along
                   with state and territory governments, offers various initiatives to
                   support eligible first home buyers, aiming to make homeownership more
                   accessible. These schemes can often help reduce the required deposit
                   or minimise additional costs, paving the way for you to step onto the
-                  property ladder sooner. We're here to demystify these opportunities
+                  property ladder sooner. We are here to demystify these opportunities
                   and help you navigate them with confidence.
                 </div>
 
@@ -356,7 +356,7 @@ export default function HomeLoanPage() {
               data-aos-duration="800"
               data-aos-delay="300"
               data-aos-once="true">
-              <TestimonialsSlider testimonials={HomeLoanTestimonials} />
+              <TestimonialsSlider showTitle={false} testimonials={HomeLoanTestimonials} />
             </div>
           </div>
         </div>

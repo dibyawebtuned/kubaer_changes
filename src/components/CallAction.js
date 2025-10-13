@@ -52,8 +52,8 @@ export default function CallAction() {
                     data-aos-duration="1000"
                     data-aos-delay="400"
                 >
-                    Whether you're purchasing your first home or upgrading to your dream
-                    property, we’re here to guide you at every step. Enjoy a smooth and
+                    Whether you are purchasing your first home or upgrading to your dream
+                    property, we are here to guide you at every step. Enjoy a smooth and
                     transparent loan experience tailored to your goals.
                 </div>
 

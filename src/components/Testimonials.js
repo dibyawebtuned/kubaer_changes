@@ -40,17 +40,19 @@ const testimonials = [
   },
 ];
 
-export default function Testimonials() {
+export default function Testimonials({ showTitle = true }) {
   return (
     <section>
-      <div className="container">
-        <div className="section-title d-flex justify-content-center mb-40">
-          <div>
-            <h2>Testimonials</h2>
-            <div className="gradient-divider"></div>
+      {showTitle && (
+        <div className="container">
+          <div className="section-title d-flex justify-content-center mb-40">
+            <div>
+              <h2>Testimonials</h2>
+              <div className="gradient-divider"></div>
+            </div>
           </div>
         </div>
-      </div>
+      )}
 
       <div className="row mt-20 testimonial-section">
         <div className="container">

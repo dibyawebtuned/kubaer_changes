@@ -26,7 +26,7 @@ export default function BusinessLoan() {
           We Help When Banks Say No—or Say Nothing at All
         </h2>
         <ul className="list-disc pl-6 text-gray-700 space-y-2">
-          <li>Tired of endless paperwork and waiting weeks for a "maybe"?</li>
+          <li>Tired of endless paperwork and waiting weeks for a maybe?</li>
           <li>Need quick funds to cover a large order or launch a new product?</li>
           <li>Want to upgrade equipment without draining your cash reserves?</li>
           <li>Looking to invest in staff, marketing, or a second location?</li>
@@ -39,12 +39,12 @@ export default function BusinessLoan() {
           Smart Funding Options, Built Around You
         </h2>
         <ul className="list-disc pl-6 text-gray-700 space-y-2">
-          <li>Unsecured Business Loans – No collateral needed. Approvals in as little as 24–48 hours.</li>
-          <li>Secured Loans – Lower rates using property or business assets as security.</li>
-          <li>Line of Credit – Flexible funds on standby. Draw what you need, when you need it.</li>
-          <li>Equipment Finance – Purchase or lease vehicles, tools, or machinery without upfront capital.</li>
-          <li>Invoice Finance – Get paid now on invoices due in 30–90 days.</li>
-          <li>Commercial Property Loans – Buy or refinance warehouses, offices, or investment property.</li>
+          <li>Unsecured Business Loans : No collateral needed. Approvals in as little as 24–48 hours.</li>
+          <li>Secured Loans : Lower rates using property or business assets as security.</li>
+          <li>Line of Credit : Flexible funds on standby. Draw what you need, when you need it.</li>
+          <li>Equipment Finance : Purchase or lease vehicles, tools, or machinery without upfront capital.</li>
+          <li>Invoice Finance : Get paid now on invoices due in 30 to 90 days.</li>
+          <li>Commercial Property Loans : Buy or refinance warehouses, offices, or investment property.</li>
         </ul>
       </section>
 

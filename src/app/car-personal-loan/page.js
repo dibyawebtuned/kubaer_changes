@@ -13,9 +13,9 @@ export default function CarPersonalLoan() {
           Car & Personal Loans
         </h1>
         <p className="text-gray-700">
-          Hit the road with confidence! Whether it's a sleek new sedan, a robust SUV for family adventures, 
+          Hit the road with confidence! Whether its a sleek new sedan, a robust SUV for family adventures, 
           or a trusty used car, Kubaer Finance offers flexible car loan solutions designed to get you behind the wheel. 
-          We understand that a car is often more than just transport – it’s freedom, convenience, and sometimes, a passion.
+          We understand that a car is often more than just transport its freedom, convenience, and sometimes, a passion.
         </p>
       </section>
 
@@ -35,7 +35,7 @@ export default function CarPersonalLoan() {
             <strong>Dealer Finance vs. Broker Sourced Loans:</strong> We compare multiple lenders to secure the best rate and terms, often saving you money.
           </li>
           <li>
-            <strong>Balloon Payments:</strong> Some loans allow a "balloon payment" at the end of the term, reducing regular repayments.
+            <strong>Balloon Payments:</strong> Some loans allow a balloon payment at the end of the term, reducing regular repayments.
           </li>
         </ul>
       </section>
@@ -46,7 +46,7 @@ export default function CarPersonalLoan() {
           Car Sourcing: Your Shortcut to the Perfect Car
         </h2>
         <p className="text-gray-700 mb-4">
-          Buying a car shouldn’t be a chore. At Kubaer Finance, we’re not just about financing your dreams — 
+          Buying a car shouldnt be a chore. At Kubaer Finance, were not just about financing your dreams — 
           we help you find them too. Our Car Sourcing service is your personal shortcut to the best vehicles across Australia.
         </p>
 
@@ -55,10 +55,10 @@ export default function CarPersonalLoan() {
         </h3>
         <ul className="list-disc pl-6 text-gray-700 space-y-2">
           <li>
-            <strong>Personalized Matchmaking:</strong> Tell us your style, budget, fuel efficiency, and features — we’ll find the right options.
+            <strong>Personalized Matchmaking:</strong> Tell us your style, budget, fuel efficiency, and features — well find the right options.
           </li>
           <li>
-            <strong>Market Insider Access:</strong> Exclusive deals and vehicles you won’t find on public listings.
+            <strong>Market Insider Access:</strong> Exclusive deals and vehicles you wont find on public listings.
           </li>
           <li>
             <strong>Hassle-Free Confidence:</strong> From history checks to inspections, we guarantee transparency and peace of mind.
@@ -72,7 +72,7 @@ export default function CarPersonalLoan() {
       {/* 4. How It Works */}
       <section className="mb-10">
         <h2 className="text-2xl font-semibold mb-4 text-purple-600">
-          Here’s How It Works
+          Here How It Works
         </h2>
         <ol className="list-decimal pl-6 text-gray-700 space-y-2">
           <li><strong>Tell Us Your Dream Car:</strong> Complete a quick consultation about your preferences and budget.</li>
@@ -101,7 +101,7 @@ export default function CarPersonalLoan() {
         </h2>
         <div className="space-y-6 text-gray-700">
           <blockquote className="border-l-4 border-purple-500 pl-4 italic">
-            "I found my dream car, and Kubaer Finance got me the loan within days. Super efficient and a much better rate than the dealership offered!" – Jessica L., Brisbane QLD
+            I found my dream car, and Kubaer Finance got me the loan within days. Super efficient and a much better rate than the dealership offered!  Jessica L., Brisbane QLD
           </blockquote>
         </div>
       </section>
@@ -112,7 +112,7 @@ export default function CarPersonalLoan() {
           Personal Loans: Finance Your Next Life Event
         </h2>
         <p className="text-gray-700 mb-4">
-          Life is full of moments that require financial flexibility – a dream wedding, a well-deserved overseas trip, consolidating debts, or unexpected expenses. 
+          Life is full of moments that require financial flexibility : a dream wedding, a well-deserved overseas trip, consolidating debts, or unexpected expenses. 
           Kubaer Finance provides personal loan options that are clear, manageable, and tailored to your specific needs.
         </p>
 
@@ -138,7 +138,7 @@ export default function CarPersonalLoan() {
           Client Testimonials
         </h3>
         <blockquote className="border-l-4 border-purple-500 pl-4 italic text-gray-700">
-          "Consolidating my credit card debts with a personal loan from Kubaer Finance was the best financial decision I've made. The process was so easy, and now I'm saving hundreds a month!" – David R., Perth WA
+          Consolidating my credit card debts with a personal loan from Kubaer Finance was the best financial decision I have made. The process was so easy, and now I am saving hundreds a month!  David R., Perth WA
         </blockquote>
       </section>
         {/* 6. Call to Action */}

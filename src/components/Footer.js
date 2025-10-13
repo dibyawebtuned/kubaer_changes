@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import Image from "next/image";
 import WhiteLogo from "../../public/assets/img/white-logo.png";
 import Picture_1 from "../../public/assets/img/Footer/Picture_1-removebg-preview.png";
@@ -64,7 +65,7 @@ const Footer = () => {
                   <li><a className="!font-[600]" href="/about">about us</a></li>
                   <li><a className="!font-[600]" href="/services">services</a></li>
                   <li><a className="!font-[600]" href="/resources">resources</a></li>
-                  <li><a className="!font-[600]" href="/BlogList">blog</a></li>
+                  <li><Link className="!font-[600]" href="/BlogList">blog</Link></li>
                   <li><a className="!font-[600]" href="/contact">contact</a></li>
                 </ul>
               </div>
