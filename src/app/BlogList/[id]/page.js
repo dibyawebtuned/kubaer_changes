@@ -69,7 +69,10 @@ export default function BlogDetailComponent() {
                         {/* Main Content - 8/12 */}
                         <div className="col-span-12 lg:col-span-8 prose text-gray-700 py-6 px-4">
                             {/* Description */}
-                            <div>
+                            <div className="flex flex-col gap-1 mt-[30px]">
+                                <div className="text-[34px] font-medium pb-2 bg-gradient-to-r from-[#86489B] to-[#F171AC] bg-clip-text text-transparent">
+                                    What We Offer: Loans for First Home Buyers
+                                </div>
                                 <p className="!font-[400] text-justify">
                                     Embarking on the journey to buy your first home in Australia is one of life’s most exciting milestones. It marks the beginning of independence, security, and long-term investment — but it also comes with a significant financial commitment.
                                     <br />
@@ -78,9 +81,11 @@ export default function BlogDetailComponent() {
                             </div>
 
                             {/* Understanding Repayment */}
-                            <div className="mt-[30px]">
-                                <div className="text-[34px] font-medium pb-2 bg-gradient-to-r from-[#86489B] to-[#F171AC] bg-clip-text text-transparent">
-                                    What We Offer: Loans for First Home Buyers
+                            <div className="mt-2 flex flex-col gap-1">
+                                <div className="text-[24px] font-[500]">
+                                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#86489B] to-[#F171AC]">
+                                        What We Offer: Loans for First Home Buyers
+                                    </span>
                                 </div>
                                 <p className="!font-[400] text-justify mt-1">
                                     <span>Buying your first home in Australia can feel complex, but the good news is — you’re not alone.
@@ -148,18 +153,28 @@ export default function BlogDetailComponent() {
                                 Other Blogs
                             </div>
 
-                            <ul className="p-0">
+                            <ul className="p-0 mb-6">
                                 {otherBlogs.map((blog) => (
-                                    <li key={blog.id} className="flex items-center gap-3 hover:bg-white p-2 rounded transition cursor-pointer">
+                                    <li
+                                        key={blog.id}
+                                        className="flex items-center gap-3 hover:bg-white p-2 rounded transition cursor-pointer"
+                                    >
                                         <div className="w-16 h-12 relative flex-shrink-0">
-                                            <Image src={blog.image} alt={blog.title} fill className="object-cover rounded" />
+                                            <Image
+                                                src={blog.image}
+                                                alt={blog.title}
+                                                fill
+                                                className="object-cover rounded"
+                                            />
                                         </div>
                                         <div>
                                             <Link
                                                 href={`/BlogList/${blog.id}`}
                                                 className="text-sm font-medium text-[#86489B] hover:text-[#F171AC] transition"
                                             >
-                                                {blog.title.length > 40 ? blog.title.slice(0, 40) + "..." : blog.title}
+                                                {blog.title.length > 40
+                                                    ? blog.title.slice(0, 40) + "..."
+                                                    : blog.title}
                                             </Link>
                                             <div className="text-xs text-gray-500">{blog.date}</div>
                                         </div>
@@ -167,37 +182,39 @@ export default function BlogDetailComponent() {
                                 ))}
                             </ul>
 
-                            {/* Subscribe Form */}
-                            <div className="flex flex-col p-3 bg-[#86489B] shadow rounded-xl mt-[20px]">
-                                <div className="flex flex-col gap-2 pt-[10px]">
-                                    <div className="text-[30px] text-white font-semibold">Stay Updated</div>
-                                    <p className="!text-gray-100 text-[14px] !font-[500]">
-                                        Get the latest articles delivered to your inbox
-                                    </p>
-                                </div>
+                            {/* Sticky Subscribe Form */}
+                            <div className="sticky top-24">
+                                <div className="flex flex-col p-3 bg-[#86489B] shadow rounded-xl">
+                                    <div className="flex flex-col gap-2 pt-[10px]">
+                                        <div className="text-[30px] text-white font-semibold">Stay Updated</div>
+                                        <p className="!text-gray-100 text-[14px] !font-[500]">
+                                            Get the latest articles delivered to your inbox
+                                        </p>
+                                    </div>
 
-                                <form className="flex flex-col gap-[10px]">
-                                    <input
-                                        type="email"
-                                        placeholder="Enter your email"
-                                        className="w-full px-3 py-2 rounded-md text-[12px] text-gray-900 bg-gray-100 font-[500]"
-                                    />
-                                    <button
-                                        type="submit"
-                                        className="bg-white text-[#86489B] px-5 py-2 !rounded-md text-sm font-medium hover:bg-gray-100 transition duration-300"
-                                    >
-                                        Subscribe
-                                    </button>
-                                </form>
+                                    <form className="flex flex-col gap-[10px]">
+                                        <input
+                                            type="email"
+                                            placeholder="Enter your email"
+                                            className="w-full px-3 py-2 rounded-md text-[12px] text-gray-900 bg-gray-100 font-[500]"
+                                        />
+                                        <button
+                                            type="submit"
+                                            className="bg-white text-[#86489B] px-5 py-2 !rounded-md text-sm font-medium hover:bg-gray-100 transition duration-300"
+                                        >
+                                            Subscribe
+                                        </button>
+                                    </form>
 
-                                {/* Unsubscribe Anytime */}
-                                <div className="text-xs !text-gray-200 mt-2 pt-[10px] pb-[10px]">
-                                    <span className="font-[400]">
-                                        We respect your privacy. Unsubscribe anytime.
-                                    </span>
+                                    <div className="text-xs !text-gray-200 mt-2 pt-[10px] pb-[10px]">
+                                        <span className="font-[400]">
+                                            We respect your privacy. Unsubscribe anytime.
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </section>

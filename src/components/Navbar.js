@@ -84,7 +84,7 @@ export default function Navbar() {
                     <Link href="/investment-loan">Investment Loan</Link>
                   </li>
 
-                  <li>
+                  {/* <li>
                     <Link href="/car-personal-loan">Car & Personal Loan</Link>
                   </li>
 
@@ -98,7 +98,7 @@ export default function Navbar() {
 
                   <li>
                     <Link href="/business-loan">Business Loan</Link>
-                  </li>
+                  </li> */}
                 </ul>
               </li>
 
@@ -138,7 +138,7 @@ export default function Navbar() {
                     <Link href="/calculator/stampduty">Stamp Duty</Link>
                   </li>
 
-                  <li>
+                  {/* <li>
                     <Link href="/calculator/refinacnig">Refinancing</Link>
                   </li>
 
@@ -156,7 +156,7 @@ export default function Navbar() {
 
                   <li>
                     <Link href="/budget-planner">Budget Planner</Link>
-                  </li>
+                  </li> */}
                 </ul>
               </li>
 
