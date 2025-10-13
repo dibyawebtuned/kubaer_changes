@@ -1,0 +1,230 @@
+/* =====================
+   Navbar Base Styles
+===================== */
+.mobile-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.mobile-toggle .bar {
+  width: 25px;
+  height: 3px;
+  background: #333;
+}
+
+/* Hide menu by default (mobile) */
+.nav-menu {
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+}
+.nav-menu.open {
+  display: flex;
+}
+
+.nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+/* =====================
+   Nav Items (Shared)
+===================== */
+.nav-list li {
+  display: flex;
+  align-items: center;
+  position: relative; 
+}
+
+/* Links & Dropdown Buttons */
+.nav-list li a,
+.nav-list li .dropdown-toggle {
+  padding: 10px 15px;
+  font-size: 16px;
+  color: #86489B;
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s ease, background 0.3s ease;
+}
+
+/* Hover color */
+.nav-list li a:hover,
+.nav-list li .dropdown-toggle:hover {
+  color: #F171AC; 
+}
+
+/* Active state for dropdown toggle */
+.has-dropdown.open .dropdown-toggle {
+  color: #6a0dad;
+}
+
+/* =====================
+   Dropdown (Base)
+===================== */
+.has-dropdown .dropdown {
+  list-style: none;
+  padding: 6px;
+  margin: 0;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #86489B;
+  border-radius: 8px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  width: 200px;
+  z-index: 1000;
+  /* Hidden by default */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+}
+
+/* Dropdown items */
+.has-dropdown .dropdown li {
+  width: 100%;
+  opacity: 0;
+  transform: translateY(20px);
+}
+.has-dropdown .dropdown li a {
+  padding: 10px 15px;
+  display: block;
+  color: white;
+  transition: background 0.3s ease;
+}
+.has-dropdown .dropdown li a:hover {
+  background: none;
+  color: white;
+}
+
+/* =====================
+   Bounce Animation
+===================== */
+/* Keyframes */
+@keyframes dropdownBounce {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-5px);
+  }
+  80% {
+    transform: translateY(3px);
+  }
+  100% {
+    opacity: 1;               
+    transform: translateY(0); 
+  }
+}
+
+/* =====================
+   Desktop Hover
+===================== */
+@media (min-width: 992px) {
+  .mobile-toggle {
+    display: none;
+  }
+
+  .nav-menu {
+    display: flex !important;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .nav-list {
+    /* border: 2px solid red; */
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  .has-dropdown:hover .dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Animate items with staggered bounce */
+  .has-dropdown:hover .dropdown li {
+    animation: dropdownBounce 0.6s ease forwards;
+  }
+  .has-dropdown:hover .dropdown li:nth-child(1) { animation-delay: 0.05s; }
+  .has-dropdown:hover .dropdown li:nth-child(2) { animation-delay: 0.1s; }
+  .has-dropdown:hover .dropdown li:nth-child(3) { animation-delay: 0.15s; }
+  .has-dropdown:hover .dropdown li:nth-child(4) { animation-delay: 0.2s; }
+  .has-dropdown:hover .dropdown li:nth-child(5) { animation-delay: 0.25s; }
+  .has-dropdown:hover .dropdown li:nth-child(6) { animation-delay: 0.3s; }
+ 
+
+  /* Hide the +/– on desktop */
+  .dropdown-toggle span {
+    display: none;
+  }
+}
+
+/* =====================
+   Mobile Dropdown Toggle
+===================== */
+@media (max-width: 991px) {
+  .has-dropdown .dropdown {
+    position: relative;
+    top: 0;
+    left: 0;
+    background: #8a2be2;
+    border-radius: 5px;
+    box-shadow: none;
+    min-width: 100%;
+
+    /* For smooth toggle */
+    opacity: 0;
+    visibility: hidden;
+    max-height: 0;
+    overflow: hidden;
+    transform: translateY(0);
+    transition: all 0.3s ease;
+  }
+
+  /* Open dropdown on click */
+  .has-dropdown.open .dropdown {
+    opacity: 1;
+    visibility: visible;
+    max-height: 500px; /* big enough */
+  }
+
+  /* Make sure items show instantly (no bounce needed here, unless you want it) */
+  .has-dropdown.open .dropdown li {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* =====================
+   Headshake Animation
+===================== */
+@keyframes headshake {
+  0% { transform: translateX(0); }
+  6.5% { transform: translateX(-6px) rotateY(-9deg); }
+  18.5% { transform: translateX(5px) rotateY(7deg); }
+  31.5% { transform: translateX(-3px) rotateY(-5deg); }
+  43.5% { transform: translateX(2px) rotateY(3deg); }
+  50% { transform: translateX(0); }
+}
+
+.headshake:hover {
+  animation: headshake 0.8s ease;
+}

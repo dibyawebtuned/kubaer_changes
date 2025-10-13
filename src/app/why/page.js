@@ -1,0 +1,55 @@
+"use client";
+
+import Image from "next/image";
+
+// Import images
+import HumanIcon from "/public/assets/img/human.png";
+import SmartChoiceIcon from "/public/assets/img/smart-choice.png";
+import LocalSupportIcon from "/public/assets/img/local-support.png";
+import SaveMoneyIcon from "/public/assets/img/save-money.png";
+import QuickIcon from "/public/assets/img/quick.png";
+import NeutralIcon from "/public/assets/img/neutral.png";
+
+const points = [
+  { img: HumanIcon, title: "We Speak Human, Not Bank", delay: "0s" },
+  { img: SmartChoiceIcon, title: "Better Value Than Just Rates", delay: "0.2s" },
+  { img: LocalSupportIcon, title: "Local Experts with a Global Mindset", delay: "0.4s" },
+  { img: SaveMoneyIcon, title: "We Help You Save Thousands", delay: "0.6s" },
+  { img: QuickIcon, title: "Fast, Responsive & Always There", delay: "0.9s" },
+  { img: NeutralIcon, title: "Independent, Unbiased Advice", delay: "1.1s" },
+];
+
+export default function WhyChooseUs() {
+  return (
+    <section className="section-padding">
+      <div className="container">
+        <div className="wcus__container">
+          <div className="d-flex flex-column align-items-center justify-content-center mb-40">
+            <div className="mb-20">
+              <h2 className="wcus__title">Why Choose Us</h2>
+              <div className="plain-divider"></div>
+            </div>
+          </div>
+
+          <div className="row">
+            {points.map((point, index) => (
+              <div key={index} className="col-lg-4">
+                <div
+                  className={`wow fadeIn wcus__point`}
+                  data-wow-delay={point.delay}
+                >
+                  <div className="wcus__icon">
+                    <Image src={point.img} alt={point.title} width={80} height={80} />
+                  </div>
+                  <div className="wcus__content">
+                    <h4>{point.title}</h4>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
