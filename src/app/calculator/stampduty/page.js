@@ -1,7 +1,7 @@
 "use client";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import Process from "@/components/ProcessFlow";
+import ProcessFlow from "@/components/ProcessFlow";
 import CallAction from "@/components/CallAction";
 import { Archivo, Roboto } from "next/font/google";
 import { useEffect } from "react";
@@ -66,7 +66,7 @@ export default function HomeLoanPage() {
                 {/* Process */}
                 <div className="bg-[#FAFAFA]">
                     <div className="px-[188px]">
-                        <Process />
+                        <ProcessFlow />
                     </div>
                 </div>
 
