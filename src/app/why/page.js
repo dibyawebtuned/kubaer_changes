@@ -36,14 +36,14 @@ export default function WhyChooseUs() {
     <section className="section-padding">
       <div className="container">
         <div className="wcus__container">
-          
+
           {/* Title */}
           <div
             className="d-flex flex-column align-items-center justify-content-center mb-40"
             data-aos="fade-up"
           >
             <div className="mb-20">
-              <h2 className="wcus__title">Why Choose Us</h2>
+              <h2 className="block text-white text-[38px] font-[600]! mb-0">Why Choose Us</h2>
               <div className="plain-divider"></div>
             </div>
           </div>
