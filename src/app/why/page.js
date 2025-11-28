@@ -43,7 +43,7 @@ export default function WhyChooseUs() {
             data-aos="fade-up"
           >
             <div className="mb-20">
-              <h2 className="block text-white text-[38px] font-[600]! mb-0">Why Choose Us</h2>
+              <h2 className="block text-white text-[26px] sm:text-[32px] md:text-[38px] lg:text-[42px] font-[600]! mb-0">Why Choose Us</h2>
               <div className="plain-divider"></div>
             </div>
           </div>
