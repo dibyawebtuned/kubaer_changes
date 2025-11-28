@@ -60,14 +60,14 @@ export default function Navbar() {
               lg:static lg:w-auto lg:bg-transparent lg:z-auto
             `}
           >
-            <ul className={`nav-list font-[500] ${archivo.className}`}>
+            <ul className={`nav-list px-5!  font-[500] ${archivo.className}`}>
 
               {/* SERVICES DROPDOWN */}
               <li
                 className={`has-dropdown ${servicesOpen ? "open" : ""} flex flex-col items-start!`}
                 onClick={() => setServicesOpen(!servicesOpen)}
               >
-                <button className="flex items-center gap-2 px-[8px] py-[25px] font-[600] text-[#86489B] hover:text-[#F171AC]">
+                <button className="flex items-center gap-2 px-[8px] py-[5px] sm:py-[25px] font-[600] text-[#86489B] hover:text-[#F171AC]">
                   Services
                   <ChevronDown
                     size={20}
@@ -86,8 +86,8 @@ export default function Navbar() {
               </li>
 
               {/* ABOUT */}
-              <li className="flex items-center gap-2 py-[15px]">
-                <Link href="/about" className="!font-[600] text-[#86489B] hover:text-[#F171AC]">
+              <li className="flex items-center gap-2 pb-[10px] sm:py-[15px]">
+                <Link href="/about" className="!font-[600] text-[#86489B] hover:text-[#F171AC] px-2">
                   About Us
                 </Link>
               </li>
@@ -97,7 +97,7 @@ export default function Navbar() {
                 className={`has-dropdown ${calculatorOpen ? "open" : ""} flex flex-col items-start!`}
                 onClick={() => setCalculatorOpen(!calculatorOpen)}
               >
-                <button className="flex items-center gap-2 px-[8px] py-[25px] font-[600] text-[#86489B] hover:text-[#F171AC]">
+                <button className="flex items-center gap-2 px-[8px] py-[5px] sm:py-[25px] font-[600] text-[#86489B] hover:text-[#F171AC]">
                   Calculator
                   <ChevronDown
                     size={18}
@@ -116,18 +116,18 @@ export default function Navbar() {
               </li>
 
               {/* BLOG */}
-              <li className="flex items-center py-[15px] text-[#86489B] hover:text-[#F171AC]">
-                <Link href="/BlogList" className="font-[600]!">Blog</Link>
+              <li className="flex items-center sm:py-[15px] text-[#86489B] hover:text-[#F171AC]">
+                <Link href="/BlogList" className="font-[600]! px-2">Blog</Link>
               </li>
 
               {/* FAQ */}
-              <li className="flex items-center py-[15px] text-[#86489B] hover:text-[#F171AC]">
-                <Link href="/faq" className="font-[600]!">FAQs</Link>
+              <li className="flex items-center py-[10px] sm:py-[15px] text-[#86489B] hover:text-[#F171AC]">
+                <Link href="/faq" className="font-[600]! px-2">FAQs</Link>
               </li>
 
               {/* CONTACT */}
-              <li className="flex items-center py-[15px] text-[#86489B] hover:text-[#F171AC]">
-                <Link href="/contact" className="font-[600]!">Contact Us</Link>
+              <li className="flex items-center pb-[10px] sm:py-[15px] text-[#86489B] hover:text-[#F171AC]">
+                <Link href="/contact" className="font-[600]! px-2">Contact Us</Link>
               </li>
             </ul>
 
