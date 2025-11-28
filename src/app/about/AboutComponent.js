@@ -54,7 +54,7 @@ export default function AboutComponent() {
                             We’re a modern banking and investment partner committed to helping you grow, save, and invest with confidence. We’re a modern banking and investment.
                         </div>
                         <div className=" hover:cursor-pointer">
-                            <a className="extra-btn btn-default">Contact Us</a>
+                            <Link href="/contact" className="extra-btn btn-default">Contact Us</Link>
                         </div>
                     </div>
                 </div>

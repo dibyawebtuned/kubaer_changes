@@ -67,10 +67,10 @@ export default function BlogDetailComponent() {
                 <div className="container mx-auto">
                     <div className="grid grid-cols-12 gap-6">
                         {/* Main Content - 8/12 */}
-                        <div className="col-span-12 lg:col-span-8 prose text-gray-700 py-6 px-4">
+                        <div className="col-span-12 lg:col-span-8 prose text-gray-700 sm:py-6 sm:px-4">
                             {/* Description */}
                             <div className="flex flex-col gap-1 mt-[30px]">
-                                <div className="text-[34px] font-medium pb-2 bg-gradient-to-r from-[#86489B] to-[#F171AC] bg-clip-text text-transparent">
+                                <div className="text-[26px] sm:text-[34px] leading-snug font-medium pb-2 bg-gradient-to-r from-[#86489B] to-[#F171AC] bg-clip-text text-transparent">
                                     What We Offer: Loans for First Home Buyers
                                 </div>
                                 <p className="!font-[400] text-justify">
