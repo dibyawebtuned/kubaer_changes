@@ -3,15 +3,15 @@
 
 import Image from "next/image";
 import RibbonStar from "/public/assets/img/star2.svg";
-import LandingImage from "/public/assets/img/landing-image.jpg";
+import LandingImage from "/public/assets/img/landing-image4.jpg";
 import "../../public/assets/css/hero.css";
+
+import Link from "next/link";
 
 export default function AboutHeader() {
   return (
     <div
-      className="about-page-header"
-      style={{ position: "relative", overflow: "hidden" }}
-    >
+      className="about-page-header relative overflow-hidden">
       {/* Full-Width Background Image as Overlay */}
       <div
         className="page-header-image wow fadeIn"
@@ -25,6 +25,7 @@ export default function AboutHeader() {
         }}
       >
         <Image
+          className="rounded-none!"
           src={LandingImage}
           alt="Hero Banner Image"
           fill
@@ -52,7 +53,7 @@ export default function AboutHeader() {
           <div className="col-lg-6">
             <div className="about-page-header-box page-header-box">
               <div className="wow fadeInUp flex">
-                <span className=" flex flex-row items-center hero_badge">
+                <span className=" flex flex-row items-center hero_badge rounded-none!">
                   {/* Sparkles Icon */}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -137,20 +138,25 @@ export default function AboutHeader() {
               </ul>
 
               <div
-                className="hero__button wow fadeInUp"
+                className="flex flex-row gap-4 wow fadeInUp "
                 data-wow-delay="0.6s"
               >
-                <a href="/contact" className="btn-default">
-                  Book Your Free Discovery Call
-                </a>
-                <a
-                  href="https://maps.app.goo.gl/VQT7EHtuWXBZaN6a9"
-                  className="extra-btn"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Find Us
-                </a>
+                <div>
+                  <Link href="/contact" className="btn-default">
+                    Book Your Free Discovery Call
+                  </Link>
+                </div>
+
+                <div>
+                  <Link
+                    href="https://maps.app.goo.gl/VQT7EHtuWXBZaN6a9"
+                    className="extra-btn"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Find Us
+                  </Link>
+                </div>
               </div>
             </div>
           </div>

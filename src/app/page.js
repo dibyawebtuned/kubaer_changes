@@ -9,14 +9,16 @@ import WhyChooseUs from "@/app/why/page";
 import Testimonials from "@/components/Testimonials";
 import Message from "@/app/message/page";
 import Feedback from "@/components/Feedback";
+import Test from "../../test";
 
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
+      {/* <Test /> */}
 
       {/* Content Starts */}
-      <main className="flex-grow">
+      <main className="grow">
         <Hero />
         <ServicesSection />
         <HowWeWork />

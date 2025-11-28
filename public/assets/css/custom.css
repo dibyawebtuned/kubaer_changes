@@ -64,6 +64,32 @@
 /*** 	   02. General css		  ***/
 /************************************/
 
+
+
+
+
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -o-font-smoothing: antialiased;
+  }
+
+
+
+  img, picture, video, canvas {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  image-rendering: high-quality;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+
+
+
+
+
+
 body {
   font-family: var(--default-font);
   font-size: 16px;
@@ -774,6 +800,12 @@ header.main-header .header-sticky.active::before {
   transform: rotate(-180deg);
   color: var(--primary-color);
 }
+
+
+
+
+
+
 
 /************************************/
 /***        04. Hero css	      ***/
@@ -2405,8 +2437,8 @@ header.main-header .header-sticky.active::before {
   color: #ffffff !important;
 }
 .footer-contact-item {
-  display: grid;
-  grid-template-columns: 0.5fr 1fr;
+  /* display: grid; */
+  /* grid-template-columns: 0.5fr 1fr; */
 }
 .footer-contact-item p {
   text-transform: capitalize;
@@ -2495,7 +2527,7 @@ header.main-header .header-sticky.active::before {
 .footer-quick-links {
   display: flex;
   flex-direction: column;
-  padding-left: 2rem;
+  /* padding-left: 2rem; */
 }
 .footer-menu ul li {
   display: inline-block;
@@ -5388,14 +5420,18 @@ header.main-header .header-sticky.active::before {
     padding: 40px 0 0;
   }
 
+  /* .col-lg-3{
+    border: 2px solid green;
+  } */
+
   .about-footer,
   .footer-logo {
     margin-bottom: 30px;
   }
 
-  .footer-contact-box {
+  /* .footer-contact-box {
     gap: 25px;
-  }
+  } */
 
   .footer-contact-item h3 {
     font-size: 18px;
@@ -6291,9 +6327,9 @@ header.main-header .header-sticky.active::before {
     font-size: 24px;
   }
 
-  .footer-contact-box {
+  /* .footer-contact-box {
     display: block;
-  }
+  } */
 
   .footer-contact-item {
     margin-bottom: 20px;
@@ -8461,9 +8497,9 @@ header.main-header .header-sticky.active::before {
   overflow: visible !important;
 }
 
-.contact__title-box {
+/* .contact__title-box {
   padding-right: 3rem !important;
-}
+} */
 
 .contact__title {
   letter-spacing: 0.5px !important;
@@ -8472,10 +8508,19 @@ header.main-header .header-sticky.active::before {
   font-size: 2.6rem !important;
 }
 
-.contact__subtitle {
+/* Mobile Media Query */
+@media (max-width: 767px) {
+  .contact__title {
+    font-size: 26px !important;
+  }
+}
+
+
+
+/* .contact__subtitle {
   font-size: 1rem;
   font-weight: 400;
-}
+} */
 
 .form__title {
   font-size: 1.8rem !important;
@@ -8500,7 +8545,7 @@ header.main-header .header-sticky.active::before {
 }
 
 .footer__description {
-  font-size: 14px;
+  font-size: 16px;
   color: white;
   margin-top: 10px;
   letter-spacing: 0.2px;

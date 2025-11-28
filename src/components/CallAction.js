@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import Link from "next/link";
 
 import { Archivo, Roboto } from "next/font/google";
 
@@ -34,7 +35,7 @@ export default function CallAction() {
             <div className="absolute inset-0 bg-[rgba(0,0,0,0.4)]"></div>
 
             {/* Content */}
-            <div className="container relative z-10 mx-auto text-center flex flex-col items-center justify-center gap-[15px] max-w-3xl !px-[188px]">
+            <div className="container relative z-10 mx-auto text-center flex flex-col items-center justify-center gap-[15px] max-w-full sm:max-w-3xl sm:px-[188px]!">
                 {/* Heading */}
                 <h2
                     className={`text-2xl sm:text-3xl text-center !font-semibold !leading-[40px] text-white ${archivo.className}`}
@@ -59,11 +60,13 @@ export default function CallAction() {
 
                 {/* Call to Action Button */}
                 <div data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="600">
-                    <button
-                        className={`px-8 py-2 !rounded-[10px] text-white font-medium text-lg bg-[#F171AC] hover:bg-[#86489B] transition-all duration-500 ease-in-out transform hover:scale-105 shadow-[0_10px_25px_rgba(241,114,172,0.3)] ${archivo.className}`}
-                    >
-                        Apply Now
-                    </button>
+                    <Link href="/contact">
+                        <button
+                            className={`px-8 py-2 !rounded-[10px] text-white font-medium text-lg bg-[#F171AC] hover:bg-[#86489B] transition-all duration-500 ease-in-out transform hover:scale-105 shadow-[0_10px_25px_rgba(241,114,172,0.3)] ${archivo.className}`}
+                        >
+                            Apply Now
+                        </button>
+                    </Link>
                 </div>
             </div>
         </section>

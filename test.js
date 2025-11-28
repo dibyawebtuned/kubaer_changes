@@ -1,40 +1,148 @@
-    // <div className="container mx-auto px-4 py-12">
-    //   {/* Contact Header */}
-    //   <div className="text-center mb-12">
-    //     <h1 className="text-4xl font-bold mb-3 text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary-color)] to-[var(--secondary-color)]">
-    //       Blog Library
-    //     </h1>
+"use client";
 
-    //     <p className="text-gray-600 max-w-2xl mx-auto">
-    //       Explore our range of articles to guide your journey as a home buyer or investor.
-    //     </p>
-    //   </div>
+import { useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { ChevronDown } from "lucide-react";
+import Logo from "/public/assets/img/new-logo.png";
 
-    //   {/* Tabs Section */}
-    //   <SimpleGrid columns={[1, 2]} gap={10} width="full">
-    //     {["line", "enclosed", "outline", "solid-rounded"].map((variant) => (
-    //       <Tabs key={variant} variant={variant} isFitted colorScheme="blue">
-    //         <TabList>
-    //           <Tab>
-    //             <LuUser className="mr-2" />
-    //             Members
-    //           </Tab>
-    //           <Tab>
-    //             <LuFolder className="mr-2" />
-    //             Projects
-    //           </Tab>
-    //           <Tab>
-    //             <LuSquareCheck className="mr-2" />
-    //             Settings
-    //           </Tab>
-    //         </TabList>
+import { Archivo, Roboto } from "next/font/google";
 
-    //         <TabPanels>
-    //           <TabPanel>Manage your team members</TabPanel>
-    //           <TabPanel>Manage your projects</TabPanel>
-    //           <TabPanel>Manage your tasks for freelancers</TabPanel>
-    //         </TabPanels>
-    //       </Tabs>
-    //     ))}
-    //   </SimpleGrid>
-    // </div>
+const archivo = Archivo({
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+});
+const roboto = Roboto({
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+});
+
+import "/public/assets/css/custom.css";
+import "/public/assets/css/navbar.css";
+
+export default function Navbar() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const [calculatorOpen, setCalculatorOpen] = useState(false);
+
+  return (
+    <header className="main-header w-full">
+      <nav className="navbar">
+        <div className="container d-flex justify-between items-center">
+
+          {/* LOGO */}
+          <Link href="/" className="navbar-brand">
+            <Image
+              src={Logo}
+              alt="Kubaer Logo"
+              className="w-[200px] h-auto"
+              priority
+            />
+          </Link>
+
+          {/* MOBILE MENU BUTTON */}
+          <button
+            className="md:hidden flex flex-col gap-1 justify-center items-center w-8 h-8"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            <span className={`block h-[2px] w-6 bg-black transition-transform ${menuOpen ? "rotate-45 translate-y-2" : ""}`} />
+            <span className={`block h-[2px] w-6 bg-black transition-opacity ${menuOpen ? "opacity-0" : ""}`} />
+            <span className={`block h-[2px] w-6 bg-black transition-transform ${menuOpen ? "-rotate-45 -translate-y-2" : ""}`} />
+          </button>
+
+          {/* FIXED MOBILE MENU SO IT DOES NOT PUSH PAGE DOWN */}
+          <div
+            className={`
+              nav-menu 
+              ${menuOpen ? "open" : ""} 
+              fixed top-[80px] left-0 w-full 
+              bg-white
+              sm:bg-white/20!
+              z-[9999]
+              md:static md:w-auto md:bg-transparent md:z-auto
+            `}
+          >
+            <ul className={`nav-list font-[500] ${archivo.className}`}>
+
+              {/* SERVICES DROPDOWN */}
+              <li
+                className={`has-dropdown ${servicesOpen ? "open" : ""} flex flex-col items-start!`}
+                onClick={() => setServicesOpen(!servicesOpen)}
+              >
+                <button className="flex items-center gap-2 px-[8px] py-[25px] font-[600] text-[#86489B] hover:text-[#F171AC]">
+                  Services
+                  <ChevronDown
+                    size={20}
+                    className={`transition-transform ${servicesOpen ? "rotate-180" : ""}`}
+                  />
+                </button>
+
+                <ul className="dropdown">
+                  <li><Link href="/home-loan">Home Loan</Link></li>
+                  <li><Link href="/investment-loan">Investment Loan</Link></li>
+                  <li><Link href="/car-personal-loan">Car & Personal Loan</Link></li>
+                  <li><Link href="/smsf-loan">SMSF Loan</Link></li>
+                  <li><Link href="/refinancing">Refinancing</Link></li>
+                  <li><Link href="/business-loan">Business Loan</Link></li>
+                </ul>
+              </li>
+
+              {/* ABOUT */}
+              <li className="flex items-center gap-2 py-[15px]">
+                <Link href="/about" className="!font-[600] text-[#86489B] hover:text-[#F171AC]">
+                  About Us
+                </Link>
+              </li>
+
+              {/* CALCULATOR DROPDOWN */}
+              <li
+                className={`has-dropdown ${calculatorOpen ? "open" : ""} flex flex-col items-start!`}
+                onClick={() => setCalculatorOpen(!calculatorOpen)}
+              >
+                <button className="flex items-center gap-2 px-[8px] py-[25px] font-[600] text-[#86489B] hover:text-[#F171AC]">
+                  Calculator
+                  <ChevronDown
+                    size={18}
+                    className={`transition-transform ${calculatorOpen ? "rotate-180" : ""}`}
+                  />
+                </button>
+
+                <ul className="dropdown">
+                  <li><Link href="/calculator/stampduty">Stamp Duty</Link></li>
+                  <li><Link href="/calculator/refinancing">Refinancing</Link></li>
+                  <li><Link href="/calculator/borrowcapital">Borrowing Capacity</Link></li>
+                  <li><Link href="/calculator/repayment">Repayments</Link></li>
+                  <li><Link href="/calculator/loancomparison">Loan Comparison</Link></li>
+                  <li><Link href="/calculator/budgetplanner">Budget Planner</Link></li>
+                </ul>
+              </li>
+
+              {/* BLOG */}
+              <li className="flex items-center py-[15px] text-[#86489B] hover:text-[#F171AC]">
+                <Link href="/BlogList" className="font-[600]!">Blog</Link>
+              </li>
+
+              {/* FAQ */}
+              <li className="flex items-center py-[15px] text-[#86489B] hover:text-[#F171AC]">
+                <Link href="/faq" className="font-[600]!">FAQs</Link>
+              </li>
+
+              {/* CONTACT */}
+              <li className="flex items-center py-[15px] text-[#86489B] hover:text-[#F171AC]">
+                <Link href="/contact" className="font-[600]!">Contact Us</Link>
+              </li>
+            </ul>
+
+            {/* CALL BUTTON */}
+            <div className="header-btn flex p-4 md:p-0">
+              <a href="tel:1300Kubaer" className="extra-btn btn-default">
+                1300 Kubaer
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </nav>
+    </header>
+  );
+}

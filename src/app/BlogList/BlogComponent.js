@@ -75,24 +75,24 @@ export default function BlogComponent() {
 
   return (
     <div className="bg-white">
-      <div className="container mx-auto px-4 py-16 flex flex-col gap-[60px]">
+      <div className="container mx-auto px-4 flex flex-col gap-[60px]">
         {/* Heading & Search */}
         <div className="w-full flex flex-col gap-[30px]">
           {/* Heading */}
-          <div className="text-center flex flex-col gap-[10px]">
+          <div className="sm:text-center flex flex-col gap-[10px] pt-6 sm:pt-15">
             {/* Title */}
             <div
               data-aos="fade-down"
               data-aos-duration="1000"
               data-aos-delay="100"
               data-aos-once="true">
-              <span className="text-[40px] md:text-5xl font-[500] mb-4 text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary-color)] to-[var(--secondary-color)]">
+              <span className="text-[28px] sm:text-[36px] md:text-[48px] lg:text-[54px] font-medium leading-snug text-transparent bg-clip-text bg-gradient-to-r from-[#86489B] to-[#F171AC]">
                 Our Blogs
               </span>
             </div>
 
             {/* Sub-title */}
-            <div className={`text-gray-600 text-[16px] font-[400] ${roboto.className} leading-[25px] tracking-[-1%]`}
+            <div className={`text-gray-600 text-[14px] sm:text-[16px] font-[400] ${roboto.className} leading-[22px] sm:leading-[25px] tracking-[-0.5%]`}
               data-aos="fade-up"
               data-aos-duration="1000"
               data-aos-delay="300"
@@ -153,9 +153,8 @@ export default function BlogComponent() {
         </div>
 
         {/* Tabs & Cards */}
-        <div className="">
-          {/* Tabs */}
-          <div className="w-full mb-10 rounded-full p-[2px] bg-gradient-to-r from-[#86489B] to-[#F171AC]">
+        <div className="pb-6 sm:pb-15">
+          <div className="hidden sm:block w-full mb-10 rounded-full p-[2px] bg-gradient-to-r from-[#86489B] to-[#F171AC]">
             <div className="flex justify-between items-center bg-white rounded-full px-1 py-1">
               {tabs.map((tab) => (
                 <button
@@ -173,6 +172,48 @@ export default function BlogComponent() {
               ))}
             </div>
           </div>
+
+          {/* Tabs for Mobile */}
+          <div className="w-full mb-10 rounded-full p-[2px] bg-gradient-to-r from-[#86489B] to-[#F171AC] sm:hidden">
+            <div className="flex flex-wrap justify-center gap-2 bg-white rounded-full px-2 py-2">
+              {tabs.map((tab) => (
+                <button
+                  key={tab}
+                  onClick={() => setActiveTab(tab)}
+                  style={{ borderRadius: '30px' }}
+                  className={`text-sm font-medium px-4 py-2 transition
+          ${activeTab === tab
+                      ? "bg-gradient-to-r from-[#86489B] to-[#F171AC] text-white shadow-[0_4px_15px_rgba(134,72,155,0.3),0_0_10px_rgba(241,113,172,0.2)]"
+                      : "text-gray-600 hover:text-[#86489B] hover:font-bold"
+                    }`}
+                >
+                  {tab}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* <div className="w-full rounded-full p-[2px] bg-gradient-to-r from-[#86489B] to-[#F171AC] sm:hidden">
+                    <div className="flex flex-wrap justify-center gap-2 bg-white rounded-full px-2 py-2">
+                        {categories.map((category) => (
+                            <button
+                                key={category}
+                                onClick={() => {
+                                    setActiveTab(category);
+                                    setOpenIndex(null);
+                                }}
+                                style={{ borderRadius: '30px' }}
+                                className={`text-sm font-medium px-4 py-2 transition
+          ${activeTab === category
+                                        ? "bg-gradient-to-r from-[#86489B] to-[#F171AC] text-white"
+                                        : "text-gray-600 hover:text-[#86489B] hover:font-bold"
+                                    }`}
+                            >
+                                {category}
+                            </button>
+                        ))}
+                    </div>
+                </div> */}
 
           {/* Blog Cards */}
           <div className="flex flex-wrap gap-[25px]">

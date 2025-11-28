@@ -40,7 +40,7 @@
 .nav-list li {
   display: flex;
   align-items: center;
-  position: relative; 
+  position: relative;
 }
 
 /* Links & Dropdown Buttons */
@@ -48,7 +48,7 @@
 .nav-list li .dropdown-toggle {
   padding: 10px 15px;
   font-size: 16px;
-  color: #86489B;
+  color: #86489b;
   text-decoration: none;
   background: none;
   border: none;
@@ -59,7 +59,7 @@
 /* Hover color */
 .nav-list li a:hover,
 .nav-list li .dropdown-toggle:hover {
-  color: #F171AC; 
+  color: #f171ac;
 }
 
 /* Active state for dropdown toggle */
@@ -78,7 +78,7 @@
   position: absolute;
   top: 100%;
   left: 0;
-  background: #86489B;
+  background: #86489b;
   border-radius: 8px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
   width: 200px;
@@ -124,8 +124,8 @@
     transform: translateY(3px);
   }
   100% {
-    opacity: 1;               
-    transform: translateY(0); 
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -162,13 +162,24 @@
   .has-dropdown:hover .dropdown li {
     animation: dropdownBounce 0.6s ease forwards;
   }
-  .has-dropdown:hover .dropdown li:nth-child(1) { animation-delay: 0.05s; }
-  .has-dropdown:hover .dropdown li:nth-child(2) { animation-delay: 0.1s; }
-  .has-dropdown:hover .dropdown li:nth-child(3) { animation-delay: 0.15s; }
-  .has-dropdown:hover .dropdown li:nth-child(4) { animation-delay: 0.2s; }
-  .has-dropdown:hover .dropdown li:nth-child(5) { animation-delay: 0.25s; }
-  .has-dropdown:hover .dropdown li:nth-child(6) { animation-delay: 0.3s; }
- 
+  .has-dropdown:hover .dropdown li:nth-child(1) {
+    animation-delay: 0.05s;
+  }
+  .has-dropdown:hover .dropdown li:nth-child(2) {
+    animation-delay: 0.1s;
+  }
+  .has-dropdown:hover .dropdown li:nth-child(3) {
+    animation-delay: 0.15s;
+  }
+  .has-dropdown:hover .dropdown li:nth-child(4) {
+    animation-delay: 0.2s;
+  }
+  .has-dropdown:hover .dropdown li:nth-child(5) {
+    animation-delay: 0.25s;
+  }
+  .has-dropdown:hover .dropdown li:nth-child(6) {
+    animation-delay: 0.3s;
+  }
 
   /* Hide the +/– on desktop */
   .dropdown-toggle span {
@@ -184,7 +195,7 @@
     position: relative;
     top: 0;
     left: 0;
-    background: #8a2be2;
+    background: #86489b;
     border-radius: 5px;
     box-shadow: none;
     min-width: 100%;
@@ -202,7 +213,7 @@
   .has-dropdown.open .dropdown {
     opacity: 1;
     visibility: visible;
-    max-height: 500px; /* big enough */
+    max-height: 500px;
   }
 
   /* Make sure items show instantly (no bounce needed here, unless you want it) */
@@ -212,17 +223,28 @@
   }
 }
 
-
 /* =====================
    Headshake Animation
 ===================== */
 @keyframes headshake {
-  0% { transform: translateX(0); }
-  6.5% { transform: translateX(-6px) rotateY(-9deg); }
-  18.5% { transform: translateX(5px) rotateY(7deg); }
-  31.5% { transform: translateX(-3px) rotateY(-5deg); }
-  43.5% { transform: translateX(2px) rotateY(3deg); }
-  50% { transform: translateX(0); }
+  0% {
+    transform: translateX(0);
+  }
+  6.5% {
+    transform: translateX(-6px) rotateY(-9deg);
+  }
+  18.5% {
+    transform: translateX(5px) rotateY(7deg);
+  }
+  31.5% {
+    transform: translateX(-3px) rotateY(-5deg);
+  }
+  43.5% {
+    transform: translateX(2px) rotateY(3deg);
+  }
+  50% {
+    transform: translateX(0);
+  }
 }
 
 .headshake:hover {

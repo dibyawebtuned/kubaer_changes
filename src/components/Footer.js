@@ -6,6 +6,8 @@ import Picture_1 from "../../public/assets/img/Footer/Picture_1-removebg-preview
 import Picture_2 from "../../public/assets/img/Footer/Picture_2-removebg-preview.png";
 import Picture_3 from "../../public/assets/img/Footer/Picture_3-removebg-preview.png";
 
+import { Phone, Mail, MapPin } from "lucide-react";
+
 import { Archivo, Roboto } from "next/font/google";
 
 const archivo = Archivo({ subsets: ["latin"], weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], });
@@ -18,8 +20,8 @@ const Footer = () => {
   return (
     <footer className="main-footer">
       <div className="container">
-        <div className="row">
-          <div className="col-lg-3 col-md-8">
+        <div className="row gap-[50px] sm:gap-0">
+          <div className="col-lg-3 col-md-8 ">
             {/* About Footer Start */}
             <div className="about-footer">
               <div className="footer__logo">
@@ -27,7 +29,7 @@ const Footer = () => {
               </div>
 
               <div>
-                <p className="footer__description !font-[500]">
+                <p className="footer__description !font-[500] ">
                   Kubaer Finance helps working families and migrants in Adelaide
                   secure home, car, and investment loans with personalised
                   guidance and expert financial strategies.
@@ -35,18 +37,21 @@ const Footer = () => {
               </div>
 
               {/* Footer Contact Box Start */}
-              <div className="footer-contact-box">
-                <div className="footer-contact-item">
-                  <p className="!font-[500]">Call Us:</p>
+              <div className="footer-contact-box flex flex-col gap-2">
+                <div className="footer-contact-item flex items-center gap-2">
+                  {/* <p className="!font-[500]">Call Us:</p> */}
+                  <Phone className="w-4 h-4 text-white" />
                   <a className="!font-[700]" href="tel:08 8166 2682">1300 KUBAER</a>
                 </div>
-                <div className="footer-contact-item">
-                  <p className="!font-[500]">Email Us:</p>
+                <div className="footer-contact-item flex items-center gap-2">
+                  {/* <p className="!font-[500]">Email Us:</p> */}
+                  <Mail className="w-4 h-4 text-white" />
                   <a className="!font-[700]" href="mailto:loans@kubaer.com.au">loans@kubaer.com.au</a>
                 </div>
-                <div className="footer-contact-item">
-                  <p className="!font-[500]">Location:</p>
-                  <p className="!font-[500]">Plympton Park SA 5038, Australia</p>
+                <div className="footer-contact-item flex items-center gap-2">
+                  {/* <p className="!font-[500]">Location:</p> */}
+                  <MapPin className="w-4 h-4 text-white" />
+                  <p className="!font-[500] mb-0!">Plympton Park SA 5038, Australia</p>
                 </div>
               </div>
               {/* Footer Contact Box End */}
@@ -55,7 +60,7 @@ const Footer = () => {
           </div>
 
           {/* Quick Links */}
-          <div className="col-lg-3 col-md-4">
+          <div className="col-lg-3 col-md-4 sm:pl-10!">
             <div className="footer-quick-links">
               <div className="section-title">
                 <h4 className="!font-[700]" style={{ color: "white" }}>Quick Links</h4>
@@ -76,7 +81,7 @@ const Footer = () => {
           <div className="col-lg-3 col-md-4">
             <div className="footer-quick-links footer__services">
               <div className="section-title">
-                <h4 className="!font-[700]" style={{ color: "white"}}>Services</h4>
+                <h4 className="!font-[700]" style={{ color: "white" }}>Services</h4>
               </div>
               <div className="footer-menu">
                 <ul>
@@ -93,7 +98,7 @@ const Footer = () => {
           {/* Social / Newsletter */}
           <div className="col-lg-3 col-md-6">
             <div className="section-title">
-              <h4 className="!font-[700]" style={{ color: "white"}}>Join our Community</h4>
+              <h4 className="!font-[700]" style={{ color: "white" }}>Join our Community</h4>
             </div>
 
             <div className="footer-social-links">

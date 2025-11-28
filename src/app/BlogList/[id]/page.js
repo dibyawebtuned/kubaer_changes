@@ -42,7 +42,7 @@ export default function BlogDetailComponent() {
                 {/* Hero Section */}
                 <div className="relative w-full h-[250px] md:h-[300px]">
                     <Image
-                        src="/assets/img/founder.png"
+                        src="/assets/img/landing-image4.jpg"
                         alt="Weekly vs Fortnightly vs Monthly Home Loan Repayments"
                         fill
                         className="object-cover"

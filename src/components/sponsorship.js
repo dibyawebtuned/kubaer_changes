@@ -47,13 +47,13 @@ export default function Partners() {
           data-aos-duration="1000">
           {/* Title */}
           <div className="text-center">
-            <span className="text-[32px] font-[600] text-transparent bg-clip-text bg-gradient-to-r from-[#86489B] to-[#F171AC]">
-              Sposorships
+            <span className="text-[24px] sm:text-[28px] md:text-[32px] lg:text-[36px] font-[600] text-transparent bg-clip-text bg-gradient-to-r from-[#86489B] to-[#F171AC]">
+              Sponsorships
             </span>
           </div>
           {/* Subb-Title */}
           <div className="flex justify-center">
-            <div className={`text-[#533641] w-[60%] text-center ${roboto.className} leading-[25px] font-[400] tracking-[-1%]`}>
+            <div className={`text-[#533641] sm:w-[60%] text-center ${roboto.className} leading-[25px] font-[400] tracking-[-1%]`}>
               Celebrating our journey of excellence, innovation, and impact through
               remarkable achievements and milestones.
             </div>
@@ -87,8 +87,6 @@ export default function Partners() {
             </a>
           ))}
         </div>
-
-
       </div>
 
       {/* Optional subtle background accent */}

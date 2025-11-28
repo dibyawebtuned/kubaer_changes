@@ -46,13 +46,13 @@ export default function Accomplishment() {
                 <div className="flex flex-col gap-[15px]">
                     {/* Title */}
                     <div className="text-center">
-                        <span className="text-[32px] font-[600] text-transparent bg-clip-text bg-gradient-to-r from-[#86489B] to-[#F171AC]">
+                        <span className="text-[24px] sm:text-[28px] md:text-[32px] lg:text-[36px] font-[600] text-transparent bg-clip-text bg-gradient-to-r from-[#86489B] to-[#F171AC]">
                             Our Accomplishment Stories
                         </span>
                     </div>
                     {/* Sub-Title */}
                     <div className="flex justify-center">
-                        <div className={`text-[#533641] w-[60%] text-center ${roboto.className} leading-[25px] font-[400] tracking-[-1%]`}>
+                        <div className={`text-[#533641] sm:w-[60%] text-center ${roboto.className} leading-[25px] font-[400] tracking-[-1%]`}>
                             Celebrating our journey of excellence, innovation, and impact through
                             remarkable achievements and milestones.
                         </div>
@@ -60,34 +60,36 @@ export default function Accomplishment() {
                 </div>
 
                 {/* Accomplishment Cards */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-10">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-10">
                     {stories.map((story) => (
                         <div
                             key={story.id}
-                            className="bg-white/80 backdrop-blur-lg border border-gray-100 rounded-2xl shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 p-8">
+                            className="bg-white/80 backdrop-blur-lg border border-gray-100 rounded-2xl shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 p-6 sm:p-7 md:p-8" >
                             {/* Icon & Title */}
-                            <div className="flex items-center">
+                            <div className="flex items-center mb-4 sm:mb-5">
                                 {/* Icon */}
-                                <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-tr from-blue-100 to-purple-100 rounded-full shadow-inner mr-4">
+                                <div
+                                    className="flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-tr from-blue-100 to-purple-100 rounded-full shadow-inner mr-4">
                                     {story.icon}
                                 </div>
+
                                 {/* Title */}
                                 <div>
-                                    <span className="text-xl font-semibold leading-snug text-[22px] text-transparent bg-clip-text bg-gradient-to-r from-[#86489B] to-[#F171AC]">
+                                    <span
+                                        className="block text-lg sm:text-xl md:text-2xl font-semibold leading-snug text-transparent bg-clip-text bg-gradient-to-r from-[#86489B] to-[#F171AC]">
                                         {story.title}
                                     </span>
                                 </div>
                             </div>
 
                             {/* Description */}
-                            <div>
-                                <p className="text-gray-600 text-sm leading-relaxed">
-                                    {story.description}
-                                </p>
-                            </div>
+                            <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
+                                {story.description}
+                            </p>
                         </div>
                     ))}
                 </div>
+
             </div>
         </section>
     );

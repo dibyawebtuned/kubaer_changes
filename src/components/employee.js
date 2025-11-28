@@ -30,13 +30,13 @@ export default function Employee() {
                 <div className="flex flex-col gap-[15px]">
                     {/* Title */}
                     <div className="text-center">
-                        <span className="text-[32px] font-[600] text-transparent bg-clip-text bg-gradient-to-r from-[#86489B] to-[#F171AC]">
+                        <span className="text-[24px] sm:text-[28px] md:text-[32px] lg:text-[36px] font-[600] text-transparent bg-clip-text bg-gradient-to-r from-[#86489B] to-[#F171AC]">
                             Meet Our Team
                         </span>
                     </div>
                     {/* Sub-Title */}
                     <div className="flex justify-center">
-                        <div className={`text-[#533641] w-[60%] text-center ${roboto.className} leading-[25px] font-[400] tracking-[-1%]`}>
+                        <div className={`text-[#533641] sm:w-[60%] text-center ${roboto.className} leading-[25px] font-[400] tracking-[-1%]`}>
                             Passionate professionals dedicated to delivering innovative digital
                             solutions with precision and creativity.
                         </div>
@@ -77,7 +77,6 @@ export default function Employee() {
                         </div>
                     ))}
                 </div>
-
             </div>
         </section>
     );
