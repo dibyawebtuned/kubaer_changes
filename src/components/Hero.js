@@ -3,7 +3,8 @@
 
 import Image from "next/image";
 import RibbonStar from "/public/assets/img/star2.svg";
-import LandingImage from "/public/assets/img/landing-image4.jpg";
+// import LandingImage from "/public/assets/img/landing-image4.jpg";
+import LandingImage from "/public/assets/img/banner.jpg";
 import "../../public/assets/css/hero.css";
 
 import Link from "next/link";
@@ -76,11 +77,27 @@ export default function AboutHeader() {
               </div>
 
               {/* <h1 className="wow fadeInUp" data-wow-delay="0.1s"> */}
-              <div className="text-flipdrop text-[52px] font-[700] leading-[62.4px] text-white mb-[1rem]">
+              <div className="text-flipdrop 
+              text-[28px] leading-[45px] 
+    sm:text-[34px] sm:leading-[42px]
+    md:text-[42px] md:leading-[52px]
+    lg:text-[52px] lg:leading-[62px] 
+    font-[700] text-white mb-[1rem]">
                 Tailored solutions for every step of your property journey
               </div>
 
-              <p className="hero-subtitle wow fadeInUp flex items-center gap-1" data-wow-delay="0.2s">
+              <p className="
+              // hero-subtitle 
+              wow 
+              fadeInUp 
+              flex 
+              items-center 
+              gap-1
+              text-[16px] 
+    sm:text-[18px]
+    md:text-[20px]
+    lg:text-[22px]" 
+              data-wow-delay="0.2s">
                 Get started in 3 simple steps
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
