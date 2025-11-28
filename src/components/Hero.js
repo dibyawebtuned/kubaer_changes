@@ -53,7 +53,7 @@ export default function AboutHeader() {
           <div className="col-lg-6">
             <div className="about-page-header-box page-header-box">
               <div className="wow fadeInUp flex">
-                <span className=" flex flex-row items-center hero_badge rounded-none!">
+                <span className=" flex flex-row items-center hero_badge">
                   {/* Sparkles Icon */}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
