@@ -1,1 +1,76 @@
 @import "tailwindcss";
+
+
+
+.perspective {
+  perspective: 1000px;
+}
+
+.transform-style-preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+
+
+
+
+
+/*  */
+
+/* Custom Swiper Navigation Buttons */
+
+.custom-swiper-navs .swiper-button-prev,
+.custom-swiper-navs .swiper-button-next {
+    width: 55px !important;
+    height: 55px !important;
+    /* background: white; */
+    border-radius: 50%;
+    /* box-shadow: 0 4px 12px rgba(0,0,0,0.15); */
+
+    /* center arrow inside */
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+
+    /* color: #86489B !important; */
+    color: white !important;
+    font-weight: 900 !important;
+
+    transition: all 0.3s ease;
+    /* border: 3px solid red !important; */
+}
+
+/* Arrow hover animation */
+.custom-swiper-navs .swiper-button-prev:hover,
+.custom-swiper-navs .swiper-button-next:hover {
+    /* background: linear-gradient(to right, #86489B, #F171AC); */
+    /* color: white !important; */
+    color: #86489B !important;
+    transform: scale(1.1);
+}
+
+/* Move arrows inward */
+.custom-swiper-navs .swiper-button-prev {
+    left: -10px !important;
+}
+
+.custom-swiper-navs .swiper-button-next {
+    right: -10px !important;
+    /* border: 4px solid red !important; */
+}
+
+/* Increase icon size */
+.custom-swiper-navs .swiper-button-prev::after,
+.custom-swiper-navs .swiper-button-next::after {
+    font-size: 20px !important;
+    line-height: 1;
+    /* border: 2px solid red !important; */
+}

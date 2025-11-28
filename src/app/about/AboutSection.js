@@ -22,12 +22,12 @@ export default function AboutSection() {
   }, []);
 
   const services = [
-    { title: "Home Loan", img: HomeLoanImg, delay: 0, link:"/home-loan" },
-    { title: "Investment Loan", img: InvestmentImg, delay: 0.2, link:"/investment-loan" },
-    { title: "Car & Personal Loan", img: CarImg, delay: 0.4, link:"/car-personal-loan" },
-    { title: "SMSF Loan", img: SMSFImg, delay: 0.6, link:"/smsf-loan" },
-    { title: "Refinancing", img: RefinancingImg, delay: 0.8, link:"/refinancing" },
-    { title: "Business Loan", img: BusinessImg, delay: 1, link:"/business-loan" },
+    { title: "Home Loan", img: HomeLoanImg, delay: 0, link: "/home-loan" },
+    { title: "Investment Loan", img: InvestmentImg, delay: 0.2, link: "/investment-loan" },
+    { title: "Car & Personal Loan", img: CarImg, delay: 0.4, link: "/car-personal-loan" },
+    { title: "SMSF Loan", img: SMSFImg, delay: 0.6, link: "/smsf-loan" },
+    { title: "Refinancing", img: RefinancingImg, delay: 0.8, link: "/refinancing" },
+    { title: "Business Loan", img: BusinessImg, delay: 1, link: "/business-loan" },
   ];
 
   return (
