@@ -82,7 +82,7 @@ export default function BlogDetailComponent() {
 
                             {/* Understanding Repayment */}
                             <div className="mt-2 flex flex-col gap-1">
-                                <div className="text-[24px] font-[500]">
+                                <div className="text-[22px] sm:text-[24px] font-[500]">
                                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#86489B] to-[#F171AC]">
                                         What We Offer: Loans for First Home Buyers
                                     </span>
@@ -110,7 +110,7 @@ export default function BlogDetailComponent() {
 
                             {/* Fortnightly Repayments */}
                             <div className="mt-4">
-                                <div className="text-[24px] font-[500]">
+                                <div className="text-[22px] sm:text-[24px] font-[500]">
                                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#86489B] to-[#F171AC]">Fortnightly Repayments</span>
                                 </div>
                                 <p className="!font-[400] text-justify mt-1">
@@ -122,7 +122,7 @@ export default function BlogDetailComponent() {
 
                             {/* Monthly Repayments */}
                             <div className="mt-4">
-                                <div className="text-[24px] font-[500]">
+                                <div className="text-[22px] sm:text-[24px] font-[500]">
                                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#86489B] to-[#F171AC]">Monthly Repayments</span>
                                 </div>
                                 <p className="!font-[400] text-justify mt-1">
@@ -134,7 +134,7 @@ export default function BlogDetailComponent() {
 
                             {/* Key Takeaways */}
                             <div className="mt-4">
-                                <div className="text-[24px] font-[500]">
+                                <div className="text-[22px] sm:text-[24px] font-[500]">
                                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#86489B] to-[#F171AC]">Key Takeaways</span>
                                 </div>
                                 <p className="!font-[400] text-justify">
