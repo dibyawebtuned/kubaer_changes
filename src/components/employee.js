@@ -57,7 +57,7 @@ export default function Employee() {
 
                             <div>
                                 <div>
-                                    <span className="text-lg font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#86489B] to-[#F171AC]">
+                                    <span className="text-xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#86489B] to-[#F171AC]">
                                         {emp.name}
                                     </span>
                                 </div>
