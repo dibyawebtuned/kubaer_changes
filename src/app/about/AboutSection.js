@@ -8,7 +8,20 @@ import SMSFImg from "/public/assets/img/smsf.png";
 import RefinancingImg from "/public/assets/img/refinancing.png";
 import BusinessImg from "/public/assets/img/business.png";
 
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 export default function AboutSection() {
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+      once: true,
+      easing: "ease-out-cubic",
+    });
+  }, []);
+
+
   const services = [
     { title: "Home Loan", img: HomeLoanImg, delay: 0 },
     { title: "Investment Loan", img: InvestmentImg, delay: 0.2 },
@@ -29,8 +42,8 @@ export default function AboutSection() {
           <div className="about-content">
             <div className="section-title d-flex justify-content-center mb-40">
               <div>
-                <h2 className="text-center">Services</h2>
-                <div className="gradient-divider"></div>
+                <h2 className="text-center" data-aos="fade-up">Services</h2>
+                <div className="gradient-divider" data-aos="fade-up" data-aos-delay="150"></div>
               </div>
             </div>
 
@@ -38,7 +51,11 @@ export default function AboutSection() {
             <div className="why-choose-list">
               <div className="row">
                 {services.map((service, index) => (
-                  <div key={index} className="col-lg-4">
+                  <div
+                    key={index}
+                    className="col-lg-4"
+                    data-aos="fade-up"
+                    data-aos-delay={service.delay}>
                     <a
                       href="#"
                       className="why-choose-item wow fadeInUp"

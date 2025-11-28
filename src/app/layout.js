@@ -8,6 +8,8 @@ import "owl.carousel/dist/assets/owl.theme.default.css";
 import "./globals.css";
 import Favicon from "/public/assets/img/favicon.png";
 
+import SmoothScroll from "@/components/SmoothScroll";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -28,6 +30,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="antialiased">
+        <SmoothScroll />
         {children}
       </body>
     </html>

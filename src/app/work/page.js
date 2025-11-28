@@ -1,14 +1,27 @@
 "use client";
 
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 export default function HowItWorks() {
+    useEffect(() => {
+    AOS.init({
+      duration: 800,
+      once: true,
+      easing: "ease-out-cubic",
+    });
+  }, []);
+
   return (
     <section className="section-padding pt-0">
       <div className="container">
         {/* Title Section */}
         <div className="section-title d-flex justify-content-center mb-40">
           <div>
-            <h2>How it Works</h2>
-            <div className="gradient-divider"></div>
+            <h2 data-aos="fade-up">How it Works</h2>
+            <div className="gradient-divider" data-aos="fade-up"
+              data-aos-delay="150"></div>
           </div>
         </div>
 
@@ -16,7 +29,8 @@ export default function HowItWorks() {
         <div className="steps-container">
           <div className="steps-grid">
             {/* Step 1 */}
-            <div className="step-card step-4 wow fadeInUp" data-wow-delay="0.1s">
+            <div className="step-card step-4 wow fadeInUp" data-aos="fade-up"
+              data-aos-delay="100">
               <div className="step-header">
                 <div className="step-number">01</div>
                 <div className="progress-dots">
@@ -47,7 +61,8 @@ export default function HowItWorks() {
             </div>
 
             {/* Step 2 */}
-            <div className="step-card step-1 wow fadeInUp" data-wow-delay="0.2s">
+            <div className="step-card step-1 wow fadeInUp" data-aos="fade-up"
+              data-aos-delay="200">
               <div className="step-header">
                 <div className="step-number">02</div>
                 <div className="progress-dots">
@@ -78,7 +93,8 @@ export default function HowItWorks() {
             </div>
 
             {/* Step 3 */}
-            <div className="step-card step-2 wow fadeInUp" data-wow-delay="0.3s">
+            <div className="step-card step-2 wow fadeInUp" data-aos="fade-up"
+              data-aos-delay="300">
               <div className="step-header">
                 <div className="step-number">03</div>
                 <div className="progress-dots">
@@ -109,7 +125,8 @@ export default function HowItWorks() {
             </div>
 
             {/* Step 4 */}
-            <div className="step-card step-3 wow fadeInUp" data-wow-delay="0.4s">
+            <div className="step-card step-3 wow fadeInUp" data-aos="fade-up"
+              data-aos-delay="400">
               <div className="step-header">
                 <div className="step-number">04</div>
                 <div className="progress-dots">
