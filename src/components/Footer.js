@@ -8,158 +8,148 @@ import Picture_3 from "../../public/assets/img/Footer/Picture_3-removebg-preview
 
 import { Phone, Mail, MapPin } from "lucide-react";
 
-import { Archivo, Roboto } from "next/font/google";
-
-const archivo = Archivo({ subsets: ["latin"], weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], });
-const roboto = Roboto({ subsets: ["latin"], weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], });
-
-
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="main-footer">
-      <div className="container">
-        <div className="row gap-[50px] sm:gap-0">
-          <div className="col-lg-3 col-md-8 ">
-            {/* About Footer Start */}
-            <div className="about-footer">
-              <div className="footer__logo">
-                <Image src={WhiteLogo} alt="Logo" />
-              </div>
+    <footer className="main-footer bg-[#0B1B30] text-white py-16">
+      <div className="container mx-auto px-4">
 
-              <div>
-                <p className="footer__description !font-[500] ">
-                  Kubaer Finance helps working families and migrants in Adelaide
-                  secure home, car, and investment loans with personalised
-                  guidance and expert financial strategies.
-                </p>
-              </div>
-
-              {/* Footer Contact Box Start */}
-              <div className="footer-contact-box flex flex-col gap-2">
-                <div className="footer-contact-item flex items-center gap-2">
-                  {/* <p className="!font-[500]">Call Us:</p> */}
-                  <Phone className="w-4 h-4 text-white" />
-                  <a className="!font-[700]" href="tel:08 8166 2682">1300 KUBAER</a>
-                </div>
-                <div className="footer-contact-item flex items-center gap-2">
-                  {/* <p className="!font-[500]">Email Us:</p> */}
-                  <Mail className="w-4 h-4 text-white" />
-                  <a className="!font-[700]" href="mailto:loans@kubaer.com.au">loans@kubaer.com.au</a>
-                </div>
-                <div className="footer-contact-item flex items-center gap-2">
-                  {/* <p className="!font-[500]">Location:</p> */}
-                  <MapPin className="w-4 h-4 text-white" />
-                  <p className="!font-[500] mb-0!">Plympton Park SA 5038, Australia</p>
-                </div>
-              </div>
-              {/* Footer Contact Box End */}
+        {/* ---- TOP GRID SECTION ---- */}
+        <div className="
+          grid
+          grid-cols-1 
+          sm:grid-cols-2 
+          lg:grid-cols-4
+          gap-10
+        ">
+          {/* ABOUT SECTION */}
+          <div className="">
+            <div className="footer__logo mb-4">
+              <Image src={WhiteLogo} alt="Logo" className="w-40" />
             </div>
-            {/* About Footer End */}
-          </div>
 
-          {/* Quick Links */}
-          <div className="col-lg-3 col-md-4 sm:pl-10!">
-            <div className="footer-quick-links">
-              <div className="section-title">
-                <h4 className="!font-[700]" style={{ color: "white" }}>Quick Links</h4>
+            <p className="text-sm leading-6 font-medium text-white">
+              Kubaer Finance helps working families and migrants in Adelaide
+              secure home, car, and investment loans with personalised guidance.
+            </p>
+
+            {/* CONTACTS */}
+            <div className="mt-2 flex flex-col gap-3 text-white">
+              <div className="flex items-center gap-2">
+                <Phone className="w-4 h-4" />
+                <a className="font-bold text-white hover:text-[#F171AC]! transition-all duration-300" href="tel:08 8166 2682">1300 KUBAER</a>
               </div>
-              <div className="footer-menu">
-                <ul>
-                  <li><a className="!font-[600]" href="/about">about us</a></li>
-                  <li><a className="!font-[600]" href="/services">services</a></li>
-                  <li><a className="!font-[600]" href="/resources">resources</a></li>
-                  <li><Link className="!font-[600]" href="/BlogList">blog</Link></li>
-                  <li><a className="!font-[600]" href="/contact">contact</a></li>
-                </ul>
+
+              <div className="flex items-center gap-2">
+                <Mail className="w-4 h-4" />
+                <a className="font-bold text-white hover:text-[#F171AC]! transition-all duration-300" href="mailto:loans@kubaer.com.au">
+                  loans@kubaer.com.au
+                </a>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <MapPin className="w-4 h-4" />
+                <p className="font-medium text-white m-0">Plympton Park SA 5038, Australia</p>
               </div>
             </div>
           </div>
 
-          {/* Services */}
-          <div className="col-lg-3 col-md-4">
-            <div className="footer-quick-links footer__services">
-              <div className="section-title">
-                <h4 className="!font-[700]" style={{ color: "white" }}>Services</h4>
-              </div>
-              <div className="footer-menu">
-                <ul>
-                  <li><a className="!font-[600]" href="/home-loan">Home Loan</a></li>
-                  <li><a className="!font-[600]" href="/investment-loan">Investment Loan</a></li>
-                  <li><a className="!font-[600]" href="car-personal-loan">Car & Personal Loan</a></li>
-                  <li><a className="!font-[600]" href="smsf-loan">SMSF Loan</a></li>
-                  <li><a className="!font-[600]" href="/refinancing">Refinancing</a></li>
-                </ul>
-              </div>
-            </div>
+          {/* QUICK LINKS */}
+          <div className="md:pl-10">
+            <h4 className="font-bold text-lg mb-4 text-white">Quick Links</h4>
+
+            <ul className="space-y-3 pl-0!">
+              <li><Link className="font-semibold text-white hover:text-[#F171AC]! transition-all duration-300" href="/about">about us</Link></li>
+              <li><Link className="font-semibold text-white hover:text-[#F171AC]! transition-all duration-300" href="/services">services</Link></li>
+              <li><Link className="font-semibold text-white hover:text-[#F171AC]! transition-all duration-300" href="/resources">resources</Link></li>
+              <li><Link className="font-semibold text-white hover:text-[#F171AC]! transition-all duration-300" href="/BlogList">blog</Link></li>
+              <li><Link className="font-semibold text-white hover:text-[#F171AC]! transition-all duration-300" href="/contact">contact</Link></li>
+            </ul>
           </div>
 
-          {/* Social / Newsletter */}
-          <div className="col-lg-3 col-md-6">
-            <div className="section-title">
-              <h4 className="!font-[700]" style={{ color: "white" }}>Join our Community</h4>
+          {/* SERVICES */}
+          <div>
+            <h4 className="font-bold text-lg mb-4 text-white">Services</h4>
+
+            <ul className="space-y-3 pl-0!">
+              <li><Link className="font-semibold text-white hover:text-[#F171AC]! transition-all duration-300" href="/home-loan">Home Loan</Link></li>
+              <li><Link className="font-semibold text-white hover:text-[#F171AC]! transition-all duration-300" href="/investment-loan">Investment Loan</Link></li>
+              <li><Link className="font-semibold text-white hover:text-[#F171AC]! transition-all duration-300" href="/car-personal-loan">Car & Personal Loan</Link></li>
+              <li><Link className="font-semibold text-white hover:text-[#F171AC]! transition-all duration-300" href="/smsf-loan">SMSF Loan</Link></li>
+              <li><Link className="font-semibold text-white hover:text-[#F171AC]! transition-all duration-300" href="/refinancing">Refinancing</Link></li>
+            </ul>
+          </div>
+
+          {/* COMMUNITY / NEWSLETTER */}
+          <div>
+            <h4 className="font-bold text-lg mb-4 text-white">Join our Community</h4>
+
+            <p className="text-sm leading-6 font-medium mb-4 text-white">
+              Join Kubaer Finance for expert loans and trusted support.
+            </p>
+
+            {/* Newsletter */}
+            <div>
+              <form className="w-full mb-5">
+                <div className="flex bg-white rounded-full overflow-hidden">
+                  <input
+                    type="email"
+                    required
+                    placeholder="Enter your email"
+                    className="px-3 py-2 flex-1 text-gray-900 text-sm outline-none"
+                  />
+                  <button className="px-4 bg-[#F171AC] text-white hover:bg-[#d85f97] transition-all duration-300">
+                    <i className="fa-solid fa-arrow-right"></i>
+                  </button>
+                </div>
+              </form>
             </div>
 
-            <div className="footer-social-links">
-              <p className="!font-[500]">Join Kubaer Finance for expert loans and trusted support.</p>
 
-              {/* Newsletter Subscription */}
-              <div className="newsletter">
-                <form className="newsletter-form">
-                  <div className="input-container">
-                    <input
-                      type="email"
-                      name="email"
-                      placeholder="Enter your email"
-                      required
-                      className="newsletter-input !font-[500] text-gray-950"
-                    />
-                    <button type="submit" className="arrow-btn">
-                      <i className="fa-solid fa-arrow-right"></i>
-                    </button>
-                  </div>
-                </form>
-              </div>
-
-              <ul>
-                <li><a href="#"><i className="fa-brands fa-instagram"></i></a></li>
-                <li><a href="#"><i className="fa-brands fa-facebook-f"></i></a></li>
-                <li><a href="#"><i className="fa-brands fa-tiktok"></i></a></li>
-                <li><a href="#"><i className="fa-brands fa-x-twitter"></i></a></li>
-              </ul>
-            </div>
+            {/* SOCIAL LINKS */}
+            <ul className="flex gap-4 text-xl">
+              <li><a href="#"><i className="fa-brands fa-instagram"></i></a></li>
+              <li><a href="#"><i className="fa-brands fa-facebook-f"></i></a></li>
+              <li><a href="#"><i className="fa-brands fa-tiktok"></i></a></li>
+              <li><a href="#"><i className="fa-brands fa-x-twitter"></i></a></li>
+            </ul>
           </div>
         </div>
 
-        {/* Footer Copyright */}
-        <div className="footer-copyright">
-          <div className="row align-items-center">
-            <div className="col-lg-4">
-              <div className="footer-copyright-text">
-                <p>Copyright © Kubaer Finance {currentYear}.</p>
-              </div>
-            </div>
+        {/* Line */}
+        <div className="w-full h-[1px] bg-gray-300 mt-4"></div>
 
-            <div className="col-lg-4">
-              <div className="footer-images d-flex justify-content-center gap-3">
-                <Image src={Picture_1} alt="Image 1" width={50} height={50} />
-                <Image src={Picture_2} alt="Image 2" width={50} height={50} />
-                <Image src={Picture_3} alt="Image 3" width={50} height={50} />
-              </div>
-            </div>
 
-            <div className="col-lg-4">
-              <div className="footer-design-text">
-                <p>
-                  Designed & Developed by{" "}
-                  <a href="https://www.murphystechnology.com.au/" target="_blank" rel="noopener noreferrer">
-                    Murphys Technology Pty Ltd
-                  </a>
-                </p>
-              </div>
-            </div>
+        {/* ---- COPYRIGHT SECTION ---- */}
+        <div className="
+          mt-4
+          mb-4
+          grid grid-cols-1
+          md:grid-cols-3
+          gap-8
+          text-start
+        ">
+          <p className="text-sm text-white m-0!">
+            © Kubaer Finance {currentYear}. All Rights Reserved.
+          </p>
+
+          <div className="flex justify-center gap-3 text-white">
+            <Image src={Picture_1} alt="" className="w-[90px] h-auto" />
+            <Image src={Picture_2} alt="" className="w-[90px] h-auto" />
+            <Image src={Picture_3} alt="" className="w-[90px] h-auto" />
           </div>
+
+          <p className="text-sm text-white m-0! sm:text-end">
+            Designed & Developed by{" "}
+            <a
+              className="underline text-white hover:text-[#F171AC]! transition-all duration-300"
+              href="https://www.murphystechnology.com.au/"
+              target="_blank"
+            >
+              Murphys Technology Pty Ltd
+            </a>
+          </p>
         </div>
       </div>
     </footer>

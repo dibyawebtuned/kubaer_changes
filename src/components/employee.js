@@ -38,76 +38,73 @@ export default function Employee() {
     ];
 
     return (
-        <section className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 py-20 px-6">
-            <div className="container mx-auto flex flex-col gap-[50px]">
+        <section className="bg-gradient-to-b from-gray-50 to-gray-100 py-16 md:py-20 px-4 sm:px-6 lg:px-10">
+            <div className="container mx-auto flex flex-col gap-10 md:gap-14 lg:gap-16">
 
                 {/* Heading */}
-                <div className="flex flex-col gap-[15px]">
+                <div className="flex flex-col gap-4">
                     <div className="text-center">
-                        <span className="text-[24px] sm:text-[28px] md:text-[32px] lg:text-[36px] font-[600] text-transparent bg-clip-text bg-gradient-to-r from-[#86489B] to-[#F171AC]">
+                        <span className="text-[26px] sm:text-[30px] md:text-[36px] lg:text-[42px] font-[700] text-transparent bg-clip-text bg-gradient-to-r from-[#86489B] to-[#F171AC]">
                             Meet Our Team
                         </span>
                     </div>
                     <div className="flex justify-center">
-                        <div className={`text-[#533641] sm:w-[60%] text-center ${roboto.className} leading-[25px] font-[400]`}>
+                        <p className={`text-[#533641] w-full sm:w-[70%] md:w-[60%] lg:w-[50%] text-center ${roboto.className} leading-[24px] md:leading-[28px] text-[14px] sm:text-[15px] md:text-[16px]`}>
                             Passionate professionals dedicated to delivering innovative
                             digital solutions with precision and creativity.
-                        </div>
+                        </p>
                     </div>
                 </div>
 
                 {/* Swiper Carousel */}
                 <Swiper
                     modules={[Navigation, Autoplay]}
-                    spaceBetween={30}
-                    slidesPerView={4}
+                    spaceBetween={20}
+                    slidesPerView={1}
                     autoplay={{ delay: 2500 }}
                     loop={true}
                     navigation
-                    pagination={false}
                     breakpoints={{
-                        0: { slidesPerView: 1 },
-                        640: { slidesPerView: 2 },
-                        1024: { slidesPerView: 4 },
+                        480: { slidesPerView: 1.3, spaceBetween: 20 },
+                        640: { slidesPerView: 2, spaceBetween: 25 },
+                        768: { slidesPerView: 2.5, spaceBetween: 25 },
+                        1024: { slidesPerView: 3, spaceBetween: 30 },
+                        1280: { slidesPerView: 4, spaceBetween: 30 },
                     }}
                     className="w-full custom-swiper-navs"
                 >
                     {employees.map((emp) => (
                         <SwiperSlide key={emp.id}>
-                            <div className="relative h-[450px] w-full rounded-2xl overflow-hidden group border border-gray-200 bg-white">
+                            <div className="relative h-[380px] sm:h-[420px] md:h-[450px] lg:h-[480px] w-full rounded-2xl overflow-hidden group border border-gray-200 bg-white">
 
-                                {/* BG Image */}
+                                {/* Employee Image */}
                                 <Image
                                     src={emp.image}
                                     alt={emp.name}
                                     fill
-                                    className="object-cover w-full h-full items-end transition-transform duration-700 group-hover:scale-110"
+                                    className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-110"
                                 />
 
-                                {/* Always-visible Bottom Overlay */}
+                                {/* Bottom Overlay (Responsive) */}
                                 <div
                                     className="
-        absolute bottom-0 left-0 w-full
-        px-6 pt-5 pb-4
-        text-center
-        
-        bg-gradient-to-t from-black/90 via-black/40 to-transparent
-    "
+                                    absolute bottom-0 left-0 w-full px-4 sm:px-5 md:px-6 
+                                    pt-4 sm:pt-5 md:pt-6 pb-4 
+                                    bg-gradient-to-t from-black/90 via-black/40 to-transparent
+                                    "
                                 >
-
-                                    <h3 className="text-white text-[24px]! font-semibold! tracking-wide drop-shadow-lg text-start">
+                                    <h3 className="text-white text-[18px] sm:text-[20px] md:text-[22px] lg:text-[24px] font-semibold! tracking-wide drop-shadow-lg text-start">
                                         {emp.name}
                                     </h3>
 
-                                    <p className="text-gray-200! text-sm mt-1 text-start">
+                                    <p className="text-gray-300! text-[12px] sm:text-[13px] md:text-[14px] mt-1 text-start">
                                         {emp.position}
                                     </p>
 
-                                    <div className="text-start flex w-14 h-[3px] bg-gradient-to-r from-[#86489B] to-[#F171AC] rounded-full"></div>
+                                    <div className="text-start mt-2 w-14 h-[3px] bg-gradient-to-r from-[#86489B] to-[#F171AC] rounded-full"></div>
                                 </div>
 
                             </div>
-
                         </SwiperSlide>
                     ))}
                 </Swiper>
@@ -115,12 +112,6 @@ export default function Employee() {
         </section>
     );
 }
-
-
-
-
-
-
 
 
 

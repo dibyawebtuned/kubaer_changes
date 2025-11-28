@@ -1,200 +1,169 @@
 "use client";
-
-import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ChevronDown } from "lucide-react";
-import Logo from "../../public/assets/img/new-logo.png";
+import WhiteLogo from "../../public/assets/img/white-logo.png";
+import Picture_1 from "../../public/assets/img/Footer/Picture_1-removebg-preview.png";
+import Picture_2 from "../../public/assets/img/Footer/Picture_2-removebg-preview.png";
+import Picture_3 from "../../public/assets/img/Footer/Picture_3-removebg-preview.png";
+
+import { Phone, Mail, MapPin } from "lucide-react";
 
 import { Archivo, Roboto } from "next/font/google";
 
 const archivo = Archivo({ subsets: ["latin"], weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], });
 const roboto = Roboto({ subsets: ["latin"], weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], });
 
-// Import your custom CSS files
-import "../../public/assets/css/custom.css";
-import "../../public/assets/css/navbar.css";
 
-export default function Navbar() {
-  // State for menu and dropdowns
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [servicesOpen, setServicesOpen] = useState(false);
-  const [calculatorOpen, setCalculatorOpen] = useState(false);
+const Footer = () => {
+  const currentYear = new Date().getFullYear();
 
   return (
-    <header className="main-header">
-      <nav className="navbar">
-        <div className="container d-flex justify-between items-center">
-          {/* LOGO */}
-          <Link href="/" className="navbar-brand">
-            <Image
-              src={Logo}
-              alt="Logo"
-              className="w-[200px] h-auto"
-            />
-          </Link>
+    <footer className="main-footer">
+      <div className="container">
+        <div className="row gap-[50px] sm:gap-0">
+          <div className="col-lg-3 col-md-8 ">
+            {/* About Footer Start */}
+            <div className="about-footer">
+              <div className="footer__logo">
+                <Image src={WhiteLogo} alt="Logo" />
+              </div>
 
-          {/* MOBILE MENU BUTTON */}
-          <button
-            className="md:hidden flex flex-col gap-1 justify-center items-center w-8 h-8"
-            onClick={() => setMenuOpen(!menuOpen)}
-          >
-            <span className={`block h-[2px] w-6 bg-black transition-transform ${menuOpen ? "rotate-45 translate-y-2" : ""}`} />
-            <span className={`block h-[2px] w-6 bg-black transition-opacity ${menuOpen ? "opacity-0" : ""}`} />
-            <span className={`block h-[2px] w-6 bg-black transition-transform ${menuOpen ? "-rotate-45 -translate-y-2" : ""}`} />
-          </button>
+              <div>
+                <p className="footer__description !font-[500] ">
+                  Kubaer Finance helps working families and migrants in Adelaide
+                  secure home, car, and investment loans with personalised
+                  guidance and expert financial strategies.
+                </p>
+              </div>
 
+              {/* Footer Contact Box Start */}
+              <div className="footer-contact-box flex flex-col gap-2">
+                <div className="footer-contact-item flex items-center gap-2">
+                  {/* <p className="!font-[500]">Call Us:</p> */}
+                  <Phone className="w-4 h-4 text-white" />
+                  <a className="!font-[700]" href="tel:08 8166 2682">1300 KUBAER</a>
+                </div>
+                <div className="footer-contact-item flex items-center gap-2">
+                  {/* <p className="!font-[500]">Email Us:</p> */}
+                  <Mail className="w-4 h-4 text-white" />
+                  <a className="!font-[700]" href="mailto:loans@kubaer.com.au">loans@kubaer.com.au</a>
+                </div>
+                <div className="footer-contact-item flex items-center gap-2">
+                  {/* <p className="!font-[500]">Location:</p> */}
+                  <MapPin className="w-4 h-4 text-white" />
+                  <p className="!font-[500] mb-0!">Plympton Park SA 5038, Australia</p>
+                </div>
+              </div>
+              {/* Footer Contact Box End */}
+            </div>
+            {/* About Footer End */}
+          </div>
 
-          {/* NAVIGATION MENU */}
-          <div className={`nav-menu ${menuOpen ? "open" : ""}`}>
-            <ul className={`nav-list font-[500] ${archivo.className}`}>
-
-              {/* =================================================== */}
-              {/*                     SERVICES DROPDOWN               */}
-              {/* =================================================== */}
-              <li
-                className={`has-dropdown ${servicesOpen ? "open" : ""}`}
-                onClick={() => setServicesOpen(!servicesOpen)}
-              >
-                <button className="flex items-center gap-2 px-[8px] py-[25px] font-[600] text-[#86489B] hover:text-[#F171AC] cursor-pointer transition-colors duration-300">
-                  Services
-
-                  {/* Dropdown arrow icon */}
-                  <ChevronDown
-                    size={20}
-                    strokeWidth={2.5}
-                    className={`transition-transform duration-300 ${servicesOpen ? "rotate-180" : ""
-                      }`}
-                  />
-                </button>
-
-                {/* Dropdown Menu for Services */}
-                <ul className="dropdown">
-                  <li>
-                    <Link href="/home-loan">Home Loan</Link>
-                  </li>
-
-                  <li>
-                    <Link href="/investment-loan">Investment Loan</Link>
-                  </li>
-
-                  <li>
-                    <Link href="/car-personal-loan">Car & Personal Loan</Link>
-                  </li>
-
-                  <li>
-                    <Link href="/smsf-loan">SMSF Loan</Link>
-                  </li>
-
-                  <li>
-                    <Link href="/refinancing">Refinancing</Link>
-                  </li>
-
-                  <li>
-                    <Link href="/business-loan">Business Loan</Link>
-                  </li>
+          {/* Quick Links */}
+          <div className="col-lg-3 col-md-4 sm:pl-10!">
+            <div className="footer-quick-links">
+              <div className="section-title">
+                <h4 className="!font-[700]" style={{ color: "white" }}>Quick Links</h4>
+              </div>
+              <div className="footer-menu">
+                <ul>
+                  <li><a className="!font-[600]" href="/about">about us</a></li>
+                  <li><a className="!font-[600]" href="/services">services</a></li>
+                  <li><a className="!font-[600]" href="/resources">resources</a></li>
+                  <li><Link className="!font-[600]" href="/BlogList">blog</Link></li>
+                  <li><a className="!font-[600]" href="/contact">contact</a></li>
                 </ul>
-              </li>
+              </div>
+            </div>
+          </div>
 
-              {/* =================================================== */}
-              {/*                   ABOUT              */}
-              {/* =================================================== */}
-              <li className="flex items-center gap-2 px-[8px] py-[15px] cursor-pointer transition-colors duration-300">
-                <Link
-                  href="/about"
-                  className="!font-[600]"
-                >
-                  About Us
-                </Link>
-              </li>
-
-              {/* =================================================== */}
-              {/*                   CALCULATOR DROPDOWN              */}
-              {/* =================================================== */}
-              <li
-                className={`has-dropdown ${calculatorOpen ? "open" : ""}`}
-                onClick={() => setCalculatorOpen(!calculatorOpen)}
-              >
-                <button className="flex items-center gap-2 px-[8px] py-[25px] font-[600] text-[#86489B] hover:text-[#F171AC] cursor-pointer transition-colors duration-300">
-                  Calculator
-
-                  {/* Dropdown arrow icon */}
-                  <ChevronDown
-                    size={16}
-                    className={`transition-transform duration-300 ${calculatorOpen ? "rotate-180" : ""
-                      }`}
-                  />
-                </button>
-
-                {/* Dropdown Menu for Calculator */}
-                <ul className="dropdown">
-                  <li>
-                    <Link href="/calculator/stampduty">Stamp Duty</Link>
-                  </li>
-
-                  <li>
-                    <Link href="/calculator/refinancing">Refinancing</Link>
-                  </li>
-
-                  <li>
-                    <Link href="/calculator/borrowcapital">Borrowing Capacity</Link>
-                  </li>
-
-                  <li>
-                    <Link href="/calculator/repayment">Repayments</Link>
-                  </li>
-
-                  <li>
-                    <Link href="/calculator/loancomparison">Loan Comparison</Link>
-                  </li>
-
-                  <li>
-                    <Link href="/calculator/budgetplanner">Budget Planner</Link>
-                  </li>
+          {/* Services */}
+          <div className="col-lg-3 col-md-4">
+            <div className="footer-quick-links footer__services">
+              <div className="section-title">
+                <h4 className="!font-[700]" style={{ color: "white" }}>Services</h4>
+              </div>
+              <div className="footer-menu">
+                <ul>
+                  <li><a className="!font-[600]" href="/home-loan">Home Loan</a></li>
+                  <li><a className="!font-[600]" href="/investment-loan">Investment Loan</a></li>
+                  <li><a className="!font-[600]" href="car-personal-loan">Car & Personal Loan</a></li>
+                  <li><a className="!font-[600]" href="smsf-loan">SMSF Loan</a></li>
+                  <li><a className="!font-[600]" href="/refinancing">Refinancing</a></li>
                 </ul>
-              </li>
+              </div>
+            </div>
+          </div>
 
-              {/* =================================================== */}
-              {/*                   OTHER MAIN LINKS                 */}
-              {/* =================================================== */}
-
-              <li className="flex items-center gap-2 px-[8px] py-[15px] font-[600] text-[#86489B] hover:text-[#F171AC] cursor-pointer transition-colors duration-300">
-                <Link href="/BlogList"
-                  className="!font-[600]">
-                  Blog
-                </Link>
-              </li>
-
-              <li className="flex items-center gap-2 px-[8px] py-[15px] text-[#86489B] hover:text-[#F171AC] cursor-pointer transition-colors duration-300">
-                <Link href="/faq"
-                  className="!font-[600]">
-                  FAQs
-                </Link>
-              </li>
-
-              <li className="flex items-center gap-2 px-[8px] py-[15px] font-[600] text-[#86489B] hover:text-[#F171AC] cursor-pointer transition-colors duration-300">
-                <Link href="/contact"
-                  className="!font-[600]">
-                  Contact Us
-                </Link>
-              </li>
-            </ul>
-
-            {/* =================================================== */}
-            {/*                   CALL BUTTON AREA                  */}
-            {/* =================================================== */}
-            <div className="header-btn flex">
-              <a
-                href="tel:1300Kubaer"
-                className="extra-btn btn-default"
-              >
-                1300 Kubaer
-              </a>
+          {/* Social / Newsletter */}
+          <div className="col-lg-3 col-md-6">
+            <div className="section-title">
+              <h4 className="!font-[700]" style={{ color: "white" }}>Join our Community</h4>
             </div>
 
+            <div className="footer-social-links">
+              <p className="!font-[500]">Join Kubaer Finance for expert loans and trusted support.</p>
+
+              {/* Newsletter Subscription */}
+              <div className="newsletter">
+                <form className="newsletter-form">
+                  <div className="input-container">
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder="Enter your email"
+                      required
+                      className="newsletter-input !font-[500] text-gray-950"
+                    />
+                    <button type="submit" className="arrow-btn">
+                      <i className="fa-solid fa-arrow-right"></i>
+                    </button>
+                  </div>
+                </form>
+              </div>
+
+              <ul>
+                <li><a href="#"><i className="fa-brands fa-instagram"></i></a></li>
+                <li><a href="#"><i className="fa-brands fa-facebook-f"></i></a></li>
+                <li><a href="#"><i className="fa-brands fa-tiktok"></i></a></li>
+                <li><a href="#"><i className="fa-brands fa-x-twitter"></i></a></li>
+              </ul>
+            </div>
           </div>
         </div>
-      </nav>
-    </header>
+
+        {/* Footer Copyright */}
+        <div className="footer-copyright">
+          <div className="row align-items-center">
+            <div className="col-lg-4">
+              <div className="footer-copyright-text">
+                <p>Copyright © Kubaer Finance {currentYear}.</p>
+              </div>
+            </div>
+
+            <div className="col-lg-4">
+              <div className="footer-images d-flex justify-content-center gap-3">
+                <Image src={Picture_1} alt="Image 1" width={50} height={50} />
+                <Image src={Picture_2} alt="Image 2" width={50} height={50} />
+                <Image src={Picture_3} alt="Image 3" width={50} height={50} />
+              </div>
+            </div>
+
+            <div className="col-lg-4">
+              <div className="footer-design-text">
+                <p>
+                  Designed & Developed by{" "}
+                  <a href="https://www.murphystechnology.com.au/" target="_blank" rel="noopener noreferrer">
+                    Murphys Technology Pty Ltd
+                  </a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
   );
-}
+};
+
+export default Footer;
