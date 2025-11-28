@@ -1,169 +1,204 @@
 "use client";
-import Link from "next/link";
+import React from "react";
 import Image from "next/image";
-import WhiteLogo from "../../public/assets/img/white-logo.png";
-import Picture_1 from "../../public/assets/img/Footer/Picture_1-removebg-preview.png";
-import Picture_2 from "../../public/assets/img/Footer/Picture_2-removebg-preview.png";
-import Picture_3 from "../../public/assets/img/Footer/Picture_3-removebg-preview.png";
-
-import { Phone, Mail, MapPin } from "lucide-react";
-
 import { Archivo, Roboto } from "next/font/google";
 
-const archivo = Archivo({ subsets: ["latin"], weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], });
-const roboto = Roboto({ subsets: ["latin"], weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], });
+// Swiper imports
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
 
+const archivo = Archivo({
+    subsets: ["latin"],
+    weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+});
+const roboto = Roboto({
+    subsets: ["latin"],
+    weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+});
 
-const Footer = () => {
-  const currentYear = new Date().getFullYear();
+import Bipin from "/public/assets/img/about/Bipin Joshi.png";
+import Bini from "/public/assets/img/about/Bini Gopali (1).png";
+import Kunju from "/public/assets/img/about/Kunju Shrestha(1).png";
+import Archana from "/public/assets/img/about/Archana Pathak.png";
+import Prekchya from "/public/assets/img/about/Prekchya Maharjan 1.png";
+import Smita from "/public/assets/img/about/Smita Thapa.png";
+import Sunil from "/public/assets/img/about/Sunil Raj Joshi.png";
 
-  return (
-    <footer className="main-footer">
-      <div className="container">
-        <div className="row gap-[50px] sm:gap-0">
-          <div className="col-lg-3 col-md-8 ">
-            {/* About Footer Start */}
-            <div className="about-footer">
-              <div className="footer__logo">
-                <Image src={WhiteLogo} alt="Logo" />
-              </div>
+export default function Employee() {
+    const employees = [
+        { id: 1, name: "Bipin Joshi", position: "CEO, Mortgage Broker", image: Bipin },
+        { id: 2, name: "Bini Gopali", position: "Client Relations Officer", image: Bini },
+        { id: 3, name: "Kunju Shrestha", position: "HR Manager", image: Kunju },
+        { id: 4, name: "Archana Pathak", position: "Loan Processing Manager", image: Archana },
+        { id: 5, name: "Prekchya Maharjan", position: "Marketing Associate", image: Prekchya },
+        { id: 6, name: "Smita Thapa", position: "Loan Processing Manager", image: Smita },
+        { id: 7, name: "Sunil Raj Joshi", position: "Credit Analyst", image: Sunil },
+    ];
 
-              <div>
-                <p className="footer__description !font-[500] ">
-                  Kubaer Finance helps working families and migrants in Adelaide
-                  secure home, car, and investment loans with personalised
-                  guidance and expert financial strategies.
-                </p>
-              </div>
+    return (
+        <section className="bg-gradient-to-b from-gray-50 to-gray-100 py-16 md:py-20 px-4 sm:px-6 lg:px-10">
+            <div className="container mx-auto flex flex-col gap-10 md:gap-14 lg:gap-16">
 
-              {/* Footer Contact Box Start */}
-              <div className="footer-contact-box flex flex-col gap-2">
-                <div className="footer-contact-item flex items-center gap-2">
-                  {/* <p className="!font-[500]">Call Us:</p> */}
-                  <Phone className="w-4 h-4 text-white" />
-                  <a className="!font-[700]" href="tel:08 8166 2682">1300 KUBAER</a>
+                {/* Heading */}
+                <div className="flex flex-col gap-4">
+                    <div className="text-center">
+                        <span className="text-[26px] sm:text-[30px] md:text-[36px] lg:text-[42px] font-[700] text-transparent bg-clip-text bg-gradient-to-r from-[#86489B] to-[#F171AC]">
+                            Meet Our Team
+                        </span>
+                    </div>
+                    <div className="flex justify-center">
+                        <p className={`text-[#533641] w-full sm:w-[70%] md:w-[60%] lg:w-[50%] text-center ${roboto.className} leading-[24px] md:leading-[28px] text-[14px] sm:text-[15px] md:text-[16px]`}>
+                            Passionate professionals dedicated to delivering innovative
+                            digital solutions with precision and creativity.
+                        </p>
+                    </div>
                 </div>
-                <div className="footer-contact-item flex items-center gap-2">
-                  {/* <p className="!font-[500]">Email Us:</p> */}
-                  <Mail className="w-4 h-4 text-white" />
-                  <a className="!font-[700]" href="mailto:loans@kubaer.com.au">loans@kubaer.com.au</a>
-                </div>
-                <div className="footer-contact-item flex items-center gap-2">
-                  {/* <p className="!font-[500]">Location:</p> */}
-                  <MapPin className="w-4 h-4 text-white" />
-                  <p className="!font-[500] mb-0!">Plympton Park SA 5038, Australia</p>
-                </div>
-              </div>
-              {/* Footer Contact Box End */}
+
+                {/* Swiper Carousel */}
+                <Swiper
+                    modules={[Navigation, Autoplay]}
+                    spaceBetween={20}
+                    slidesPerView={1}
+                    autoplay={{ delay: 2500 }}
+                    loop={true}
+                    navigation
+                    breakpoints={{
+                        480: { slidesPerView: 1.3, spaceBetween: 20 },
+                        640: { slidesPerView: 2, spaceBetween: 25 },
+                        768: { slidesPerView: 2.5, spaceBetween: 25 },
+                        1024: { slidesPerView: 3, spaceBetween: 30 },
+                        1280: { slidesPerView: 4, spaceBetween: 30 },
+                    }}
+                    className="w-full custom-swiper-navs"
+                >
+                    {employees.map((emp) => (
+                        <SwiperSlide key={emp.id}>
+                            <div className="relative h-[380px] sm:h-[420px] md:h-[450px] lg:h-[480px] w-full rounded-2xl overflow-hidden group border border-gray-200 bg-white">
+
+                                {/* Employee Image */}
+                                <Image
+                                    src={emp.image}
+                                    alt={emp.name}
+                                    fill
+                                    className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-110"
+                                />
+
+                                {/* Bottom Overlay (Responsive) */}
+                                <div
+                                    className="
+                                    absolute bottom-0 left-0 w-full px-4 sm:px-5 md:px-6 
+                                    pt-4 sm:pt-5 md:pt-6 pb-4 
+                                    bg-gradient-to-t from-black/90 via-black/40 to-transparent
+                                    "
+                                >
+                                    <h3 className="text-white text-[18px] sm:text-[20px] md:text-[22px] lg:text-[24px] font-semibold! tracking-wide drop-shadow-lg text-start">
+                                        {emp.name}
+                                    </h3>
+
+                                    <p className="text-gray-300! text-[12px] sm:text-[13px] md:text-[14px] mt-1 text-start">
+                                        {emp.position}
+                                    </p>
+
+                                    <div className="text-start mt-2 w-14 h-[3px] bg-gradient-to-r from-[#86489B] to-[#F171AC] rounded-full"></div>
+                                </div>
+
+                            </div>
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
             </div>
-            {/* About Footer End */}
-          </div>
+        </section>
+    );
+}
 
-          {/* Quick Links */}
-          <div className="col-lg-3 col-md-4 sm:pl-10!">
-            <div className="footer-quick-links">
-              <div className="section-title">
-                <h4 className="!font-[700]" style={{ color: "white" }}>Quick Links</h4>
-              </div>
-              <div className="footer-menu">
-                <ul>
-                  <li><a className="!font-[600]" href="/about">about us</a></li>
-                  <li><a className="!font-[600]" href="/services">services</a></li>
-                  <li><a className="!font-[600]" href="/resources">resources</a></li>
-                  <li><Link className="!font-[600]" href="/BlogList">blog</Link></li>
-                  <li><a className="!font-[600]" href="/contact">contact</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
 
-          {/* Services */}
-          <div className="col-lg-3 col-md-4">
-            <div className="footer-quick-links footer__services">
-              <div className="section-title">
-                <h4 className="!font-[700]" style={{ color: "white" }}>Services</h4>
-              </div>
-              <div className="footer-menu">
-                <ul>
-                  <li><a className="!font-[600]" href="/home-loan">Home Loan</a></li>
-                  <li><a className="!font-[600]" href="/investment-loan">Investment Loan</a></li>
-                  <li><a className="!font-[600]" href="car-personal-loan">Car & Personal Loan</a></li>
-                  <li><a className="!font-[600]" href="smsf-loan">SMSF Loan</a></li>
-                  <li><a className="!font-[600]" href="/refinancing">Refinancing</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
 
-          {/* Social / Newsletter */}
-          <div className="col-lg-3 col-md-6">
-            <div className="section-title">
-              <h4 className="!font-[700]" style={{ color: "white" }}>Join our Community</h4>
-            </div>
 
-            <div className="footer-social-links">
-              <p className="!font-[500]">Join Kubaer Finance for expert loans and trusted support.</p>
 
-              {/* Newsletter Subscription */}
-              <div className="newsletter">
-                <form className="newsletter-form">
-                  <div className="input-container">
-                    <input
-                      type="email"
-                      name="email"
-                      placeholder="Enter your email"
-                      required
-                      className="newsletter-input !font-[500] text-gray-950"
-                    />
-                    <button type="submit" className="arrow-btn">
-                      <i className="fa-solid fa-arrow-right"></i>
-                    </button>
-                  </div>
-                </form>
-              </div>
 
-              <ul>
-                <li><a href="#"><i className="fa-brands fa-instagram"></i></a></li>
-                <li><a href="#"><i className="fa-brands fa-facebook-f"></i></a></li>
-                <li><a href="#"><i className="fa-brands fa-tiktok"></i></a></li>
-                <li><a href="#"><i className="fa-brands fa-x-twitter"></i></a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
 
-        {/* Footer Copyright */}
-        <div className="footer-copyright">
-          <div className="row align-items-center">
-            <div className="col-lg-4">
-              <div className="footer-copyright-text">
-                <p>Copyright © Kubaer Finance {currentYear}.</p>
-              </div>
-            </div>
 
-            <div className="col-lg-4">
-              <div className="footer-images d-flex justify-content-center gap-3">
-                <Image src={Picture_1} alt="Image 1" width={50} height={50} />
-                <Image src={Picture_2} alt="Image 2" width={50} height={50} />
-                <Image src={Picture_3} alt="Image 3" width={50} height={50} />
-              </div>
-            </div>
 
-            <div className="col-lg-4">
-              <div className="footer-design-text">
-                <p>
-                  Designed & Developed by{" "}
-                  <a href="https://www.murphystechnology.com.au/" target="_blank" rel="noopener noreferrer">
-                    Murphys Technology Pty Ltd
-                  </a>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
-  );
-};
 
-export default Footer;
+
+
+
+
+
+
+// "use client";
+// import React from "react";
+// import Image from "next/image";
+// import { Archivo, Roboto } from "next/font/google";
+
+// const archivo = Archivo({ subsets: ["latin"], weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], });
+// const roboto = Roboto({ subsets: ["latin"], weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], });
+
+
+// import Emp1 from "/public/assets/img/about/members/1.jpg";
+// import Emp2 from "/public/assets/img/about/members/2.jpg";
+// import Emp3 from "/public/assets/img/about/members/3.jpg";
+// import Emp4 from "/public/assets/img/about/members/4.jpg";
+// import Emp5 from "/public/assets/img/about/members/5.jpg";
+
+// export default function Employee() {
+//     const employees = [
+//         { id: 1, name: "John Doe", position: "Frontend Developer", image: Emp1 },
+//         { id: 2, name: "Jane Smith", position: "UI/UX Designer", image: Emp2 },
+//         { id: 3, name: "Michael Lee", position: "Backend Developer", image: Emp3 },
+//         { id: 4, name: "Sarah Williams", position: "Project Manager", image: Emp4 },
+//         { id: 5, name: "David Kim", position: "QA Engineer", image: Emp5 },
+//         { id: 6, name: "David Kim", position: "QA Engineer", image: Emp5 },
+//     ];
+
+//     return (
+//         <section className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 py-20 px-6">
+//             <div className="container mx-auto flex flex-col gap-[50px]">
+//                 <div className="flex flex-col gap-[15px]">
+//                     <div className="text-center">
+//                         <span className="text-[24px] sm:text-[28px] md:text-[32px] lg:text-[36px] font-[600] text-transparent bg-clip-text bg-gradient-to-r from-[#86489B] to-[#F171AC]">
+//                             Meet Our Team
+//                         </span>
+//                     </div>
+//                     <div className="flex justify-center">
+//                         <div className={`text-[#533641] sm:w-[60%] text-center ${roboto.className} leading-[25px] font-[400] tracking-[-1%]`}>
+//                             Passionate professionals dedicated to delivering innovative digital
+//                             solutions with precision and creativity.
+//                         </div>
+//                     </div>
+//                 </div>
+
+//                 <div className="flex flex-wrap justify-center gap-10">
+//                     {employees.map((emp) => (
+//                         <div key={emp.id} className="relative bg-white/80 backdrop-blur-xl rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 p-6 flex flex-col items-center text-center border border-gray-100 hover:-translate-y-2 w-[220px]" >
+//                             <div className="w-28 h-28 mb-3 relative">
+//                                 <div className="absolute inset-0 bg-gradient-to-tr from-blue-400 to-purple-400 rounded-full blur-md opacity-30"></div>
+//                                 <Image
+//                                     src={emp.image}
+//                                     alt={emp.name}
+//                                     className="rounded-full object-cover object-top w-28 h-28 border-4 border-white shadow-md relative z-10"
+//                                 />
+//                             </div>
+
+//                             <div>
+//                                 <div>
+//                                     <span className="text-lg font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#86489B] to-[#F171AC]">
+//                                         {emp.name}
+//                                     </span>
+//                                 </div>
+
+//                                 <div>
+//                                     <p className="!text-[#533641] text-sm mt-1">{emp.position}</p>
+//                                 </div>
+//                             </div>
+
+//                             <div className="w-10 h-[3px] bg-gradient-to-r from-[#86489B] to-[#F171AC] mt-3 rounded-full"></div>
+//                         </div>
+//                     ))}
+//                 </div>
+//             </div>
+//         </section>
+//     );
+// }
