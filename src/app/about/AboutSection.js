@@ -22,12 +22,12 @@ export default function AboutSection() {
   }, []);
 
   const services = [
-    { title: "Home Loan", img: HomeLoanImg, delay: 0 },
-    { title: "Investment Loan", img: InvestmentImg, delay: 0.2 },
-    { title: "Car & Personal Loan", img: CarImg, delay: 0.4 },
-    { title: "SMSF Loan", img: SMSFImg, delay: 0.6 },
-    { title: "Refinancing", img: RefinancingImg, delay: 0.8 },
-    { title: "Business Loan", img: BusinessImg, delay: 1 },
+    { title: "Home Loan", img: HomeLoanImg, delay: 0, link:"/home-loan" },
+    { title: "Investment Loan", img: InvestmentImg, delay: 0.2, link:"/investment-loan" },
+    { title: "Car & Personal Loan", img: CarImg, delay: 0.4, link:"/car-personal-loan" },
+    { title: "SMSF Loan", img: SMSFImg, delay: 0.6, link:"/smsf-loan" },
+    { title: "Refinancing", img: RefinancingImg, delay: 0.8, link:"/refinancing" },
+    { title: "Business Loan", img: BusinessImg, delay: 1, link:"/business-loan" },
   ];
 
   return (
@@ -53,7 +53,7 @@ export default function AboutSection() {
                     data-aos-delay={service.delay}
                   >
                     <a
-                      href="#"
+                      href={service.link}
                       className="why-choose-item wow fadeInUp"
                       data-wow-delay={`${service.delay}s`}
                     >
