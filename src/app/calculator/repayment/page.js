@@ -82,16 +82,8 @@ export default function RepaymentPage() {
                                 className="flex justify-center"
                             >
                                 <p className="text-center text-sm sm:text-base md:text-lg leading-relaxed !font-[400] text-gray-700 sm:w-[70%]">
-                                    Stamp duty is a government tax applied when you buy property,
-                                    and it can often be one of the largest upfront costs in a property purchase.
-                                    The amount you pay depends on the purchase price of the property, its location,
-                                    and the current government regulations in your state or territory. Understanding
-                                    how much you’ll owe is crucial for budgeting and planning your finances. Our
-                                    Stamp Duty Calculator makes this process simple by providing a fast and accurate
-                                    estimate, helping you make informed decisions before committing to a purchase.
-                                    Whether you are a first-time buyer or an experienced investor, knowing your
-                                    stamp duty in advance can save time, reduce stress, and ensure a smoother
-                                    property buying experience.
+                                    Our Refinance Repayment Calculator gives you an instant snapshot of your expected repayments, helping you understand how your new loan will impact your budget. With quick and accurate results, you can explore different scenarios, compare lenders, and plan effectively before committing to a refinance.
+                                    When refinancing your home loan, understanding what your new repayments will look like is essential for making a confident financial decision. Repayments can vary based on your interest rate, loan term, loan amount, and repayment type—factors that may change significantly when you switch lenders or restructure your mortgage. Knowing your estimated repayment upfront helps you compare refinancing options clearly and choose the one that best supports your long-term financial goals.
                                 </p>
                             </div>
 

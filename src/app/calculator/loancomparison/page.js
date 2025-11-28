@@ -82,16 +82,8 @@ export default function LoanComparisionPage() {
                                 className="flex justify-center"
                             >
                                 <p className="text-center text-sm sm:text-base md:text-lg leading-relaxed !font-[400] text-gray-700 sm:w-[70%]">
-                                    Stamp duty is a government tax applied when you buy property,
-                                    and it can often be one of the largest upfront costs in a property purchase.
-                                    The amount you pay depends on the purchase price of the property, its location,
-                                    and the current government regulations in your state or territory. Understanding
-                                    how much you’ll owe is crucial for budgeting and planning your finances. Our
-                                    Stamp Duty Calculator makes this process simple by providing a fast and accurate
-                                    estimate, helping you make informed decisions before committing to a purchase.
-                                    Whether you are a first-time buyer or an experienced investor, knowing your
-                                    stamp duty in advance can save time, reduce stress, and ensure a smoother
-                                    property buying experience.
+                                    Our Loan Comparison Calculator makes this process simple by giving you an instant, side-by-side comparison of multiple refinancing options. With quick and accurate results, you can clearly see differences in repayments, overall interest costs, and potential savings, making it easier to choose the refinance option that aligns with your goals
+                                    Comparing loan options is one of the most important steps when refinancing your home loan. Different lenders offer varying interest rates, fees, loan terms, and features—and these factors can have a significant impact on your long-term financial outcomes. Understanding how each option stacks up helps you identify which refinance deal truly delivers the best value.
                                 </p>
                             </div>
 

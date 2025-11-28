@@ -82,16 +82,7 @@ export default function RefinancingPage() {
                                 className="flex justify-center"
                             >
                                 <p className="text-center text-sm sm:text-base md:text-lg leading-relaxed !font-[400] text-gray-700 sm:w-[70%]">
-                                    Stamp duty is a government tax applied when you buy property,
-                                    and it can often be one of the largest upfront costs in a property purchase.
-                                    The amount you pay depends on the purchase price of the property, its location,
-                                    and the current government regulations in your state or territory. Understanding
-                                    how much you’ll owe is crucial for budgeting and planning your finances. Our
-                                    Stamp Duty Calculator makes this process simple by providing a fast and accurate
-                                    estimate, helping you make informed decisions before committing to a purchase.
-                                    Whether you are a first-time buyer or an experienced investor, knowing your
-                                    stamp duty in advance can save time, reduce stress, and ensure a smoother
-                                    property buying experience.
+                                    Refinancing your home loan can be a smart financial move, but it often comes with several costs you need to understand upfront—and one of the most significant can be stamp duty, depending on your situation. While stamp duty isn’t always required when refinancing, it may apply if you’re changing property ownership, restructuring your loan, or switching to certain types of mortgages. The amount you might pay varies based on your property’s value, your state or territory, and the latest government regulations.
                                 </p>
                             </div>
 

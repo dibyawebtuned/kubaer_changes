@@ -2,7 +2,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Image from 'next/image';
-import ImageExample from "/public/assets/img/services/service_2.png";
+import ImageExample from "/public/assets/img/services/three.png";
 import { TrendingUp, DollarSign, Activity, CreditCard, CheckCircle, ClipboardList, FileCheck, Landmark, Handshake, Home, RefreshCcw, Settings } from "lucide-react";
 import { Archivo, Roboto } from "next/font/google";
 import "swiper/css";

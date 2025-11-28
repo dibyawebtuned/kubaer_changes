@@ -82,16 +82,9 @@ export default function BorrowingCapitalPage() {
                                 className="flex justify-center"
                             >
                                 <p className="text-center text-sm sm:text-base md:text-lg leading-relaxed !font-[400] text-gray-700 sm:w-[70%]">
-                                    Stamp duty is a government tax applied when you buy property,
-                                    and it can often be one of the largest upfront costs in a property purchase.
-                                    The amount you pay depends on the purchase price of the property, its location,
-                                    and the current government regulations in your state or territory. Understanding
-                                    how much you’ll owe is crucial for budgeting and planning your finances. Our
-                                    Stamp Duty Calculator makes this process simple by providing a fast and accurate
-                                    estimate, helping you make informed decisions before committing to a purchase.
-                                    Whether you are a first-time buyer or an experienced investor, knowing your
-                                    stamp duty in advance can save time, reduce stress, and ensure a smoother
-                                    property buying experience.
+                                    Understanding how much you can borrow is a crucial step when considering refinancing your home loan. Your borrowing capacity determines the loan amount you’re eligible for based on factors like your income, expenses, existing debts, credit profile, and the current lending criteria set by banks and financial institutions. Knowing this figure upfront helps you plan confidently, compare lenders effectively, and choose a refinancing option that truly suits your goals.
+                                    <br />
+                                    Our Borrowing Capacity Calculator makes this process effortless by providing an instant estimate of how much capital you may be able to access through refinancing. With quick, accurate results, you can explore your options, assess your financial position, and make informed decisions before entering the refinancing process.
                                 </p>
                             </div>
 
