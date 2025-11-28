@@ -21,7 +21,6 @@ export default function AboutSection() {
     });
   }, []);
 
-
   const services = [
     { title: "Home Loan", img: HomeLoanImg, delay: 0 },
     { title: "Investment Loan", img: InvestmentImg, delay: 0.2 },
@@ -34,10 +33,6 @@ export default function AboutSection() {
   return (
     <section className="section-padding">
       <div className="container">
-        {/* <div className="ribbon-image">
-          <Image src={RibbonImg} alt="Ribbon" width={50} height={50} />
-        </div> */}
-
         <div className="row align-items-center">
           <div className="about-content">
             <div className="section-title d-flex justify-content-center mb-40">
@@ -53,9 +48,10 @@ export default function AboutSection() {
                 {services.map((service, index) => (
                   <div
                     key={index}
-                    className="col-lg-4"
+                    className="col-6 col-md-4 mb-4"
                     data-aos="fade-up"
-                    data-aos-delay={service.delay}>
+                    data-aos-delay={service.delay}
+                  >
                     <a
                       href="#"
                       className="why-choose-item wow fadeInUp"
