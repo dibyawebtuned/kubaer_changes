@@ -142,7 +142,7 @@ export default function AboutHeader() {
                 data-wow-delay="0.6s"
               >
                 <div>
-                  <Link href="/contact" className="btn-default">
+                  <Link href="tel:1300Kubaer" className="btn-default">
                     Book Your Free Discovery Call
                   </Link>
                 </div>
