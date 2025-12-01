@@ -67,7 +67,7 @@ export default function FounderMessage() {
           >
             <p className="text-[15px] sm:text-[16px] leading-relaxed text-[#4A4A4A] mb-4 font-[400]!">
               At Kubaer Finance, our mission is to help working families and
-              migrants in Adelaide build a secure financial future. With over 20
+              migrants in Australia, Australian and Immigrants build a secure financial future. With over 20
               years of experience in finance, healthcare, and retail, I started
               this journey to guide everyday Australians through life’s biggest
               financial decisions—whether it’s buying their first home, a car,

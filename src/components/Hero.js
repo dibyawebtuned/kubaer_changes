@@ -96,8 +96,8 @@ export default function AboutHeader() {
               text-[16px] 
     sm:text-[18px]
     md:text-[20px]
-    lg:text-[22px]" 
-              data-wow-delay="0.2s">
+    lg:text-[22px]"
+                data-wow-delay="0.2s">
                 Get started in 3 simple steps
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

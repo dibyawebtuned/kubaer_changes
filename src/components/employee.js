@@ -46,12 +46,12 @@ export default function Employee() {
                 <div className="flex flex-wrap justify-center gap-10">
                     {employees.map((emp) => (
                         <div key={emp.id} className="relative bg-white/80 backdrop-blur-xl rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 p-6 flex flex-col items-center text-center border border-gray-100 hover:-translate-y-2 w-[220px]" >
-                            <div className="w-28 h-28 mb-3 relative">
+                            <div className="w-34 h-34 mb-3 relative">
                                 <div className="absolute inset-0 bg-gradient-to-tr from-blue-400 to-purple-400 rounded-full blur-md opacity-30"></div>
                                 <Image
                                     src={emp.image}
                                     alt={emp.name}
-                                    className="rounded-full object-cover object-top w-28 h-28 border-4 border-white shadow-md relative z-10"
+                                    className="rounded-full object-cover object-top w-34 h-34 border-4 border-white shadow-md relative z-10"
                                 />
                             </div>
 
