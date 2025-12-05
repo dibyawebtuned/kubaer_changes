@@ -18,12 +18,12 @@ import Sunil from "/public/assets/img/about/Sunil Raj Joshi.png";
 export default function Employee() {
     const employees = [
         { id: 1, name: "Bipin Joshi", position: "CEO, Mortgage Broker", image: Bipin },
-        { id: 2, name: "Bini Gopali", position: "Client Relations Officer", image: Bini },
+        { id: 7, name: "Sunil Raj Joshi", position: "Credit Analyst", image: Sunil },
         { id: 3, name: "Kunju Shrestha", position: "HR Manager", image: Kunju },
         { id: 4, name: "Archana Pathak", position: "Loan Processing Manager", image: Archana },
-        { id: 5, name: "Prekchya Maharjan", position: "Marketing Associate", image: Prekchya },
         { id: 6, name: "Smita Thapa", position: "Loan Processing Manager", image: Smita },
-        { id: 7, name: "Sunil Raj Joshi", position: "Credit Analyst", image: Sunil },
+        { id: 2, name: "Bini Gopali", position: "Client Relations Officer", image: Bini },
+        { id: 5, name: "Prekchya Maharjan", position: "Marketing Associate", image: Prekchya },
     ];
 
     return (
