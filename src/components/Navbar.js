@@ -76,29 +76,29 @@ export default function Navbar() {
                 </button>
 
                 <ul className="dropdown">
-                  <li><Link href="#">Home Loan</Link></li>
+                  {/* <li><Link href="#">Home Loan</Link></li>
                   <li><Link href="#">Investment Loan</Link></li>
                   <li><Link href="#">Car & Personal Loan</Link></li>
                   <li><Link href="#">SMSF Loan</Link></li>
                   <li><Link href="#">Refinancing</Link></li>
-                  <li><Link href="#">Business Loan</Link></li>
-                  {/* <li><Link href="/home-loan">Home Loan</Link></li>
+                  <li><Link href="#">Business Loan</Link></li> */}
+                  <li><Link href="/home-loan">Home Loan</Link></li>
                   <li><Link href="/investment-loan">Investment Loan</Link></li>
                   <li><Link href="/car-personal-loan">Car & Personal Loan</Link></li>
                   <li><Link href="/smsf-loan">SMSF Loan</Link></li>
                   <li><Link href="/refinancing">Refinancing</Link></li>
-                  <li><Link href="/business-loan">Business Loan</Link></li> */}
+                  <li><Link href="/business-loan">Business Loan</Link></li>
                 </ul>
               </li>
 
               {/* ABOUT */}
               <li className="flex items-center gap-2 pb-[10px] sm:py-[15px]">
-                <Link href="#" className="!font-[600] text-[#86489B] hover:text-[#F171AC] px-2">
-                  About Us
-                </Link>
-                {/* <Link href="/about" className="!font-[600] text-[#86489B] hover:text-[#F171AC] px-2">
+                {/* <Link href="#" className="!font-[600] text-[#86489B] hover:text-[#F171AC] px-2">
                   About Us
                 </Link> */}
+                <Link href="/about" className="!font-[600] text-[#86489B] hover:text-[#F171AC] px-2">
+                  About Us
+                </Link>
               </li>
 
               {/* CALCULATOR DROPDOWN */}
