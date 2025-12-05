@@ -71,7 +71,7 @@ import fiftyEight from "/public/assets/img/lenders/I had an excellent experience
 import fiftyNine from "/public/assets/img/lenders/imb.jpg";
 import sixty from "/public/assets/img/lenders/ING.jpg";
 import sixtyOne from "/public/assets/img/lenders/judo bank.jpg";
-import sixtyTwo from "/public/assets/img/lenders/judo bank.png";
+// import sixtyTwo from "/public/assets/img/lenders/judo bank.png";
 import sixtyThree from "/public/assets/img/lenders/keystart-home-loans.jpg";
 import sixtyFour from "/public/assets/img/lenders/la trobe financial.jpg";
 import sixtyFive from "/public/assets/img/lenders/Latitude_Financial_Services_Logo.png";
@@ -193,7 +193,7 @@ const partnerData = [
   { src: fiftyNine, alt: "Image 59", link: "" },
   { src: sixty, alt: "Image 60", link: "" },
   { src: sixtyOne, alt: "Image 61", link: "" },
-  { src: sixtyTwo, alt: "Image 62", link: "" },
+  // { src: sixtyTwo, alt: "Image 62", link: "" },
   { src: sixtyThree, alt: "Image 63", link: "" },
   { src: sixtyFour, alt: "Image 64", link: "" },
   { src: sixtyFive, alt: "Image 65", link: "" },
