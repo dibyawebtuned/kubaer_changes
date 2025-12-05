@@ -114,47 +114,47 @@ export default function Navbar() {
                   />
                 </button>
 
-                <ul className="dropdown">
+                {/* <ul className="dropdown">
                   <li><Link href="#">Stamp Duty</Link></li>
                   <li><Link href="#">Refinancing</Link></li>
                   <li><Link href="#">Borrowing Capacity</Link></li>
                   <li><Link href="#">Repayments</Link></li>
                   <li><Link href="#">Loan Comparison</Link></li>
                   <li><Link href="#">Budget Planner</Link></li>
-                </ul>
-                {/* <ul className="dropdown">
+                </ul> */}
+                <ul className="dropdown">
                   <li><Link href="/calculator/stampduty">Stamp Duty</Link></li>
                   <li><Link href="/calculator/refinancing">Refinancing</Link></li>
                   <li><Link href="/calculator/borrowcapital">Borrowing Capacity</Link></li>
                   <li><Link href="/calculator/repayment">Repayments</Link></li>
                   <li><Link href="/calculator/loancomparison">Loan Comparison</Link></li>
                   <li><Link href="/calculator/budgetplanner">Budget Planner</Link></li>
-                </ul> */}
+                </ul>
               </li>
 
               {/* BLOG */}
-              <li className="flex items-center sm:py-[15px] text-[#86489B] hover:text-[#F171AC]">
-                <Link href="#" className="font-[600]! px-2">Blog</Link>
-              </li>
               {/* <li className="flex items-center sm:py-[15px] text-[#86489B] hover:text-[#F171AC]">
-                <Link href="/BlogList" className="font-[600]! px-2">Blog</Link>
+                <Link href="#" className="font-[600]! px-2">Blog</Link>
               </li> */}
+              <li className="flex items-center sm:py-[15px] text-[#86489B] hover:text-[#F171AC]">
+                <Link href="/BlogList" className="font-[600]! px-2">Blog</Link>
+              </li>
 
               {/* FAQ */}
-              <li className="flex items-center py-[10px] sm:py-[15px] text-[#86489B] hover:text-[#F171AC]">
-                <Link href="#" className="font-[600]! px-2">FAQs</Link>
-              </li>
               {/* <li className="flex items-center py-[10px] sm:py-[15px] text-[#86489B] hover:text-[#F171AC]">
-                <Link href="/faq" className="font-[600]! px-2">FAQs</Link>
+                <Link href="#" className="font-[600]! px-2">FAQs</Link>
               </li> */}
+              <li className="flex items-center py-[10px] sm:py-[15px] text-[#86489B] hover:text-[#F171AC]">
+                <Link href="/faq" className="font-[600]! px-2">FAQs</Link>
+              </li>
 
               {/* CONTACT */}
-              <li className="flex items-center pb-[10px] sm:py-[15px] text-[#86489B] hover:text-[#F171AC]">
-                <Link href="#" className="font-[600]! px-2">Contact Us</Link>
-              </li>
               {/* <li className="flex items-center pb-[10px] sm:py-[15px] text-[#86489B] hover:text-[#F171AC]">
-                <Link href="/contact" className="font-[600]! px-2">Contact Us</Link>
+                <Link href="#" className="font-[600]! px-2">Contact Us</Link>
               </li> */}
+              <li className="flex items-center pb-[10px] sm:py-[15px] text-[#86489B] hover:text-[#F171AC]">
+                <Link href="/contact" className="font-[600]! px-2">Contact Us</Link>
+              </li>
             </ul>
 
             {/* CALL BUTTON */}

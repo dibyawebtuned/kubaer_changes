@@ -6,6 +6,9 @@ import Picture_1 from "../../public/assets/img/Footer/Picture_1-removebg-preview
 import Picture_2 from "../../public/assets/img/Footer/Picture_2-removebg-preview.png";
 import Picture_3 from "../../public/assets/img/Footer/Picture_3-removebg-preview.png";
 
+import { Instagram, Facebook, Twitter } from "lucide-react";
+
+
 import { Phone, Mail, MapPin } from "lucide-react";
 
 const Footer = () => {
@@ -108,18 +111,30 @@ const Footer = () => {
 
 
             {/* SOCIAL LINKS */}
-            <ul className="flex gap-4 text-xl">
-              <li><a href="#"><i className="fa-brands fa-instagram"></i></a></li>
-              <li><a href="#"><i className="fa-brands fa-facebook-f"></i></a></li>
-              <li><a href="#"><i className="fa-brands fa-tiktok"></i></a></li>
-              <li><a href="#"><i className="fa-brands fa-x-twitter"></i></a></li>
+            <ul className="flex gap-4 text-xl p-0">
+              <li className="p-2 rounded-full border border-white">
+                <Link href="#">
+                  <Instagram className="w-5 h-5 text-white" />
+                </Link>
+              </li>
+
+              <li className="p-2 rounded-full border border-white">
+                <Link href="#">
+                  <Facebook className="w-5 h-5 text-white" />
+                </Link>
+              </li>
+
+              <li className="p-2 rounded-full border border-white">
+                <Link href="#">
+                  <Twitter className="w-5 h-5 text-white" />
+                </Link>
+              </li>
             </ul>
           </div>
         </div>
 
         {/* Line */}
         <div className="w-full h-[1px] bg-gray-300 mt-4"></div>
-
 
         {/* ---- COPYRIGHT SECTION ---- */}
         <div className="

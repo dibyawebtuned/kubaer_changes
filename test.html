@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Team Section</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: #0f172a;
+            color: white;
+        }
+
+        .team-section {
+            padding: 80px 20px;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 50px;
+        }
+
+        .left-content h2 {
+            font-size: 46px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .left-content p {
+            color: #d1d5db;
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .view-btn {
+            margin-top: 20px;
+            padding: 12px 24px;
+            background: #2563eb;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .view-btn:hover {
+            background: #1d4ed8;
+        }
+
+        /* TEAM GRID */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .team-card {
+            background: #1e293b;
+            border-radius: 14px;
+            overflow: hidden;
+            text-align: center;
+            padding-bottom: 15px;
+            transition: 0.3s;
+        }
+
+        .team-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .team-card h3 {
+            margin: 12px 0 4px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .team-card p {
+            color: #a1a1aa;
+            font-size: 14px;
+        }
+
+        /* Hover Effect */
+        .team-card:hover {
+            transform: translateY(-4px);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section class="team-section">
+        <div class="container">
+
+            <!-- LEFT CONTENT -->
+            <div class="left-content">
+                <h2>Our people make us great</h2>
+                <p>
+                    Here we focus on markets where technology, innovation,
+                    can unlock long-term value.
+                </p>
+                <p>
+                    You'll interact with talented professionals, will be challenged to
+                    solve difficult problems and think in new and creative ways.
+                </p>
+
+                <button class="view-btn">
+                    View more →
+                </button>
+            </div>
+
+            <!-- RIGHT TEAM GRID -->
+            <div class="team-grid">
+
+                <div class="team-card">
+                    <img src="images/team1.jpg" alt="Team Member">
+                    <h3>Robert Brown</h3>
+                    <p>CEO & Co-Founder</p>
+                </div>
+
+                <div class="team-card">
+                    <img src="images/team2.jpg" alt="Team Member">
+                    <h3>Leslie Livingston</h3>
+                    <p>CTO & Co-Founder</p>
+                </div>
+
+                <div class="team-card">
+                    <img src="images/team3.jpg" alt="Team Member">
+                    <h3>Joseph McFall</h3>
+                    <p>Front-end Developer</p>
+                </div>
+
+                <div class="team-card">
+                    <img src="images/team4.jpg" alt="Team Member">
+                    <h3>Thom Belly</h3>
+                    <p>Front-end Developer</p>
+                </div>
+
+                <div class="team-card">
+                    <img src="images/team5.jpg" alt="Team Member">
+                    <h3>Bonnie Green</h3>
+                    <p>React Developer</p>
+                </div>
+
+                <div class="team-card">
+                    <img src="images/team6.jpg" alt="Team Member">
+                    <h3>Lana Byrd</h3>
+                    <p>Marketing</p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
