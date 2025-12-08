@@ -1,111 +1,270 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Team Section</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Team — Improved Design</title>
+
+    <!-- Google font (change if desired) -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+
     <style>
+        :root {
+            --bg: #f7f7fb;
+            --panel-bg: #ffffff;
+            --accent-1: #7d4cc2;
+            /* main purple */
+            --accent-2: #3f72ff;
+            /* secondary blue accent */
+            --muted: #666b75;
+            --text: #111217;
+            --card-radius: 14px;
+            --max-width: 1200px;
+            --gutter: 28px;
+        }
+
+        /* Basic reset */
+        * {
+            box-sizing: border-box
+        }
+
+        html,
+        body {
+            height: 100%
+        }
+
         body {
             margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            background: #0f172a;
-            color: white;
+            font-family: 'Montserrat', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+            background: linear-gradient(180deg, var(--bg) 0%, #fff 100%);
+            color: var(--text);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
         }
 
-        .team-section {
-            padding: 80px 20px;
+        .wrap {
+            width: 100%;
+            max-width: var(--max-width);
+            margin: 0 auto;
         }
 
-        .container {
-            max-width: 1300px;
-            margin: auto;
-            display: grid;
-            grid-template-columns: 1fr 1.5fr;
-            gap: 50px;
+        /* Header / Hero */
+        .hero {
+            background: linear-gradient(135deg, rgba(125, 76, 194, 0.08), rgba(63, 114, 255, 0.03));
+            border-radius: 20px;
+            padding: 36px;
+            display: flex;
+            gap: 32px;
+            align-items: center;
+            margin-bottom: 32px;
         }
 
-        .left-content h2 {
-            font-size: 46px;
+        .hero-left {
+            min-width: 260px;
+            padding: 12px 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .kicker {
+            text-transform: uppercase;
             font-weight: 700;
-            margin-bottom: 20px;
+            letter-spacing: 1.6px;
+            color: var(--accent-1);
+            font-size: 12px;
         }
 
-        .left-content p {
-            color: #d1d5db;
-            font-size: 18px;
-            line-height: 1.6;
-            margin-bottom: 15px;
+        .hero-title {
+            font-size: 40px;
+            line-height: 1;
+            font-weight: 800;
+            margin: 0;
+            color: var(--text);
         }
 
-        .view-btn {
-            margin-top: 20px;
-            padding: 12px 24px;
-            background: #2563eb;
-            border: none;
-            border-radius: 8px;
-            color: white;
-            font-size: 16px;
-            cursor: pointer;
-            transition: 0.3s;
+        .hero-sub {
+            color: var(--muted);
+            margin-top: 8px;
+            font-size: 15px;
+            max-width: 520px;
         }
 
-        .view-btn:hover {
-            background: #1d4ed8;
-        }
-
-        /* TEAM GRID */
+        /* Grid + cards */
         .team-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
+            gap: var(--gutter);
+            align-items: start;
+            flex: 1;
+            padding: 8px;
         }
 
-        .team-card {
-            background: #1e293b;
-            border-radius: 14px;
+        .card {
+            background: var(--panel-bg);
+            border-radius: var(--card-radius);
             overflow: hidden;
-            text-align: center;
-            padding-bottom: 15px;
-            transition: 0.3s;
+            box-shadow: 0 6px 18px rgba(13, 18, 25, 0.06);
+            transition: transform .28s cubic-bezier(.2, .9, .35, 1), box-shadow .28s;
+            cursor: pointer;
+            border: 1px solid rgba(16, 22, 35, 0.04);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
 
-        .team-card img {
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 18px 40px rgba(13, 18, 25, 0.12);
+        }
+
+        .thumb {
             width: 100%;
-            height: 220px;
+            aspect-ratio: 4 / 3;
             object-fit: cover;
+            display: block;
         }
 
-        .team-card h3 {
-            margin: 12px 0 4px;
-            font-size: 18px;
+        .card-body {
+            padding: 14px 16px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .name {
+            font-weight: 700;
+            font-size: 16px;
+            color: var(--text);
+        }
+
+        .role {
             font-weight: 600;
+            color: var(--muted);
+            font-size: 13px;
         }
 
-        .team-card p {
-            color: #a1a1aa;
-            font-size: 14px;
+        /* small accent / tag */
+        .tag {
+            margin-top: 8px;
+            display: inline-block;
+            font-size: 12px;
+            color: var(--accent-2);
+            font-weight: 700;
+            letter-spacing: 0.6px;
         }
 
-        /* Hover Effect */
-        .team-card:hover {
-            transform: translateY(-4px);
+        /* Lightbox modal */
+        .modal {
+            position: fixed;
+            inset: 0;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            background: rgba(7, 10, 13, 0.45);
+            padding: 20px;
         }
 
-        /* RESPONSIVE */
-        @media (max-width: 1024px) {
-            .container {
-                grid-template-columns: 1fr;
-            }
+        .modal.open {
+            display: flex
+        }
 
+        .modal-card {
+            width: 100%;
+            max-width: 920px;
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            gap: 20px;
+            box-shadow: 0 20px 60px rgba(7, 10, 13, 0.4);
+        }
+
+        .modal-left {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .modal-left img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .modal-right {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .close-btn {
+            background: transparent;
+            border: none;
+            font-size: 18px;
+            padding: 6px 10px;
+            cursor: pointer;
+            color: var(--muted);
+            align-self: flex-end;
+        }
+
+        /* Responsive */
+        @media (max-width:1000px) {
             .team-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+
+            .hero {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 18px;
+            }
+
+            .hero-title {
+                font-size: 34px;
+            }
         }
 
-        @media (max-width: 600px) {
+        @media (max-width:640px) {
             .team-grid {
+                grid-template-columns: repeat(1, 1fr);
+            }
+
+            .hero-left {
+                min-width: unset;
+            }
+
+            .hero-title {
+                font-size: 28px;
+            }
+
+            .hero-sub {
+                font-size: 14px;
+            }
+
+            body {
+                padding: 22px 14px;
+            }
+        }
+
+        /* Utility: small container to center content and create a two-column layout for large screens */
+        .section {
+            display: grid;
+            grid-template-columns: 360px 1fr;
+            gap: 24px;
+            align-items: start;
+        }
+
+        @media (max-width:1000px) {
+            .section {
                 grid-template-columns: 1fr;
             }
         }
@@ -113,71 +272,203 @@
 </head>
 
 <body>
-    <section class="team-section">
-        <div class="container">
+    <div class="wrap">
 
-            <!-- LEFT CONTENT -->
-            <div class="left-content">
-                <h2>Our people make us great</h2>
-                <p>
-                    Here we focus on markets where technology, innovation,
-                    can unlock long-term value.
-                </p>
-                <p>
-                    You'll interact with talented professionals, will be challenged to
-                    solve difficult problems and think in new and creative ways.
-                </p>
-
-                <button class="view-btn">
-                    View more →
-                </button>
+        <!-- Top hero -->
+        <div class="hero">
+            <div class="hero-left">
+                <div class="kicker">Introduction of</div>
+                <h1 class="hero-title">Our Team</h1>
+                <p class="hero-sub">A collective of experienced professionals committed to delivering exceptional client
+                    service — combining expertise, care, and attention to detail in every interaction.</p>
             </div>
 
-            <!-- RIGHT TEAM GRID -->
-            <div class="team-grid">
-
-                <div class="team-card">
-                    <img src="images/team1.jpg" alt="Team Member">
-                    <h3>Robert Brown</h3>
-                    <p>CEO & Co-Founder</p>
+            <!-- Grid placed here for nice alignment in large view -->
+            <div style="flex:1">
+                <!-- additional tiny intro / optional tag -->
+                <div style="display:flex;justify-content:flex-end;">
+                    <div style="align-self:center;color:var(--muted);font-size:13px;font-weight:600;">Trusted •
+                        Experienced • Professional</div>
                 </div>
-
-                <div class="team-card">
-                    <img src="images/team2.jpg" alt="Team Member">
-                    <h3>Leslie Livingston</h3>
-                    <p>CTO & Co-Founder</p>
-                </div>
-
-                <div class="team-card">
-                    <img src="images/team3.jpg" alt="Team Member">
-                    <h3>Joseph McFall</h3>
-                    <p>Front-end Developer</p>
-                </div>
-
-                <div class="team-card">
-                    <img src="images/team4.jpg" alt="Team Member">
-                    <h3>Thom Belly</h3>
-                    <p>Front-end Developer</p>
-                </div>
-
-                <div class="team-card">
-                    <img src="images/team5.jpg" alt="Team Member">
-                    <h3>Bonnie Green</h3>
-                    <p>React Developer</p>
-                </div>
-
-                <div class="team-card">
-                    <img src="images/team6.jpg" alt="Team Member">
-                    <h3>Lana Byrd</h3>
-                    <p>Marketing</p>
-                </div>
-
             </div>
-
         </div>
-    </section>
 
-    <script src="script.js"></script>
+        <!-- Main section: left short paragraph + right grid -->
+        <div class="section" style="margin-top:12px;">
+            <div>
+                <h3 style="margin:0 0 12px 0;font-size:18px;color:var(--accent-1)">A closer look</h3>
+                <p style="color:var(--muted);line-height:1.5;margin:0">
+                    A curated collection of profiles showcasing leadership, client-facing experts, and specialist team
+                    members. Each profile highlights professional experience and the role played in creating exceptional
+                    client outcomes.
+                </p>
+                <!-- Optional: add a short contact CTA -->
+                <div style="margin-top:18px">
+                    <a href="#"
+                        style="display:inline-block;text-decoration:none;background:var(--accent-1);color:#fff;padding:10px 14px;border-radius:10px;font-weight:700;font-size:13px;">View
+                        all profiles</a>
+                </div>
+            </div>
+
+            <div>
+                <div class="team-grid" id="teamGrid">
+                    <!-- Card template - replace src with real images -->
+                    <!-- Card 1 -->
+                    <div class="card" tabindex="0" data-name="Bipin Joshi" data-role="CEO, Mortgage Broker"
+                        data-img="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1400&auto=format&fit=crop">
+                        <img class="thumb"
+                            src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1400&auto=format&fit=crop"
+                            alt="Bipin Joshi">
+                        <div class="card-body">
+                            <div class="name">Bipin Joshi</div>
+                            <div class="role">CEO, Mortgage Broker</div>
+                            <div class="tag">Leadership</div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="card" tabindex="0" data-name="Sunil Raj Joshi" data-role="Credit Analyst"
+                        data-img="https://images.unsplash.com/photo-1531123414780-fdf3f33e2e52?q=80&w=1400&auto=format&fit=crop">
+                        <img class="thumb"
+                            src="https://images.unsplash.com/photo-1531123414780-fdf3f33e2e52?q=80&w=1400&auto=format&fit=crop"
+                            alt="Sunil">
+                        <div class="card-body">
+                            <div class="name">Sunil Raj Joshi</div>
+                            <div class="role">Credit Analyst</div>
+                            <div class="tag">Finance</div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="card" tabindex="0" data-name="Kunju Shrestha" data-role="HR Manager"
+                        data-img="https://images.unsplash.com/photo-1544739313-0b8a5b6b0bdd?q=80&w=1400&auto=format&fit=crop">
+                        <img class="thumb"
+                            src="https://images.unsplash.com/photo-1544739313-0b8a5b6b0bdd?q=80&w=1400&auto=format&fit=crop"
+                            alt="Kunju">
+                        <div class="card-body">
+                            <div class="name">Kunju Shrestha</div>
+                            <div class="role">HR Manager</div>
+                            <div class="tag">People</div>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="card" tabindex="0" data-name="Archana Pathak" data-role="Loan Processing Manager"
+                        data-img="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1400&auto=format&fit=crop">
+                        <img class="thumb"
+                            src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1400&auto=format&fit=crop"
+                            alt="Archana">
+                        <div class="card-body">
+                            <div class="name">Archana Pathak</div>
+                            <div class="role">Loan Processing Manager</div>
+                            <div class="tag">Operations</div>
+                        </div>
+                    </div>
+
+                    <!-- Card 5 -->
+                    <div class="card" tabindex="0" data-name="Smita Thapa" data-role="Loan Processing Manager"
+                        data-img="https://images.unsplash.com/photo-1545996124-1b6f8a11c8b7?q=80&w=1400&auto=format&fit=crop">
+                        <img class="thumb"
+                            src="https://images.unsplash.com/photo-1545996124-1b6f8a11c8b7?q=80&w=1400&auto=format&fit=crop"
+                            alt="Smita">
+                        <div class="card-body">
+                            <div class="name">Smita Thapa</div>
+                            <div class="role">Loan Processing Manager</div>
+                            <div class="tag">Operations</div>
+                        </div>
+                    </div>
+
+                    <!-- Card 6 -->
+                    <div class="card" tabindex="0" data-name="Bini Gopali" data-role="Client Relations Officer"
+                        data-img="https://images.unsplash.com/photo-1541233349642-6e425fe6190e?q=80&w=1400&auto=format&fit=crop">
+                        <img class="thumb"
+                            src="https://images.unsplash.com/photo-1541233349642-6e425fe6190e?q=80&w=1400&auto=format&fit=crop"
+                            alt="Bini">
+                        <div class="card-body">
+                            <div class="name">Bini Gopali</div>
+                            <div class="role">Client Relations Officer</div>
+                            <div class="tag">Client</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Modal / Lightbox for details -->
+    <div class="modal" id="modal">
+        <div class="modal-card" role="dialog" aria-modal="true">
+            <div class="modal-left">
+                <img id="modalImg" src="" alt="">
+            </div>
+            <div class="modal-right">
+                <button class="close-btn" id="closeModal" aria-label="Close">✕</button>
+                <div style="font-weight:800;font-size:22px" id="modalName">Name</div>
+                <div style="color:var(--muted);font-weight:600" id="modalRole">Role</div>
+                <p style="color:var(--muted);line-height:1.5;margin-top:12px" id="modalBio">
+                    Experienced professional with a demonstrated history of working in the finance industry. Skilled in
+                    lending operations, client management and process optimization.
+                </p>
+                <div style="margin-top:10px">
+                    <a href="#"
+                        style="display:inline-block;padding:10px 14px;border-radius:10px;background:var(--accent-2);color:#fff;text-decoration:none;font-weight:700">View
+                        profile</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Basic interactivity for opening modal with clicked card info
+        (function () {
+            const modal = document.getElementById('modal');
+            const modalImg = document.getElementById('modalImg');
+            const modalName = document.getElementById('modalName');
+            const modalRole = document.getElementById('modalRole');
+            const modalBio = document.getElementById('modalBio');
+            const closeBtn = document.getElementById('closeModal');
+
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                card.addEventListener('click', () => {
+                    const name = card.dataset.name || '';
+                    const role = card.dataset.role || '';
+                    const img = card.dataset.img || card.querySelector('img').src;
+                    // populate modal
+                    modalImg.src = img;
+                    modalImg.alt = name;
+                    modalName.textContent = name;
+                    modalRole.textContent = role;
+                    // optional: customize bio per-person by adding data-bio attr on cards
+                    modalBio.textContent = card.dataset.bio || 'Experienced professional with a demonstrated history of working in their field, delivering client-focused outcomes.';
+                    modal.classList.add('open');
+                    document.body.style.overflow = 'hidden';
+                });
+
+                // keyboard enter to open
+                card.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        card.click();
+                    }
+                });
+            });
+
+            function closeModal() {
+                modal.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+            closeBtn.addEventListener('click', closeModal);
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) closeModal();
+            });
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+            });
+        })();
+    </script>
 </body>
 
 </html>

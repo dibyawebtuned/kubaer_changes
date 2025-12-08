@@ -1,106 +1,238 @@
-"use client";
-import React from "react";
+
+"use client"
+import { useState } from "react";
 import Image from "next/image";
 import { Archivo, Roboto } from "next/font/google";
 
 const archivo = Archivo({ subsets: ["latin"], weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], });
 const roboto = Roboto({ subsets: ["latin"], weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], });
 
-
-import Bipin from "/public/assets/img/about/Bipin Joshi.png";
-import Bini from "/public/assets/img/about/Bini Gopali (1).png";
-import Kunju from "/public/assets/img/about/Kunju Shrestha(1).png";
-import Archana from "/public/assets/img/about/Archana Pathak.png";
-import Prekchya from "/public/assets/img/about/Prekchya Maharjan 1.png";
-import Smita from "/public/assets/img/about/Smita Thapa.png";
+import Bipin from "/public/assets/img/about/Bipin_Joshi_1.png";
+import Bini from "/public/assets/img/about/Bini_Gopali_1.png";
+import Kunju from "/public/assets/img/about/Kunju_Shrestha_1.png";
+import Archana from "/public/assets/img/about/Archana_Pathak_1.png";
+import Prekchya from "/public/assets/img/about/Prekchya_Maharjan_1.png";
+import Smita from "/public/assets/img/about/Smita_Thap_1.png";
 import Sunil from "/public/assets/img/about/Sunil Raj Joshi.png";
 
-export default function Employee() {
-    const employees = [
-        { id: 1, name: "Bipin Joshi", position: "CEO, Mortgage Broker", image: Bipin },
-        { id: 7, name: "Sunil Raj Joshi", position: "Credit Analyst", image: Sunil },
-        { id: 3, name: "Kunju Shrestha", position: "HR Manager", image: Kunju },
-        { id: 4, name: "Archana Pathak", position: "Loan Processing Manager", image: Archana },
-        { id: 6, name: "Smita Thapa", position: "Loan Processing Manager", image: Smita },
-        { id: 2, name: "Bini Gopali", position: "Client Relations Officer", image: Bini },
-        { id: 5, name: "Prekchya Maharjan", position: "Marketing Associate", image: Prekchya },
+export default function TeamPage() {
+    const [selected, setSelected] = useState(null);
+
+    const team = [
+        {
+            name: "Bipin Joshi",
+            role: "CEO, Mortgage Broker",
+            tag: "Leadership",
+            image: Bipin,
+            bio: "Experienced leader overseeing strategic direction, operations, and client service excellence.",
+        },
+        {
+            name: "Sunil Raj Joshi",
+            role: "Credit Analyst",
+            tag: "Finance",
+            image: Sunil,
+            bio: "Specialised in credit assessment, financial analysis, and lending risk evaluation.",
+        },
+        {
+            name: "Kunju Shrestha",
+            role: "HR Manager",
+            tag: "People",
+            image: Kunju,
+            bio: "Responsible for employee experience, HR operations, and talent development.",
+        },
+        {
+            name: "Archana Pathak",
+            role: "Loan Processing Manager",
+            tag: "Operations",
+            image: Archana,
+            bio: "Manages loan processing workflows with precision, accuracy, and client support.",
+        },
+        {
+            name: "Smita Thapa",
+            role: "Loan Processing Manager",
+            tag: "Operations",
+            image: Smita,
+            bio: "Ensures seamless document handling, loan coordination, and client communication.",
+        },
+        {
+            name: "Bini Gopali",
+            role: "Client Relations Officer",
+            tag: "Client",
+            image: Bini,
+            bio: "Supports clients with care, clarity, and dedicated follow-through.",
+        },
+        {
+            name: "Prekchya Maharjan",
+            role: "Marketing Associate",
+            tag: "Client",
+            image: Prekchya,
+            bio: "Supports clients with care, clarity, and dedicated follow-through.",
+        },
     ];
 
     return (
-        <section className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 py-20 px-6">
-            <div className="container mx-auto flex flex-col gap-[50px]">
-                <div className="flex flex-col gap-[15px]">
-                    <div className="text-center">
-                        <span className="text-[24px] sm:text-[28px] md:text-[32px] lg:text-[36px] font-[600] text-transparent bg-clip-text bg-gradient-to-r from-[#86489B] to-[#F171AC]">
-                            Meet Our Team
-                        </span>
-                    </div>
-                    <div className="flex justify-center">
-                        <div className={`text-[#533641] sm:w-[60%] text-center ${roboto.className} leading-[25px] font-[400] tracking-[-1%]`}>
-                            Passionate professionals dedicated to delivering innovative digital
-                            solutions with precision and creativity.
+        <div className="min-h-screen w-full bg-gradient-to-b from-[#f7f7fb] to-white px-4 py-12 flex justify-center">
+            <div className="max-w-6xl w-full">
+
+                {/* ---------------- SUBTEXT + GRID ---------------- */}
+                <div className="flex flex-col gap-5">
+
+                    {/* SUBTEXT */}
+                    <div className="flex flex-col gap-[15px]">
+                        <div className="text-center w-full">
+                            <h3 className="text-[24px]! sm:text-[28px]! md:text-[32px]! lg:text-[36px]! font-[600]! 
+                                text-transparent! bg-clip-text! bg-gradient-to-r! from-[#86489B]! to-[#F171AC]!">
+                                Meet Our Team
+                            </h3>
+                        </div>
+
+                        <div className="flex justify-center">
+                            <p className={`text-[#533641]! sm:w-[60%]! ${roboto.className}! leading-[25px]! font-[400]! tracking-[-1%]! text-center!`}>
+                                A curated collection of profiles showcasing leadership,
+                                client-facing experts, and specialist team members. Each profile
+                                highlights professional experience and the role played in delivering
+                                exceptional client outcomes.
+                            </p>
                         </div>
                     </div>
-                </div>
 
-                {/* <div className="flex flex-wrap justify-center gap-10">
-                    {employees.map((emp) => (
-                        <div key={emp.id} className="relative p-6 flex flex-col items-center text-center w-[220px]" >
-                            <div className="w-40 h-40 mb-3 relative">
-                                <Image
-                                    src={emp.image}
-                                    alt={emp.name}
-                                    className="rounded-full object-cover object-top w-40 h-40 border-4 border-white shadow-md relative z-10"
-                                />
-                            </div>
-
-                            <div>
-                                <div>
-                                    <span className="text-xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#86489B] to-[#F171AC]">
-                                        {emp.name}
-                                    </span>
+                    {/* ---------------- TEAM GRID ---------------- */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-7">
+                        {team.map((person, i) => (
+                            <div
+                                key={i}
+                                onClick={() => setSelected(person)}
+                                className="bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-2 
+                                transition-shadow transition-transform duration-500 ease-in-out 
+                                cursor-pointer border border-gray-100"
+                            >
+                                <div className="w-full h-100! sm:h-66! flex justify-center items-center overflow-hidden rounded-t-xl">
+                                    <Image
+                                        src={person.image}
+                                        alt={person.name}
+                                        className="w-full h-full object-cover"
+                                    />
                                 </div>
 
-                                <div>
-                                    <p className="!text-[#533641] text-sm mt-1">{emp.position}</p>
+                                <div className="p-3 flex flex-col gap-0.5">
+                                    <div className="text-center font-bold text-gray-900 text-[20px] text-transparent bg-clip-text bg-linear-to-r from-[#86489B] to-[#F171AC]">
+                                        {person.name}
+                                    </div>
+                                    <div className="text-center text-gray-500 text-[14px] font-medium!">
+                                        {person.role}
+                                    </div>
                                 </div>
                             </div>
+                        ))}
+                    </div>
 
-                            <div className="w-10 h-[3px] bg-gradient-to-r from-[#86489B] to-[#F171AC] mt-3 rounded-full"></div>
-                        </div>
-                    ))}
-                </div> */}
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 justify-items-center">
-                    {employees.map((emp) => (
-                        <div
-                            key={emp.id}
-                            className="relative p-6 flex flex-col items-center text-center w-[220px]"
-                        >
-                            <div className="w-40 h-40 mb-3 relative">
-                                <Image
-                                    src={emp.image}
-                                    alt={emp.name}
-                                    className="rounded-full object-cover object-top w-40 h-40 border-4 border-white shadow-md relative z-10"
-                                />
-                            </div>
-
-                            <div>
-                                <span className="text-xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#86489B] to-[#F171AC]">
-                                    {emp.name}
-                                </span>
-                                <p className="text-[#533641]! font-medium! text-sm mt-1">{emp.position}</p>
-                            </div>
-
-                            <div className="w-10 h-[3px] bg-linear-to-r from-[#86489B] to-[#F171AC] mt-0 rounded-full"></div>
-                        </div>
-                    ))}
                 </div>
 
             </div>
-        </section>
+        </div>
+
     );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// "use client";
+// import React from "react";
+// import Image from "next/image";
+// import { Archivo, Roboto } from "next/font/google";
+
+// const archivo = Archivo({ subsets: ["latin"], weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], });
+// const roboto = Roboto({ subsets: ["latin"], weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], });
+
+
+// import Bipin from "/public/assets/img/about/Bipin Joshi.png";
+// import Bini from "/public/assets/img/about/Bini Gopali (1).png";
+// import Kunju from "/public/assets/img/about/Kunju Shrestha(1).png";
+// import Archana from "/public/assets/img/about/Archana Pathak.png";
+// import Prekchya from "/public/assets/img/about/Prekchya Maharjan 1.png";
+// import Smita from "/public/assets/img/about/Smita Thapa.png";
+// import Sunil from "/public/assets/img/about/Sunil Raj Joshi.png";
+
+// export default function Employee() {
+//     const employees = [
+//         { id: 1, name: "Bipin Joshi", position: "CEO, Mortgage Broker", image: Bipin },
+//         { id: 7, name: "Sunil Raj Joshi", position: "Credit Analyst", image: Sunil },
+//         { id: 3, name: "Kunju Shrestha", position: "HR Manager", image: Kunju },
+//         { id: 4, name: "Archana Pathak", position: "Loan Processing Manager", image: Archana },
+//         { id: 6, name: "Smita Thapa", position: "Loan Processing Manager", image: Smita },
+//         { id: 2, name: "Bini Gopali", position: "Client Relations Officer", image: Bini },
+//         { id: 5, name: "Prekchya Maharjan", position: "Marketing Associate", image: Prekchya },
+//     ];
+
+//     return (
+//         <section className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 py-20 px-6">
+//             <div className="container mx-auto flex flex-col gap-[50px]">
+//                 <div className="flex flex-col gap-[15px]">
+//                     <div className="text-center">
+//                         <span className="text-[24px] sm:text-[28px] md:text-[32px] lg:text-[36px] font-[600] text-transparent bg-clip-text bg-gradient-to-r from-[#86489B] to-[#F171AC]">
+//                             Meet Our Team
+//                         </span>
+//                     </div>
+//                     <div className="flex justify-center">
+//                         <div className={`text-[#533641] sm:w-[60%] text-center ${roboto.className} leading-[25px] font-[400] tracking-[-1%]`}>
+//                             Passionate professionals dedicated to delivering innovative digital
+//                             solutions with precision and creativity.
+//                         </div>
+//                     </div>
+//                 </div>
+
+//                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 justify-items-center">
+//                     {employees.map((emp) => (
+//                         <div
+//                             key={emp.id}
+//                             className="relative p-6 flex flex-col items-center text-center w-[300px]"
+//                         >
+//                             <div className="w-40 h-40 mb-3 relative">
+//                                 <Image
+//                                     src={emp.image}
+//                                     alt={emp.name}
+//                                     className="rounded-full object-cover object-top w-40 h-40 border-4 border-white shadow-md relative z-10"
+//                                 />
+//                             </div>
+
+//                             <div>
+//                                 <span className="text-xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#86489B] to-[#F171AC]">
+//                                     {emp.name}
+//                                 </span>
+//                                 <p className="text-[#533641]! font-medium! text-sm mt-1">{emp.position}</p>
+//                             </div>
+
+//                             <div className="w-10 h-[3px] bg-linear-to-r from-[#86489B] to-[#F171AC] mt-0 rounded-full"></div>
+//                         </div>
+//                     ))}
+//                 </div>
+
+//             </div>
+//         </section>
+//     );
+// }
 
 
 
