@@ -119,7 +119,7 @@ export default function BudgetPlannerPage() {
 
                 {/* Process */}
                 <div className="bg-[#FAFAFA]">
-                    <div className="px-[188px]">
+                    <div className="sm:px-[188px]">
                         <ProcessFlow
                             title="Why Calculate Budget Planner?"
                             steps={steps}

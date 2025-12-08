@@ -121,7 +121,7 @@ export default function BorrowingCapitalPage() {
 
                 {/* Process */}
                 <div className="bg-[#FAFAFA]">
-                    <div className="px-[188px]">
+                    <div className="sm:px-[188px]">
                         <ProcessFlow
                             title="Why Calculate Borrowing Capital?"
                             steps={steps}
