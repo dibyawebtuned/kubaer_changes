@@ -231,7 +231,7 @@ export default function AboutComponent() {
                                 data-aos-duration="1000"
                                 data-aos-delay="100"
                                 data-aos-once="true">
-                                <div className="flex flex-col gap-2 sm:gap-3 w-full sm:w-[300px] md:w-[350px] bg-white/25 backdrop-blur-lg rounded-2xl p-4 sm:p-6 text-white text-center transition-transform transform hover:scale-105 hover:shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+                                <div className="flex flex-col gap-2 sm:gap-3 w-full sm:w-[300px] md:w-[350px] bg-white/25 backdrop-blur-lg rounded-2xl p-4 sm:p-6 text-white text-center transition-transform transition-shadow duration-700 ease-in-out transform hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.3)]">
                                     <div className="text-lg sm:text-xl md:text-xl font-semibold text-start">Communication</div>
                                     <div>
                                         <p className="text-white text-start m-0 text-sm sm:text-base md:text-[15px]">We believe in clear, open, and honest communication to build lasting relationships with our clients and team as an opportunity to lead.</p>
@@ -245,7 +245,7 @@ export default function AboutComponent() {
                                 data-aos-duration="1000"
                                 data-aos-delay="300"
                                 data-aos-once="true">
-                                <div className="flex flex-col gap-2 sm:gap-3 w-full sm:w-[300px] md:w-[350px] bg-white/25 backdrop-blur-lg rounded-2xl p-4 sm:p-6 text-white text-center transition-transform transform hover:scale-105 hover:shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+                                <div className="flex flex-col gap-2 sm:gap-3 w-full sm:w-[300px] md:w-[350px] bg-white/25 backdrop-blur-lg rounded-2xl p-4 sm:p-6 text-white text-center transition-transform transition-shadow duration-700 ease-in-out transform hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.3)]">
                                     <div className="text-lg sm:text-xl md:text-xl font-semibold text-start">Growth</div>
                                     <div>
                                         <p className="text-white text-start m-0 text-sm sm:text-base md:text-[15px]">We’re committed to continuous improvement—helping our clients grow financially while growing as individuals and</p>
@@ -281,7 +281,7 @@ export default function AboutComponent() {
                                 data-aos-duration="1000"
                                 data-aos-delay="100"
                                 data-aos-once="true">
-                                <div className="flex flex-col gap-2 sm:gap-3 w-full sm:w-[300px] md:w-[350px] bg-white/25 backdrop-blur-lg rounded-2xl p-4 sm:p-6 text-white text-center transition-transform transform hover:scale-105 hover:shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+                                <div className="flex flex-col gap-2 sm:gap-3 w-full sm:w-[300px] md:w-[350px] bg-white/25 backdrop-blur-lg rounded-2xl p-4 sm:p-6 text-white text-center transition-transform transition-shadow duration-700 ease-in-out transform hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.3)]">
                                     <div className="text-lg sm:text-xl md:text-xl font-semibold text-start">Teamwork</div>
                                     <div>
                                         <p className="text-white text-start m-0 text-sm sm:text-base md:text-[15px]">Collaboration is at the core of our success. We work together across all levels to achieve shared goals and deliver exceptional results.</p>
@@ -295,7 +295,7 @@ export default function AboutComponent() {
                                 data-aos-duration="1000"
                                 data-aos-delay="300"
                                 data-aos-once="true">
-                                <div className="flex flex-col gap-2 sm:gap-3 w-full sm:w-[300px] md:w-[350px] bg-white/25 backdrop-blur-lg rounded-2xl p-4 sm:p-6 text-white text-center transition-transform transform hover:scale-105 hover:shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+                                <div className="flex flex-col gap-2 sm:gap-3 w-full sm:w-[300px] md:w-[350px] bg-white/25 backdrop-blur-lg rounded-2xl p-4 sm:p-6 text-white text-center transition-transform transition-shadow duration-700 ease-in-out transform hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.3)]">
                                     <div className="text-lg sm:text-xl md:text-xl font-semibold text-start">Ownership</div>
                                     <div>
                                         <p className="text-white text-start m-0 text-sm sm:text-base md:text-[15px]">We take responsibility for our actions, follow through on commitments, and treat every challenge as an opportunity to lead</p>
