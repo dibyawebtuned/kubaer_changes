@@ -4,6 +4,12 @@ import Footer from "@/components/Footer";
 import Image from 'next/image';
 import ImageExample from "/public/assets/img/services/five.png";
 import { TrendingUp, DollarSign, Activity, CreditCard, CheckCircle, ClipboardList, FileCheck, Landmark, Handshake, Home, RefreshCcw, Settings } from "lucide-react";
+import {
+  Building,
+  Banknote,
+  LineChart,
+  PiggyBank
+} from "lucide-react";
 import { Archivo, Roboto } from "next/font/google";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -264,30 +270,40 @@ export default function BusinessLoanPage() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
                 {[
-                  "Major Banks",
-                  "Second-Tier",
-                  "Non-Bank",
-                  "Investors",
-                  "Credit Unions",
-                ].map((lender, index) => (
-                  <div
-                    key={index}
-                    className="relative rounded-[10px] transition-all duration-500 ease-in-out"
-                    data-aos="fade-up"
-                    data-aos-duration="800"
-                    data-aos-delay={200 + index * 200}
-                    data-aos-once="true"
-                  >
-                    <div className="relative flex items-center justify-center gap-3 px-4 py-3 rounded-[10px] bg-white border-2 border-transparent drop-shadow-[0_4px_10px_rgba(241,114,172,0.15)] transition-all duration-500 ease-in-out hover:shadow-[0_6px_20px_rgba(241,114,172,0.4)] hover:[background:linear-gradient(white,white)_padding-box,linear-gradient(to_right,#86489B,#F172AC)_border-box] hover:cursor-pointer">
-                      <CreditCard size={32} className="text-[#F171AC] relative z-10" />
-                      <div
-                        className={`text-[18px] md:text-[20px] text-transparent bg-clip-text bg-gradient-to-r from-[#86489B] to-[#F171AC] ${roboto.className} font-[500] relative z-10`}
-                      >
-                        {lender}
+                  // "Major Banks",
+                  // "Second-Tier",
+                  // "Non-Bank",
+                  // "Investors",
+                  // "Credit Unions",
+                  { name: "Major Banks", icon: Landmark },
+                  { name: "Second-Tier", icon: Building },
+                  { name: "Non-Bank", icon: Banknote },
+                  { name: "Investors", icon: LineChart },
+                  { name: "Credit Unions", icon: PiggyBank },
+                ].map((item, index) => {
+                  const IconComponent = item.icon;
+                  return (
+                    <div
+                      key={index}
+                      className="relative rounded-[10px] transition-all duration-500 ease-in-out"
+                      data-aos="fade-up"
+                      data-aos-duration="800"
+                      data-aos-delay={200 + index * 200}
+                      data-aos-once="true"
+                    >
+                      <div className="relative flex items-center justify-center gap-3 px-4 py-3 rounded-[10px] bg-white border-2 border-transparent drop-shadow-[0_4px_10px_rgba(241,114,172,0.15)] transition-all duration-500 ease-in-out hover:shadow-[0_6px_20px_rgba(241,114,172,0.4)] hover:[background:linear-gradient(white,white)_padding-box,linear-gradient(to_right,#86489B,#F172AC)_border-box] hover:cursor-pointer">
+                        {/* <CreditCard size={32} className="text-[#F171AC] relative z-10" /> */}
+                        <IconComponent size={32} className="text-[#F171AC] relative z-10" />
+                        <div
+                          className={`text-[18px] md:text-[20px] text-transparent bg-clip-text bg-gradient-to-r from-[#86489B] to-[#F171AC] ${roboto.className} font-[500] relative z-10`}
+                        >
+                          {/* {lender} */}
+                          {item.name}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  )
+                })}
               </div>
             </section>
           </div>
