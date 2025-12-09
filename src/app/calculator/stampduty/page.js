@@ -55,7 +55,7 @@ export default function HomeLoanPage() {
 
             {/* Content Starts */}
             <main className="flex-grow">
-                {/* Title, Description & Calculator */ }
+                {/* Title, Description & Calculator */}
                 <div className="container">
                     <div className="px-4 sm:px-10 md:px-20 lg:px-[120px] xl:px-[180px] 2xl:px-[220px] py-6 sm:py-15">
                         {/* Title + Description */}
