@@ -18,7 +18,7 @@ const roboto = Roboto({ subsets: ["latin"], weight: ["100", "200", "300", "400",
 export default function HomeLoanPage() {
     useEffect(() => {
         AOS.init({
-            duration: 800,p
+            duration: 800,
             once: true,
             offset: 100,
         });
