@@ -97,7 +97,7 @@ export default function TeamPage() {
                     </div>
 
                     {/* ---------------- TEAM GRID ---------------- */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-7">
+                    {/* <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-7">
                         {team.map((person, i) => (
                             <div
                                 key={i}
@@ -124,7 +124,38 @@ export default function TeamPage() {
                                 </div>
                             </div>
                         ))}
+                    </div> */}
+
+
+                    <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-7!">
+                        {team.map((person, i) => (
+                            <div
+                                key={i}
+                                onClick={() => setSelected(person)}
+                                className="bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1
+                                transition-shadow transition-transform duration-500 ease-in-out 
+                                cursor-pointer border border-gray-100 w-full"
+                            >
+                                <div className="w-full h-44 sm:h-48 md:h-64 lg:h-72 flex justify-center items-center overflow-hidden rounded-t-xl">
+                                    <Image
+                                        src={person.image}
+                                        alt={person.name}
+                                        className="w-full h-full object-cover"
+                                    />
+                                </div>
+
+                                <div className="p-2! sm:p-4! flex flex-col gap-0! sm:gap-0.5!">
+                                    <div className="text-center font-bold text-gray-900 text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px] text-transparent bg-clip-text bg-linear-to-r from-[#86489B] to-[#F171AC]">
+                                        {person.name}
+                                    </div>
+                                    <div className="text-center text-gray-500 text-[12px] sm:text-[14px] md:text-[14px] font-medium">
+                                        {person.role}
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
                     </div>
+
 
                 </div>
 
