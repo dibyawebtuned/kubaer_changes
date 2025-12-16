@@ -7,13 +7,13 @@ import { Archivo, Roboto } from "next/font/google";
 const archivo = Archivo({ subsets: ["latin"], weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], });
 const roboto = Roboto({ subsets: ["latin"], weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], });
 
-import Bipin from "/public/assets/img/about/Bipin_Joshi_1.png";
-import Bini from "/public/assets/img/about/Bini_Gopali_1.png";
-import Kunju from "/public/assets/img/about/Kunju_Shrestha_1.png";
-import Archana from "/public/assets/img/about/Archana_Pathak_1.png";
-import Prekchya from "/public/assets/img/about/Prekchya_Maharjan_1.png";
-import Smita from "/public/assets/img/about/Smita_Thap_1.png";
-import Sunil from "/public/assets/img/about/Sunil Raj Joshi.png";
+import Bipin from "/public/assets/img/members/bipin.png";
+import Bini from "/public/assets/img/members/bini.png";
+import Kunju from "/public/assets/img/members/Kunju.png";
+import Archana from "/public/assets/img/members/archana.png";
+import Prekchya from "/public/assets/img/members/prekchya.png";
+import Smita from "/public/assets/img/members/smita.png";
+import Sunil from "/public/assets/img/members/sunil.png";
 
 export default function TeamPage() {
     const [selected, setSelected] = useState(null);

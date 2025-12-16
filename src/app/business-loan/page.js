@@ -129,9 +129,9 @@ export default function BusinessLoanPage() {
       <Navbar />
 
       {/* Content Starts */}
-      <main className="flex-grow">
+      <main className="grow">
         {/* Top */}
-        <div className="text-white bg-gradient-to-r from-[#86489B] to-[#F171AC]">
+        <div className="text-white bg-linear-to-r from-[#86489B] to-[#F171AC]">
           <div className="container mx-auto px-4 py-[60px]">
             {/* 1. Introduction */}
             <section className="flex flex-col md:flex-row gap-[30px] items-center py-[50px]">
@@ -263,8 +263,8 @@ export default function BusinessLoanPage() {
         {/* 3. Lenders */}
         <div className="bg-[#fdf2f9]">
           <div className="container mx-auto px-4">
-            <section className="flex flex-col gap-[0px] sm:gap-[30px] py-12 sm:py-24">
-              <h2 className="{`text-2xl text-center !font-semibold mb-4 !leading-[40px] !text-transparent bg-clip-text bg-gradient-to-r from-[#86489B] to-[#F171AC] ${archivo.className}`}" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200" data-aos-once="true">
+            <section className="flex flex-col gap-0 sm:gap-[30px] py-12 sm:py-24">
+              <h2 className="{`text-2xl text-center font-semibold! mb-4 leading-10! text-transparent! bg-clip-text bg-gradient-to-r from-[#86489B] to-[#F171AC] ${archivo.className}`}" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200" data-aos-once="true">
                 Lenders We Deal With
               </h2>
 
