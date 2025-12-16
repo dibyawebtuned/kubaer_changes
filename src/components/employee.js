@@ -145,10 +145,10 @@ export default function TeamPage() {
                                 </div>
 
                                 <div className="p-2! sm:p-4! flex flex-col gap-0! sm:gap-0.5!">
-                                    <div className="text-center font-bold text-gray-900 text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px] text-transparent bg-clip-text bg-linear-to-r from-[#86489B] to-[#F171AC]">
+                                    <div className="text-center font-bold text-gray-900 text-[16px]! sm:text-[16px]! md:text-[18px]! lg:text-[20px]! text-transparent bg-clip-text bg-linear-to-r from-[#86489B] to-[#F171AC]">
                                         {person.name}
                                     </div>
-                                    <div className="text-center text-gray-500 text-[12px] sm:text-[14px] md:text-[14px] font-medium">
+                                    <div className="text-center text-gray-500 text-[14px]! sm:text-[14px]! md:text-[14px]! font-medium leading-4.5">
                                         {person.role}
                                     </div>
                                 </div>
