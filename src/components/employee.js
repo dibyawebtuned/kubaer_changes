@@ -71,11 +71,11 @@ export default function TeamPage() {
     ];
 
     return (
-        <div className="min-h-screen w-full bg-gradient-to-b from-[#f7f7fb] to-white px-4 py-12 flex justify-center">
+        <div className="w-full bg-gradient-to-b from-[#f7f7fb] to-white px-4 py-12 flex justify-center">
             <div className="max-w-6xl w-full">
 
                 {/* ---------------- SUBTEXT + GRID ---------------- */}
-                <div className="flex flex-col gap-5">
+                <div className="flex flex-col gap-4 md:gap-3">
 
                     {/* SUBTEXT */}
                     <div className="flex flex-col gap-[15px]">
