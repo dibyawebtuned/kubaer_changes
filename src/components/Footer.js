@@ -63,11 +63,11 @@ const Footer = () => {
             <h4 className="font-bold text-lg mb-4 text-white">Quick Links</h4>
 
             <ul className="space-y-3 pl-0!">
-              <li><Link className="font-semibold text-white hover:text-[#F171AC]! transition-all duration-300" href="/about">about us</Link></li>
-              <li><Link className="font-semibold text-white hover:text-[#F171AC]! transition-all duration-300" href="/services">services</Link></li>
-              <li><Link className="font-semibold text-white hover:text-[#F171AC]! transition-all duration-300" href="/resources">resources</Link></li>
-              <li><Link className="font-semibold text-white hover:text-[#F171AC]! transition-all duration-300" href="/BlogList">blog</Link></li>
-              <li><Link className="font-semibold text-white hover:text-[#F171AC]! transition-all duration-300" href="/contact">contact</Link></li>
+              <li><Link className="font-semibold text-white hover:text-[#F171AC]! transition-all duration-300" href="/about">About us</Link></li>
+              <li><Link className="font-semibold text-white hover:text-[#F171AC]! transition-all duration-300" href="/services">Services</Link></li>
+              <li><Link className="font-semibold text-white hover:text-[#F171AC]! transition-all duration-300" href="/resources">Resources</Link></li>
+              <li><Link className="font-semibold text-white hover:text-[#F171AC]! transition-all duration-300" href="/BlogList">Blog</Link></li>
+              <li><Link className="font-semibold text-white hover:text-[#F171AC]! transition-all duration-300" href="/contact">Contact</Link></li>
             </ul>
           </div>
 
