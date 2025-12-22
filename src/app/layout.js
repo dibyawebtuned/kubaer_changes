@@ -1,14 +1,16 @@
 import { Geist, Geist_Mono } from "next/font/google";
 // import '../../public/assets/css/custom.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 // import 'bootstrap/dist/js/bootstrap.bundle.min';
-import '@fortawesome/fontawesome-free/css/all.min.css';
+import "@fortawesome/fontawesome-free/css/all.min.css";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 import "./globals.css";
 import Favicon from "/public/assets/img/favicon.png";
 
 import SmoothScroll from "@/components/SmoothScroll";
+import { MessengerChat } from "@/components/MessengerChat";
+import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,11 +29,43 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  const GTM_ID = "GTM-KX42X9FJ";
   return (
     <html lang="en">
+      <head>
+        {GTM_ID && (
+          <>
+            <Script id="gtm-script" strategy="afterInteractive">
+              {`
+                (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                })(window,document,'script','dataLayer','${GTM_ID}');
+              `}
+            </Script>
+
+            <noscript>
+              <iframe
+                src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
+                height="0"
+                width="0"
+                style={{ display: "none", visibility: "hidden" }}
+              />
+            </noscript>
+          </>
+        )}
+
+        <Script
+          id="zoho-pagesense"
+          src="https://cdn-au.pagesense.io/js/kubaerfinance/95c0db61c7ed4b8dabffc689448988e4.js"
+          strategy="afterInteractive"
+        />
+      </head>
       <body className="antialiased">
         <SmoothScroll />
         {children}
+        <MessengerChat />
       </body>
     </html>
   );

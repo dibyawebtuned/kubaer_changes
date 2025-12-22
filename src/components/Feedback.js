@@ -2,22 +2,39 @@
 
 import Link from "next/link";
 import { Archivo, Roboto } from "next/font/google";
+import { useRef } from "react";
+import { sendLoanEmail } from "@/lib/sendLoanEmail";
 
 const archivo = Archivo({
   subsets: ["latin"],
-  weight: ["100","200","300","400","500","600","700","800","900"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
 const roboto = Roboto({
   subsets: ["latin"],
-  weight: ["100","200","300","400","500","600","700","800","900"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
 export default function ContactFormSection() {
+  const formRef = useRef(null);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!formRef.current) return;
+
+    try {
+      await sendLoanEmail(formRef.current);
+      alert("Message sent successfully!");
+      formRef.current.reset();
+    } catch (error) {
+      console.error(error);
+      alert("Failed to send message.");
+    }
+  };
+
   return (
     <section className="container">
       <div className="flex flex-col md:flex-row gap-10 items-center pb-16">
-
         {/* Left Side - Info */}
         <div
           className="w-full md:w-1/2 flex flex-col"
@@ -51,7 +68,6 @@ export default function ContactFormSection() {
           data-aos-duration="900"
         >
           <div className="contact-form-box">
-            
             {/* Section Title */}
             <div className="d-flex justify-content-center mb-20">
               <h2 className="form__title">Get in touch with us</h2>
@@ -59,8 +75,13 @@ export default function ContactFormSection() {
 
             {/* Contact Form */}
             <div className="contact-form">
-              <form action="#" method="post" className="message-form">
-
+              <form
+                ref={formRef}
+                onSubmit={handleSubmit}
+                action="#"
+                method="post"
+                className="message-form"
+              >
                 {/* Name & Phone */}
                 <div className="row mb-3">
                   <div className="col-md-6 mb-3 sm:mb-0">
@@ -131,10 +152,8 @@ export default function ContactFormSection() {
                 <div className="form-message"></div>
               </form>
             </div>
-
           </div>
         </div>
-        
       </div>
     </section>
   );
