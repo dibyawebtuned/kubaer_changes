@@ -3,7 +3,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Image from 'next/image';
 import ImageExample from "/public/assets/img/services/four.png";
-import { TrendingUp, DollarSign, Activity, CreditCard, CheckCircle, ClipboardList, FileCheck, Landmark, Handshake, Home, RefreshCcw, Settings } from "lucide-react";
+import { TrendingUp, DollarSign, Activity, CreditCard, CheckCircle, ClipboardList, FileCheck, Landmark, Handshake, Home, RefreshCcw, Settings, SlidersHorizontal, Percent, Layers, Wallet } from "lucide-react";
 import { Archivo, Roboto } from "next/font/google";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -17,7 +17,7 @@ import {
   Banknote,
   LineChart,
   PiggyBank
-} from "lucide-react";
+} from "lucide-react"; ``
 
 const archivo = Archivo({ subsets: ["latin"], weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], });
 const roboto = Roboto({ subsets: ["latin"], weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], });
@@ -27,39 +27,33 @@ const loanOptions = [
     title: "Lower Interest Rates",
     description:
       "Secure a more competitive interest rate, reducing your monthly repayments and saving you money over the life of the loan.",
-    icon: <TrendingUp size={32} className="text-[#f171ac]" />,
+    icon: <Percent size={32} className="text-[#f171ac]" />,
   },
   {
     title: "Better Features",
     description:
       "Access features like offset accounts, redraw facilities, or the ability to make unlimited extra repayments, which might not be available with your current loan.",
-    icon: <DollarSign size={32} className="text-[#f171ac]" />,
+    icon: <SlidersHorizontal size={32} className="text-[#f171ac]" />,
   },
   {
     title: "Debt Consolidation",
     description:
       "Roll multiple debts (e.g., credit cards, personal loans) into your home loan, often at a lower interest rate, simplifying your finances.",
-    icon: <Activity size={32} className="text-[#f171ac]" />,
+    icon: <Layers size={32} className="text-[#f171ac]" />,
   },
   {
     title: "Accessing Equity",
     description:
       "Tap into the equity you've built in your home to fund renovations, investments, or other significant purchases.",
-    icon: <TrendingUp size={32} className="text-[#f171ac]" />,
+    icon: <Wallet size={32} className="text-[#f171ac]" />,
   },
 
   {
     title: "Change in Circumstances",
     description:
       " Your income, family size, or financial goals might have changed, and your loan should adapt accordingly.",
-    icon: <TrendingUp size={32} className="text-[#f171ac]" />,
+    icon: <RefreshCcw size={32} className="text-[#f171ac]" />,
   },
-  // {
-  //   title: "Ending a Fixed Term",
-  //   description:
-  //     "As your fixed rate term approaches its end, it's the perfect time to review your options before reverting to a variable rate.",
-  //   icon: <TrendingUp size={32} className="text-[#f171ac]" />,
-  // },
 ];
 
 
@@ -76,7 +70,7 @@ const steps = [
     desc: "We compare a wide panel of lenders to find deals that offer better value, features, and flexibility.",
   },
   {
-    icon: <Landmark size={26} />,
+    icon: <Layers size={26} />,
     title: "Assess Costs & Savings",
     desc: "We calculate potential savings vs. costs like discharge fees, new loan application fees, and possible break costs (for fixed loans).",
   },
@@ -86,7 +80,7 @@ const steps = [
     desc: "Once we find the right loan, we’ll guide you through the refinancing application and handle all paperwork and lender communication.",
   },
   {
-    icon: <Handshake size={26} />,
+    icon: <RefreshCcw size={26} />,
     title: "Settlement & New Loan Starts",
     desc: "Your new lender pays off your old loan, and your new loan begins—often with a lower rate and more features.",
   },
@@ -95,11 +89,6 @@ const steps = [
     title: "Ongoing Investment Support",
     desc: "We review your loan annually and assist with future purchases, refinancing, orportfolio expansion.",
   },
-  // {
-  //   icon: <RefreshCcw size={26} />,
-  //   title: "Ongoing Support",
-  //   desc: "Even after settlement, we’re here for reviews, questions, or changing financial needs.",
-  // },
 ];
 
 
@@ -172,10 +161,10 @@ export default function RefinancingLoanPage() {
                 {/* Call Button */}
                 <div>
                   <a
-                    href="tel:1300Kubaer"
+                    href="tel:1300KUBAER"
                     className="bg-purple-100 text-[#86489B] hover:!bg-[#F172AC] hover:!text-white py-[12px] px-[20px] rounded-[10px] transition duration-300 text-center w-max"
                   >
-                    1300 Kubaer
+                    1300KUBAER
                   </a>
                 </div>
               </div>
@@ -265,7 +254,7 @@ export default function RefinancingLoanPage() {
         </div>
 
         {/* 3. Lenders */}
-        <div className="bg-[#fdf2f9]">
+        {/* <div className="bg-[#fdf2f9]">
           <div className="container mx-auto px-4">
             <section className="flex flex-col gap-[0px] sm:gap-[30px] py-12 sm:py-24">
               <h2
@@ -278,7 +267,6 @@ export default function RefinancingLoanPage() {
                 Eligibility Checklist
               </h2>
 
-              {/* ICONS + LABELS */}
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
                 {[
                   { name: "Loan assessed", icon: Landmark },
@@ -299,7 +287,6 @@ export default function RefinancingLoanPage() {
                     >
                       <div className="relative flex items-center justify-center gap-3 px-4 py-3 rounded-[10px] bg-white border-2 border-transparent drop-shadow-[0_4px_10px_rgba(241,114,172,0.15)] transition-all duration-500 ease-in-out hover:shadow-[0_6px_20px_rgba(241,114,172,0.4)] hover:[background:linear-gradient(white,white)_padding-box,linear-gradient(to_right,#86489B,#F172AC)_border-box] hover:cursor-pointer">
 
-                        {/* DYNAMIC ICON */}
                         <IconComponent size={32} className="text-[#F171AC] relative z-10" />
 
                         <div
@@ -313,6 +300,31 @@ export default function RefinancingLoanPage() {
                 })}
               </div>
             </section>
+          </div>
+        </div> */}
+
+        {/* 3. The Refinancing Journey with Us */}
+        <div className="container mx-auto px-4 sm:px-6 md:px-8 py-4 sm:py-5 bg-gradient-to-r from-[#86489B] to-[#F171AC] rounded-[20px] flex flex-col sm:flex-row gap-[15px] items-center justify-center">
+
+          <div>
+            <Handshake className="w-8 h-8 sm:w-10 sm:h-10 md:w-14 md:h-14 text-white" />
+          </div>
+
+          <div className="flex flex-col gap-[7px]">
+            <h5
+              className={`!text-center sm:!text-left text-white text-[20px] sm:text-[22px] md:!text-2xl lg:!text-3xl !font-[500] ${archivo.className}`}
+            >
+              The Refinancing Journey with Us
+            </h5>
+
+            <p
+              className={`!m-0 !text-center sm:!text-left !text-gray-200 !text-[14px] !sm:text-[15px] md:!text-[16px] !font-normal ${roboto.className} !leading-[22px] !sm:leading-[25px] md:!leading-[28px] !tracking-[-1%]`}
+            >
+              {`We make the refinancing process simple and transparent. We will assess your current loan, compare
+              it against hundreds of products from our panel of lenders, and identify opportunities for savings
+              or improved features. We handle all the paperwork and liaison with the new lender, ensuring a
+              seamless transition. Our goal is to put more money back in your pocket.`}
+            </p>
           </div>
         </div>
 
@@ -369,13 +381,13 @@ export default function RefinancingLoanPage() {
         <div className="bg-[#fdf2f9] py-16">
           <div className="container mx-auto px-4">
             {/* Section Title */}
-            <div className={`text-[32px] text-center font-semibold mb-10 leading-[40px] text-transparent bg-clip-text bg-gradient-to-r from-[#86489B] to-[#F171AC]`}
+            {/* <div className={`text-[32px] text-center font-semibold mb-10 leading-[40px] text-transparent bg-clip-text bg-gradient-to-r from-[#86489B] to-[#F171AC]`}
               data-aos="fade-down"
               data-aos-duration="800"
               data-aos-delay="200"
               data-aos-once="true">
               Client Testimonials
-            </div>
+            </div> */}
 
             {/* Swiper Carousel */}
             <div
@@ -383,28 +395,38 @@ export default function RefinancingLoanPage() {
               data-aos-duration="800"
               data-aos-delay="300"
               data-aos-once="true">
-              <TestimonialsSlider showTitle={false} testimonials={InvestmentLoanTestimonials} />
+              <TestimonialsSlider
+                title="What Our Clients Say"
+                testimonials={[
+                  {
+                    name: "Annie B",
+                    designation: "Our Happy Customer",
+                    content: "Bipin helped me through the whole process while buying my home. It was an overwhelming process and journey which he made simple and easy in every step. He took care of all other third parties and liaised with them which took pressure off me and my busy schedule. I highly recommend Bipin for any financial services.",
+                  },
+                  {
+                    name: "Subash Mishra",
+                    designation: "Our Happy Customer",
+                    content:
+                      "Bipin and the Kubaer Finance team guided us through our first home purchase. As first-time buyers, we were unsure of the process, but Bipin made it smooth and stress-free. His advice was clear, timely, and professional throughout. Highly recommend their service. We are very happy with the support.",
+                  },
+                  {
+                    name: "Monika Moktan",
+                    designation: "Our Happy Customer",
+                    content:
+                      "Mr. Bipin is professional, listens and understands his client well. He provided me the valuable information that assisted me in making my home buying journey easier. Easily approachable and always responsive. I highly recommend my mortgage broker Mr. Bipin.",
+                  },
+                  {
+                    name: "Adrian Hainz",
+                    designation: "Our Happy Customer",
+                    content:
+                      "Bipin has assisted us now several times. He is professional, up-front, and honest. He explains everything step by step, explains the best options, and made us feel at ease during the loan process. Our family looks forward to Bipin further assisting us in the future with our financial wellbeing.",
+                  },
+                ]}
+              />
             </div>
           </div>
         </div>
 
-        {/* 6. Call to Action */}
-        {/* <div className="container mx-auto px-4 py-12">
-          <section className="text-center">
-            <div className={`text-[32px] text-center font-semibold mb-4 leading-[40px] text-transparent bg-clip-text bg-gradient-to-r from-[#86489B] to-[#F171AC] ${archivo.className}`}>
-              Ready to Optimise Your Loan?
-            </div>
-            <p className="text-gray-700 mb-6">
-              Speak to our experts today and find out how much you could save by refinancing your home loan.
-            </p>
-            <a
-              href="/contact"
-              className="btn-default px-6 py-3 rounded-md text-white bg-purple-700 hover:bg-purple-800 transition duration-300"
-            >
-              Book Your Discovery Call
-            </a>
-          </section>
-        </div> */}
       </main>
       {/* Content Ends */}
 

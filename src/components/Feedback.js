@@ -5,6 +5,8 @@ import { Archivo, Roboto } from "next/font/google";
 import { useRef } from "react";
 import { sendLoanEmail } from "@/lib/sendLoanEmail";
 
+import { Landmark, Building2, Banknote, LineChart } from "lucide-react";
+
 const archivo = Archivo({
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -55,7 +57,7 @@ export default function ContactFormSection() {
           </div>
 
           <div>
-            <Link href="#contact" className="btn-default">
+            <Link href="/contact" className="btn-default">
               Get Started
             </Link>
           </div>

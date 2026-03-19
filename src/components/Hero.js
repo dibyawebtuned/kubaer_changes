@@ -6,6 +6,7 @@ import RibbonStar from "/public/assets/img/star2.svg";
 // import LandingImage from "/public/assets/img/landing-image4.jpg";
 import LandingImage from "/public/assets/img/banner.jpg";
 import "../../public/assets/css/hero.css";
+import { Landmark, Building2, Banknote, LineChart } from "lucide-react";
 
 import Link from "next/link";
 
@@ -159,7 +160,7 @@ export default function AboutHeader() {
                 data-wow-delay="0.6s"
               >
                 <div>
-                  <Link href="tel:1300Kubaer" className="btn-default">
+                  <Link href="tel:08 8166 2682" className="btn-default">
                     Book Your Free Discovery Call
                   </Link>
                 </div>

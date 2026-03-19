@@ -159,8 +159,8 @@ export default function Navbar() {
 
             {/* CALL BUTTON */}
             <div className="header-btn flex p-4 lg:p-0">
-              <a href="tel:1300Kubaer" className="extra-btn btn-default">
-                1300 Kubaer
+              <a href="tel:1300KUBAER" className="extra-btn btn-default">
+                1300KUBAER
               </a>
             </div>
           </div>

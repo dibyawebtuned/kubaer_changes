@@ -41,7 +41,7 @@ const Footer = () => {
             <div className="mt-2 flex flex-col gap-3 text-white">
               <div className="flex items-center gap-2">
                 <Phone className="w-4 h-4" />
-                <a className="font-bold text-white hover:text-[#F171AC]! transition-all duration-300" href="tel:08 8166 2682">1300 KUBAER</a>
+                <a className="font-bold text-white hover:text-[#F171AC]! transition-all duration-300" href="tel:1300KUBAER">1300KUBAER</a>
               </div>
 
               <div className="flex items-center gap-2">
@@ -64,8 +64,8 @@ const Footer = () => {
 
             <ul className="space-y-3 pl-0!">
               <li><Link className="font-semibold text-white hover:text-[#F171AC]! transition-all duration-300" href="/about">About us</Link></li>
-              <li><Link className="font-semibold text-white hover:text-[#F171AC]! transition-all duration-300" href="/services">Services</Link></li>
-              <li><Link className="font-semibold text-white hover:text-[#F171AC]! transition-all duration-300" href="/resources">Resources</Link></li>
+              {/* <li><Link className="font-semibold text-white hover:text-[#F171AC]! transition-all duration-300" href="/services">Services</Link></li> */}
+              <li><Link className="font-semibold text-white hover:text-[#F171AC]! transition-all duration-300" href="/faq">FAQs</Link></li>
               <li><Link className="font-semibold text-white hover:text-[#F171AC]! transition-all duration-300" href="/BlogList">Blog</Link></li>
               <li><Link className="font-semibold text-white hover:text-[#F171AC]! transition-all duration-300" href="/contact">Contact</Link></li>
             </ul>
@@ -81,6 +81,7 @@ const Footer = () => {
               <li><Link className="font-semibold text-white hover:text-[#F171AC]! transition-all duration-300" href="/car-personal-loan">Car & Personal Loan</Link></li>
               <li><Link className="font-semibold text-white hover:text-[#F171AC]! transition-all duration-300" href="/smsf-loan">SMSF Loan</Link></li>
               <li><Link className="font-semibold text-white hover:text-[#F171AC]! transition-all duration-300" href="/refinancing">Refinancing</Link></li>
+              <li><Link className="font-semibold text-white hover:text-[#F171AC]! transition-all duration-300" href="/business-loan">Business Loan</Link></li>
             </ul>
           </div>
 
@@ -113,22 +114,26 @@ const Footer = () => {
             {/* SOCIAL LINKS */}
             <ul className="flex gap-4 text-xl p-0">
               <li className="p-2 rounded-full border border-white">
-                <Link href="#">
+                <Link href="https://www.instagram.com/kubaer.finance"
+                  target="_blank"
+                  rel="noopener noreferrer">
                   <Instagram className="w-5 h-5 text-white" />
                 </Link>
               </li>
 
               <li className="p-2 rounded-full border border-white">
-                <Link href="#">
+                <Link href="https://www.facebook.com/kubaerfinance.aus/"
+                  target="_blank"
+                  rel="noopener noreferrer">
                   <Facebook className="w-5 h-5 text-white" />
                 </Link>
               </li>
 
-              <li className="p-2 rounded-full border border-white">
+              {/* <li className="p-2 rounded-full border border-white">
                 <Link href="#">
                   <Twitter className="w-5 h-5 text-white" />
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>

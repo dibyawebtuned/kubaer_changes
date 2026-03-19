@@ -14,7 +14,7 @@ export const MessengerChat = () => {
   return (
     <AnimatePresence>
       <motion.div
-        className="fixed bottom-6 right-6 z-50"
+        className="fixed z-50 bottom-6 right-6"
         initial={{ scale: 0 }}
         animate={{ scale: 1, y: [0, -10, 0] }}
         transition={{
@@ -24,7 +24,7 @@ export const MessengerChat = () => {
       >
         <button
           onClick={handleClick}
-          className="w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 rounded-full flex items-center justify-center cursor-pointer overflow-hidden"
+          className="flex items-center justify-center w-12 h-12 overflow-hidden rounded-full cursor-pointer md:w-14 md:h-14 lg:w-16 lg:h-16"
         >
           <img
             src="/assets/messengerLogo1.png"

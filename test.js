@@ -1,148 +1,177 @@
-"use client";
-
-import { useState } from "react";
-import Link from "next/link";
 import Image from "next/image";
-import { ChevronDown } from "lucide-react";
-import Logo from "/public/assets/img/new-logo.png";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import { Calendar } from "lucide-react";
+import Link from "next/link";
+import BlogDetailImage from "/public/assets/img/hero-image.jpg";
 
 import { Archivo, Roboto } from "next/font/google";
 
 const archivo = Archivo({
   subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  weight: ["100","200","300","400","500","600","700","800","900"],
 });
+
 const roboto = Roboto({
   subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  weight: ["100","200","300","400","500","600","700","800","900"],
 });
 
-import "/public/assets/css/custom.css";
-import "/public/assets/css/navbar.css";
+/* ================= BLOG DATA ================= */
 
-export default function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [servicesOpen, setServicesOpen] = useState(false);
-  const [calculatorOpen, setCalculatorOpen] = useState(false);
+const blogs = [
+  {
+    id: "1",
+    title: "Understanding Home Loans",
+    image: "/assets/img/landing-image4.jpg",
+    date: "Sep 28, 2025",
+  },
+  {
+    id: "2",
+    title: "Smart Real Estate Investment Tips",
+    image: "/assets/img/landing-image.jpg",
+    date: "Sep 20, 2025",
+  },
+  {
+    id: "3",
+    title: "Top 5 Mistakes to Avoid as a Buyer",
+    image: "/assets/img/hero-image.jpg",
+    date: "Sep 15, 2025",
+  },
+];
+
+/* ================= REQUIRED FOR STATIC EXPORT ================= */
+
+export async function generateStaticParams() {
+  return blogs.map((blog) => ({
+    id: blog.id,
+  }));
+}
+
+/* ================= PAGE ================= */
+
+export default function BlogDetailsPage({ params }) {
+  const { id } = params;
+
+  const currentBlog = blogs.find((blog) => blog.id === id);
+
+  if (!currentBlog) {
+    return (
+      <>
+        <Navbar />
+        <div className="container mx-auto py-20 text-center">
+          <h1 className="text-2xl font-semibold">Blog not found</h1>
+        </div>
+        <Footer />
+      </>
+    );
+  }
 
   return (
-    <header className="main-header w-full">
-      <nav className="navbar">
-        <div className="container d-flex justify-between items-center">
+    <>
+      <Navbar />
 
-          {/* LOGO */}
-          <Link href="/" className="navbar-brand">
-            <Image
-              src={Logo}
-              alt="Kubaer Logo"
-              className="w-[200px] h-auto"
-              priority
-            />
-          </Link>
-
-          {/* MOBILE MENU BUTTON */}
-          <button
-            className="md:hidden flex flex-col gap-1 justify-center items-center w-8 h-8"
-            onClick={() => setMenuOpen(!menuOpen)}
-          >
-            <span className={`block h-[2px] w-6 bg-black transition-transform ${menuOpen ? "rotate-45 translate-y-2" : ""}`} />
-            <span className={`block h-[2px] w-6 bg-black transition-opacity ${menuOpen ? "opacity-0" : ""}`} />
-            <span className={`block h-[2px] w-6 bg-black transition-transform ${menuOpen ? "-rotate-45 -translate-y-2" : ""}`} />
-          </button>
-
-          {/* FIXED MOBILE MENU SO IT DOES NOT PUSH PAGE DOWN */}
-          <div
-            className={`
-              nav-menu 
-              ${menuOpen ? "open" : ""} 
-              fixed top-[80px] left-0 w-full 
-              bg-white
-              sm:bg-white/20!
-              z-[9999]
-              md:static md:w-auto md:bg-transparent md:z-auto
-            `}
-          >
-            <ul className={`nav-list font-[500] ${archivo.className}`}>
-
-              {/* SERVICES DROPDOWN */}
-              <li
-                className={`has-dropdown ${servicesOpen ? "open" : ""} flex flex-col items-start!`}
-                onClick={() => setServicesOpen(!servicesOpen)}
-              >
-                <button className="flex items-center gap-2 px-[8px] py-[25px] font-[600] text-[#86489B] hover:text-[#F171AC]">
-                  Services
-                  <ChevronDown
-                    size={20}
-                    className={`transition-transform ${servicesOpen ? "rotate-180" : ""}`}
-                  />
-                </button>
-
-                <ul className="dropdown">
-                  <li><Link href="/home-loan">Home Loan</Link></li>
-                  <li><Link href="/investment-loan">Investment Loan</Link></li>
-                  <li><Link href="/car-personal-loan">Car & Personal Loan</Link></li>
-                  <li><Link href="/smsf-loan">SMSF Loan</Link></li>
-                  <li><Link href="/refinancing">Refinancing</Link></li>
-                  <li><Link href="/business-loan">Business Loan</Link></li>
-                </ul>
-              </li>
-
-              {/* ABOUT */}
-              <li className="flex items-center gap-2 py-[15px]">
-                <Link href="/about" className="!font-[600] text-[#86489B] hover:text-[#F171AC]">
-                  About Us
-                </Link>
-              </li>
-
-              {/* CALCULATOR DROPDOWN */}
-              <li
-                className={`has-dropdown ${calculatorOpen ? "open" : ""} flex flex-col items-start!`}
-                onClick={() => setCalculatorOpen(!calculatorOpen)}
-              >
-                <button className="flex items-center gap-2 px-[8px] py-[25px] font-[600] text-[#86489B] hover:text-[#F171AC]">
-                  Calculator
-                  <ChevronDown
-                    size={18}
-                    className={`transition-transform ${calculatorOpen ? "rotate-180" : ""}`}
-                  />
-                </button>
-
-                <ul className="dropdown">
-                  <li><Link href="/calculator/stampduty">Stamp Duty</Link></li>
-                  <li><Link href="/calculator/refinancing">Refinancing</Link></li>
-                  <li><Link href="/calculator/borrowcapital">Borrowing Capacity</Link></li>
-                  <li><Link href="/calculator/repayment">Repayments</Link></li>
-                  <li><Link href="/calculator/loancomparison">Loan Comparison</Link></li>
-                  <li><Link href="/calculator/budgetplanner">Budget Planner</Link></li>
-                </ul>
-              </li>
-
-              {/* BLOG */}
-              <li className="flex items-center py-[15px] text-[#86489B] hover:text-[#F171AC]">
-                <Link href="/BlogList" className="font-[600]!">Blog</Link>
-              </li>
-
-              {/* FAQ */}
-              <li className="flex items-center py-[15px] text-[#86489B] hover:text-[#F171AC]">
-                <Link href="/faq" className="font-[600]!">FAQs</Link>
-              </li>
-
-              {/* CONTACT */}
-              <li className="flex items-center py-[15px] text-[#86489B] hover:text-[#F171AC]">
-                <Link href="/contact" className="font-[600]!">Contact Us</Link>
-              </li>
-            </ul>
-
-            {/* CALL BUTTON */}
-            <div className="header-btn flex p-4 md:p-0">
-              <a href="tel:1300Kubaer" className="extra-btn btn-default">
-                1300 Kubaer
-              </a>
+      <section className="bg-white">
+        {/* ===== HERO ===== */}
+        <div className="relative w-full h-[250px] md:h-[300px]">
+          <Image
+            src={currentBlog.image}
+            alt={currentBlog.title}
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-black/40 flex flex-col gap-[10px] justify-center items-center text-center px-4">
+            <span className="bg-gradient-to-r from-[#86489B] to-[#F171AC] text-white px-4 py-1 rounded-full text-sm font-semibold">
+              Refinance
+            </span>
+            <div className="text-3xl md:text-4xl font-bold text-white max-w-3xl">
+              {currentBlog.title}
             </div>
+            <span className="text-md text-white mb-2 flex items-center gap-[5px]">
+              <Calendar className="h-3 w-3" />
+              <span>{currentBlog.date}</span>
+            </span>
           </div>
-
         </div>
-      </nav>
-    </header>
+
+        <div className="container mx-auto">
+          <div className="grid grid-cols-12 gap-6">
+            {/* ===== MAIN CONTENT ===== */}
+            <div className="col-span-12 lg:col-span-8 prose text-gray-700 sm:py-6 sm:px-4">
+
+              <div className="flex flex-col gap-1 mt-[30px]">
+                <div className="text-[26px] sm:text-[34px] leading-snug font-medium pb-2 bg-gradient-to-r from-[#86489B] to-[#F171AC] bg-clip-text text-transparent">
+                  What We Offer: Loans for First Home Buyers
+                </div>
+                <p className="!font-[400] text-justify">
+                  Embarking on the journey to buy your first home in Australia is one of life’s most exciting milestones.
+                  It marks the beginning of independence, security, and long-term investment.
+                </p>
+              </div>
+
+              <div className="w-full h-auto mt-6">
+                <Image
+                  src={BlogDetailImage}
+                  alt="Blog Detail"
+                  className="rounded-[20px]"
+                />
+              </div>
+
+              <div className="mt-6">
+                <div className="text-[22px] sm:text-[24px] font-[500]">
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#86489B] to-[#F171AC]">
+                    Key Takeaways
+                  </span>
+                </div>
+                <ol className="list-decimal list-inside space-y-2 mt-3">
+                  <li>Smaller frequent payments can reduce total interest.</li>
+                  <li>Fortnightly repayments often result in one extra payment annually.</li>
+                  <li>Monthly repayments are convenient but may cost more long-term.</li>
+                </ol>
+              </div>
+
+            </div>
+
+            {/* ===== SIDEBAR ===== */}
+            <div className="col-span-12 lg:col-span-4 prose text-gray-700 py-6 px-4 bg-[#FDF2F9]">
+              <div className="text-[30px] font-semibold mb-4 bg-gradient-to-r from-[#86489B] to-[#F171AC] bg-clip-text text-transparent">
+                Other Blogs
+              </div>
+
+              <ul className="p-0">
+                {blogs.map((blog) => (
+                  <li
+                    key={blog.id}
+                    className="flex items-center gap-3 hover:bg-white p-2 rounded transition"
+                  >
+                    <div className="w-16 h-12 relative flex-shrink-0">
+                      <Image
+                        src={blog.image}
+                        alt={blog.title}
+                        fill
+                        className="object-cover rounded"
+                      />
+                    </div>
+                    <div>
+                      <Link
+                        href={`/BlogList/${blog.id}`}
+                        className="text-sm font-medium text-[#86489B] hover:text-[#F171AC]"
+                      >
+                        {blog.title}
+                      </Link>
+                      <div className="text-xs text-gray-500">{blog.date}</div>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <Footer />
+    </>
   );
 }

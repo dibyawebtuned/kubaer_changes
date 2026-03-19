@@ -52,13 +52,13 @@ export default function BlogComponent() {
       image: Blog_img_3,
       category: "Tips",
     },
-    {
-      id: 4,
-      title: "Top 5 Mistakes to Avoid as a Buyer",
-      desc: "Learn about the most common mistakes new home buyers make and how to avoid them.",
-      image: Blog_img_3,
-      category: "Mortgage",
-    },
+    // {
+    //   id: 4,
+    //   title: "Top 5 Mistakes to Avoid as a Buyer",
+    //   desc: "Learn about the most common mistakes new home buyers make and how to avoid them.",
+    //   image: Blog_img_3,
+    //   category: "Mortgage",
+    // },
   ];
 
   function handleSubmit(e) {

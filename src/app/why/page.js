@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { Landmark, Building2, Banknote, LineChart } from "lucide-react";
 
 import Image from "next/image";
 

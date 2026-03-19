@@ -107,7 +107,7 @@ export default function ContactComponent() {
                     <div className="text-[16px] sm:text-[18px] font-semibold text-[#4d4d4d]">
                       Call Us
                     </div>
-                    <span className="text-sm sm:text-[14px]">1300 KUBAER</span>
+                    <span className="text-sm sm:text-[14px]">1300KUBAER</span>
                   </div>
                 </div>
               </div>
@@ -230,7 +230,7 @@ export default function ContactComponent() {
         <div className="relative w-full h-72 sm:h-[400px] md:h-[450px] lg:h-[500px]">
           <iframe
             className="absolute top-0 left-0 w-full h-full border-0 rounded-lg"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3310.567066126427!2d151.0488392151968!3d-33.82783788067812!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12a2fba18cf7df%3A0x3b3b928d9a9e74a2!2sRhodes%20NSW%202138!5e0!3m2!1sen!2sau!4v1693234557403!5m2!1sen!2sau"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3269.1566163104094!2d138.55281247583983!3d-34.97774157734756!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ab0cfdcaef06f39%3A0x867cc93febd72bc0!2sKubaer%20Finance!5e0!3m2!1sen!2snp!4v1770705533681!5m2!1sen!2snp"
             allowFullScreen
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"

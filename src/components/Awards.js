@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { Landmark, Building2, Banknote, LineChart } from "lucide-react";
 
 // Import award images (adjust paths according to your /public folder)
 import Plan from "/public/assets/img/awards/plan.png";

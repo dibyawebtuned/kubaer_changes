@@ -8,6 +8,8 @@ import SMSFImg from "/public/assets/img/smsf.png";
 import RefinancingImg from "/public/assets/img/refinancing.png";
 import BusinessImg from "/public/assets/img/business.png";
 
+import { Landmark, Building2, Banknote, LineChart } from "lucide-react";
+
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";

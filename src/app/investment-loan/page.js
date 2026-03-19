@@ -3,7 +3,26 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Image from 'next/image';
 import ImageExample from "/public/assets/img/services/services_one.png";
-import { TrendingUp, DollarSign, Activity, CreditCard, CheckCircle, ClipboardList, FileCheck, Landmark, Handshake, Home, RefreshCcw, Settings } from "lucide-react";
+import {
+  TrendingUp,
+  DollarSign,
+  Activity,
+  CreditCard,
+  CheckCircle,
+  ClipboardList,
+  FileCheck,
+  Landmark,
+  Handshake,
+  Home,
+  RefreshCcw,
+  Settings,
+  Percent,
+  SlidersHorizontal,
+  Users,
+  Target,
+  Calculator,
+  SearchCheck
+} from "lucide-react";
 import {
   Building,
   Banknote,
@@ -27,19 +46,19 @@ const loanOptions = [
     title: "Interest-Only Loans",
     description:
       "Pay interest only for a set period (typically 1–5 years) to maximise cash flow and tax-deductible interest.",
-    icon: <TrendingUp size={32} className="text-[#f171ac]" />,
+    icon: <Percent size={32} className="text-[#f171ac]" />,
   },
   {
     title: "Principle and Interest Loans",
     description:
       "Pay down both the principal and interest to build equity while managing long-term costs.",
-    icon: <DollarSign size={32} className="text-[#f171ac]" />,
+    icon: <PiggyBank size={32} className="text-[#f171ac]" />,
   },
   {
     title: "Fixed or Variable Rate Loans",
     description:
       "Choose between rate stability (fixed) or flexibility (variable), or split the loan to enjoy both benefits.",
-    icon: <Activity size={32} className="text-[#f171ac]" />,
+    icon: <SlidersHorizontal size={32} className="text-[#f171ac]" />,
   },
   {
     title: "Equity Release",
@@ -51,8 +70,8 @@ const loanOptions = [
   {
     title: "Family Equity Investment Loans",
     description:
-      "Leverage a family member’s equity to help you start your investment journey sooner",
-    icon: <TrendingUp size={32} className="text-[#f171ac]" />,
+      "Leverage a family member’s equity to help you start your investment journey sooner.",
+    icon: <Users size={32} className="text-[#f171ac]" />,
   },
 ];
 
@@ -60,22 +79,22 @@ const loanOptions = [
 // Steps Content
 const steps = [
   {
-    icon: <ClipboardList size={26} />,
+    icon: <Target size={26} />,
     title: "Strategy Session",
     desc: "We assess your investment goals, income, and long-term vision.",
   },
   {
-    icon: <FileCheck size={26} />,
+    icon: <Calculator size={26} />,
     title: "Assess Borrowing Capacity",
     desc: "We calculate how much you can borrow based on rental income and liabilities.",
   },
   {
-    icon: <Landmark size={26} />,
+    icon: <FileCheck size={26} />,
     title: "Pre-Approval",
     desc: "We submit your application to a lender suited to investment needs, including interest-only or high-LVR loans.",
   },
   {
-    icon: <CheckCircle size={26} />,
+    icon: <SearchCheck size={26} />,
     title: "Property Review",
     desc: "We liaise with your agent or buyer’s advocate to review the investment property’s yield and structure.",
   },
@@ -85,17 +104,11 @@ const steps = [
     desc: "We coordinate with solicitors and the lender to ensure smooth and timely settlement.",
   },
   {
-    icon: <Home size={26} />,
+    icon: <RefreshCcw size={26} />,
     title: "Ongoing Investment Support",
     desc: "We review your loan annually and assist with future purchases, refinancing, orportfolio expansion.",
   },
-  // {
-  //   icon: <RefreshCcw size={26} />,
-  //   title: "Ongoing Support",
-  //   desc: "Even after settlement, we’re here for reviews, questions, or changing financial needs.",
-  // },
 ];
-
 
 
 
@@ -160,16 +173,21 @@ export default function InvestmentLoanPage() {
                 <div
                   className={`text-[#d8d8d8] text-justify text-[16px] md:text-[16px] font-normal ${roboto.className} leading-[25px] md:leading-[28px] tracking-[-1%]`}
                 >
-                  Investing in property is one of the most effective ways to build long-term wealth in Australia. Whether you are purchasing your first investment property or expanding your portfolio, the right loan structure can make a significant difference to your cash flow and tax strategy.At Kubaer Finance, we help both new and seasoned investors navigate the complexities of investment lending, including loan structuring, interest-only options, and equity access—all while comparing offers from over 35+ lenders
+                  Investing in property is one of the most effective ways to build long-term wealth in Australia.
+                  Whether you are purchasing your first investment property or expanding your portfolio, the right
+                  loan structure can make a significant difference to your cash flow and tax strategy.
+                  At Kubaer Finance, we help both new and seasoned investors navigate the complexities of
+                  investment lending, including loan structuring, interest-only options, and equity access—all while
+                  comparing offers from over 35+ lenders.
                 </div>
 
                 {/* Call Button */}
                 <div>
                   <a
-                    href="tel:1300Kubaer"
+                    href="tel:1300KUBAER"
                     className="bg-purple-100 text-[#86489B] hover:!bg-[#F172AC] hover:!text-white py-[12px] px-[20px] rounded-[10px] transition duration-300 text-center w-max"
                   >
-                    1300 Kubaer
+                    1300KUBAER
                   </a>
                 </div>
               </div>
@@ -262,49 +280,73 @@ export default function InvestmentLoanPage() {
         <div className="bg-[#fdf2f9]">
           <div className="container mx-auto px-4">
             <section className="flex flex-col gap-[0px] sm:gap-[30px] py-12 sm:py-24">
-              <h2
-                className="{`text-2xl text-center !font-semibold mb-4 !leading-[40px] !text-transparent bg-clip-text bg-gradient-to-r from-[#86489B] to-[#F171AC] ${archivo.className}`}"
-                data-aos="fade-up"
-                data-aos-duration="1000"
-                data-aos-delay="200"
-                data-aos-once="true"
-              >
-                Lenders We Deal With
-              </h2>
+              <div>
+                <h2
+                  className="{`text-2xl text-center !font-semibold mb-4 !leading-[40px] !text-transparent bg-clip-text bg-gradient-to-r from-[#86489B] to-[#F171AC] ${archivo.className}`}"
+                  data-aos="fade-up"
+                  data-aos-duration="1000"
+                  data-aos-delay="200"
+                  data-aos-once="true"
+                >
+                  Lenders We Deal With
+                </h2>
 
-              {/* ICONS + LABELS */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-                {[
-                  { name: "Major Banks", icon: Landmark },
-                  { name: "Second-Tier", icon: Building },
-                  { name: "Non-Bank", icon: Banknote },
-                  { name: "Investors", icon: LineChart },
-                  { name: "Credit Unions", icon: PiggyBank },
-                ].map((item, index) => {
-                  const IconComponent = item.icon;
-                  return (
-                    <div
-                      key={index}
-                      className="relative rounded-[10px] transition-all duration-500 ease-in-out"
-                      data-aos="fade-up"
-                      data-aos-duration="800"
-                      data-aos-delay={200 + index * 200}
-                      data-aos-once="true"
-                    >
-                      <div className="relative flex items-center justify-center gap-3 px-4 py-3 rounded-[10px] bg-white border-2 border-transparent drop-shadow-[0_4px_10px_rgba(241,114,172,0.15)] transition-all duration-500 ease-in-out hover:shadow-[0_6px_20px_rgba(241,114,172,0.4)] hover:[background:linear-gradient(white,white)_padding-box,linear-gradient(to_right,#86489B,#F172AC)_border-box] hover:cursor-pointer">
+                {/* ICONS + LABELS */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {[
+                    {
+                      name: "Major Banks",
+                      desc: "Commonwealth Bank, Westpac, NAB, ANZ ",
+                      icon: Landmark
+                    },
+                    {
+                      name: "Non-Bank Lenders",
+                      desc: "Resimac, Pepper, Liberty",
+                      icon: Building
+                    },
+                    {
+                      name: "Investor-Focused Banks",
+                      desc: "Macquarie Bank, ING",
+                      icon: LineChart
+                    },
+                  ].map((item, index) => {
+                    const IconComponent = item.icon;
+                    return (
+                      <div
+                        key={index}
+                        className="relative rounded-[10px] transition-all duration-500 ease-in-out"
+                        data-aos="fade-up"
+                        data-aos-duration="800"
+                        data-aos-delay={200 + index * 200}
+                        data-aos-once="true"
+                      >
+                        <div className="relative flex flex-col items-center justify-center gap-2.5 px-4 py-3 rounded-[10px] bg-white border-2 border-transparent drop-shadow-[0_4px_10px_rgba(241,114,172,0.15)] transition-all duration-500 ease-in-out hover:shadow-[0_6px_20px_rgba(241,114,172,0.4)] hover:[background:linear-gradient(white,white)_padding-box,linear-gradient(to_right,#86489B,#F172AC)_border-box] hover:cursor-pointer">
 
-                        {/* DYNAMIC ICON */}
-                        <IconComponent size={32} className="text-[#F171AC] relative z-10" />
+                          {/* DYNAMIC ICON */}
+                          <div>
+                            <IconComponent className="w-8 h-8 text-[#F171AC] relative z-10" />
+                          </div>
 
-                        <div
-                          className={`text-[18px] md:text-[20px] text-transparent bg-clip-text bg-gradient-to-r from-[#86489B] to-[#F171AC] ${roboto.className} font-[500] relative z-10`}
-                        >
-                          {item.name}
+                          <div className="flex flex-col gap-[5px] items-center">
+                            <div
+                              className={`text-[18px] text-center md:text-[20px] text-transparent bg-clip-text bg-gradient-to-r from-[#86489B] to-[#F171AC] ${roboto.className} font-[500] relative z-10`}
+                            >
+                              {item.name}
+                            </div>
+                            <div className={`text-center text-[#6B6B6B] text-[14px] leading-5 font-[400] ${roboto.className}`}>
+                              {item.desc}
+                            </div>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  );
-                })}
+                    );
+                  })}
+                </div>
+              </div>
+
+              <div className={`text-center text-[#6B6B6B] text-[14px] leading-5 font-[400] ${roboto.className} pt-2`}>
+                Every lender has different policies on rental income, negative gearing, and interest-only
+                <br /> periods—we help you find the right fit for your strategy.
               </div>
             </section>
           </div>
@@ -325,7 +367,7 @@ export default function InvestmentLoanPage() {
               data-aos-delay="200"
               data-aos-once="true"
             >
-              Your Investment Loan Journey <br /> with Us
+              Your Investment Loan Journey <br /> with Kubaer Finance
             </h2>
 
             <div className="relative flex flex-col items-center mt-12">
@@ -366,22 +408,47 @@ export default function InvestmentLoanPage() {
         {/* 5. Client Testimonials */}
         <div className="bg-[#fdf2f9] py-16">
           <div className="container mx-auto px-4">
-            {/* Section Title */}
-            <div className={`text-[32px] text-center font-semibold mb-10 leading-[40px] text-transparent bg-clip-text bg-gradient-to-r from-[#86489B] to-[#F171AC]`}
+            {/* <div className={`text-[32px] text-center font-semibold mb-10 leading-[40px] text-transparent bg-clip-text bg-gradient-to-r from-[#86489B] to-[#F171AC]`}
               data-aos="fade-down"
               data-aos-duration="800"
               data-aos-delay="200"
               data-aos-once="true">
               Client Testimonials
-            </div>
+            </div> */}
 
-            {/* Swiper Carousel */}
             <div
               data-aos="fade-up"
               data-aos-duration="800"
               data-aos-delay="300"
               data-aos-once="true">
-              <TestimonialsSlider showTitle={false} testimonials={InvestmentLoanTestimonials} />
+              <TestimonialsSlider
+                title="What Our Clients Say"
+                testimonials={[
+                  {
+                    name: "Annie B",
+                    designation: "Our Happy Customer",
+                    content: "Bipin helped me through the whole process while buying my home. It was an overwhelming process and journey which he made simple and easy in every step. He took care of all other third parties and liaised with them which took pressure off me and my busy schedule. I highly recommend Bipin for any financial services.",
+                  },
+                  {
+                    name: "Subash Mishra",
+                    designation: "Our Happy Customer",
+                    content:
+                      "Bipin and the Kubaer Finance team guided us through our first home purchase. As first-time buyers, we were unsure of the process, but Bipin made it smooth and stress-free. His advice was clear, timely, and professional throughout. Highly recommend their service. We are very happy with the support.",
+                  },
+                  {
+                    name: "Monika Moktan",
+                    designation: "Our Happy Customer",
+                    content:
+                      "Mr. Bipin is professional, listens and understands his client well. He provided me the valuable information that assisted me in making my home buying journey easier. Easily approachable and always responsive. I highly recommend my mortgage broker Mr. Bipin.",
+                  },
+                  {
+                    name: "Adrian Hainz",
+                    designation: "Our Happy Customer",
+                    content:
+                      "Bipin has assisted us now several times. He is professional, up-front, and honest. He explains everything step by step, explains the best options, and made us feel at ease during the loan process. Our family looks forward to Bipin further assisting us in the future with our financial wellbeing.",
+                  },
+                ]}
+              />
             </div>
           </div>
         </div>

@@ -30,9 +30,11 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   const GTM_ID = "GTM-KX42X9FJ";
+
   return (
     <html lang="en">
       <head>
+        {/* Google Tag Manager */}
         {GTM_ID && (
           <>
             <Script id="gtm-script" strategy="afterInteractive">
@@ -56,12 +58,30 @@ export default function RootLayout({ children }) {
           </>
         )}
 
-        <Script
+        {/* Zoho PageSense */}
+        {/* <Script
           id="zoho-pagesense"
           src="https://cdn-au.pagesense.io/js/kubaerfinance/95c0db61c7ed4b8dabffc689448988e4.js"
           strategy="afterInteractive"
+        /> */}
+
+        {/* Zoho SalesIQ Init */}
+        {/* Zoho SalesIQ Init */}
+        <Script id="zoho-salesiq-init" strategy="afterInteractive">
+          {`
+    window.$zoho = window.$zoho || {};
+    $zoho.salesiq = $zoho.salesiq || { ready: function () {} };
+  `}
+        </Script>
+
+        {/* Zoho SalesIQ Widget */}
+        <Script
+          id="zoho-salesiq-widget"
+          src="https://salesiq.zohopublic.com.au/widget?wc=f686798fcc19320953a7331495698c51253254bd914f16bf5595eb1c87f06c27"
+          strategy="afterInteractive"
         />
       </head>
+
       <body className="antialiased">
         <SmoothScroll />
         {children}

@@ -3,7 +3,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Image from 'next/image';
 import ImageExample from "/public/assets/img/services/three.png";
-import { TrendingUp, DollarSign, Activity, CreditCard, CheckCircle, ClipboardList, FileCheck, Landmark, Handshake, Home, RefreshCcw, Settings } from "lucide-react";
+import { TrendingUp, DollarSign, Activity, CreditCard, CheckCircle, ClipboardList, FileCheck, Landmark, Handshake, Home, RefreshCcw, Settings, CircleCheck } from "lucide-react";
 import { Archivo, Roboto } from "next/font/google";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -11,6 +11,8 @@ import TestimonialsSlider from "@/components/Testimonials";
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+
+import Link from "next/link";
 
 import {
   Building,
@@ -25,57 +27,42 @@ const roboto = Roboto({ subsets: ["latin"], weight: ["100", "200", "300", "400",
 const loanOptions = [
   {
     title: "Build long-term wealth through residential or commercial property",
-    // description:
-    //   "Pay interest only for a set period (typically 1–5 years) to maximise cash flow and tax-deductible interest.",
-    icon: <TrendingUp size={32} className="text-[#f171ac]" />,
+    icon: <CircleCheck size={32} className="text-[#f171ac]" />,
   },
   {
     title: "Tax-effective strategy for your retirement",
-    // description:
-    //   "Pay down both the principal and interest to build equity while managing long-term costs.",
-    icon: <DollarSign size={32} className="text-[#f171ac]" />,
+    icon: <CircleCheck size={32} className="text-[#f171ac]" />,
   },
   {
     title: "Use rental income and super contributions to repay the loan",
-    // description:
-    //   "Choose between rate stability (fixed) or flexibility (variable), or split the loan to enjoy both benefits.",
-    icon: <Activity size={32} className="text-[#f171ac]" />,
+    icon: <CircleCheck size={32} className="text-[#f171ac]" />,
   },
   {
     title: "No personal liability when properly structured",
-    // description:
-    //   "Use the equity in your existing home or investment to fund a new purchase without needing a full deposit.",
-    icon: <TrendingUp size={32} className="text-[#f171ac]" />,
+    icon: <CircleCheck size={32} className="text-[#f171ac]" />,
   },
-
-  // {
-  //   title: "Family Equity Investment Loans",
-  //   description:
-  //     "Leverage a family member’s equity to help you start your investment journey sooner",
-  //   icon: <TrendingUp size={32} className="text-[#f171ac]" />,
-  // },
 ];
 
 
 // Steps Content
 const steps = [
   {
-    icon: <ClipboardList size={26} />,
+    icon: <CircleCheck size={26} />,
     title: "SMSF loan structuring and borrowing strategy",
     // desc: "We assess your investment goals, income, and long-term vision.",
   },
   {
-    icon: <FileCheck size={26} />,
+    icon: <CircleCheck size={26} />,
     title: "Access to lenders who specialise in SMSF-compliant products",
     // desc: "We calculate how much you can borrow based on rental income and liabilities.",
   },
   {
-    icon: <Landmark size={26} />,
+    icon: <CircleCheck size={26} />,
     title: "Collaboration with your SMSF adviser or accountant",
     // desc: "We submit your application to a lender suited to investment needs, including interest-only or high-LVR loans.",
   },
   {
-    icon: <CheckCircle size={26} />,
+    icon: <CircleCheck size={26} />,
     title: "Help with property due diligence and trust documentation",
     // desc: "We liaise with your agent or buyer’s advocate to review the investment property’s yield and structure.",
   },
@@ -100,20 +87,20 @@ const steps = [
 
 
 // Clients Feedback
-const InvestmentLoanTestimonials = [
-  {
-    content: "Kubaer Finance helped us structure our first investment loan perfectly. We’ve already added a second property to our portfolio",
-    author: "Suresh & Reena, Campbelltown",
-  },
-  {
-    content: "They explained interest-only loans and tax strategies in a way I could understand. I’ve recommended them to friends already.",
-    author: "Michael T., Seaton",
-  },
-  {
-    content: "The team found an investor-friendly lender and made sure my equity was used wisely. The whole process was smooth",
-    author: "Ayesha K., Northfield",
-  },
-];
+// const InvestmentLoanTestimonials = [
+//   {
+//     content: "Kubaer Finance helped us structure our first investment loan perfectly. We’ve already added a second property to our portfolio",
+//     author: "Suresh & Reena, Campbelltown",
+//   },
+//   {
+//     content: "They explained interest-only loans and tax strategies in a way I could understand. I’ve recommended them to friends already.",
+//     author: "Michael T., Seaton",
+//   },
+//   {
+//     content: "The team found an investor-friendly lender and made sure my equity was used wisely. The whole process was smooth",
+//     author: "Ayesha K., Northfield",
+//   },
+// ];
 
 
 export default function SmsfLoanPage() {
@@ -160,16 +147,28 @@ export default function SmsfLoanPage() {
                 <div
                   className={`text-[#d8d8d8] text-justify text-[16px] md:text-[16px] font-normal ${roboto.className} leading-[25px] md:leading-[28px] tracking-[-1%]`}
                 >
-                  Looking to take control of your retirement strategy? An SMSF loan allows you to purchase an investment property using your superannuation fund. It’s a powerful way to grow your wealth, but strict compliance rules mean expert guidance is essential.At Kubaer Finance, we specialise in structuring compliant SMSF property loans with your accountant and financial adviser.
+                  Looking to take control of your retirement strategy? An SMSF loan allows you to purchase an investment property using your superannuation fund. It’s a powerful way to grow your wealth, but strict compliance rules mean expert guidance is essential.
+                  <br />
+                  At Kubaer Finance, we specialise in structuring compliant SMSF property loans with your accountant and financial adviser.
                 </div>
+
+                {/* <div>
+                  <h5>Why Consider an SMSF Loan?</h5>
+                  <ul>
+                    <li>Build long-term wealth through residential or commercial property</li>
+                    <li>Tax-effective strategy for your retirement</li>
+                    <li>Use rental income and super contributions to repay the loan</li>
+                    <li>Build long-term wealth through residential or commercial property</li>
+                  </ul>
+                </div> */}
 
                 {/* Call Button */}
                 <div>
                   <a
-                    href="tel:1300Kubaer"
+                    href="tel:1300KUBAER"
                     className="bg-purple-100 text-[#86489B] hover:!bg-[#F172AC] hover:!text-white py-[12px] px-[20px] rounded-[10px] transition duration-300 text-center w-max"
                   >
-                    1300 Kubaer
+                    1300KUBAER
                   </a>
                 </div>
               </div>
@@ -273,45 +272,45 @@ export default function SmsfLoanPage() {
               </h2>
 
               {/* ICONS + LABELS */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
                 {[
-                  { name: "SMSF set up", icon: Landmark },
-                  { name: "Investment property", icon: Building },
-                  { name: "Enough funds", icon: Banknote },
-                  { name: "Corporate trustee", icon: LineChart },
-                  // { name: "Credit Unions", icon: PiggyBank },
+                  { name: "You have an established SMSF", icon: CircleCheck },
+                  { name: "You intend to purchase property for investment only", icon: CircleCheck },
+                  { name: "Your fund has enough balance or contributions to support the loan", icon: CircleCheck },
+                  { name: "You have a corporate trustee in place", icon: CircleCheck },
                 ].map((item, index) => {
                   const IconComponent = item.icon;
+
                   return (
                     <div
                       key={index}
-                      className="relative rounded-[10px] transition-all duration-500 ease-in-out"
                       data-aos="fade-up"
                       data-aos-duration="800"
                       data-aos-delay={200 + index * 200}
                       data-aos-once="true"
+                      className="relative rounded-[10px] transition-all duration-500 ease-in-out h-[auto] sm:h-[60px] md:h-[90px] lg:h-[80px]"
                     >
-                      <div className="relative flex items-center justify-center gap-3 px-4 py-3 rounded-[10px] bg-white border-2 border-transparent drop-shadow-[0_4px_10px_rgba(241,114,172,0.15)] transition-all duration-500 ease-in-out hover:shadow-[0_6px_20px_rgba(241,114,172,0.4)] hover:[background:linear-gradient(white,white)_padding-box,linear-gradient(to_right,#86489B,#F172AC)_border-box] hover:cursor-pointer">
+                      <div className="relative flex flex-row items-center gap-1 px-4 py-3 rounded-[10px] bg-white border-2 border-transparent drop-shadow-[0_4px_10px_rgba(241,114,172,0.15)] transition-all duration-500 ease-in-out hover:shadow-[0_6px_20px_rgba(241,114,172,0.4)] hover:[background:linear-gradient(white,white)_padding-box,linear-gradient(to_right,#86489B,#F172AC)_border-box] hover:cursor-pointer h-full">
 
-                        {/* DYNAMIC ICON */}
-                        <IconComponent size={32} className="text-[#F171AC] relative z-10" />
+                        {/* ICON */}
+                        <IconComponent className="flex-shrink-0 text-[#F171AC] relative z-10 w-5 h-5 sm:w-6 sm:h-6 md:w-6 md:h-6 lg:w-6 lg:h-6" />
 
+                        {/* TEXT */}
                         <div
-                          className={`text-[18px] md:text-[20px] text-transparent bg-clip-text bg-gradient-to-r from-[#86489B] to-[#F171AC] ${roboto.className} font-[500] relative z-10`}
+                          className={`text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px] text-transparent bg-clip-text bg-gradient-to-r from-[#86489B] to-[#F171AC] ${roboto.className} font-[500] ml-2 sm:ml-3`}
                         >
                           {item.name}
                         </div>
+
                       </div>
                     </div>
                   );
                 })}
               </div>
+
             </section>
           </div>
         </div>
-
-
-
 
 
         {/* 4. Home Loan Journey */}
@@ -367,13 +366,13 @@ export default function SmsfLoanPage() {
         <div className="bg-[#fdf2f9] py-16">
           <div className="container mx-auto px-4">
             {/* Section Title */}
-            <div className={`text-[32px] text-center font-semibold mb-10 leading-[40px] text-transparent bg-clip-text bg-gradient-to-r from-[#86489B] to-[#F171AC]`}
+            {/* <div className={`text-[32px] text-center font-semibold mb-10 leading-[40px] text-transparent bg-clip-text bg-gradient-to-r from-[#86489B] to-[#F171AC]`}
               data-aos="fade-down"
               data-aos-duration="800"
               data-aos-delay="200"
               data-aos-once="true">
               Client Testimonials
-            </div>
+            </div> */}
 
             {/* Swiper Carousel */}
             <div
@@ -381,7 +380,21 @@ export default function SmsfLoanPage() {
               data-aos-duration="800"
               data-aos-delay="300"
               data-aos-once="true">
-              <TestimonialsSlider showTitle={false} testimonials={InvestmentLoanTestimonials} />
+              <TestimonialsSlider
+                title="What Our Clients Say"
+                testimonials={[
+                  {
+                    name: "Mehul P.",
+                    designation: "Mawson Lakes",
+                    content: "I always thought buying property through my super was too complex. Kubaer made it incredibly easy and compliant.",
+                  },
+                  {
+                    name: "Leanne J.",
+                    designation: "Golden Grove",
+                    content: "They worked directly with my accountant and made the SMSF lending process stress-free. Highly recommend!",
+                  },
+                ]}
+              />
             </div>
           </div>
         </div>
@@ -390,10 +403,10 @@ export default function SmsfLoanPage() {
         {/* <div className="container mx-auto px-4 py-12">
           <section className="text-center">
             <div className={`text-[32px] text-center font-semibold mb-4 leading-[40px] text-transparent bg-clip-text bg-gradient-to-r from-[#86489B] to-[#F171AC] ${archivo.className}`}>
-              Ready to Optimise Your Loan?
+              Start Your SMSF Property Journey with Confidence
             </div>
             <p className="text-gray-700 mb-6">
-              Speak to our experts today and find out how much you could save by refinancing your home loan.
+              Get expert support from day one. Book your discovery call with Kubaer Finance today.
             </p>
             <a
               href="/contact"
@@ -403,6 +416,43 @@ export default function SmsfLoanPage() {
             </a>
           </section>
         </div> */}
+
+        {/* 6. Call to Action */}
+        <div
+          className="relative bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: "url('/assets/img/banner.jpg')",
+          }}
+        >
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-gray-700/60"></div>
+
+          <div className="relative container mx-auto !px-4 !py-12">
+            <section className="text-center">
+              <div className={`text-[22px] leading-[30px]
+              sm:text-[26px] sm:leading-[34px]
+              md:text-[32px] md:leading-[40px]
+              lg:text-[36px] lg:leading-[44px]
+              text-center font-semibold leading-[40px] 
+              text-white ${archivo.className}`}
+              >
+                Start Your SMSF Property Journey with Confidence
+              </div>
+
+              <p className="!text-[#d8d8d8] !text-[16px] !md:text-[16px] !font-medium ${roboto.className} !leading-[25px] !md:leading-[28px] !tracking-[-1%]">
+                Get expert support from day one. Book your discovery call with Kubaer Finance today.
+              </p>
+
+              <Link
+                href="tel:08 8166 2682"
+                className="btn-default px-6 py-3 rounded-md text-white bg-purple-700 hover:bg-purple-800 transition duration-300"
+              >
+                Book Your Discovery Call
+              </Link>
+            </section>
+          </div>
+        </div>
+
       </main>
       {/* Content Ends */}
 

@@ -7,6 +7,8 @@ import "aos/dist/aos.css";
 import Image from "next/image";
 import Founder from "/public/assets/img/about/Bipin Joshi.png";
 
+import { Landmark, Building2, Banknote, LineChart } from "lucide-react";
+
 import { Archivo, Roboto } from "next/font/google";
 const archivo = Archivo({
   subsets: ["latin"],

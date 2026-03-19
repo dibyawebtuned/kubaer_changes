@@ -162,7 +162,9 @@ export default function AboutComponent() {
                             <div>
                                 <div className="text-2xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-[#86489B] to-[#F171AC]">Our Mission</div>
                                 <div className={`text-[#533641] ${roboto.className} !leading-[25px] !font-[400] tracking-[-1%]`}>
-                                    To empower individuals and businesses with secure, innovative, and accessible financial solutions — helping them save, invest, and grow with confidence.
+                                    To simplify the mortgage journey through transparent advice, tailored solutions,
+                                    and genuine support — from your first home to your forever home.
+
                                 </div>
                             </div>
                         </div>
@@ -190,7 +192,13 @@ export default function AboutComponent() {
                             <div>
                                 <div className="text-2xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-[#86489B] to-[#F171AC]">Our Vision</div>
                                 <div className={`text-[#533641] ${roboto.className} !leading-[25px] !font-[400] tracking-[-1%]`}>
-                                    To be a trusted leader in modern banking and investment services, shaping a financially inclusive future where everyone has the tools to achieve
+                                    To be the most trusted partner in property finance helping every
+                                    individual, especially working families and migrants, unlock wealth, security, and
+                                    freedom through smart lending choices.
+                                    We envision a future where homeownership and property investment are
+                                    accessible, stress-free, and deeply empowering, not just a transaction, but a
+                                    transformation.
+
                                 </div>
                             </div>
                         </div>
