@@ -417,9 +417,7 @@ export default function HomeLoanPage() {
 
 
 
-
-
-                <div className="flex justify-center w-full">
+                {/* <div className="flex justify-center w-full">
                   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 items-stretch">
                     {[
                       {
@@ -454,7 +452,6 @@ export default function HomeLoanPage() {
                           data-aos-delay={200 + index * 200}
                           data-aos-once="true"
                         >
-                          {/* Card */}
                           <div
                             className="
                             relative flex flex-col items-center justify-center
@@ -475,19 +472,15 @@ export default function HomeLoanPage() {
                             lg:h-[320px]
                           "
                           >
-                            {/* Icon */}
                             <IconComponent className="w-8 h-8 text-[#F171AC]" />
 
-                            {/* Content */}
                             <div className="flex flex-col items-center gap-[10px] w-full">
-                              {/* Title */}
                               <div
                                 className={`text-[18px] md:text-[20px] text-center text-transparent bg-clip-text bg-gradient-to-r from-[#86489B] to-[#F171AC] ${roboto.className} font-[500]`}
                               >
                                 {item.name}
                               </div>
 
-                              {/* Pills */}
                               <div className="flex flex-wrap gap-x-1 gap-y-2 justify-center">
                                 {item.desc.split(",").map((point, i) => (
                                   <div
@@ -498,6 +491,126 @@ export default function HomeLoanPage() {
                                     <span>{point.trim()}</span>
                                   </div>
                                 ))}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div> */}
+
+
+
+
+
+
+                <div className="flex justify-center w-full">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[20px] items-stretch">
+                    {[
+                      {
+                        name: "Major Banks",
+                        icon: Landmark,
+                        images: [
+                          "/assets/img/lenders/anz.jpg",
+                          "/assets/img/lenders/westpac.webp",
+                        ],
+                      },
+                      {
+                        name: "Second-Tier Lenders",
+                        icon: Building2,
+                        images: [
+                          "/assets/img/lenders/ING.jpg",
+                          "/assets/img/lenders/suncorp.png",
+                          "/assets/img/lenders/bendigo bank.png",
+                        ],
+                      },
+                      {
+                        name: "Non-Bank Lenders",
+                        icon: Banknote,
+                        images: [
+                          "/assets/img/lenders/firstmac.png",
+                          "/assets/img/lenders/Pepper Money Logo.png",
+                          "/assets/img/lenders/Athena Home Loans.webp",
+                        ],
+                      },
+                      {
+                        name: "Credit Unions & Mutual Banks",
+                        icon: LineChart,
+                        images: [],
+                      },
+                    ].map((item, index) => {
+                      const IconComponent = item.icon;
+
+                      return (
+                        <div
+                          key={index}
+                          className="flex justify-center"
+                          data-aos="fade-up"
+                          data-aos-duration="800"
+                          data-aos-delay={200 + index * 200}
+                          data-aos-once="true"
+                        >
+                          {/* Card */}
+                          <div
+                            className="
+            relative flex flex-col items-center justify-center
+            gap-[15px] px-4 py-5
+            rounded-[12px] bg-white
+            border-2 border-transparent
+            drop-shadow-[0_4px_10px_rgba(241,114,172,0.15)]
+            transition-all duration-500 ease-in-out
+            hover:shadow-[0_6px_20px_rgba(241,114,172,0.4)]
+            hover:[background:linear-gradient(white,white)_padding-box,linear-gradient(to_right,#86489B,#F172AC)_border-box]
+            hover:cursor-pointer
+
+            w-full
+            h-[300px]
+            sm:h-[320px]
+            md:h-[340px]
+          "
+                          >
+                            {/* Icon */}
+                            <IconComponent className="w-9 h-9 text-[#F171AC]" />
+
+                            {/* Content */}
+                            <div className="flex flex-col items-center gap-[12px] w-full">
+                              {/* Title */}
+                              <div
+                                className={`text-[18px] md:text-[20px] text-center text-transparent bg-clip-text bg-gradient-to-r from-[#86489B] to-[#F171AC] ${roboto.className} font-[500]`}
+                              >
+                                {item.name}
+                              </div>
+
+                              {/* Logos */}
+                              <div className="flex flex-wrap justify-center items-center gap-4 mt-2">
+                                {item.images.length > 0 ? (
+                                  item.images.map((img, i) => (
+                                    <div
+                                      key={i}
+                                      className="
+                        bg-white rounded-md p-2
+                        shadow-sm flex items-center justify-center
+                        w-[80px] h-[50px]
+                        sm:w-[90px] sm:h-[60px]
+                        md:w-[100px] md:h-[65px]
+                        hover:scale-110 transition-transform duration-300
+                      "
+                                    >
+                                      <img
+                                        src={img}
+                                        alt="logo"
+                                        className="
+                          object-contain w-full h-full
+                          grayscale hover:grayscale-0
+                          transition duration-300
+                        "
+                                      />
+                                    </div>
+                                  ))
+                                ) : (
+                                  <p className="text-sm text-gray-400">Coming soon</p>
+                                )}
                               </div>
                             </div>
                           </div>
@@ -608,24 +721,6 @@ export default function HomeLoanPage() {
             </div>
           </div>
         </div>
-
-        {/* 6. Call to Action */}
-        {/* <div className="container mx-auto px-4 py-12">
-          <section className="text-center">
-            <div className={`text-[32px] text-center font-semibold mb-4 leading-[40px] text-transparent bg-clip-text bg-gradient-to-r from-[#86489B] to-[#F171AC] ${archivo.className}`}>
-              Ready to Optimise Your Loan?
-            </div>
-            <p className="text-gray-700 mb-6">
-              Speak to our experts today and find out how much you could save by refinancing your home loan.
-            </p>
-            <a
-              href="/contact"
-              className="btn-default px-6 py-3 rounded-md text-white bg-purple-700 hover:bg-purple-800 transition duration-300"
-            >
-              Book Your Discovery Call
-            </a>
-          </section>
-        </div> */}
       </main>
       {/* Content Ends */}
 
