@@ -53,7 +53,7 @@ const loanOptions = [
     description:
       "These are the most common, where the interest rate can fluctuate with market conditions. They often offer flexibility with extra repayments and redraw facilities. ",
     icon: <TrendingUp size={32} className="text-[#f171ac]" />,
-    link: "/loans/bridging",
+    link: "/bridging-loan",
   },
   {
     title: "Fixed Rate Home Loans",
@@ -278,41 +278,41 @@ export default function HomeLoanPage() {
             </h2>
 
             <div className="flex flex-wrap gap-6">
-              {loanOptions.map((loan, index) => (
-                <a
-                  key={index}
-                  href={loan.link || "#"} // Add real URL for each loan
-                  className="
-        flex gap-4 flex-1 basis-full sm:basis-[calc(33.333%-16px)]
-        p-6 bg-white rounded-2xl
-        border-l-4 border-[#F172AC]
-        shadow-[0_4px_15px_rgba(241,114,172,0.2)]
-        transform
-        transition-all duration-1500 ease-in-out
-        hover:-translate-y-3
-        hover:shadow-[0_12px_40px_rgba(241,114,172,0.35)]
-        items-start
-      "
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  data-aos="fade-up"
-                  data-aos-duration="800"
-                  data-aos-delay={index * 100}
-                  data-aos-once="true"
-                >
-                  {/* Icon */}
-                  <div className="flex-shrink-0">{loan.icon}</div>
+              {loanOptions.map(({ title, icon, link }, idx) => (
+  <a
+    key={idx}
+    href={link} // now link comes from destructuring
+    className="
+      flex gap-4 flex-1 basis-full sm:basis-[calc(33.333%-16px)]
+      p-6 bg-white rounded-2xl
+      border-l-4 border-[#F172AC]
+      shadow-[0_4px_15px_rgba(241,114,172,0.2)]
+      transform
+      transition-all duration-1500 ease-in-out
+      hover:-translate-y-3
+      hover:shadow-[0_12px_40px_rgba(241,114,172,0.35)]
+      items-start
+    "
+    target="_blank"
+    rel="noopener noreferrer"
+    data-aos="fade-up"
+    data-aos-duration="800"
+    data-aos-delay={idx * 100}
+    data-aos-once="true"
+  >
+    {/* Icon */}
+    <div className="flex-shrink-0">{icon}</div>
 
-                  {/* Title */}
-                  <div className="flex flex-col">
-                    <div
-                      className={`text-[18px] md:text-[20px] text-transparent bg-clip-text bg-gradient-to-r from-[#86489B] to-[#F171AC] font-[500] mb-2 ${archivo.className}`}
-                    >
-                      {loan.title}
-                    </div>
-                  </div>
-                </a>
-              ))}
+    {/* Title */}
+    <div className="flex flex-col">
+      <div
+        className={`text-[18px] md:text-[20px] text-transparent bg-clip-text bg-gradient-to-r from-[#86489B] to-[#F171AC] font-[500] mb-2 ${archivo.className}`}
+      >
+        {title}
+      </div>
+    </div>
+  </a>
+))}
             </div>
           </section>
 
