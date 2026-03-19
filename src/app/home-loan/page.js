@@ -49,34 +49,95 @@ const HomeLoanTestimonials = [
 
 const loanOptions = [
   {
-    title: "Standard Variable Rate Loans",
+    title: "Bridging Loan",
     description:
       "These are the most common, where the interest rate can fluctuate with market conditions. They often offer flexibility with extra repayments and redraw facilities. ",
     icon: <TrendingUp size={32} className="text-[#f171ac]" />,
+    link: "/loans/bridging",
   },
   {
-    title: "Fixed Rate Loans",
+    title: "Fixed Rate Home Loans",
     description:
       "Lock in your interest rate for a set period (typically 1-5 years), providing repayment certainty regardless of market shifts. This can be great for budgeting. ",
     icon: <Lock size={32} className="text-[#f171ac]" />,
+    link: "/loans/bridging",
   },
   {
-    title: "Split Loans",
+    title: "Guarantor Loan",
     description:
       "A popular hybrid option, allowing you to split your loan into both fixed and variable portions, giving you a balance of certainty and flexibility.",
     icon: <Split size={32} className="text-[#f171ac]" />,
+    link: "/loans/bridging",
   },
   {
-    title: "Guarantor Loans",
+    title: "Home loans for Healthcare Workers",
     description:
       "If you have a family member willing to offer the equity in their property as security, a guarantor loan can help you enter the market with a smaller deposit, potentially avoiding Lenders Mortgage Insurance (LMI). ",
     icon: <Users size={32} className="text-[#f171ac]" />,
+    link: "/loans/bridging",
   },
   {
-    title: "Low-Doc/Alt-Doc Loans",
+    title: "Home loans for Self-Employed",
     description:
       "Designed for self-employed individuals or those with non-traditional income, these loans offer more flexible documentation requirements, though they may come with higher interest rates.",
     icon: <FileText size={32} className="text-[#f171ac]" />,
+    link: "/loans/bridging",
+  },
+  {
+    title: "Interest-Only Home Loan",
+    description:
+      "Designed for self-employed individuals or those with non-traditional income, these loans offer more flexible documentation requirements, though they may come with higher interest rates.",
+    icon: <FileText size={32} className="text-[#f171ac]" />,
+    link: "/loans/bridging",
+  },
+  {
+    title: "Line of Credits Loan",
+    description:
+      "Designed for self-employed individuals or those with non-traditional income, these loans offer more flexible documentation requirements, though they may come with higher interest rates.",
+    icon: <FileText size={32} className="text-[#f171ac]" />,
+    link: "/loans/bridging",
+  },
+  {
+    title: "Low Doc Loan",
+    description:
+      "Designed for self-employed individuals or those with non-traditional income, these loans offer more flexible documentation requirements, though they may come with higher interest rates.",
+    icon: <FileText size={32} className="text-[#f171ac]" />,
+    link: "/loans/bridging",
+  },
+  {
+    title: "Offset Account Loans",
+    description:
+      "Designed for self-employed individuals or those with non-traditional income, these loans offer more flexible documentation requirements, though they may come with higher interest rates.",
+    icon: <FileText size={32} className="text-[#f171ac]" />,
+    link: "/loans/bridging",
+  },
+  {
+    title: "Principal and Interest Home loan",
+    description:
+      "Designed for self-employed individuals or those with non-traditional income, these loans offer more flexible documentation requirements, though they may come with higher interest rates.",
+    icon: <FileText size={32} className="text-[#f171ac]" />,
+    link: "/loans/bridging",
+  },
+  {
+    title: "Redraw Facilty Loan",
+    description:
+      "Designed for self-employed individuals or those with non-traditional income, these loans offer more flexible documentation requirements, though they may come with higher interest rates.",
+    icon: <FileText size={32} className="text-[#f171ac]" />,
+    link: "/loans/bridging",
+  },
+  {
+    title: "Split Loan",
+    description:
+      "Designed for self-employed individuals or those with non-traditional income, these loans offer more flexible documentation requirements, though they may come with higher interest rates.",
+    icon: <FileText size={32} className="text-[#f171ac]" />,
+    link: "/loans/bridging",
+  },
+  {
+    title: "Variable Home Loans",
+    description:
+      "Designed for self-employed individuals or those with non-traditional income, these loans offer more flexible documentation requirements, though they may come with higher interest rates.",
+    icon: <FileText size={32} className="text-[#f171ac]" />,
+    link: "/loans/bridging",
   },
 ];
 
@@ -206,119 +267,118 @@ export default function HomeLoanPage() {
         {/* 2. Types of First Home Buyer Loans & Government Support */}
         <div className="container mx-auto px-4">
           <section className="flex flex-col gap-[0px] sm:gap-[30px] py-12 sm:py-24">
-            <h2 className="{`text-2xl text-center !font-semibold mb-4 !leading-[40px] !text-transparent bg-clip-text bg-gradient-to-r from-[#86489B] to-[#F171AC] ${archivo.className}`}" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200" data-aos-once="true">
-              Types of First Home Buyer Loans <br /> & Government Support
+            <h2
+              className={`text-2xl text-center !font-semibold mb-4 !leading-[40px] !text-transparent bg-clip-text bg-gradient-to-r from-[#86489B] to-[#F171AC] ${archivo.className}`}
+              data-aos="fade-up"
+              data-aos-duration="1000"
+              data-aos-delay="200"
+              data-aos-once="true"
+            >
+              Types of Home Loans
             </h2>
 
-            <div className="flex flex-col gap-8">
-              {/* First row with first two items */}
-              <div className="flex flex-col sm:flex-row gap-6">
-                {loanOptions.slice(0, 2).map((loan, index) => (
-                  <div
-                    key={index}
-                    className="flex gap-4 flex-1 p-6 bg-white rounded-2xl shadow-[0_4px_15px_rgba(241,114,172,0.2)] hover:shadow-[0_6px_20px_rgba(241,114,172,0.5)] transform transition-transform transition-shadow duration-1000 ease-in-out hover:-translate-y-2 items-start border-l-4 border-[#F172AC]"
-                    data-aos="fade-up"
-                    data-aos-duration="800"
-                    data-aos-delay={index * 200}
-                    data-aos-once="true"
-                  >
-                    {/* Icon */}
-                    <div className="flex-shrink-0 text-[#F171AC]">{loan.icon}</div>
+            <div className="flex flex-wrap gap-6">
+              {loanOptions.map((loan, index) => (
+                <a
+                  key={index}
+                  href={loan.link || "#"} // Add real URL for each loan
+                  className="
+        flex gap-4 flex-1 basis-full sm:basis-[calc(33.333%-16px)]
+        p-6 bg-white rounded-2xl
+        border-l-4 border-[#F172AC]
+        shadow-[0_4px_15px_rgba(241,114,172,0.2)]
+        transform
+        transition-all duration-1500 ease-in-out
+        hover:-translate-y-3
+        hover:shadow-[0_12px_40px_rgba(241,114,172,0.35)]
+        items-start
+      "
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-aos="fade-up"
+                  data-aos-duration="800"
+                  data-aos-delay={index * 100}
+                  data-aos-once="true"
+                >
+                  {/* Icon */}
+                  <div className="flex-shrink-0">{loan.icon}</div>
 
-                    {/* Text */}
-                    <div className="flex flex-col">
-                      <div
-                        className={`text-[18px] md:text-[20px] text-transparent bg-clip-text bg-gradient-to-r from-[#86489B] to-[#F171AC] font-[500] mb-2 ${archivo.className}`}
-                      >
-                        {loan.title}
-                      </div>
-                      <div className={`text-[14px] md:text-[15px] text-gray-700 font-[400] ${roboto.className} leading-relaxed`}>
-                        {loan.description}
-                      </div>
+                  {/* Title */}
+                  <div className="flex flex-col">
+                    <div
+                      className={`text-[18px] md:text-[20px] text-transparent bg-clip-text bg-gradient-to-r from-[#86489B] to-[#F171AC] font-[500] mb-2 ${archivo.className}`}
+                    >
+                      {loan.title}
                     </div>
                   </div>
-
-                ))}
-              </div>
-
-              {/* Remaining items */}
-              <div className="flex flex-col sm:flex-row gap-6 flex-wrap">
-                {loanOptions.slice(2).map((loan, index) => (
-                  <div
-                    key={index}
-                    className="flex gap-4 flex-1 p-6 bg-white rounded-2xl shadow-[0_4px_15px_rgba(241,114,172,0.2)] hover:shadow-[0_6px_20px_rgba(241,114,172,0.5)] transition-all duration-300 items-start border-l-4 border-[#F172AC]"
-                    data-aos="fade-up"
-                    data-aos-duration="800"
-                    data-aos-delay={index * 300}
-                    data-aos-once="true"
-                  >
-                    <div className="flex-shrink-0 text-[#F171AC]">{loan.icon}</div>
-                    <div className="flex flex-col">
-                      <div
-                        className={`text-[18px] md:text-[20px] text-transparent bg-clip-text bg-gradient-to-r from-[#86489B] to-[#F171AC] font-[500] mb-2 ${archivo.className}`}
-                      >
-                        {loan.title}
-                      </div>
-                      <div className={`text-[14px] md:text-[15px] text-gray-700 font-[400] ${roboto.className} leading-relaxed`}>
-                        {loan.description}
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
+                </a>
+              ))}
             </div>
           </section>
 
+          {/* Government Support Section */}
           <section className="pb-10 flex flex-col gap-[10px] sm:gap-[30px]">
-            <h4 className={`!text-2xl text-center !font-semibold !mb-4 !leading-[30px] !text-transparent bg-clip-text bg-gradient-to-r from-[#86489B] to-[#F171AC] ${archivo.className}`}>
-              Beyond the loan types, crucial government initiatives <br /> can significantly assist first home buyers:
+            <h4
+              className={`!text-2xl text-center !font-semibold !mb-4 !leading-[30px] !text-transparent bg-clip-text bg-gradient-to-r from-[#86489B] to-[#F171AC] ${archivo.className}`}
+            >
+              First Home Guarantee Schemes 
+              {/* <br /> can significantly assist first home buyers: */}
             </h4>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {[
                 {
-                  title: "First Home Buyer Guarantee (FHBG)",
-                  description:
-                    "Allows eligible first home buyers to purchase a home with as little as a 5% deposit without paying Lenders Mortgage Insurance (LMI).",
+                  title: "Australian Government 5% Deposite Scheme",
                   icon: Gift,
+                  link: "/fhbg",
+                },
+                {
+                  title: "First Home Guarantee (FHG)",
+                  icon: Gift,
+                  link: "/fhbg", // Example link
                 },
                 {
                   title: "Regional First Home Buyer Guarantee (RFHBG)",
-                  description:
-                    "Similar to the FHBG, but specifically for eligible regional first home buyers in designated regional areas.",
                   icon: MapPin,
+                  link: "/rfhbg",
                 },
                 {
-                  title: "Family Home Guarantee (FHG)",
-                  description:
-                    "Supports eligible single parents with dependants to purchase a home with a deposit as low as 2%.",
+                  title: "Family Home Buyer Guarantee (FHBG)",
                   icon: Users,
+                  link: "/fhg",
                 },
                 {
                   title: "First Home Owner Grant (FHOG)",
-                  description:
-                    "A one-off grant offered by state and territory governments for eligible first home buyers purchasing or building new homes. Eligibility and grant amounts vary by state.",
                   icon: HandCoins,
+                  link: "/fhog",
                 },
                 {
                   title: "First Home Super Saver (FHSS) Scheme",
-                  description:
-                    "This allows you to save for your first home inside your superannuation fund, benefiting from concessional tax rates. You can then withdraw these voluntary contributions and associated earnings to help with your deposit.",
                   icon: PiggyBank,
+                  link: "/fhss",
                 },
                 {
-                  title: "Help to Buy Scheme (Coming Soon)",
-                  description:
-                    "A proposed shared equity scheme where the government would contribute to the purchase price of a home, reducing the amount you need to borrow. We'll keep you updated as this becomes available. We'll help you understand which of these schemes you might be eligible for and how they can best be leveraged for your unique situation.",
+                  title: "Help to Buy Scheme",
                   icon: Building2,
+                  link: "#",
+                },
+                {
+                  title: "Stamp-Duty Exemptions or Concessions",
+                  icon: Building2,
+                  link: "#",
                 },
               ].map((item, index) => {
                 const Icon = item.icon;
 
                 return (
-                  <div
+                  <a
                     key={index}
+                    href={item.link}
                     className="flex gap-4 flex-1 p-6 bg-white rounded-2xl shadow-[0_4px_15px_rgba(241,114,172,0.2)] hover:shadow-[0_6px_20px_rgba(241,114,172,0.5)] transition-all duration-300 items-start border-l-4 border-[#F172AC]"
+                    data-aos="fade-up"
+                    data-aos-duration="800"
+                    data-aos-delay={index * 200}
+                    data-aos-once="true"
                   >
                     {/* ICON */}
                     <div className="flex-shrink-0">
@@ -327,19 +387,17 @@ export default function HomeLoanPage() {
 
                     {/* CONTENT */}
                     <div>
-                      <div className={`text-[18px] md:text-[20px] text-transparent bg-clip-text bg-gradient-to-r from-[#86489B] to-[#F171AC] font-[500] mb-2 ${archivo.className}`}>
+                      <div
+                        className={`text-[18px] md:text-[20px] text-transparent bg-clip-text bg-gradient-to-r from-[#86489B] to-[#F171AC] font-[500] mb-2 ${archivo.className}`}
+                      >
                         {item.title}
                       </div>
-                      <p className={`!text-[14px] !md:text-[15px] !text-gray-700 !font-[400] !${roboto.className} !leading-relaxed`}>
-                        {item.description}
-                      </p>
                     </div>
-                  </div>
+                  </a>
                 );
               })}
             </div>
           </section>
-
         </div>
 
         {/* 3. Lenders */}
