@@ -14,7 +14,6 @@ const archivo = Archivo({ subsets: ["latin"], weight: ["100", "200", "300", "400
 const roboto = Roboto({ subsets: ["latin"], weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], });
 
 
-
 export default function HomeLoanPage() {
     useEffect(() => {
         AOS.init({

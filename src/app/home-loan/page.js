@@ -19,12 +19,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 
-import {
-  Gift,
-  ReceiptText,
-  HandCoins,
-} from "lucide-react";
-
+import { Gift, ReceiptText, HandCoins, } from "lucide-react";
 
 
 const archivo = Archivo({ subsets: ["latin"], weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], });
@@ -60,84 +55,84 @@ const loanOptions = [
     description:
       "Lock in your interest rate for a set period (typically 1-5 years), providing repayment certainty regardless of market shifts. This can be great for budgeting. ",
     icon: <Lock size={32} className="text-[#f171ac]" />,
-    link: "/loans/bridging",
+    link: "/fixed-rate-home-loans",
   },
   {
     title: "Guarantor Loan",
     description:
       "A popular hybrid option, allowing you to split your loan into both fixed and variable portions, giving you a balance of certainty and flexibility.",
     icon: <Split size={32} className="text-[#f171ac]" />,
-    link: "/loans/bridging",
+    link: "/guarantor-loan",
   },
   {
     title: "Home loans for Healthcare Workers",
     description:
       "If you have a family member willing to offer the equity in their property as security, a guarantor loan can help you enter the market with a smaller deposit, potentially avoiding Lenders Mortgage Insurance (LMI). ",
     icon: <Users size={32} className="text-[#f171ac]" />,
-    link: "/loans/bridging",
+    link: "/home-loans-for-healthcare",
   },
   {
     title: "Home loans for Self-Employed",
     description:
       "Designed for self-employed individuals or those with non-traditional income, these loans offer more flexible documentation requirements, though they may come with higher interest rates.",
     icon: <FileText size={32} className="text-[#f171ac]" />,
-    link: "/loans/bridging",
+    link: "/loans-for-self-employed",
   },
   {
     title: "Interest-Only Home Loan",
     description:
       "Designed for self-employed individuals or those with non-traditional income, these loans offer more flexible documentation requirements, though they may come with higher interest rates.",
     icon: <FileText size={32} className="text-[#f171ac]" />,
-    link: "/loans/bridging",
+    link: "/interest-only-home-loan",
   },
   {
     title: "Line of Credits Loan",
     description:
       "Designed for self-employed individuals or those with non-traditional income, these loans offer more flexible documentation requirements, though they may come with higher interest rates.",
     icon: <FileText size={32} className="text-[#f171ac]" />,
-    link: "/loans/bridging",
+    link: "/line-of-credits-loan",
   },
   {
     title: "Low Doc Loan",
     description:
       "Designed for self-employed individuals or those with non-traditional income, these loans offer more flexible documentation requirements, though they may come with higher interest rates.",
     icon: <FileText size={32} className="text-[#f171ac]" />,
-    link: "/loans/bridging",
+    link: "/low-doc-loan",
   },
   {
     title: "Offset Account Loans",
     description:
       "Designed for self-employed individuals or those with non-traditional income, these loans offer more flexible documentation requirements, though they may come with higher interest rates.",
     icon: <FileText size={32} className="text-[#f171ac]" />,
-    link: "/loans/bridging",
+    link: "/offset-account-loans",
   },
   {
     title: "Principal and Interest Home loan",
     description:
       "Designed for self-employed individuals or those with non-traditional income, these loans offer more flexible documentation requirements, though they may come with higher interest rates.",
     icon: <FileText size={32} className="text-[#f171ac]" />,
-    link: "/loans/bridging",
+    link: "/principal-and-interest-home-loan",
   },
   {
     title: "Redraw Facilty Loan",
     description:
       "Designed for self-employed individuals or those with non-traditional income, these loans offer more flexible documentation requirements, though they may come with higher interest rates.",
     icon: <FileText size={32} className="text-[#f171ac]" />,
-    link: "/loans/bridging",
+    link: "/redraw-facilty-loan",
   },
   {
     title: "Split Loan",
     description:
       "Designed for self-employed individuals or those with non-traditional income, these loans offer more flexible documentation requirements, though they may come with higher interest rates.",
     icon: <FileText size={32} className="text-[#f171ac]" />,
-    link: "/loans/bridging",
+    link: "/split-loan",
   },
   {
     title: "Variable Home Loans",
     description:
       "Designed for self-employed individuals or those with non-traditional income, these loans offer more flexible documentation requirements, though they may come with higher interest rates.",
     icon: <FileText size={32} className="text-[#f171ac]" />,
-    link: "/loans/bridging",
+    link: "/variable-home-loans",
   },
 ];
 
@@ -279,50 +274,37 @@ export default function HomeLoanPage() {
 
             <div className="flex flex-wrap gap-6">
               {loanOptions.map(({ title, icon, link }, idx) => (
-  <a
-    key={idx}
-    href={link} // now link comes from destructuring
-    className="
-      flex gap-4 flex-1 basis-full sm:basis-[calc(33.333%-16px)]
-      p-6 bg-white rounded-2xl
-      border-l-4 border-[#F172AC]
-      shadow-[0_4px_15px_rgba(241,114,172,0.2)]
-      transform
-      transition-all duration-1500 ease-in-out
-      hover:-translate-y-3
-      hover:shadow-[0_12px_40px_rgba(241,114,172,0.35)]
-      items-start
-    "
-    target="_blank"
-    rel="noopener noreferrer"
-    data-aos="fade-up"
-    data-aos-duration="800"
-    data-aos-delay={idx * 100}
-    data-aos-once="true"
-  >
-    {/* Icon */}
-    <div className="flex-shrink-0">{icon}</div>
+                <a
+                  key={idx}
+                  href={link} // now link comes from destructuring
+                  className=" flex gap-4 flex-1 basis-full sm:basis-[calc(33.333%-16px)] p-6 bg-white rounded-2xl border-l-4 border-[#F172AC] shadow-[0_4px_15px_rgba(241,114,172,0.2)] transform transition-all duration-1500 ease-in-out hover:shadow-[0_12px_40px_rgba(241,114,172,0.25)] items-start"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-aos="fade-up"
+                  data-aos-duration="800"
+                  data-aos-delay={idx * 100}
+                  data-aos-once="true"
+                >
+                  {/* Icon */}
+                  <div className="flex-shrink-0">{icon}</div>
 
-    {/* Title */}
-    <div className="flex flex-col">
-      <div
-        className={`text-[18px] md:text-[20px] text-transparent bg-clip-text bg-gradient-to-r from-[#86489B] to-[#F171AC] font-[500] mb-2 ${archivo.className}`}
-      >
-        {title}
-      </div>
-    </div>
-  </a>
-))}
+                  {/* Title */}
+                  <div className="flex flex-col">
+                    <div
+                      className={`text-[18px] md:text-[20px] text-transparent bg-clip-text bg-gradient-to-r from-[#86489B] to-[#F171AC] font-[500] mb-2 ${archivo.className}`}
+                    >
+                      {title}
+                    </div>
+                  </div>
+                </a>
+              ))}
             </div>
           </section>
 
           {/* Government Support Section */}
           <section className="pb-10 flex flex-col gap-[10px] sm:gap-[30px]">
-            <h4
-              className={`!text-2xl text-center !font-semibold !mb-4 !leading-[30px] !text-transparent bg-clip-text bg-gradient-to-r from-[#86489B] to-[#F171AC] ${archivo.className}`}
-            >
-              First Home Guarantee Schemes 
-              {/* <br /> can significantly assist first home buyers: */}
+            <h4 className={`!text-2xl text-center !font-semibold !mb-4 !leading-[30px] !text-transparent bg-clip-text bg-gradient-to-r from-[#86489B] to-[#F171AC] ${archivo.className}`} >
+              First Home Guarantee Schemes
             </h4>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -330,12 +312,12 @@ export default function HomeLoanPage() {
                 {
                   title: "Australian Government 5% Deposite Scheme",
                   icon: Gift,
-                  link: "/fhbg",
+                  link: "/first-home-guarantee-schemes",
                 },
                 {
                   title: "First Home Guarantee (FHG)",
                   icon: Gift,
-                  link: "/fhbg", // Example link
+                  link: "/fhbg",
                 },
                 {
                   title: "Regional First Home Buyer Guarantee (RFHBG)",
@@ -746,15 +728,6 @@ export default function HomeLoanPage() {
         {/* 5. Client Testimonials */}
         <div className="bg-[#fdf2f9] py-16">
           <div className="container mx-auto px-4">
-            {/* Section Title */}
-            {/* <div className={`text-[32px] text-center font-semibold mb-10 leading-[40px] text-transparent bg-clip-text bg-gradient-to-r from-[#86489B] to-[#F171AC]`}
-              data-aos="fade-down"
-              data-aos-duration="800"
-              data-aos-delay="200"
-              data-aos-once="true">
-              Client Testimonials
-            </div> */}
-
             {/* Swiper Carousel */}
             <div
               data-aos="fade-up"

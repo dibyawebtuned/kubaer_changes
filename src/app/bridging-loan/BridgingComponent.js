@@ -1,5 +1,15 @@
 "use client";
 import React, { useState } from "react";
+import CallAction from "@/components/CallAction";
+import TestimonialsSlider from "@/components/Testimonials";
+import "swiper/css";
+import "swiper/css/pagination";
+import { Archivo, Roboto } from "next/font/google";
+
+
+const archivo = Archivo({ subsets: ["latin"], weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], });
+const roboto = Roboto({ subsets: ["latin"], weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], });
+
 
 // ─── Icons ─────────────────────────────────────────────────────────────────────
 function IconChevron({ open }) {
@@ -91,9 +101,9 @@ const steps = [
 ];
 
 const benefits = [
-    { Icon: IconKey,    title: "Buy Before Selling",      desc: "Secure your next home without waiting for your current property to settle." },
-    { Icon: IconShield, title: "Avoid Rushed Sales",       desc: "Choose a better time and price to sell — no pressure to accept low offers." },
-    { Icon: IconClock,  title: "Flexible Moving Timeline", desc: "Coordinate your move on your terms without double moves or temporary rentals." },
+    { Icon: IconKey, title: "Buy Before Selling", desc: "Secure your next home without waiting for your current property to settle." },
+    { Icon: IconShield, title: "Avoid Rushed Sales", desc: "Choose a better time and price to sell — no pressure to accept low offers." },
+    { Icon: IconClock, title: "Flexible Moving Timeline", desc: "Coordinate your move on your terms without double moves or temporary rentals." },
 ];
 
 const risks = [
@@ -106,10 +116,10 @@ const risks = [
 ];
 
 const qualifyItems = [
-    { n: "01", title: "Equity",          desc: "~50% preferred. Higher equity reduces risk. Some lenders accept lower with at least 20% combined LVR." },
-    { n: "02", title: "Serviceability",  desc: "Proof of income, expenses, and credit history. Lenders test against peak or end debt depending on structure." },
-    { n: "03", title: "Loan Timeframe",  desc: "Up to 6 months for established properties. Up to 12 months if construction is involved." },
-    { n: "04", title: "Exit Strategy",   desc: "Signed agent agreement, property listed for sale, estimated comparable sale prices, or contract of sale." },
+    { n: "01", title: "Equity", desc: "~50% preferred. Higher equity reduces risk. Some lenders accept lower with at least 20% combined LVR." },
+    { n: "02", title: "Serviceability", desc: "Proof of income, expenses, and credit history. Lenders test against peak or end debt depending on structure." },
+    { n: "03", title: "Loan Timeframe", desc: "Up to 6 months for established properties. Up to 12 months if construction is involved." },
+    { n: "04", title: "Exit Strategy", desc: "Signed agent agreement, property listed for sale, estimated comparable sale prices, or contract of sale." },
 ];
 
 const takeaways = [
@@ -143,17 +153,20 @@ function GradientText({ children, className = "" }) {
     );
 }
 
+
+// ====== Heading ======
 function SectionHeading({ children }) {
     return (
-        <h2 className="text-3xl md:text-4xl lg:text-[44px] font-bold leading-tight mb-3 text-gray-800">
+        <h2 className="text-3xl! md:text-4xl! lg:text-[44px]! font-medium! leading-tight! mb-3!">
             {children}
         </h2>
     );
 }
 
+// ====== Sub-Heading ======
 function SectionLead({ children, className = "" }) {
     return (
-        <p className={`text-base text-gray-500 font-light leading-relaxed max-w-xl mb-12 ${className}`}>
+        <p className={`text-base! text-gray-500 font-normal! leading-relaxed! max-w-xl! mb-12! ${className}`}>
             {children}
         </p>
     );
@@ -161,14 +174,14 @@ function SectionLead({ children, className = "" }) {
 
 function PinkDivider() {
     return (
-        <div className="w-full h-px bg-gradient-to-r from-transparent via-[#F171AC]/25 to-transparent" />
+        <div className="hidden! sm:block! w-full h-px bg-gradient-to-r from-transparent via-[#F171AC]/25 to-transparent" />
     );
 }
 
 // Card with left border accent + pink shadow on hover (matches site style)
 function AccentCard({ children, className = "" }) {
     return (
-        <div className={`bg-white rounded-2xl border-l-4 border-[#F172AC] shadow-[0_4px_15px_rgba(241,114,172,0.12)] hover:shadow-[0_6px_20px_rgba(241,114,172,0.35)] transition-all duration-300 hover:-translate-y-1 ${className}`}>
+        <div className={`bg-white! rounded-2xl! border-l-4! border-[#F172AC]! shadow-[0_4px_15px_rgba(241,114,172,0.12)]! hover:shadow-[0_6px_20px_rgba(241,114,172,0.35)]! transition-all! duration-300! hover:-translate-y-1 p-4! sm:p-5! md:p-6! ${className}`}>
             {children}
         </div>
     );
@@ -176,23 +189,23 @@ function AccentCard({ children, className = "" }) {
 
 // ─── Calculator ────────────────────────────────────────────────────────────────
 function BridgingCalculator() {
-    const [existingValue,    setExistingValue]    = useState(700000);
+    const [existingValue, setExistingValue] = useState(700000);
     const [existingMortgage, setExistingMortgage] = useState(300000);
-    const [newPurchase,      setNewPurchase]      = useState(800000);
-    const [salePrice,        setSalePrice]        = useState(750000);
+    const [newPurchase, setNewPurchase] = useState(800000);
+    const [salePrice, setSalePrice] = useState(750000);
 
-    const peakDebt    = existingMortgage + newPurchase;
+    const peakDebt = existingMortgage + newPurchase;
     const netProceeds = salePrice - existingMortgage;
-    const endDebt     = Math.max(0, peakDebt - netProceeds);
-    const equity      = existingValue - existingMortgage;
-    const lvr         = ((peakDebt / (existingValue + newPurchase)) * 100).toFixed(1);
-    const fmt         = (n) => "$" + Math.round(n).toLocaleString("en-AU");
+    const endDebt = Math.max(0, peakDebt - netProceeds);
+    const equity = existingValue - existingMortgage;
+    const lvr = ((peakDebt / (existingValue + newPurchase)) * 100).toFixed(1);
+    const fmt = (n) => "$" + Math.round(n).toLocaleString("en-AU");
 
     const fields = [
-        { label: "Current Property Value", val: existingValue,    set: setExistingValue,    min: 100000, max: 5000000, step: 10000 },
-        { label: "Existing Mortgage",      val: existingMortgage, set: setExistingMortgage, min: 0,      max: 4000000, step: 10000 },
-        { label: "New Purchase Price",     val: newPurchase,      set: setNewPurchase,      min: 100000, max: 5000000, step: 10000 },
-        { label: "Expected Sale Price",    val: salePrice,        set: setSalePrice,        min: 100000, max: 5000000, step: 10000 },
+        { label: "Current Property Value", val: existingValue, set: setExistingValue, min: 100000, max: 5000000, step: 10000 },
+        { label: "Existing Mortgage", val: existingMortgage, set: setExistingMortgage, min: 0, max: 4000000, step: 10000 },
+        { label: "New Purchase Price", val: newPurchase, set: setNewPurchase, min: 100000, max: 5000000, step: 10000 },
+        { label: "Expected Sale Price", val: salePrice, set: setSalePrice, min: 100000, max: 5000000, step: 10000 },
     ];
 
     return (
@@ -244,8 +257,8 @@ function BridgingCalculator() {
                 <div className="h-px bg-gradient-to-r from-[#86489B]/20 to-[#F171AC]/20 my-1" />
 
                 {[
-                    { label: "Your Equity",       val: fmt(equity) },
-                    { label: "Combined LVR",      val: `${lvr}%` },
+                    { label: "Your Equity", val: fmt(equity) },
+                    { label: "Combined LVR", val: `${lvr}%` },
                     { label: "Net Sale Proceeds", val: fmt(netProceeds) },
                 ].map((row, i) => (
                     <div key={i} className="flex justify-between items-center py-2.5 border-b border-[#F171AC]/[0.07] text-sm">
@@ -263,11 +276,10 @@ function BridgingCalculator() {
                     </span>
                 </div>
 
-                <p className={`mt-3 text-[13px] leading-relaxed rounded-xl px-4 py-3 border ${
-                    endDebt > newPurchase * 0.9
-                        ? "bg-rose-50 border-rose-200 text-rose-600"
-                        : "bg-green-50 border-green-200 text-green-600"
-                }`}>
+                <p className={`mt-3 text-[13px] leading-relaxed rounded-xl px-4 py-3 border ${endDebt > newPurchase * 0.9
+                    ? "bg-rose-50 border-rose-200 text-rose-600"
+                    : "bg-green-50 border-green-200 text-green-600"
+                    }`}>
                     {endDebt > newPurchase * 0.9
                         ? "⚠ High end debt — consider building in a sale buffer."
                         : "✓ Estimated end debt looks manageable."}
@@ -285,7 +297,7 @@ function FaqItem({ q, a }) {
             className="border-b border-[#F171AC]/15 cursor-pointer group first:border-t first:border-[#F171AC]/15"
             onClick={() => setOpen(!open)}
         >
-            <div className={`flex justify-between items-center py-5 px-1 text-[15px] font-medium gap-4 transition-colors duration-200
+            <div className={`flex! justify-between! items-center! py-8! px-1! text-[20px]! font-medium! gap-4! transition-colors duration-200
                 ${open
                     ? "bg-gradient-to-r from-[#86489B] to-[#F171AC] bg-clip-text text-transparent"
                     : "text-gray-700 group-hover:text-[#F171AC]"
@@ -294,7 +306,7 @@ function FaqItem({ q, a }) {
                 <span className="text-[#F171AC] flex-shrink-0"><IconChevron open={open} /></span>
             </div>
             {open && (
-                <div className="pb-5 px-1 text-sm text-gray-500 leading-relaxed font-light">
+                <div className="pb-5! px-1! text-[17px]! text-gray-500 leading-relaxed! font-medium!">
                     {a}
                 </div>
             )}
@@ -305,10 +317,8 @@ function FaqItem({ q, a }) {
 // ─── Main Component ────────────────────────────────────────────────────────────
 const BridgingComponent = () => {
     return (
-        <div className="font-sans bg-[#FDF8FF] text-gray-800 min-h-screen">
+        <div className="bg-[#FDF8FF] text-gray-800 min-h-screen">
             <style>{`
-                @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&display=swap');
-                .font-sans { font-family: 'Archivo', sans-serif !important; }
                 .grad-text {
                     background: linear-gradient(90deg, #86489B, #F171AC);
                     -webkit-background-clip: text;
@@ -317,9 +327,7 @@ const BridgingComponent = () => {
                 }
             `}</style>
 
-            {/* ══════════════════════════════════════════════════════
-                HERO
-            ══════════════════════════════════════════════════════ */}
+            {/* ══════════════════════════════════════════════════════ HERO ══════════════════════════════════════════════════════ */}
             <section className="relative text-center px-6 pt-24 pb-20 overflow-hidden">
                 {/* Soft radial bg matching brand */}
                 <div className="absolute inset-0 bg-gradient-to-br from-[#86489B]/[0.04] via-transparent to-[#F171AC]/[0.06] pointer-events-none" />
@@ -327,21 +335,21 @@ const BridgingComponent = () => {
 
                 <SectionTag>Bridging Finance Guide</SectionTag>
 
-                <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] mb-6 max-w-3xl mx-auto text-gray-800">
+                <h1 className={`text-3xl! sm:text-4xl! md:text-5xl! lg:text-6xl! font-medium! mb-6! max-w-3xl mx-auto text-gray-800 ${archivo.className}`}>
                     Buy Your Next Home<br />
                     <span className="grad-text">Before You Sell</span>
                 </h1>
 
-                <p className="text-lg md:text-xl text-gray-500 font-light max-w-xl mx-auto mb-12 leading-relaxed">
+                <p className={`text-sm! sm:text-base! md:text-lg! text-gray-500! font-normal! max-w-xl mx-auto ${archivo.className}`}>
                     Timing the property market is hard. A bridging loan gives you the confidence to secure your next home now — without the pressure of a rushed sale.
                 </p>
 
                 {/* Stats bar */}
                 <div className="flex flex-col sm:flex-row justify-center max-w-2xl mx-auto rounded-2xl overflow-hidden shadow-[0_4px_30px_rgba(241,113,172,0.15)] border border-[#F171AC]/20">
                     {[
-                        { val: "6–12",  label: "Months bridging period" },
-                        { val: "~50%",  label: "Equity preferred" },
-                        { val: "7–14",  label: "Days to approval" },
+                        { val: "6–12", label: "Months bridging period" },
+                        { val: "~50%", label: "Equity preferred" },
+                        { val: "7–14", label: "Days to approval" },
                     ].map((s, i) => (
                         <div key={i} className="flex-1 py-6 px-5 text-center bg-white border-b sm:border-b-0 sm:border-r border-[#F171AC]/15 last:border-0">
                             <span className="text-3xl font-bold block mb-1 grad-text">{s.val}</span>
@@ -353,10 +361,8 @@ const BridgingComponent = () => {
 
             <PinkDivider />
 
-            {/* ══════════════════════════════════════════════════════
-                KEY TAKEAWAYS
-            ══════════════════════════════════════════════════════ */}
-            <section className="max-w-5xl mx-auto px-6 py-20">
+            {/* ══════════════════════════════════════════════════════ KEY TAKEAWAYS ══════════════════════════════════════════════════════ */}
+            <section className="container mx-auto px-6 py-20 mt-15 sm:mt-0">
                 <SectionTag>Key Takeaways</SectionTag>
                 <SectionHeading>
                     What You Need to <GradientText>Know</GradientText>
@@ -371,7 +377,7 @@ const BridgingComponent = () => {
                             <div className="w-6 h-6 rounded-full bg-gradient-to-r from-[#86489B] to-[#F171AC] flex items-center justify-center text-white flex-shrink-0 mt-0.5">
                                 <IconCheck />
                             </div>
-                            <span className="text-sm text-gray-500 leading-relaxed font-light">{text}</span>
+                            <span className="text-[15px]! text-gray-500! leading-relaxed! font-normal!">{text}</span>
                         </AccentCard>
                     ))}
                 </div>
@@ -379,16 +385,14 @@ const BridgingComponent = () => {
 
             <PinkDivider />
 
-            {/* ══════════════════════════════════════════════════════
-                HOW IT WORKS — STEPS
-            ══════════════════════════════════════════════════════ */}
-            <section className="max-w-5xl mx-auto px-6 py-20">
+            {/* ══════════════════════════════════════════════════════ HOW IT WORKS — STEPS ══════════════════════════════════════════════════════ */}
+            <section className="container mx-auto px-6 py-20 mt-15 sm:mt-0">
                 <SectionTag>Process</SectionTag>
                 <SectionHeading>
                     How Bridging Loans <GradientText>Work</GradientText>
                 </SectionHeading>
                 <SectionLead>
-                    Six clear steps from assessment to your ongoing home loan — here's exactly what to expect.
+                    Six clear steps from assessment to your ongoing home loan — here is exactly what to expect.
                 </SectionLead>
 
                 <div className="flex flex-col relative">
@@ -402,8 +406,8 @@ const BridgingComponent = () => {
                                 <span className="text-xl font-bold grad-text">{s.num}</span>
                             </div>
                             <div className="pt-4 flex-1">
-                                <p className="text-xl font-bold text-gray-800 mb-2">{s.title}</p>
-                                <p className="text-[15px] text-gray-500 leading-relaxed font-light">{s.desc}</p>
+                                <p className="text-xl! font-bold! text-[#86489b]! mb-2!">{s.title}</p>
+                                <p className="text-[15px]! text-gray-500 leading-relaxed! font-normal!">{s.desc}</p>
                             </div>
                         </div>
                     ))}
@@ -412,14 +416,14 @@ const BridgingComponent = () => {
 
             <PinkDivider />
 
-            {/* ══════════════════════════════════════════════════════
-                WORKED EXAMPLE
-            ══════════════════════════════════════════════════════ */}
-            <section className="max-w-5xl mx-auto px-6 py-20">
+            {/* ══════════════════════════════════════════════════════ WORKED EXAMPLE ══════════════════════════════════════════════════════ */}
+            <section className="container mx-auto px-6 py-20 mt-15 sm:mt-0">
                 <SectionTag>Real-Life Scenario</SectionTag>
+
                 <SectionHeading>
                     A Worked <GradientText>Example</GradientText>
                 </SectionHeading>
+
                 <SectionLead>
                     See exactly how peak debt and end debt are calculated in a real bridging scenario.
                 </SectionLead>
@@ -430,17 +434,17 @@ const BridgingComponent = () => {
                         <div className="w-9 h-9 rounded-xl bg-gradient-to-r from-[#86489B]/15 to-[#F171AC]/15 border border-[#F171AC]/25 flex items-center justify-center text-[#F171AC]">
                             <IconCalculator />
                         </div>
-                        <h3 className="text-xl font-bold text-gray-800">Buying Before Selling</h3>
+                        <h3 className="text-xl! font-semibold! text-gray-800">Buying Before Selling</h3>
                     </div>
 
                     <div className="p-8">
                         {/* 4 data cards */}
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
                             {[
-                                { step: "Current Property", label: "Market Value",       val: "$700,000" },
-                                { step: "Existing Debt",    label: "Remaining Mortgage", val: "$300,000" },
-                                { step: "New Purchase",     label: "Purchase Price",     val: "$800,000" },
-                                { step: "Sale Result",      label: "Sale Price",         val: "$750,000" },
+                                { step: "Current Property", label: "Market Value", val: "$700,000" },
+                                { step: "Existing Debt", label: "Remaining Mortgage", val: "$300,000" },
+                                { step: "New Purchase", label: "Purchase Price", val: "$800,000" },
+                                { step: "Sale Result", label: "Sale Price", val: "$750,000" },
                             ].map((c, i) => (
                                 <div key={i} className="p-5 bg-gradient-to-br from-[#86489B]/5 to-[#F171AC]/5 border border-[#F171AC]/15 rounded-2xl">
                                     <div className="text-[10px] font-semibold tracking-widest uppercase text-[#86489B] mb-1.5">{c.step}</div>
@@ -453,12 +457,12 @@ const BridgingComponent = () => {
                         {/* Formula */}
                         <div className="bg-gradient-to-br from-[#86489B]/5 to-[#F171AC]/5 border border-[#F171AC]/20 rounded-2xl px-6 py-5">
                             {[
-                                { label: "Existing mortgage",                       val: "$300,000",   total: false },
-                                { label: "+ New purchase",                           val: "$800,000",   total: false },
-                                { label: "Peak Debt",                               val: "$1,100,000", total: true  },
-                                { label: "Peak debt",                               val: "$1,100,000", total: false, mt: true },
-                                { label: "− Net sale proceeds ($750k − $300k)",     val: "$450,000",   total: false },
-                                { label: "End Debt (your new home loan)",           val: "$650,000",   total: true, gold: true },
+                                { label: "Existing mortgage", val: "$300,000", total: false },
+                                { label: "+ New purchase", val: "$800,000", total: false },
+                                { label: "Peak Debt", val: "$1,100,000", total: true },
+                                { label: "Peak debt", val: "$1,100,000", total: false, mt: true },
+                                { label: "− Net sale proceeds ($750k − $300k)", val: "$450,000", total: false },
+                                { label: "End Debt (your new home loan)", val: "$650,000", total: true, gold: true },
                             ].map((row, i) => (
                                 <div key={i} className={`flex justify-between items-center py-2 border-b border-[#F171AC]/[0.08] last:border-0 text-sm
                                     ${row.total ? "font-semibold pt-3.5" : "text-gray-500"}
@@ -476,10 +480,8 @@ const BridgingComponent = () => {
 
             <PinkDivider />
 
-            {/* ══════════════════════════════════════════════════════
-                CALCULATOR
-            ══════════════════════════════════════════════════════ */}
-            <section className="max-w-5xl mx-auto px-6 py-20">
+            {/* ══════════════════════════════════════════════════════ CALCULATOR ══════════════════════════════════════════════════════ */}
+            <section className="container mx-auto px-6 py-20 mt-15 sm:mt-0">
                 <SectionTag>Interactive Tool</SectionTag>
                 <SectionHeading>
                     Calculate Your <GradientText>Bridging Figures</GradientText>
@@ -492,10 +494,8 @@ const BridgingComponent = () => {
 
             <PinkDivider />
 
-            {/* ══════════════════════════════════════════════════════
-                BENEFITS
-            ══════════════════════════════════════════════════════ */}
-            <section className="max-w-5xl mx-auto px-6 py-20">
+            {/* ══════════════════════════════════════════════════════ BENEFITS ══════════════════════════════════════════════════════ */}
+            <section className="container mx-auto px-6 py-20 mt-15 sm:mt-0">
                 <SectionTag>Benefits</SectionTag>
                 <SectionHeading>
                     Why Borrowers Choose <GradientText>Bridging Finance</GradientText>
@@ -510,8 +510,8 @@ const BridgingComponent = () => {
                             <div className="w-11 h-11 rounded-xl bg-gradient-to-r from-[#86489B]/15 to-[#F171AC]/15 border border-[#F171AC]/25 flex items-center justify-center text-[#F171AC] mb-4">
                                 <b.Icon />
                             </div>
-                            <p className="text-lg font-bold text-gray-800 mb-2">{b.title}</p>
-                            <p className="text-sm text-gray-500 leading-relaxed font-light">{b.desc}</p>
+                            <p className="text-lg! font-semibold! text-[#86489b]! mb-2">{b.title}</p>
+                            <p className="text-sm! text-gray-500! leading-relaxed! font-normal!">{b.desc}</p>
                         </AccentCard>
                     ))}
                 </div>
@@ -519,10 +519,8 @@ const BridgingComponent = () => {
 
             <PinkDivider />
 
-            {/* ══════════════════════════════════════════════════════
-                RISKS
-            ══════════════════════════════════════════════════════ */}
-            <section className="max-w-5xl mx-auto px-6 py-20">
+            {/* ══════════════════════════════════════════════════════ RISKS ══════════════════════════════════════════════════════ */}
+            <section className="container mx-auto px-6 py-20 mt-15 sm:mt-0">
                 <SectionTag>Risks &amp; Considerations</SectionTag>
                 <SectionHeading>
                     What Can <GradientText>Go Wrong</GradientText>
@@ -535,7 +533,7 @@ const BridgingComponent = () => {
                     {risks.map((r, i) => (
                         <div key={i} className="flex gap-3 items-start p-4 bg-rose-50 border border-rose-200/60 rounded-xl">
                             <span className="text-rose-400 flex-shrink-0 mt-0.5"><IconWarning /></span>
-                            <span className="text-sm text-gray-500 leading-relaxed font-light">{r}</span>
+                            <span className="text-sm! text-gray-500 leading-relaxed! font-normal!">{r}</span>
                         </div>
                     ))}
                 </div>
@@ -543,10 +541,8 @@ const BridgingComponent = () => {
 
             <PinkDivider />
 
-            {/* ══════════════════════════════════════════════════════
-                WHO QUALIFIES
-            ══════════════════════════════════════════════════════ */}
-            <section className="max-w-5xl mx-auto px-6 py-20">
+            {/* ══════════════════════════════════════════════════════ WHO QUALIFIES ══════════════════════════════════════════════════════ */}
+            <section className="container mx-auto px-6 py-20 mt-15 sm:mt-0">
                 <SectionTag>Eligibility</SectionTag>
                 <SectionHeading>
                     Who Can <GradientText>Qualify?</GradientText>
@@ -559,8 +555,8 @@ const BridgingComponent = () => {
                     {qualifyItems.map((q, i) => (
                         <AccentCard key={i} className="p-6">
                             <div className="text-4xl font-bold grad-text opacity-30 leading-none mb-3">{q.n}</div>
-                            <p className="text-[15px] font-semibold text-gray-800 mb-2">{q.title}</p>
-                            <p className="text-[13px] text-gray-500 leading-relaxed font-light">{q.desc}</p>
+                            <p className="text-[18px]! font-semibold! text-[#86489b]! mb-2">{q.title}</p>
+                            <p className="text-[13px]! text-gray-500! leading-relaxed! font-medium!">{q.desc}</p>
                         </AccentCard>
                     ))}
                 </div>
@@ -568,10 +564,8 @@ const BridgingComponent = () => {
 
             <PinkDivider />
 
-            {/* ══════════════════════════════════════════════════════
-                FAQ
-            ══════════════════════════════════════════════════════ */}
-            <section className="max-w-3xl mx-auto px-6 py-16">
+            {/* ══════════════════════════════════════════════════════ FAQ ══════════════════════════════════════════════════════ */}
+            <section className="container mx-auto px-6 py-16 mt-15 sm:mt-0">
                 <SectionTag>FAQs</SectionTag>
                 <SectionHeading>
                     Common <GradientText>Questions</GradientText>
@@ -589,27 +583,8 @@ const BridgingComponent = () => {
 
             <PinkDivider />
 
-            {/* ══════════════════════════════════════════════════════
-                CTA
-            ══════════════════════════════════════════════════════ */}
-            <section className="relative text-center px-6 py-24 overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-[#86489B]/[0.05] to-[#F171AC]/[0.07] pointer-events-none" />
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full bg-[radial-gradient(ellipse,rgba(241,113,172,0.12)_0%,transparent_70%)] pointer-events-none" />
-
-                <SectionTag>Get Started</SectionTag>
-                <h2 className="text-4xl md:text-5xl font-bold mb-4 max-w-xl mx-auto text-gray-800">
-                    Ready to <span className="grad-text">Bridge the Gap?</span>
-                </h2>
-                <p className="text-base text-gray-500 font-light max-w-md mx-auto mb-10 leading-relaxed">
-                    Our brokers specialise in bridging finance. We'll help you structure your loan to minimise risk and move forward with confidence.
-                </p>
-                <a
-                    href="#contact"
-                    className="inline-flex items-center gap-2.5 bg-gradient-to-r from-[#86489B] to-[#F171AC] text-white font-semibold text-sm tracking-wide px-8 py-4 rounded-full cursor-pointer transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_30px_rgba(241,113,172,0.45)] no-underline"
-                >
-                    Speak with a Broker <IconArrowRight />
-                </a>
-            </section>
+            {/* ══════════════════════════════════════════════════════ CTA ══════════════════════════════════════════════════════ */}
+            <CallAction />
 
         </div>
     );
