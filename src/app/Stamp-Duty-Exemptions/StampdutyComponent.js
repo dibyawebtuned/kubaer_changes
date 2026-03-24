@@ -505,7 +505,7 @@ export default function StampdutyComponent() {
               <div className="rounded-3xl p-7" style={{ background: "linear-gradient(135deg, #86489B, #F171AC)" }}>
                 <h3 className={`${archivo.className} text-xl font-medium! text-white mb-3!`}>⚠ Buying With Someone Else</h3>
                 <p className={`${roboto.className} text-white text-sm! font-normal! mb-4!`} style={{ opacity: 0.95, lineHeight: 1.7 }}>
-                  This is the biggest "gotcha" area for stamp duty concessions.
+                  This is the biggest area for stamp duty concessions.
                 </p>
                 <div className="space-y-3">
                   {[
@@ -532,7 +532,7 @@ export default function StampdutyComponent() {
               <div className="warning-box rounded-2xl p-5">
                 <h3 className={`${archivo.className} text-xl font-medium! mb-3!`} style={{ color: "#F171AC" }}>New Builds vs Established Homes</h3>
                 <p className={`${roboto.className} text-sm! font-normal! mb-4! tracking-normal!`} style={{ color: "#6B6B6B", lineHeight: 1.7 }}>
-                  New builds and off-the-plan purchases are often treated more generously than established homes — but not in every state. The property classification matters enormously. Check your state's current rules for the property type you're purchasing.
+                  New builds and off-the-plan purchases are often treated more generously than established homes — but not in every state. The property classification matters enormously. Check your {`state's`} current rules for the property type you are purchasing.
                 </p>
               </div>
             </div>
@@ -588,7 +588,7 @@ export default function StampdutyComponent() {
             How to Apply
           </h2>
           <p className={`${roboto.className} font-normal! tracking-normal! text-[16px]! max-w-2xl!`} style={{ color: "#6B6B6B" }}>
-            In most cases, you don't apply in the way you apply for a loan. The process is built into the purchase and settlement workflow — handled by your conveyancer.
+            In most cases, you donot apply in the way you apply for a loan. The process is built into the purchase and settlement workflow — handled by your conveyancer.
           </p>
 
           <div className="rounded-2xl overflow-hidden bg-white mb-10" style={{ border: "1px solid rgba(134,72,155,0.15)" }}>
@@ -688,39 +688,39 @@ export default function StampdutyComponent() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-5">
-  {CARDS.map((c) => {
-    const Icon = c.icon;
+            {CARDS.map((c) => {
+              const Icon = c.icon;
 
-    return (
-      <div
-        key={c.title}
-        className="guarantee-card rounded-2xl p-6 card-hover"
-      >
-        {/* Icon */}
-        <div className="mb-3">
-          <Icon
-            className="w-7 h-7 p-1.5 rounded-md"
-            style={{ color: c.color }}
-          />
-        </div>
+              return (
+                <div
+                  key={c.title}
+                  className="guarantee-card rounded-2xl p-6 card-hover"
+                >
+                  {/* Icon */}
+                  <div className="mb-3">
+                    <Icon
+                      className="w-7 h-7 p-1.5 rounded-md"
+                      style={{ color: c.color }}
+                    />
+                  </div>
 
-        <h4
-          className={`${archivo.className} font-semibold! text-[18px]! sm:text-[20px]! mb-2!`}
-          style={{ color: c.color }}
-        >
-          {c.title}
-        </h4>
+                  <h4
+                    className={`${archivo.className} font-semibold! text-[18px]! sm:text-[20px]! mb-2!`}
+                    style={{ color: c.color }}
+                  >
+                    {c.title}
+                  </h4>
 
-        <p
-          className={`${roboto.className} text-sm! font-normal! tracking-normal!`}
-          style={{ color: "#6B6B6B", lineHeight: 1.7 }}
-        >
-          {c.body}
-        </p>
-      </div>
-    );
-  })}
-</div>
+                  <p
+                    className={`${roboto.className} text-sm! font-normal! tracking-normal!`}
+                    style={{ color: "#6B6B6B", lineHeight: 1.7 }}
+                  >
+                    {c.body}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </section>
 
@@ -775,7 +775,7 @@ export default function StampdutyComponent() {
             Stamp duty concessions can save first home buyers thousands of dollars — but only if you know the rules before you sign. Check your state's revenue office, use their calculator, and confirm eligibility with your conveyancer early.
           </p> */}
           <p className={`${roboto.className} font-normal! tracking-normal! text-[16px]! mb-7! max-w-2xl! mx-auto! text-white`} style={{ lineHeight: 1.7, opacity: 0.95 }}>
-            Stamp duty concessions can save first home buyers thousands of dollars — but only if you know the rules before you sign. Check your state's revenue office, use their calculator, and confirm eligibility with your conveyancer early.
+            Stamp duty concessions can save first home buyers thousands of dollars — but only if you know the rules before you sign. Check your {`state's`} revenue office, use their calculator, and confirm eligibility with your conveyancer early.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             {[
