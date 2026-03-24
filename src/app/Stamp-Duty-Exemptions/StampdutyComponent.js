@@ -3,11 +3,44 @@ import { useState } from "react";
 import { Archivo, Roboto } from "next/font/google";
 import Link from "next/link";
 
+import { Clipboard, Scale } from "lucide-react";
+import {
+  AlertTriangle,
+  Home,
+  Building2,
+  Shuffle,
+  Ruler,
+  Clock,
+} from "lucide-react";
+
+import { CheckCircle, TrendingDown } from "lucide-react";
+
 const NAV_LINKS = ["About", "Who Qualifies", "By State", "How to Apply", "Checklist", "FAQ"];
 
 const archivo = Archivo({ subsets: ["latin"], weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"] });
 const roboto = Roboto({ subsets: ["latin"], weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"] });
 
+
+const CARDS = [
+  {
+    title: "Before you sign",
+    body: "Items 1–9 above should be completed before you exchange contracts. Getting these right early prevents costly surprises at settlement.",
+    icon: Clipboard,
+    color: "#86489B",
+  },
+  {
+    title: "At and after settlement",
+    body: "Items 10–13 are about what you do after settlement. The occupancy requirement is ongoing — keep evidence that you moved in and stayed.",
+    icon: Home,
+    color: "#F171AC",
+  },
+  {
+    title: "Speak to your conveyancer",
+    body: "Your conveyancer handles the duty assessment on your behalf. Ask them to confirm eligibility in writing based on your specific contract before signing.",
+    icon: Scale,
+    color: "#6B6B6B",
+  },
+];
 
 const FAQS = [
   {
@@ -117,13 +150,46 @@ const STEPS = [
   },
 ];
 
+// const MISTAKES = [
+//   { title: "Assuming eligibility without checking", desc: "Especially when buying with a partner who has previously owned property. Always verify before signing.", icon: "⚠️" },
+//   { title: "Not meeting the residency rule", desc: "Moving in too late, or renting the property out before occupying it yourself, can disqualify your claim.", icon: "🏚️" },
+//   { title: "Buying under a trust or company", desc: "Most first home buyer benefits are for individuals buying in their own names. Trusts and companies are typically ineligible.", icon: "🏢" },
+//   { title: "Mixing up grants vs stamp duty relief", desc: "The First Home Owner Grant (FHOG) and stamp duty concessions are separate programs with different rules.", icon: "🔀" },
+//   { title: "Incorrect property classification", desc: "'New home', 'off-the-plan', 'substantial renovation', and 'vacant land' are defined differently by each state.", icon: "📐" },
+//   { title: "Missing deadlines or paperwork", desc: "Declarations, evidence, and settlement timing all matter. Late or incomplete documents can cost you the concession.", icon: "⏰" },
+// ];
+
 const MISTAKES = [
-  { title: "Assuming eligibility without checking", desc: "Especially when buying with a partner who has previously owned property. Always verify before signing.", icon: "⚠️" },
-  { title: "Not meeting the residency rule", desc: "Moving in too late, or renting the property out before occupying it yourself, can disqualify your claim.", icon: "🏚️" },
-  { title: "Buying under a trust or company", desc: "Most first home buyer benefits are for individuals buying in their own names. Trusts and companies are typically ineligible.", icon: "🏢" },
-  { title: "Mixing up grants vs stamp duty relief", desc: "The First Home Owner Grant (FHOG) and stamp duty concessions are separate programs with different rules.", icon: "🔀" },
-  { title: "Incorrect property classification", desc: "'New home', 'off-the-plan', 'substantial renovation', and 'vacant land' are defined differently by each state.", icon: "📐" },
-  { title: "Missing deadlines or paperwork", desc: "Declarations, evidence, and settlement timing all matter. Late or incomplete documents can cost you the concession.", icon: "⏰" },
+  {
+    title: "Assuming eligibility without checking",
+    desc: "Especially when buying with a partner who has previously owned property. Always verify before signing.",
+    icon: AlertTriangle,
+  },
+  {
+    title: "Not meeting the residency rule",
+    desc: "Moving in too late, or renting the property out before occupying it yourself, can disqualify your claim.",
+    icon: Home,
+  },
+  {
+    title: "Buying under a trust or company",
+    desc: "Most first home buyer benefits are for individuals buying in their own names. Trusts and companies are typically ineligible.",
+    icon: Building2,
+  },
+  {
+    title: "Mixing up grants vs stamp duty relief",
+    desc: "The First Home Owner Grant (FHOG) and stamp duty concessions are separate programs with different rules.",
+    icon: Shuffle,
+  },
+  {
+    title: "Incorrect property classification",
+    desc: "'New home', 'off-the-plan', 'substantial renovation', and 'vacant land' are defined differently by each state.",
+    icon: Ruler,
+  },
+  {
+    title: "Missing deadlines or paperwork",
+    desc: "Declarations, evidence, and settlement timing all matter. Late or incomplete documents can cost you the concession.",
+    icon: Clock,
+  },
 ];
 
 const CHECKLIST = [
@@ -252,7 +318,7 @@ export default function StampdutyComponent() {
       {/* ══════════════════════════════════════
           HERO
       ══════════════════════════════════════ */}
-      <section className="relative overflow-hidden px-6 md:px-12 pt-20 pb-32">
+      <section className="relative overflow-hidden px-2 md:px-12 pt-20 pb-32 ">
         <div className="absolute top-0 right-0 w-96 h-96 rounded-full opacity-20" style={{ background: "radial-gradient(circle, #F171AC, transparent)", transform: "translate(30%, -30%)" }} />
         <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full opacity-15" style={{ background: "radial-gradient(circle, #86489B, transparent)", transform: "translate(-30%, 30%)" }} />
 
@@ -268,7 +334,7 @@ export default function StampdutyComponent() {
             <span className="highlight-number italic">Concessions.</span>
           </h1>
 
-          <p className={`${roboto.className} text-lg! max-w-2xl! font-normal! tracking-normal! mb-10 scroll-reveal`} style={{ color: "#6B6B6B", animationDelay: "0.2s", lineHeight: 1.7 }}>
+          <p className={`${roboto.className} text-lg! max-w-xl! font-normal! tracking-normal! mb-10 scroll-reveal`} style={{ color: "#6B6B6B", animationDelay: "0.2s", lineHeight: 1.7 }}>
             <strong style={{ color: "#86489B" }}>Stamp duty (transfer duty)</strong> is a state and territory tax charged when you buy property — often one of the largest upfront costs after your deposit. Eligible first home buyers may receive a <strong style={{ color: "#86489B" }}>full exemption</strong> or <strong style={{ color: "#86489B" }}>partial concession</strong>, potentially saving thousands of dollars.
           </p>
 
@@ -309,7 +375,7 @@ export default function StampdutyComponent() {
       {/* ══════════════════════════════════════
           ABOUT
       ══════════════════════════════════════ */}
-      <section id="about" className="px-6 md:px-12 py-24" style={{ backgroundColor: "#ffffff" }}>
+      <section id="about" className="px-2 md:px-12 py-12 sm:py-24" style={{ backgroundColor: "#ffffff" }}>
         <div className="container mx-auto">
           <div className="mb-4 section-divider" />
           <h2 className={`${archivo.className} text-4xl! md:text-5xl! font-medium! mb-4!`} >
@@ -328,7 +394,7 @@ export default function StampdutyComponent() {
                 label: "Pay nothing",
                 desc: "The best-case outcome. You pay no stamp duty at all — usually applies when the property is under a certain value threshold and/or is a new home, and you meet owner-occupier requirements.",
                 color: "#86489B",
-                icon: "✅",
+                // icon: CheckCircle,
               },
               {
                 type: "Partial Concession",
@@ -336,12 +402,15 @@ export default function StampdutyComponent() {
                 label: "Pay less",
                 desc: "You pay a discounted amount. Often applies when the property is above the full exemption threshold but below an upper cap — think of it as a sliding scale that phases out as value increases.",
                 color: "#F171AC",
-                icon: "📉",
+                // icon: TrendingDown,
               },
             ].map((c) => (
               <div key={c.type} className="bg-white rounded-2xl p-8 card-hover" style={{ border: `1.5px solid ${c.color}33` }}>
                 <div className="flex items-center gap-3 mb-4">
-                  <span className="text-3xl">{c.icon}</span>
+                  {/* {(() => {
+                    const Icon = c.icon;
+                    return <Icon className="w-8 h-8" style={{ color: c.color }} />;
+                  })()} */}
                   <div>
                     <div className={`${archivo.className} font-semibold! text-3xl!`} style={{ color: c.color }}>{c.value}</div>
                     <div className={`${archivo.className} font-semibold! text-base!`} style={{ color: "#010101" }}>{c.type} — {c.label}</div>
@@ -398,7 +467,7 @@ export default function StampdutyComponent() {
       {/* ══════════════════════════════════════
           WHO QUALIFIES
       ══════════════════════════════════════ */}
-      <section id="who-qualifies" className="px-6 md:px-12 py-24" style={{ backgroundColor: "#FEF3F8" }}>
+      <section id="who-qualifies" className="px-2 md:px-12 py-24" style={{ backgroundColor: "#FEF3F8" }}>
         <div className="container mx-auto">
           <div className="mb-4 section-divider" />
           <h2 className={`${archivo.className} text-4xl! md:text-5xl! font-medium! mb-4!`}>
@@ -474,7 +543,7 @@ export default function StampdutyComponent() {
       {/* ══════════════════════════════════════
           BY STATE
       ══════════════════════════════════════ */}
-      <section id="by-state" className="px-6 md:px-12 py-24" style={{ backgroundColor: "#ffffff" }}>
+      <section id="by-state" className="px-2 md:px-12 py-24" style={{ backgroundColor: "#ffffff" }}>
         <div className="container mx-auto">
           <div className="mb-4 section-divider" />
           <h2 className={`${archivo.className} text-4xl! md:text-5xl! font-medium! mb-4!`}>
@@ -512,7 +581,7 @@ export default function StampdutyComponent() {
       {/* ══════════════════════════════════════
           HOW TO APPLY
       ══════════════════════════════════════ */}
-      <section id="how-to-apply" className="px-6 md:px-12 py-24" style={{ backgroundColor: "#FDF2F9" }}>
+      <section id="how-to-apply" className="px-2 md:px-12 py-24" style={{ backgroundColor: "#FDF2F9" }}>
         <div className="container mx-auto">
           <div className="mb-4 section-divider" />
           <h2 className={`${archivo.className} text-4xl! md:text-5xl! font-medium! mb-4!`}>
@@ -560,13 +629,36 @@ export default function StampdutyComponent() {
           {/* common mistakes */}
           <h3 className={`${archivo.className} text-xl! sm:text-3xl! font-semibold! mb-4!`}>Common Mistakes to Avoid</h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {MISTAKES.map((m) => (
-              <div key={m.title} className="bg-white rounded-2xl p-6 card-hover" style={{ border: "1px solid rgba(134,72,155,0.12)" }}>
-                <div className="text-2xl mb-3">{m.icon}</div>
-                <h4 className={`${archivo.className} font-medium! text-xl! mb-2!`} style={{ color: "#86489B" }}>{m.title}</h4>
-                <p className={`${roboto.className} font-normal! text-sm! tracking-normal!`} style={{ color: "#6B6B6B", lineHeight: 1.6 }}>{m.desc}</p>
-              </div>
-            ))}
+            {MISTAKES.map((m) => {
+              const Icon = m.icon;
+
+              return (
+                <div
+                  key={m.title}
+                  className="bg-white rounded-2xl p-6 card-hover"
+                  style={{ border: "1px solid rgba(134,72,155,0.12)" }}
+                >
+                  {/* ✅ Icon added */}
+                  <div className="mb-3">
+                    <Icon className="w-6 h-6" style={{ color: "#86489B" }} />
+                  </div>
+
+                  <h4
+                    className={`${archivo.className} font-medium! text-xl! mb-2!`}
+                    style={{ color: "#86489B" }}
+                  >
+                    {m.title}
+                  </h4>
+
+                  <p
+                    className={`${roboto.className} font-normal! text-sm! tracking-normal!`}
+                    style={{ color: "#6B6B6B", lineHeight: 1.6 }}
+                  >
+                    {m.desc}
+                  </p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -574,7 +666,7 @@ export default function StampdutyComponent() {
       {/* ══════════════════════════════════════
           CHECKLIST
       ══════════════════════════════════════ */}
-      <section id="checklist" className="px-6 md:px-12 py-24" style={{ backgroundColor: "#ffffff" }}>
+      <section id="checklist" className="px-2 md:px-12 py-24" style={{ backgroundColor: "#ffffff" }}>
         <div className="container mx-auto">
           <div className="mb-4 section-divider" />
           <h2 className={`${archivo.className} text-4xl! md:text-5xl! font-medium! mb-4!`}>
@@ -596,25 +688,46 @@ export default function StampdutyComponent() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-5">
-            {[
-              { title: "Before you sign", body: "Items 1–9 above should be completed before you exchange contracts. Getting these right early prevents costly surprises at settlement.", icon: "📋", color: "#86489B" },
-              { title: "At and after settlement", body: "Items 10–13 are about what you do after settlement. The occupancy requirement is ongoing — keep evidence that you moved in and stayed.", icon: "🏠", color: "#F171AC" },
-              { title: "Speak to your conveyancer", body: "Your conveyancer handles the duty assessment on your behalf. Ask them to confirm eligibility in writing based on your specific contract before signing.", icon: "⚖️", color: "#6B6B6B" },
-            ].map((c) => (
-              <div key={c.title} className="guarantee-card rounded-2xl p-6 card-hover">
-                <div className="text-2xl mb-3">{c.icon}</div>
-                <h4 className={`${archivo.className} font-semibold! text-[18px]! sm:text-[20px]! mb-2!`} style={{ color: c.color }}>{c.title}</h4>
-                <p className={`${roboto.className} text-sm! font-normal! tracking-normal!`} style={{ color: "#6B6B6B", lineHeight: 1.7 }}>{c.body}</p>
-              </div>
-            ))}
-          </div>
+  {CARDS.map((c) => {
+    const Icon = c.icon;
+
+    return (
+      <div
+        key={c.title}
+        className="guarantee-card rounded-2xl p-6 card-hover"
+      >
+        {/* Icon */}
+        <div className="mb-3">
+          <Icon
+            className="w-7 h-7 p-1.5 rounded-md"
+            style={{ color: c.color }}
+          />
+        </div>
+
+        <h4
+          className={`${archivo.className} font-semibold! text-[18px]! sm:text-[20px]! mb-2!`}
+          style={{ color: c.color }}
+        >
+          {c.title}
+        </h4>
+
+        <p
+          className={`${roboto.className} text-sm! font-normal! tracking-normal!`}
+          style={{ color: "#6B6B6B", lineHeight: 1.7 }}
+        >
+          {c.body}
+        </p>
+      </div>
+    );
+  })}
+</div>
         </div>
       </section>
 
       {/* ══════════════════════════════════════
           FAQ
       ══════════════════════════════════════ */}
-      <section id="faq" className="px-6 md:px-12 py-24" style={{ backgroundColor: "#FEF3F8" }}>
+      <section id="faq" className="px-2 md:px-12 py-24" style={{ backgroundColor: "#FEF3F8" }}>
         <div className="container mx-auto">
           <div className="mb-4 section-divider" />
           <h2 className={`${archivo.className} text-4xl! md:text-5xl! font-medium! mb-4!`}>
@@ -651,10 +764,10 @@ export default function StampdutyComponent() {
       {/* ══════════════════════════════════════
           CTA BANNER
       ══════════════════════════════════════ */}
-      <section className="px-6 md:px-12 py-24" style={{ background: "linear-gradient(135deg, #86489B 0%, #F171AC 100%)" }}>
+      <section className="px-2 md:px-12 py-24" style={{ background: "linear-gradient(135deg, #86489B 0%, #F171AC 100%)" }}>
         <div className="container mx-auto text-center">
           <h2 className={`${archivo.className} text-4xl! md:text-5xl! font-medium! mb-4! text-white`}>
-            Don't leave thousands
+            Do not leave thousands
             <br />
             <em>on the table.</em>
           </h2>
