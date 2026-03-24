@@ -243,23 +243,39 @@ export default function FhogComponent() {
                         One-off government payment — up to $50,000
                     </div>
 
-                    <h1 className="font-display text-5xl md:text-7xl font-black leading-none mb-6 scroll-reveal" style={{ animationDelay: "0.1s", color: "#000000" }}>
+                    <h1 className={`${archivo.className} text-5xl! md:text-7xl! font-medium! leading-none mb-6! scroll-reveal! `} style={{ animationDelay: "0.1s", color: "#000000" }}>
                         The First Home
                         <br />
                         <span className="highlight-number italic">Owner Grant.</span>
                     </h1>
 
-                    <p className="font-body text-lg md:text-xl max-w-2xl mb-10 scroll-reveal" style={{ color: "#6B6B6B", animationDelay: "0.2s", lineHeight: 1.7 }}>
+                    <p className={`${roboto.className} text-lg! max-w-xl! font-normal! tracking-normal! mb-10 scroll-reveal`} style={{ color: "#6B6B6B", animationDelay: "0.2s", lineHeight: 1.7 }}>
                         A <strong style={{ color: "#86489B" }}>one-off government payment</strong> of <strong style={{ color: "#86489B" }}>$10,000–$50,000</strong> for eligible first-home buyers purchasing or building a new home. Funded by individual state and territory governments — amounts and rules vary by location.
                     </p>
 
-                    <div className="flex flex-wrap gap-4 mb-16 scroll-reveal" style={{ animationDelay: "0.3s" }}>
+                    {/* <div className="flex flex-wrap gap-4 mb-16 scroll-reveal" style={{ animationDelay: "0.3s" }}>
                         <a href="#eligibility" className="font-body font-medium px-8 py-4 rounded-full text-white purple-gradient" style={{ textDecoration: "none", fontSize: "1rem" }}>
                             Check Eligibility →
                         </a>
                         <a href="#state-grants" className="font-body font-medium px-8 py-4 rounded-full" style={{ textDecoration: "none", fontSize: "1rem", border: "2px solid #86489B", color: "#86489B", backgroundColor: "transparent" }}>
                             See Your State
                         </a>
+                    </div> */}
+
+                    <div className={`flex flex-wrap gap-4 mb-16 scroll-reveal ${roboto.className}`} style={{ animationDelay: "0.3s" }}>
+                        <div className="flex gap-3 lg:p-0">
+                            <div className="">
+                                <a href="#eligibility" className="extra-btn btn-default">
+                                    Check Eligibility →
+                                </a>
+                            </div>
+
+                            <div className="">
+                                <a href="#state-grants" className="btn-default">
+                                    See Your State
+                                </a>
+                            </div>
+                        </div>
                     </div>
 
                     {/* stat strip */}
@@ -271,8 +287,8 @@ export default function FhogComponent() {
                             { number: "Tax-free", label: "Not included in taxable income" },
                         ].map((s) => (
                             <div key={s.label} className="guarantee-card rounded-2xl p-5 card-hover">
-                                <div className="font-display text-2xl font-black highlight-number mb-1 leading-none">{s.number}</div>
-                                <div className="font-body text-xs mt-1" style={{ color: "#6B6B6B", lineHeight: 1.4 }}>{s.label}</div>
+                                <div className={`${archivo.className} text-2xl! md:text-4xl! font-semibold! highlight-number mb-1! leading-none!`}>{s.number}</div>
+                                <div className={`${roboto.className} text-sm! font-normal! mt-1!`} style={{ color: "#6B6B6B", lineHeight: 1.4 }}>{s.label}</div>
                             </div>
                         ))}
                     </div>
@@ -285,10 +301,10 @@ export default function FhogComponent() {
             <section id="about" className="px-6 md:px-12 py-24" style={{ backgroundColor: "#ffffff" }}>
                 <div className="container mx-auto">
                     <div className="mb-4 section-divider" />
-                    <h2 className="font-display text-4xl md:text-5xl font-bold mb-4" style={{ color: "#000000" }}>
+                    <h2 className={`${archivo.className} text-4xl! md:text-5xl! font-medium! mb-4!`}>
                         What Is the FHOG?
                     </h2>
-                    <p className="font-body text-lg mb-14 max-w-2xl" style={{ color: "#6B6B6B" }}>
+                    <p className={`${roboto.className} font-normal! tracking-normal! text-[16px]! mb-14! max-w-2xl!`} style={{ color: "#6B6B6B" }}>
                         The First Home Owner Grant is a one-off payment introduced by the Australian Government but funded and administered by individual state and territory governments. Rules, amounts, and property caps differ depending on where you buy.
                     </p>
 

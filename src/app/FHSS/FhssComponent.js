@@ -1,5 +1,17 @@
 "use client";
 import { useState } from "react";
+import { Archivo, Roboto } from "next/font/google";
+import { Briefcase, Percent, Home } from "lucide-react";
+import { Landmark } from "lucide-react";
+import { BarChart3 } from "lucide-react";
+import { Search, Upload, PenLine, Wallet, } from "lucide-react";
+import { Clock, Pencil, AlertTriangle } from "lucide-react";
+
+
+
+const archivo = Archivo({ subsets: ["latin"], weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"] });
+const roboto = Roboto({ subsets: ["latin"], weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"] });
+
 
 const NAV_LINKS = ["About", "Eligibility", "Contributions", "Tax", "How to Access", "FAQ"];
 
@@ -51,29 +63,33 @@ const STEPS = [
     num: "01",
     title: "Request an FHSS Determination",
     desc: "Sign in to myGov → ATO → Super → Manage → First Home Saver. Request a determination to see the maximum amount you can withdraw. Check your contributions match your super statement — don't rely solely on your payslip.",
-    icon: "🔍",
-    detail: "Salary sacrifice contributions from 2017–18 must be entered manually. If errors are found, request a new or amended determination before property settlement.",
+    icon: <Search className="h-6 w-6" />,
+    detail:
+      "Salary sacrifice contributions from 2017–18 must be entered manually. If errors are found, request a new or amended determination before property settlement.",
   },
   {
     num: "02",
     title: "Submit an FHSS Release Request",
     desc: "Only possible after receiving your determination. Specify the amount to release (up to your maximum), which super fund(s) to release from, and your bank account for payment.",
-    icon: "📤",
-    detail: "Only one release request is allowed — include the total amount. Release must happen before signing a contract, or within 90 days of your determination (for determinations after 15 Sep 2024). Processing takes 15–20 business days.",
+    icon: <Upload className="h-6 w-6" />,
+    detail:
+      "Only one release request is allowed — include the total amount. Release must happen before signing a contract, or within 90 days of your determination (for determinations after 15 Sep 2024). Processing takes 15–20 business days.",
   },
   {
     num: "03",
     title: "Sign a Property Contract & Notify the ATO",
     desc: "Sign a contract to purchase or build a home within 12 months of your release request. Extensions of up to 24 months may be granted automatically by the ATO.",
-    icon: "✍️",
-    detail: "Notify the ATO within 90 days of signing (for determinations after 15 Sep 2024). If no contract is signed, you must either recontribute to super or pay 20% FHSS tax on the assessable amount.",
+    icon: <PenLine className="h-6 w-6" />,
+    detail:
+      "Notify the ATO within 90 days of signing (for determinations after 15 Sep 2024). If no contract is signed, you must either recontribute to super or pay 20% FHSS tax on the assessable amount.",
   },
   {
     num: "04",
     title: "Receive Your FHSS Amount",
     desc: "The ATO issues a release authority to your super fund. Tax is withheld, and amounts may be offset against outstanding ATO debts. Payment arrives 15–20 business days after fund release.",
-    icon: "💰",
-    detail: "A payment summary is provided at year-end showing concessional contributions, associated earnings, and tax withheld. Include all amounts in your tax return. The 30% tax offset applies.",
+    icon: <Wallet className="h-6 w-6" />,
+    detail:
+      "A payment summary is provided at year-end showing concessional contributions, associated earnings, and tax withheld. Include all amounts in your tax return. The 30% tax offset applies.",
   },
 ];
 
@@ -228,23 +244,39 @@ export default function FhssComponent() {
             Save inside super — pay less tax on your deposit
           </div>
 
-          <h1 className="font-display text-5xl md:text-7xl font-black leading-none mb-6 scroll-reveal" style={{ animationDelay: "0.1s", color: "#000000" }}>
+          <h1 className={`${archivo.className} text-5xl! md:text-7xl! font-medium! leading-none mb-6! scroll-reveal! `} style={{ animationDelay: "0.1s", color: "#000000" }}>
             First Home
             <br />
             <span className="highlight-number italic">Super Saver.</span>
           </h1>
 
-          <p className="font-body text-lg md:text-xl max-w-2xl mb-10 scroll-reveal" style={{ color: "#6B6B6B", animationDelay: "0.2s", lineHeight: 1.7 }}>
-            The <strong style={{ color: "#86489B" }}>FHSS Scheme</strong> lets eligible first-home buyers save for a deposit inside their superannuation — where contributions are taxed at just <strong style={{ color: "#86489B" }}>15%</strong> instead of your full marginal rate. Withdraw up to <strong style={{ color: "#86489B" }}>$50,000</strong> plus earnings when you're ready to buy.
+          <p className={`${roboto.className} text-lg! max-w-xl! font-normal! tracking-normal! mb-10 scroll-reveal`} style={{ color: "#6B6B6B", animationDelay: "0.2s", lineHeight: 1.7 }}>
+            The <strong style={{ color: "#86489B" }}>FHSS Scheme</strong> lets eligible first-home buyers save for a deposit inside their superannuation — where contributions are taxed at just <strong style={{ color: "#86489B" }}>15%</strong> instead of your full marginal rate. Withdraw up to <strong style={{ color: "#86489B" }}>$50,000</strong> plus earnings when you are ready to buy.
           </p>
 
-          <div className="flex flex-wrap gap-4 mb-16 scroll-reveal" style={{ animationDelay: "0.3s" }}>
+          {/* <div className="flex flex-wrap gap-4 mb-16 scroll-reveal" style={{ animationDelay: "0.3s" }}>
             <a href="#eligibility" className="font-body font-medium px-8 py-4 rounded-full text-white purple-gradient" style={{ textDecoration: "none", fontSize: "1rem" }}>
               Check Eligibility →
             </a>
             <a href="#how-to-access" className="font-body font-medium px-8 py-4 rounded-full" style={{ textDecoration: "none", fontSize: "1rem", border: "2px solid #86489B", color: "#86489B", backgroundColor: "transparent" }}>
               How to Withdraw
             </a>
+          </div> */}
+
+          <div className={`flex flex-wrap gap-4 mb-16 scroll-reveal ${roboto.className}`} style={{ animationDelay: "0.3s" }}>
+            <div className="flex gap-3 lg:p-0">
+              <div className="">
+                <a href="#eligibility" className="extra-btn btn-default">
+                  Check Eligibility →
+                </a>
+              </div>
+
+              <div className="">
+                <a href="#how-to-access" className="btn-default">
+                  How to Withdraw
+                </a>
+              </div>
+            </div>
           </div>
 
           {/* stat strip */}
@@ -256,8 +288,8 @@ export default function FhssComponent() {
               { number: "30%", label: "Tax offset on withdrawal" },
             ].map((s) => (
               <div key={s.label} className="guarantee-card rounded-2xl p-5 card-hover">
-                <div className="font-display text-2xl md:text-3xl font-black highlight-number mb-1 leading-none">{s.number}</div>
-                <div className="font-body text-xs mt-1" style={{ color: "#6B6B6B", lineHeight: 1.4 }}>{s.label}</div>
+                <div className={`${archivo.className} text-2xl! md:text-5xl! font-semibold! highlight-number mb-1! leading-none!`}>{s.number}</div>
+                <div className={`${roboto.className} text-sm! font-normal! mt-1!`} style={{ color: "#6B6B6B", lineHeight: 1.4 }}>{s.label}</div>
               </div>
             ))}
           </div>
@@ -270,36 +302,80 @@ export default function FhssComponent() {
       <section id="about" className="px-6 md:px-12 py-24" style={{ backgroundColor: "#ffffff" }}>
         <div className="container mx-auto">
           <div className="mb-4 section-divider" />
-          <h2 className="font-display text-4xl md:text-5xl font-bold mb-4" style={{ color: "#000000" }}>
+          <h2 className={`${archivo.className} text-4xl! md:text-5xl! font-medium! mb-4!`}>
             How the FHSS Scheme Works
           </h2>
-          <p className="font-body text-lg mb-14 max-w-2xl" style={{ color: "#6B6B6B" }}>
+          <p className={`${roboto.className} font-normal! tracking-normal! text-[16px]! mb-14! max-w-2xl!`} style={{ color: "#6B6B6B" }}>
             Instead of saving in a regular bank account where earnings are taxed at your full marginal rate, you save inside super — where the tax advantages compound over time.
           </p>
 
           {/* visual flow */}
           <div className="grid md:grid-cols-5 gap-3 items-center mb-14">
             {[
-              { label: "Make voluntary super contributions", sub: "Salary sacrifice or personal after-tax", color: "#86489B", icon: "💼" },
+              {
+                label: "Make voluntary super contributions",
+                sub: "Salary sacrifice or personal after-tax",
+                color: "#86489B",
+                icon: <Briefcase className="h-8 w-8" />,
+              },
               null,
-              { label: "Contributions taxed at 15%", sub: "Not your full marginal rate", color: "#F171AC", icon: "📊" },
+              {
+                label: "Contributions taxed at 15%",
+                sub: "Not your full marginal rate",
+                color: "#F171AC",
+                icon: <Percent className="h-8 w-8" />,
+              },
               null,
-              { label: "Withdraw up to $50K + earnings", sub: "With 30% tax offset on release", color: "#86489B", icon: "🏠" },
+              {
+                label: "Withdraw up to $50K + earnings",
+                sub: "With 30% tax offset on release",
+                color: "#86489B",
+                icon: <Home className="h-8 w-8" />,
+              },
             ].map((item, i) =>
               item === null ? (
-                <div key={i} className="flow-arrow hidden md:block">→</div>
+                <div key={i} className="flow-arrow hidden md:block text-xl">
+                  →
+                </div>
               ) : (
-                <div key={i} className="rounded-2xl p-6 text-center card-hover" style={{ backgroundColor: "#FDF2F9", border: `2px solid ${item.color}22` }}>
-                  <div className="text-3xl mb-3">{item.icon}</div>
-                  <div className="font-display font-bold text-sm mb-1" style={{ color: item.color }}>{item.label}</div>
-                  <div className="font-body text-xs" style={{ color: "#6B6B6B" }}>{item.sub}</div>
+                <div
+                  key={i}
+                  className="rounded-2xl p-6 text-center card-hover"
+                  style={{
+                    backgroundColor: "#FDF2F9",
+                    border: `2px solid ${item.color}22`,
+                  }}
+                >
+                  {/* ICON */}
+                  <div
+                    className="flex justify-center mb-3"
+                    style={{ color: item.color }}
+                  >
+                    {item.icon}
+                  </div>
+
+                  {/* TITLE */}
+                  <div
+                    className={`${archivo.className} font-bold text-sm mb-1`}
+                    style={{ color: item.color }}
+                  >
+                    {item.label}
+                  </div>
+
+                  {/* SUBTEXT */}
+                  <div
+                    className={`${roboto.className} text-xs font-normal`}
+                    style={{ color: "#6B6B6B" }}
+                  >
+                    {item.sub}
+                  </div>
                 </div>
               )
             )}
           </div>
 
           {/* withdrawal breakdown */}
-          <h3 className="font-display text-2xl font-bold mb-6" style={{ color: "#000000" }}>What Can You Withdraw?</h3>
+          <h3 className={`${archivo.className} text-2xl! font-semibold! mb-6!`}>What Can You Withdraw?</h3>
           <div className="grid md:grid-cols-3 gap-5 mb-10">
             {[
               { pct: "100%", label: "Non-concessional contributions", desc: "Personal voluntary contributions made from after-tax income that you did not claim as a tax deduction.", color: "#F171AC" },
@@ -307,15 +383,15 @@ export default function FhssComponent() {
               { pct: "85%", label: "Personal deductible contributions", desc: "Personal contributions you claimed as a tax deduction (concessional). Same treatment as salary sacrifice — 85% counts.", color: "#86489B" },
             ].map((c) => (
               <div key={c.label} className="bg-white rounded-2xl p-6 card-hover" style={{ border: `1.5px solid ${c.color}33` }}>
-                <div className="font-display text-4xl font-black mb-2" style={{ color: c.color }}>{c.pct}</div>
-                <div className="font-display font-bold text-base mb-2" style={{ color: "#000000" }}>{c.label}</div>
-                <p className="font-body text-sm" style={{ color: "#6B6B6B", lineHeight: 1.6 }}>{c.desc}</p>
+                <div className={`${archivo.className} text-4xl font-black mb-2`} style={{ color: c.color }}>{c.pct}</div>
+                <div className={`${archivo.className} font-bold text-base mb-2`} style={{ color: "#000000" }}>{c.label}</div>
+                <p className={`${archivo.className} text-sm font-normal! tracking-normal!`} style={{ color: "#6B6B6B", lineHeight: 1.6 }}>{c.desc}</p>
               </div>
             ))}
           </div>
 
-          <div className="info-box rounded-2xl p-5">
-            <p className="font-body text-sm" style={{ color: "#6B6B6B", lineHeight: 1.7 }}>
+          <div className="info-box rounded-2xl px-5 py-4 m-0!">
+            <p className={`${archivo.className} text-sm! font-normal! tracking-normal! m-0!`} style={{ color: "#6B6B6B", lineHeight: 1.7 }}>
               <strong style={{ color: "#86489B" }}>Plus associated earnings:</strong> In addition to your contributions, you also receive a calculated amount of associated earnings determined by the ATO. These deemed earnings may differ from actual earnings in your super fund.
             </p>
           </div>
@@ -328,16 +404,16 @@ export default function FhssComponent() {
       <section id="eligibility" className="px-6 md:px-12 py-24" style={{ backgroundColor: "#FEF3F8" }}>
         <div className="container mx-auto">
           <div className="mb-4 section-divider" />
-          <h2 className="font-display text-4xl md:text-5xl font-bold mb-4" style={{ color: "#000000" }}>
+          <h2 className={`${archivo.className} text-4xl! md:text-5xl! font-medium! mb-4!`}>
             Eligibility
           </h2>
-          <p className="font-body text-lg mb-12 max-w-2xl" style={{ color: "#6B6B6B" }}>
-            Eligibility is assessed on an individual basis. There's no citizenship requirement — but you must be a genuine first-home buyer intending to live in the property.
+          <p className={`${roboto.className} font-normal! tracking-normal! text-[16px]! max-w-2xl!`} style={{ color: "#6B6B6B" }}>
+            {`Eligibility is assessed on an individual basis. There's no citizenship requirement — but you must be a genuine first-home buyer intending to live in the property.`}
           </p>
 
           <div className="grid md:grid-cols-2 gap-6 mb-10">
             <div className="bg-white rounded-2xl p-8 card-hover" style={{ border: "1.5px solid rgba(134,72,155,0.2)" }}>
-              <h3 className="font-display text-xl font-bold mb-6" style={{ color: "#86489B" }}>You Must</h3>
+              <h3 className={`${archivo.className} text-xl font-medium! mb-6!`} style={{ color: "#86489B" }}>You Must</h3>
               <ul className="space-y-3">
                 {[
                   "Be 18 years or older when requesting an FHSS determination",
@@ -347,8 +423,8 @@ export default function FhssComponent() {
                   "Intend to live in the property as your primary residence",
                   "Have made eligible voluntary contributions to your super fund",
                 ].map((item) => (
-                  <li key={item} className="checklist-item">
-                    <span className="mt-0.5 w-5 h-5 rounded-full flex-shrink-0 flex items-center justify-center text-xs text-white" style={{ background: "#86489B" }}>✓</span>
+                  <li key={item} className={`checklist-item ${archivo.className}`}>
+                    <span className="mt-0.5 w-5 h-5 rounded-full flex-shrink-0 flex items-center justify-center text-xs font-normal text-white" style={{ background: "#86489B" }}>✓</span>
                     {item}
                   </li>
                 ))}
@@ -357,18 +433,18 @@ export default function FhssComponent() {
 
             <div className="space-y-5">
               <div className="bg-white rounded-2xl p-6 card-hover" style={{ border: "1.5px solid rgba(241,113,172,0.25)" }}>
-                <h3 className="font-display text-xl font-bold mb-4" style={{ color: "#F171AC" }}>Eligible Property Types</h3>
+                <h3 className={`${archivo.className} text-xl font-medium! mb-4!`} style={{ color: "#F171AC" }}>Eligible Property Types</h3>
                 <ul className="space-y-2">
                   {["Existing residential home", "Newly built home", "House and land package", "Vacant land with a contract in place to build"].map((p) => (
-                    <li key={p} className="flex items-center gap-2 font-body text-sm" style={{ color: "#000000" }}>
+                    <li key={p} className={`${archivo.className} flex items-center gap-2 text-sm! font-normal!`} style={{ color: "#000000" }}>
                       <span style={{ color: "#F171AC" }}>✓</span> {p}
                     </li>
                   ))}
                 </ul>
               </div>
 
-              <div className="rounded-2xl p-6" style={{ background: "rgba(0,0,0,0.03)", border: "1px solid rgba(0,0,0,0.08)" }}>
-                <h4 className="font-display font-bold text-base mb-3" style={{ color: "#000000" }}>⚠ Ineligible Properties</h4>
+              <div className="rounded-2xl px-6 py-3" style={{ background: "rgba(0,0,0,0.03)", border: "1px solid rgba(0,0,0,0.08)" }}>
+                <h3 className={`${archivo.className} font-medium! text-base! mb-3!`} style={{ color: "#000000" }}>⚠ Ineligible Properties</h3>
                 <div className="grid grid-cols-1 gap-2">
                   {INELIGIBLE_PROPERTIES.map((x) => (
                     <div key={x} className="flex items-center gap-2 font-body text-sm" style={{ color: "#6B6B6B" }}>
@@ -380,8 +456,8 @@ export default function FhssComponent() {
 
               {/* residency requirement */}
               <div className="info-box rounded-2xl p-5">
-                <h4 className="font-display font-bold text-sm mb-2" style={{ color: "#86489B" }}>Occupancy Requirement</h4>
-                <p className="font-body text-sm" style={{ color: "#6B6B6B", lineHeight: 1.7 }}>
+                <h4 className={`${archivo.className} font-medium! text-sm! mb-2!`} style={{ color: "#86489B" }}>Occupancy Requirement</h4>
+                <p className={`${archivo.className} text-sm! font-normal! tracking-normal!`} style={{ color: "#6B6B6B", lineHeight: 1.7 }}>
                   You must genuinely intend to live in the property as your primary residence as soon as practicable after purchase, and <strong style={{ color: "#000000" }}>live there for at least 6 months within the first 12 months</strong> after it becomes practical to move in.
                 </p>
               </div>
@@ -392,18 +468,18 @@ export default function FhssComponent() {
           <div className="rounded-3xl p-8 md:p-10" style={{ background: "linear-gradient(135deg, #86489B, #F171AC)" }}>
             <div className="grid md:grid-cols-2 gap-8 items-start">
               <div>
-                <h3 className="font-display text-2xl font-bold text-white mb-3">Previously Owned Property?</h3>
-                <p className="font-body text-white text-base" style={{ opacity: 0.95, lineHeight: 1.7 }}>
+                <h3 className={`${archivo.className} text-xl font-medium! text-white mb-3!`}>Previously Owned Property?</h3>
+                <p className={`${roboto.className} text-white text-sm! font-normal! mb-4! tracking-normal!`} style={{ opacity: 0.95, lineHeight: 1.7 }}>
                   You may still qualify under the <strong>FHSS Financial Hardship provision</strong>. The ATO may grant eligibility if you experienced hardship that caused you to lose ownership of all your property.
                 </p>
               </div>
               <div>
-                <p className="font-body text-white text-sm mb-4" style={{ opacity: 0.85 }}>Qualifying hardship situations include:</p>
+                <p className={`${roboto.className} text-white text-sm! font-normal! mb-4! tracking-normal!`} style={{ opacity: 0.85 }}>Qualifying hardship situations include:</p>
                 <div className="grid grid-cols-1 gap-2">
                   {HARDSHIP_SITUATIONS.map((h) => (
                     <div key={h} className="flex items-center gap-3 rounded-xl px-4 py-3" style={{ backgroundColor: "rgba(255,255,255,0.18)" }}>
                       <span className="text-white">✓</span>
-                      <span className="font-body text-white text-sm">{h}</span>
+                      <span className={`${roboto.className} text-white text-sm! font-normal!`}>{h}</span>
                     </div>
                   ))}
                 </div>
@@ -419,11 +495,11 @@ export default function FhssComponent() {
       <section id="contributions" className="px-6 md:px-12 py-24" style={{ backgroundColor: "#ffffff" }}>
         <div className="container mx-auto">
           <div className="mb-4 section-divider" />
-          <h2 className="font-display text-4xl md:text-5xl font-bold mb-4" style={{ color: "#000000" }}>
+          <h2 className={`${archivo.className} text-4xl! md:text-5xl! font-medium! mb-4!`}>
             Making Contributions
           </h2>
-          <p className="font-body text-lg mb-12 max-w-2xl" style={{ color: "#6B6B6B" }}>
-            You can contribute via two main methods. Both count toward your FHSS limits, and you don't need to notify anyone before starting.
+          <p className={`${roboto.className} font-normal! tracking-normal! text-[16px]! max-w-2xl!`} style={{ color: "#6B6B6B" }}>
+            {`You can contribute via two main methods. Both count toward your FHSS limits, and you don't need to notify anyone before starting.`}
           </p>
 
           {/* two contribution types */}
@@ -433,7 +509,7 @@ export default function FhssComponent() {
                 type: "Salary Sacrifice",
                 label: "Concessional — Pre-tax",
                 color: "#86489B",
-                icon: "💼",
+                icon: <Briefcase className="h-7 w-7" />,
                 desc: "Arrange with your employer to redirect part of your pre-tax salary into super. Taxed at 15% on entry into the fund.",
                 detail: [
                   "Talk to your employer about whether this is available",
@@ -446,7 +522,7 @@ export default function FhssComponent() {
                 type: "Personal Voluntary Contributions",
                 label: "Non-concessional or Concessional",
                 color: "#F171AC",
-                icon: "🏦",
+                icon: <Landmark className="h-7 w-7" />,
                 desc: "Make after-tax contributions directly into your super fund. If you claim a tax deduction, they become concessional. If not, they're non-concessional.",
                 detail: [
                   "Contact your super fund to find out how to contribute",
@@ -456,22 +532,55 @@ export default function FhssComponent() {
                 ],
               },
             ].map((c) => (
-              <div key={c.type} className="contribution-type-card bg-white rounded-2xl overflow-hidden" style={{ border: `1.5px solid ${c.color}33` }}>
+              <div
+                key={c.type}
+                className="contribution-type-card bg-white rounded-2xl overflow-hidden"
+                style={{ border: `1.5px solid ${c.color}33` }}
+              >
+                {/* HEADER */}
                 <div className="px-6 py-5" style={{ background: `${c.color}12` }}>
                   <div className="flex items-center gap-3 mb-1">
-                    <span className="text-2xl">{c.icon}</span>
+                    {/* ICON */}
+                    <div style={{ color: c.color }}>{c.icon}</div>
+
                     <div>
-                      <div className="font-display font-bold text-lg" style={{ color: "#000000" }}>{c.type}</div>
-                      <div className="font-body text-xs font-medium" style={{ color: c.color }}>{c.label}</div>
+                      <div
+                        className={`${archivo.className} font-semibold text-lg`}
+                        style={{ color: "#000000" }}
+                      >
+                        {c.type}
+                      </div>
+                      <div
+                        className={`${roboto.className} text-xs font-medium`}
+                        style={{ color: c.color }}
+                      >
+                        {c.label}
+                      </div>
                     </div>
                   </div>
                 </div>
+
+                {/* BODY */}
                 <div className="px-6 py-5">
-                  <p className="font-body text-sm mb-4" style={{ color: "#6B6B6B", lineHeight: 1.7 }}>{c.desc}</p>
+                  <p
+                    className={`${roboto.className} text-sm mb-4 font-normal`}
+                    style={{ color: "#6B6B6B", lineHeight: 1.7 }}
+                  >
+                    {c.desc}
+                  </p>
+
                   <ul className="space-y-2">
                     {c.detail.map((d) => (
-                      <li key={d} className="flex items-start gap-2 font-body text-sm" style={{ color: "#000000" }}>
-                        <span className="mt-0.5" style={{ color: c.color }}>→</span> {d}
+                      <li
+                        key={d}
+                        className={`${roboto.className} flex items-start gap-2 text-sm font-normal`}
+                        style={{ color: "#000000" }}
+                      >
+                        {/* ARROW ICON */}
+                        <span className="mt-0.5" style={{ color: c.color }}>
+                          →
+                        </span>
+                        {d}
                       </li>
                     ))}
                   </ul>
@@ -483,31 +592,31 @@ export default function FhssComponent() {
           {/* annual + lifetime limits */}
           <div className="grid md:grid-cols-3 gap-5 mb-10">
             <div className="guarantee-card rounded-2xl p-6 text-center card-hover">
-              <div className="font-display text-4xl font-black highlight-number mb-2">$15,000</div>
-              <div className="font-display font-bold text-base mb-1" style={{ color: "#000000" }}>Per Financial Year</div>
-              <p className="font-body text-xs" style={{ color: "#6B6B6B" }}>Maximum eligible contributions that count per year. Excess contributions above this limit cannot be withdrawn under FHSS.</p>
+              <div className={`${archivo.className} text-4xl! font-semibold! highlight-number mb-2`}>$15,000</div>
+              <div className={`${archivo.className} font-bold! text-base! mb-1!`} style={{ color: "#000000" }}>Per Financial Year</div>
+              <p className={`${roboto.className} text-xs! font-normal! tracking-normal!`} style={{ color: "#6B6B6B" }}>Maximum eligible contributions that count per year. Excess contributions above this limit cannot be withdrawn under FHSS.</p>
             </div>
             <div className="guarantee-card rounded-2xl p-6 text-center card-hover">
-              <div className="font-display text-4xl font-black highlight-number mb-2">$50,000</div>
-              <div className="font-display font-bold text-base mb-1" style={{ color: "#000000" }}>Total Across All Years</div>
-              <p className="font-body text-xs" style={{ color: "#6B6B6B" }}>Lifetime maximum for eligible contributions that can be counted toward your maximum release amount.</p>
+              <div className={`${archivo.className} text-4xl! font-semibold! highlight-number mb-2`}>$50,000</div>
+              <div className={`${archivo.className} font-bold! text-base! mb-1!`} style={{ color: "#000000" }}>Total Across All Years</div>
+              <p className={`${roboto.className} text-xs! font-normal! tracking-normal!`}>Lifetime maximum for eligible contributions that can be counted toward your maximum release amount.</p>
             </div>
             <div className="guarantee-card rounded-2xl p-6 text-center card-hover">
-              <div className="font-display text-4xl font-black highlight-number mb-2">FIFO</div>
-              <div className="font-display font-bold text-base mb-1" style={{ color: "#000000" }}>First In, First Out</div>
-              <p className="font-body text-xs" style={{ color: "#6B6B6B" }}>Earlier contributions are counted first. Within the same year, non-concessional contributions are treated as made first to maximise your release amount.</p>
+              <div className={`${archivo.className} text-4xl! font-semibold! highlight-number mb-2`}>FIFO</div>
+              <div className={`${archivo.className} font-bold! text-base! mb-1!`} style={{ color: "#000000" }}>First In, First Out</div>
+              <p className={`${roboto.className} text-xs! font-normal! tracking-normal!`} style={{ color: "#6B6B6B" }}>Earlier contributions are counted first. Within the same year, non-concessional contributions are treated as made first to maximise your release amount.</p>
             </div>
           </div>
 
           {/* ineligible contributions */}
-          <h3 className="font-display text-2xl font-bold mb-6" style={{ color: "#000000" }}>Ineligible Contributions</h3>
+          <h3 className={`${archivo.className} text-xl! sm:text-3xl! font-semibold! mb-4!`}>Ineligible Contributions</h3>
           <div className="space-y-3">
             {INELIGIBLE_CONTRIBUTIONS.map((c) => (
               <div key={c.label} className="flex items-start gap-4 bg-white rounded-xl px-5 py-4" style={{ border: "1px solid rgba(134,72,155,0.1)" }}>
                 <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs text-white mt-0.5" style={{ background: "#F171AC" }}>✕</span>
                 <div>
-                  <div className="font-body font-medium text-sm mb-0.5" style={{ color: "#000000" }}>{c.label}</div>
-                  <div className="font-body text-xs" style={{ color: "#6B6B6B" }}>{c.desc}</div>
+                  <div className={`${archivo.className} font-medium! text-sm! mb-0.5!`} style={{ color: "#000000" }}>{c.label}</div>
+                  <div className={`${roboto.className} text-xs! font-normal!`} style={{ color: "#6B6B6B" }}>{c.desc}</div>
                 </div>
               </div>
             ))}
@@ -521,17 +630,17 @@ export default function FhssComponent() {
       <section id="tax" className="px-6 md:px-12 py-24" style={{ backgroundColor: "#FDF2F9" }}>
         <div className="container mx-auto">
           <div className="mb-4 section-divider" />
-          <h2 className="font-display text-4xl md:text-5xl font-bold mb-4" style={{ color: "#000000" }}>
+          <h2 className={`${archivo.className} text-4xl! md:text-5xl! font-medium! mb-4!`}>
             Tax Implications
           </h2>
-          <p className="font-body text-lg mb-12 max-w-2xl" style={{ color: "#6B6B6B" }}>
-            The FHSS scheme's biggest advantage is tax. Contributions go in at 15%, come out with a 30% offset — here's how it all works.
+          <p className={`${roboto.className} font-normal! tracking-normal! text-[16px]! max-w-2xl!`} style={{ color: "#6B6B6B" }}>
+            {`The FHSS scheme's biggest advantage is tax. Contributions go in at 15%, come out with a 30% offset — here's how it all works.`}
           </p>
 
           <div className="grid md:grid-cols-2 gap-6 mb-10">
             {/* contributions tax */}
             <div className="bg-white rounded-2xl p-8 card-hover" style={{ border: "1px solid rgba(134,72,155,0.12)" }}>
-              <h3 className="font-display text-xl font-bold mb-6" style={{ color: "#86489B" }}>Tax on Contributions</h3>
+              <h3 className={`${archivo.className} text-xl! font-bold! mb-6!`} style={{ color: "#86489B" }}>Tax on Contributions</h3>
               <div className="space-y-4">
                 {[
                   { type: "Concessional (salary sacrifice / deductible)", rate: "15%", note: "Taxed on entry into super. Usually lower than your marginal tax rate." },
@@ -539,10 +648,10 @@ export default function FhssComponent() {
                 ].map((r) => (
                   <div key={r.type} className="rounded-xl p-4" style={{ backgroundColor: "#FDF2F9", border: "1px solid rgba(134,72,155,0.1)" }}>
                     <div className="flex items-center justify-between mb-1">
-                      <div className="font-body text-sm font-medium" style={{ color: "#000000" }}>{r.type}</div>
-                      <div className="font-display font-black text-xl" style={{ color: "#86489B" }}>{r.rate}</div>
+                      <div className={`${archivo.className} text-sm! font-medium!`} style={{ color: "#000000" }}>{r.type}</div>
+                      <div className={`${roboto.className} font-normal! text-xl!`} style={{ color: "#86489B" }}>{r.rate}</div>
                     </div>
-                    <div className="font-body text-xs" style={{ color: "#6B6B6B" }}>{r.note}</div>
+                    <div className={`${roboto.className} text-xs! font-normal!`} style={{ color: "#6B6B6B" }}>{r.note}</div>
                   </div>
                 ))}
               </div>
@@ -550,19 +659,19 @@ export default function FhssComponent() {
 
             {/* withdrawal tax */}
             <div className="bg-white rounded-2xl p-8 card-hover" style={{ border: "1px solid rgba(241,113,172,0.2)" }}>
-              <h3 className="font-display text-xl font-bold mb-6" style={{ color: "#F171AC" }}>Tax on Withdrawal</h3>
+              <h3 className={`${archivo.className} text-xl! font-bold! mb-6!`} style={{ color: "#F171AC" }}>Tax on Withdrawal</h3>
               <div className="space-y-4">
                 <div className="rounded-xl p-4" style={{ backgroundColor: "#FEF3F8", border: "1px solid rgba(241,113,172,0.15)" }}>
-                  <div className="font-body text-sm font-medium mb-2" style={{ color: "#000000" }}>Tax withheld at release</div>
-                  <p className="font-body text-xs" style={{ color: "#6B6B6B", lineHeight: 1.7 }}>Your marginal rate (including Medicare levy) minus the <strong style={{ color: "#F171AC" }}>30% tax offset</strong> — or 17% if your marginal rate can't be estimated.</p>
+                  <div className={`${archivo.className} text-sm! font-medium! mb-2!`} style={{ color: "#000000" }}>Tax withheld at release</div>
+                  <p className={`${roboto.className} text-xs! font-normal! tracking-normal!`} style={{ color: "#6B6B6B", lineHeight: 1.7 }}>Your marginal rate (including Medicare levy) minus the <strong style={{ color: "#F171AC" }}>30% tax offset</strong> — or 17% if your marginal rate can not be estimated.</p>
                 </div>
                 <div className="rounded-xl p-4" style={{ backgroundColor: "#FEF3F8", border: "1px solid rgba(241,113,172,0.15)" }}>
-                  <div className="font-body text-sm font-medium mb-1" style={{ color: "#000000" }}>Example: 39% marginal rate</div>
-                  <div className="font-display text-2xl font-black mb-1" style={{ color: "#F171AC" }}>Effective ~9%</div>
-                  <p className="font-body text-xs" style={{ color: "#6B6B6B" }}>39% marginal rate − 30% offset = ~9% effective tax on withdrawal</p>
+                  <div className={`${archivo.className} text-sm! font-medium! mb-1!`} style={{ color: "#000000" }}>Example: 39% marginal rate</div>
+                  <div className={`${archivo.className} text-2xl! font-semibold! mb-1!`} style={{ color: "#F171AC" }}>Effective ~9%</div>
+                  <p className={`${roboto.className} text-xs! font-normal! tracking-normal!`} style={{ color: "#6B6B6B" }}>39% marginal rate − 30% offset = ~9% effective tax on withdrawal</p>
                 </div>
                 <div className="warning-box rounded-xl p-4">
-                  <p className="font-body text-xs" style={{ color: "#6B6B6B", lineHeight: 1.7 }}>
+                  <p className={`${roboto.className} text-xs! font-normal! tracking-normal!`} style={{ color: "#6B6B6B", lineHeight: 1.7 }}>
                     <strong style={{ color: "#86489B" }}>Tax reporting:</strong> Include the assessable FHSS released amount and tax withheld in your tax return for the year the release was requested — not when funds are received.
                   </p>
                 </div>
@@ -571,11 +680,43 @@ export default function FhssComponent() {
           </div>
 
           {/* example */}
-          <div className="rounded-2xl p-8" style={{ background: "linear-gradient(135deg, rgba(134,72,155,0.08), rgba(241,113,172,0.08))", border: "1px solid rgba(134,72,155,0.15)" }}>
-            <h4 className="font-display font-bold text-lg mb-4" style={{ color: "#86489B" }}>📊 Example: Annual Limit in Action</h4>
-            <p className="font-body text-sm mb-4" style={{ color: "#6B6B6B", lineHeight: 1.7 }}>
-              In the 2023–24 financial year, Mary made <strong style={{ color: "#000000" }}>$25,000 in salary sacrifice contributions</strong>. Because of the annual $15,000 limit, only $15,000 counts as eligible FHSS contributions. At 85%, that means only <strong style={{ color: "#86489B" }}>$12,750</strong> counts toward her maximum releasable amount. The remaining $10,000 cannot be counted toward her FHSS release.
+          <div
+            className="rounded-2xl p-8"
+            style={{
+              background:
+                "linear-gradient(135deg, rgba(134,72,155,0.08), rgba(241,113,172,0.08))",
+              border: "1px solid rgba(134,72,155,0.15)",
+            }}
+          >
+            {/* HEADER */}
+            <div className="flex items-center gap-3 mb-4">
+              <BarChart3 className="h-6 w-6" style={{ color: "#86489B" }} />
+
+              <h4
+                className={`${archivo.className} font-semibold`}
+                style={{ color: "#86489B" }}
+              >
+                Example: Annual Limit in Action
+              </h4>
+            </div>
+
+            {/* DESCRIPTION */}
+            <p
+              className={`${roboto.className} text-sm font-normal mb-4`}
+              style={{ color: "#6B6B6B", lineHeight: 1.7 }}
+            >
+              In the 2023–24 financial year, Mary made{" "}
+              <strong style={{ color: "#000000" }}>
+                $25,000 in salary sacrifice contributions
+              </strong>
+              . Because of the annual $15,000 limit, only $15,000 counts as eligible FHSS
+              contributions. At 85%, that means only{" "}
+              <strong style={{ color: "#86489B" }}>$12,750</strong> counts toward her
+              maximum releasable amount. The remaining $10,000 cannot be counted toward her
+              FHSS release.
             </p>
+
+            {/* STATS */}
             <div className="flex flex-wrap gap-4">
               {[
                 { label: "Contributed", value: "$25,000" },
@@ -583,9 +724,23 @@ export default function FhssComponent() {
                 { label: "@ 85%", value: "$12,750" },
                 { label: "Excluded", value: "$10,000" },
               ].map((item) => (
-                <div key={item.label} className="bg-white rounded-xl px-5 py-3 text-center" style={{ border: "1px solid rgba(134,72,155,0.15)" }}>
-                  <div className="font-display font-black text-lg" style={{ color: "#86489B" }}>{item.value}</div>
-                  <div className="font-body text-xs mt-0.5" style={{ color: "#6B6B6B" }}>{item.label}</div>
+                <div
+                  key={item.label}
+                  className="bg-white rounded-xl px-5 py-3 text-center"
+                  style={{ border: "1px solid rgba(134,72,155,0.15)" }}
+                >
+                  <div
+                    className={`${archivo.className} font-semibold text-lg`}
+                    style={{ color: "#86489B" }}
+                  >
+                    {item.value}
+                  </div>
+                  <div
+                    className={`${archivo.className} font-normal tracking-normal text-xs mt-0.5`}
+                    style={{ color: "#6B6B6B" }}
+                  >
+                    {item.label}
+                  </div>
                 </div>
               ))}
             </div>
@@ -599,10 +754,10 @@ export default function FhssComponent() {
       <section id="how-to-access" className="px-6 md:px-12 py-24" style={{ backgroundColor: "#ffffff" }}>
         <div className="container mx-auto">
           <div className="mb-4 section-divider" />
-          <h2 className="font-display text-4xl md:text-5xl font-bold mb-4" style={{ color: "#000000" }}>
+          <h2 className={`${archivo.className} text-4xl! md:text-5xl! font-medium! mb-4!`}>
             How to Access Your FHSS Savings
           </h2>
-          <p className="font-body text-lg mb-12 max-w-2xl" style={{ color: "#6B6B6B" }}>
+          <p className={`${roboto.className} font-normal! tracking-normal! text-[16px]! max-w-2xl!`} style={{ color: "#6B6B6B" }}>
             Access is managed through your myGov account linked to the ATO. The process has four steps — and the order matters.
           </p>
 
@@ -618,11 +773,11 @@ export default function FhssComponent() {
                     {s.num}
                   </div>
                   <div className="flex-1 text-left">
-                    <div className="font-display font-bold text-lg mb-1" style={{ color: "#000000" }}>{s.title}</div>
-                    <p className="font-body text-sm" style={{ color: "#6B6B6B", lineHeight: 1.6 }}>{s.desc}</p>
+                    <div className={`${archivo.className} font-bold text-lg! `}>{s.title}</div>
+                    <p className={`${archivo.className} text-sm! font-normal!`} style={{ color: "#6B6B6B", lineHeight: 1.6 }}>{s.desc}</p>
                   </div>
                   <div className="flex items-center gap-3 flex-shrink-0">
-                    <span className="text-2xl opacity-30">{s.icon}</span>
+                    {/* <span className="text-2xl opacity-30">{s.icon}</span> */}
                     <span className="w-7 h-7 rounded-full flex items-center justify-center font-bold text-sm text-white" style={{ background: openStep === i ? "#86489B" : "#F171AC", transition: "background 0.2s" }}>
                       {openStep === i ? "−" : "+"}
                     </span>
@@ -631,7 +786,7 @@ export default function FhssComponent() {
                 {openStep === i && (
                   <div className="px-6 pb-6 pl-24">
                     <div className="info-box rounded-xl p-4">
-                      <p className="font-body text-sm" style={{ color: "#6B6B6B", lineHeight: 1.7 }}>{s.detail}</p>
+                      <p className={`${roboto.className} font-body! text-sm! p-0! m-0! font-normal! tracking-normal!`} style={{ color: "#6B6B6B", lineHeight: 1.7 }}>{s.detail}</p>
                     </div>
                   </div>
                 )}
@@ -640,7 +795,7 @@ export default function FhssComponent() {
           </div>
 
           {/* mistakes / timing summary */}
-          <div className="grid md:grid-cols-3 gap-5">
+          {/* <div className="grid md:grid-cols-3 gap-5">
             {[
               { title: "If you don't buy within 12 months", body: "You can recontribute to super as non-concessional (no tax deduction), or keep the funds and pay 20% FHSS tax on the assessable amount. Extensions of up to 24 months may apply.", icon: "⏱", color: "#F171AC" },
               { title: "Before submitting a release", body: "You can request a new determination or amend your existing one online, provided you meet eligibility requirements and haven't signed a contract yet.", icon: "✏️", color: "#86489B" },
@@ -648,8 +803,50 @@ export default function FhssComponent() {
             ].map((c) => (
               <div key={c.title} className="guarantee-card rounded-2xl p-6 card-hover">
                 <div className="text-2xl mb-3">{c.icon}</div>
-                <h4 className="font-display font-bold text-base mb-2" style={{ color: c.color }}>{c.title}</h4>
-                <p className="font-body text-sm" style={{ color: "#6B6B6B", lineHeight: 1.7 }}>{c.body}</p>
+                <h4 className={`${archivo.className} font-bold! text-base! mb-2!`} style={{ color: c.color }}>{c.title}</h4>
+                <p className={`${roboto.className} text-sm! font-normal! tracking-normal!`} style={{ color: "#6B6B6B", lineHeight: 1.7 }}>{c.body}</p>
+              </div>
+            ))}
+          </div> */}
+          {/* mistakes / timing summary */}
+          <div className="grid md:grid-cols-3 gap-5">
+            {[
+              {
+                title: "If you don't buy within 12 months",
+                body: "You can recontribute to super as non-concessional (no tax deduction), or keep the funds and pay 20% FHSS tax on the assessable amount. Extensions of up to 24 months may apply.",
+                icon: <Clock className="h-6 w-6" />,
+                color: "#F171AC",
+              },
+              {
+                title: "Before submitting a release",
+                body: "You can request a new determination or amend your existing one online, provided you meet eligibility requirements and haven't signed a contract yet.",
+                icon: <Pencil className="h-6 w-6" />,
+                color: "#86489B",
+              },
+              {
+                title: "After processing begins",
+                body: "Changes cannot be made without potentially delaying payment. If errors are found, contact the ATO as soon as possible to minimise delays.",
+                icon: <AlertTriangle className="h-6 w-6" />,
+                color: "#6B6B6B",
+              },
+            ].map((c) => (
+              <div
+                key={c.title}
+                className="guarantee-card rounded-2xl p-6 card-hover"
+              >
+                {/* ICON */}
+                <div
+                  className="mb-3"
+                  style={{ color: c.color }}
+                >
+                  {c.icon}
+                </div>
+
+                {/* TITLE */}
+                <h4 className={`${archivo.className} font-bold! text-base! mb-2!`} style={{ color: c.color }}>{c.title}</h4>
+
+                {/* BODY */}
+                <p className={`${roboto.className} text-sm! font-normal! tracking-normal!`} style={{ color: "#6B6B6B", lineHeight: 1.7 }}>{c.body}</p>
               </div>
             ))}
           </div>
@@ -662,16 +859,16 @@ export default function FhssComponent() {
       <section className="px-6 md:px-12 py-24" style={{ backgroundColor: "#FEF3F8" }}>
         <div className="container mx-auto">
           <div className="mb-4 section-divider" />
-          <h2 className="font-display text-4xl md:text-5xl font-bold mb-4" style={{ color: "#000000" }}>
+          <h2 className={`${archivo.className} text-4xl! md:text-5xl! font-medium! mb-4!`}>
             Combining FHSS with Other Schemes
           </h2>
-          <p className="font-body text-lg mb-12 max-w-2xl" style={{ color: "#6B6B6B" }}>
+          <p className={`${roboto.className} font-normal! tracking-normal! text-[16px]! max-w-2xl!`} style={{ color: "#6B6B6B" }}>
             FHSS operates separately from state and federal concessions. Using it does not disqualify you from other first-home buyer programs.
           </p>
 
           <div className="grid md:grid-cols-2 gap-6 mb-8">
             <div className="bg-white rounded-2xl p-8 card-hover" style={{ border: "1px solid rgba(134,72,155,0.12)" }}>
-              <h3 className="font-display text-xl font-bold mb-5" style={{ color: "#86489B" }}>Can be combined with</h3>
+              <h3 className={`${archivo.className} text-xl! font-semibold! mb-5!`} style={{ color: "#86489B" }}>Can be combined with</h3>
               <ul className="space-y-3">
                 {[
                   "First Home Guarantee (5% deposit, no LMI)",
@@ -680,7 +877,7 @@ export default function FhssComponent() {
                   "Stamp duty concessions or exemptions",
                   "Other state-based housing programs",
                 ].map((item) => (
-                  <li key={item} className="flex items-start gap-3 font-body text-sm" style={{ color: "#000000", lineHeight: 1.6 }}>
+                  <li key={item} className={`${roboto.className} flex items-start gap-3 font-body text-sm`} style={{ color: "#000000", lineHeight: 1.6 }}>
                     <span className="mt-0.5 w-5 h-5 rounded-full flex-shrink-0 flex items-center justify-center text-xs text-white" style={{ background: "#86489B" }}>✓</span>
                     {item}
                   </li>
@@ -690,20 +887,26 @@ export default function FhssComponent() {
 
             <div className="space-y-4">
               <div className="info-box rounded-2xl p-5">
-                <h4 className="font-display font-bold text-base mb-2" style={{ color: "#86489B" }}>HELP / HECS Debt</h4>
-                <p className="font-body text-sm" style={{ color: "#6B6B6B", lineHeight: 1.7 }}>
-                  FHSS withdrawals do <strong style={{ color: "#000000" }}>not</strong> count as repayment income — they won't increase your HELP/HECS repayment. However, salary sacrifice contributions count as reportable employer super contributions, which may affect your PAYG withholding obligations.
+                <h4 className={`${archivo.className} font-medium! text-xl! mb-2!`} style={{ color: "#86489B" }}>
+                  HELP / HECS Debt
+                </h4>
+                <p className={`${roboto.className} font-normal! text-sm! tracking-normal!`} style={{ color: "#6B6B6B", lineHeight: 1.6 }}>
+                  {`FHSS withdrawals do <strong style={{ color: "#000000" }}>not</strong> count as repayment income — they won't increase your HELP/HECS repayment. However, salary sacrifice contributions count as reportable employer super contributions, which may affect your PAYG withholding obligations.`}
                 </p>
               </div>
               <div className="warning-box rounded-2xl p-5">
-                <h4 className="font-display font-bold text-base mb-2" style={{ color: "#F171AC" }}>Outstanding Government Debts</h4>
-                <p className="font-body text-sm" style={{ color: "#6B6B6B", lineHeight: 1.7 }}>
+                <h4 className={`${archivo.className} font-medium! text-xl! mb-2!`} style={{ color: "#86489B" }}>
+                  Outstanding Government Debts
+                </h4>
+                <p className={`${roboto.className} font-normal! text-sm! tracking-normal!`} style={{ color: "#6B6B6B", lineHeight: 1.6 }}>
                   If you have an outstanding debt with the ATO or another Commonwealth agency, your FHSS release may be offset against the debt, reduced (potentially to zero), or take longer to be processed.
                 </p>
               </div>
               <div className="bg-white rounded-2xl p-5" style={{ border: "1px solid rgba(134,72,155,0.12)" }}>
-                <h4 className="font-display font-bold text-base mb-2" style={{ color: "#86489B" }}>Joint Purchases</h4>
-                <p className="font-body text-sm" style={{ color: "#6B6B6B", lineHeight: 1.7 }}>
+                <h4 className={`${archivo.className} font-medium! text-xl! mb-2!`} style={{ color: "#86489B" }}>
+                  Joint Purchases
+                </h4>
+                <p className={`${roboto.className} font-normal! text-sm! tracking-normal!`} style={{ color: "#6B6B6B", lineHeight: 1.6 }}>
                   Couples, siblings, or friends can each withdraw their own FHSS contributions toward the same property. If one person is ineligible due to prior ownership, the other eligible applicants are unaffected.
                 </p>
               </div>
@@ -718,10 +921,10 @@ export default function FhssComponent() {
       <section id="faq" className="px-6 md:px-12 py-24" style={{ backgroundColor: "#ffffff" }}>
         <div className="container mx-auto">
           <div className="mb-4 section-divider" />
-          <h2 className="font-display text-4xl md:text-5xl font-bold mb-4" style={{ color: "#000000" }}>
+          <h2 className={`${archivo.className} text-4xl! md:text-5xl! font-medium! mb-4!`}>
             Frequently Asked Questions
           </h2>
-          <p className="font-body text-lg mb-12" style={{ color: "#6B6B6B" }}>
+          <p className={`${roboto.className} font-normal! tracking-normal! text-[16px]! max-w-2xl!`} style={{ color: "#6B6B6B" }}>
             Everything you need to know about the First Home Super Saver Scheme.
           </p>
 
@@ -730,17 +933,17 @@ export default function FhssComponent() {
               <div key={i} className="faq-item">
                 <button
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                  className="w-full text-left flex items-center justify-between px-6 py-5 gap-4"
+                  className="w-full text-left flex items-center justify-between px-6 py-4 gap-4"
                   style={{ background: "none", border: "none", cursor: "pointer" }}
                 >
-                  <span className="font-display font-bold text-base" style={{ color: "#000000" }}>{f.q}</span>
+                  <span className={`${archivo.className} font-bold text-base`} style={{ color: "#000000" }}>{f.q}</span>
                   <span className="flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center font-bold text-sm text-white" style={{ background: openFaq === i ? "#86489B" : "#F171AC", transition: "background 0.2s" }}>
                     {openFaq === i ? "−" : "+"}
                   </span>
                 </button>
                 {openFaq === i && (
-                  <div className="px-6 pb-5">
-                    <p className="font-body text-sm" style={{ color: "#6B6B6B", lineHeight: 1.8 }}>{f.a}</p>
+                  <div className="px-6 pb-2">
+                    <p className={`${roboto.className} text-[16px]! font-normal! tracking-normal!`} style={{ color: "#6B6B6B", lineHeight: 1.8 }}>{f.a}</p>
                   </div>
                 )}
               </div>
@@ -754,15 +957,31 @@ export default function FhssComponent() {
       ══════════════════════════════════════ */}
       <section className="px-6 md:px-12 py-24" style={{ background: "linear-gradient(135deg, #86489B 0%, #F171AC 100%)" }}>
         <div className="container mx-auto text-center">
-          <h2 className="font-display text-4xl md:text-6xl font-black text-white mb-6 leading-tight">
+          <h2 className={`${archivo.className} text-4xl! md:text-5xl! font-medium! mb-4! text-white`}>
             Start saving smarter
             <br />
             <em>inside super today.</em>
           </h2>
-          <p className="font-body text-lg text-white mb-10 max-w-xl mx-auto" style={{ lineHeight: 1.7, opacity: 0.95 }}>
+          <p className={`${roboto.className} font-normal! tracking-normal! text-[16px]! mb-7! max-w-2xl! mx-auto! text-white`} style={{ lineHeight: 1.7, opacity: 0.95 }}>
             Eligible contributions made from 1 July 2017 count toward your FHSS total. The sooner you start, the more you can save — and the bigger your tax advantage at withdrawal.
           </p>
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className={`flex flex-wrap justify-center gap-4 mb-16 scroll-reveal ${roboto.className}`} style={{ animationDelay: "0.3s" }}>
+            <div className="flex gap-3 lg:p-0">
+              <div className="">
+                <a href="https://www.housingaustralia.gov.au/support-buy/help-buy" className="extra-btn">
+                  Access via myGov →
+                </a>
+              </div>
+
+              <div className="">
+                <a href="https://www.commbank.com.au/home-loans/help-to-buy.html" className="extra-btn">
+                  ATO FHSS Guide
+                </a>
+              </div>
+            </div>
+
+          </div>
+          {/* <div className="flex flex-wrap justify-center gap-4">
             <a
               href="https://my.gov.au"
               target="_blank"
@@ -781,7 +1000,7 @@ export default function FhssComponent() {
             >
               ATO FHSS Guide
             </a>
-          </div>
+          </div> */}
         </div>
       </section>
     </div>
