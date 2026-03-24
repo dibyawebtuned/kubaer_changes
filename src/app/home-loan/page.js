@@ -312,42 +312,42 @@ export default function HomeLoanPage() {
                 {
                   title: "Australian Government 5% Deposite Scheme",
                   icon: Gift,
-                  link: "/first-home-guarantee-schemes",
+                  link: "/Australia-Government",
                 },
                 {
                   title: "First Home Guarantee (FHG)",
                   icon: Gift,
-                  link: "/fhbg",
+                  link: "/FHG",
                 },
                 {
                   title: "Regional First Home Buyer Guarantee (RFHBG)",
                   icon: MapPin,
-                  link: "/rfhbg",
+                  link: "/RFHBG",
                 },
                 {
                   title: "Family Home Buyer Guarantee (FHBG)",
                   icon: Users,
-                  link: "/fhg",
+                  link: "/FHBG",
                 },
                 {
                   title: "First Home Owner Grant (FHOG)",
                   icon: HandCoins,
-                  link: "/fhog",
+                  link: "/FHOG",
                 },
                 {
                   title: "First Home Super Saver (FHSS) Scheme",
                   icon: PiggyBank,
-                  link: "/fhss",
+                  link: "/FHSS",
                 },
                 {
                   title: "Help to Buy Scheme",
                   icon: Building2,
-                  link: "#",
+                  link: "/Help-Buy-Scheme",
                 },
                 {
                   title: "Stamp-Duty Exemptions or Concessions",
                   icon: Building2,
-                  link: "#",
+                  link: "/Stamp-Duty-Exemptions",
                 },
               ].map((item, index) => {
                 const Icon = item.icon;

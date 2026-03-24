@@ -1,666 +1,722 @@
 "use client";
-import React, { useState } from "react";
-import CallAction from "@/components/CallAction";
-import { Archivo, Roboto } from "next/font/google";
-import "swiper/css";
-import "swiper/css/pagination";
+import { useState } from "react";
 
-const archivo = Archivo({ subsets: ["latin"], weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"] });
-const roboto = Roboto({ subsets: ["latin"], weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"] });
+const NAV_LINKS = ["About", "Who Qualifies", "By State", "How to Apply", "Checklist", "FAQ"];
 
-// ─── Icons ────────────────────────────────────────────────────────────────────
-function IconChevron({ open }) {
-    return (
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
-            style={{ transform: open ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.3s ease" }}>
-            <polyline points="6 9 12 15 18 9" />
-        </svg>
-    );
-}
-function IconCheck() {
-    return (
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-            <polyline points="20 6 9 17 4 12" />
-        </svg>
-    );
-}
-function IconInfo() {
-    return (
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-            <circle cx="12" cy="12" r="10" />
-            <line x1="12" y1="8" x2="12" y2="12" />
-            <line x1="12" y1="16" x2="12.01" y2="16" />
-        </svg>
-    );
-}
-function IconTrendDown() {
-    return (
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-            <polyline points="22 17 13.5 8.5 8.5 13.5 2 7" />
-            <polyline points="16 17 22 17 22 11" />
-        </svg>
-    );
-}
-function IconRefresh() {
-    return (
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-            <polyline points="23 4 23 10 17 10" />
-            <polyline points="1 20 1 14 7 14" />
-            <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15" />
-        </svg>
-    );
-}
-function IconShield() {
-    return (
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-        </svg>
-    );
-}
-function IconDollar() {
-    return (
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-            <line x1="12" y1="1" x2="12" y2="23" />
-            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-        </svg>
-    );
-}
-function IconBank() {
-    return (
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-            <line x1="3" y1="22" x2="21" y2="22" />
-            <line x1="6" y1="18" x2="6" y2="11" />
-            <line x1="10" y1="18" x2="10" y2="11" />
-            <line x1="14" y1="18" x2="14" y2="11" />
-            <line x1="18" y1="18" x2="18" y2="11" />
-            <polygon points="12 2 20 7 4 7" />
-        </svg>
-    );
-}
-function IconCalculator() {
-    return (
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-            <rect x="4" y="2" width="16" height="20" rx="2" />
-            <line x1="8" y1="6" x2="16" y2="6" />
-            <line x1="8" y1="10" x2="8" y2="10" /><line x1="12" y1="10" x2="12" y2="10" /><line x1="16" y1="10" x2="16" y2="10" />
-            <line x1="8" y1="14" x2="8" y2="14" /><line x1="12" y1="14" x2="12" y2="14" /><line x1="16" y1="14" x2="16" y2="14" />
-            <line x1="8" y1="18" x2="12" y2="18" /><line x1="16" y1="18" x2="16" y2="18" />
-        </svg>
-    );
-}
-function IconStar() {
-    return (
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-        </svg>
-    );
-}
-
-// ─── Data ─────────────────────────────────────────────────────────────────────
-
-const variableLoanTypes = [
+const FAQS = [
     {
-        label: "Basic variable",
-        tag: "Lowest rate",
-        tagColor: "blue",
-        bestFor: "First-time buyers or those focused solely on the lowest possible repayment.",
-        keyBenefit: "Lower ongoing fees and competitive 'headline' rates.",
-        features: ["Competitive variable interest rate", "Lower ongoing fees", "Basic extra repayments"],
-        notIncluded: ["No offset account", "Limited or no redraw", "Fewer lender tools"],
+        q: "Is stamp duty the same as transfer duty?",
+        a: "Yes. 'Stamp duty' is the common term. Many states officially call it transfer duty (or conveyance duty). The concept is the same — a state/territory tax charged when property ownership is transferred.",
     },
     {
-        label: "Standard variable",
-        tag: "Most popular",
-        tagColor: "green",
-        recommended: true,
-        bestFor: "Established homeowners and investors who want full control over their debt.",
-        keyBenefit: "High flexibility to manage your money and reduce interest over time.",
-        features: ["Offset accounts available", "Redraw facility included", "Unlimited extra repayments", "Package discounts available"],
-        notIncluded: [],
+        q: "Do first home buyers always get stamp duty waived?",
+        a: "No. Some buyers get a full exemption (duty reduced to $0), others get a partial concession (reduced but not zero), and some get no benefit — for example, if they exceed value caps or don't meet occupancy rules.",
+    },
+    {
+        q: "What's the difference between a stamp duty exemption and a concession?",
+        a: "An exemption reduces duty to $0. A concession reduces duty, but you still pay some amount. Which applies depends on the state, property type, and purchase price.",
+    },
+    {
+        q: "What does 'dutiable value' mean?",
+        a: "It usually means the higher of the purchase price or market value, used to calculate transfer duty. If the revenue office decides a negotiated price is under market value, they may assess duty on market value instead.",
+    },
+    {
+        q: "When do I pay stamp duty in Australia?",
+        a: "Usually at settlement (or shortly after), as part of the title transfer process handled by your conveyancer or solicitor. If settling electronically, it may be due on the day of settlement.",
+    },
+    {
+        q: "Can stamp duty be added to my home loan?",
+        a: "Generally, most lenders expect you to pay stamp duty from savings (genuine funds). Some loan structures may indirectly cover costs, but you shouldn't assume you can borrow the duty without confirming lender policy.",
+    },
+    {
+        q: "How long do I have to live in the home to keep the concession?",
+        a: "Often 6 or 12 continuous months depending on the state/territory. Always check the specific rule that applies to your scheme, and keep evidence of occupancy such as utility bills and electoral roll updates.",
+    },
+    {
+        q: "If my partner owned a home before, can I still get the concession?",
+        a: "Often your eligibility is reduced or removed entirely, but the exact outcome depends on the state/territory and how the scheme treats mixed-eligibility buyers. Check your jurisdiction carefully before signing a contract.",
+    },
+    {
+        q: "What if I inherited a property — does that affect first home buyer status?",
+        a: "It can. Even a partial interest on title may count as having owned property. This is a common 'surprise ineligibility' area. Seek advice from your conveyancer before assuming you qualify.",
+    },
+    {
+        q: "Can I get the concession if I buy through a trust or company?",
+        a: "Usually no. Most first home buyer concessions are designed for individuals buying in their own names. There are some niche exceptions, but don't assume eligibility without checking.",
+    },
+    {
+        q: "Does the First Home Owner Grant (FHOG) remove stamp duty?",
+        a: "Not automatically. FHOG is a cash grant (if eligible). Stamp duty relief is a separate tax exemption or concession. You may qualify for both, one, or neither — they have different rules.",
+    },
+    {
+        q: "Can I receive both stamp duty relief and the Home Guarantee Scheme?",
+        a: "Possibly yes. They are different programs — stamp duty relief is state-based, while the Home Guarantee Scheme is federal (via Housing Australia). Eligibility must be checked separately for each.",
+    },
+    {
+        q: "What if I previously owned property with an ex-partner?",
+        a: "Often no, because you've previously held an interest in residential property. Some schemes have exceptions, but they're not common. Always confirm with your conveyancer.",
+    },
+    {
+        q: "Can I rent out a room and still qualify for owner-occupier benefits?",
+        a: "Sometimes yes if you still genuinely live there as your main residence, but it's state-specific. Renting out the entire property is more likely to breach the occupancy rules.",
     },
 ];
 
-const whyChoose = [
+const STATES = [
+    { state: "NSW", get: "Full exemption or concessional rate", applies: "Established & new homes (value caps)", note: "Well-known assistance scheme with thresholds and a phase-out range." },
+    { state: "VIC", get: "Full exemption or concession + off-the-plan rules", applies: "Established & new homes (value caps)", note: "Strongest concession below a lower threshold, tapering to a cap." },
+    { state: "QLD", get: "First home concession (reduced duty)", applies: "Homes & sometimes vacant land (caps)", note: "QLD offers a concession rather than a broad $0 outcome at higher prices." },
+    { state: "WA", get: "Full exemption to threshold; concession above", applies: "Established homes & vacant land", note: "Clear thresholds and different treatment for land vs homes." },
+    { state: "SA", get: "Often strongest for new homes", applies: "New builds / off-the-plan primarily", note: "Focused relief for new homes. Established homes may not receive the same relief." },
+    { state: "TAS", get: "Concessions / discounts (time-limited at times)", applies: "Established homes and/or new builds", note: "Support has included discounts that can change — check current settings." },
+    { state: "ACT", get: "Concession scheme (sometimes to nil)", applies: "Owner-occupiers within income/property caps", note: "Eligibility model based on income and property value limits." },
+    { state: "NT", get: "Concessions / discounts may apply", applies: "Often linked to new builds", note: "Structured as a discount up to a cap rather than a blanket exemption." },
+];
+
+const STEPS = [
     {
-        Icon: TrendDownIcon,
-        title: "Freedom to pay off faster",
-        desc: "Variable rate loans usually allow unlimited extra repayments without penalty — helping you reduce interest and own your home sooner.",
+        num: "01",
+        title: "Before You Sign",
+        desc: "Confirm likely eligibility based on buyer names on title, property type, price, and intended occupancy. Check the correct thresholds for your state.",
+        icon: "🔍",
+        detail: "This is the most important step. Missing out on a concession is often preventable — but only if you check eligibility before exchanging contracts, not after.",
     },
     {
-        Icon: RefreshIcon,
-        title: "Smart money management features",
-        desc: "Many variable loans include offset accounts and redraw facilities — tools that significantly reduce interest while keeping your savings accessible.",
+        num: "02",
+        title: "Exchange / Contract Signing",
+        desc: "Make sure the contract details match the scenario you're claiming — especially for off-the-plan or new builds. Property classification matters.",
+        icon: "✍️",
+        detail: "Confirm whether the property is classified as new, established, off-the-plan, or vacant land. This classification directly affects which concession (if any) applies.",
     },
     {
-        Icon: DollarIcon,
-        title: "Opportunity to benefit when rates drop",
-        desc: "If interest rates decrease, your repayments could decrease too — potentially saving you thousands over the life of your loan.",
+        num: "03",
+        title: "Provide Declarations & ID",
+        desc: "You'll sign first home buyer and occupancy declarations. Prepare your photo ID, evidence of citizenship/PR status if required, and signed contract of sale.",
+        icon: "📋",
+        detail: "Exact document requirements vary by state, but commonly include passport or driver's licence, signed first home buyer declaration, and signed owner-occupier declaration.",
+    },
+    {
+        num: "04",
+        title: "Conveyancer Lodges Duty Documents",
+        desc: "Your conveyancer or solicitor applies the concession or exemption in the duty assessment process on your behalf — you don't submit this yourself.",
+        icon: "⚖️",
+        detail: "Your conveyancer will handle the duty calculation and lodgement as part of settlement. Ask them to confirm eligibility in writing based on your specific contract details.",
+    },
+    {
+        num: "05",
+        title: "Settlement & Ongoing Occupancy",
+        desc: "Duty is paid, reduced, or waived as assessed. After settlement, you must meet the occupancy rule — move in within the required timeframe and live there as required.",
+        icon: "🏠",
+        detail: "Keep evidence of occupancy: utility connection, electoral roll update, mail redirection, or insurance showing the property as your home address. Don't rent it out or move out early without checking consequences first.",
     },
 ];
 
-const isRightFor = [
-    "Want flexibility in repayments",
-    "Plan to make additional repayments",
-    "Like having access to advanced loan features",
-    "Are comfortable with small changes in repayment amounts",
+const MISTAKES = [
+    { title: "Assuming eligibility without checking", desc: "Especially when buying with a partner who has previously owned property. Always verify before signing.", icon: "⚠️" },
+    { title: "Not meeting the residency rule", desc: "Moving in too late, or renting the property out before occupying it yourself, can disqualify your claim.", icon: "🏚️" },
+    { title: "Buying under a trust or company", desc: "Most first home buyer benefits are for individuals buying in their own names. Trusts and companies are typically ineligible.", icon: "🏢" },
+    { title: "Mixing up grants vs stamp duty relief", desc: "The First Home Owner Grant (FHOG) and stamp duty concessions are separate programs with different rules.", icon: "🔀" },
+    { title: "Incorrect property classification", desc: "'New home', 'off-the-plan', 'substantial renovation', and 'vacant land' are defined differently by each state.", icon: "📐" },
+    { title: "Missing deadlines or paperwork", desc: "Declarations, evidence, and settlement timing all matter. Late or incomplete documents can cost you the concession.", icon: "⏰" },
 ];
 
-const lenderGroups = [
-    {
-        label: "Major banks (Big 4)",
-        lenders: ["Commonwealth Bank (CBA)", "Westpac", "NAB (National Australia Bank)", "ANZ"],
-    },
-    {
-        label: "Second-tier & regional",
-        lenders: ["Macquarie Bank", "ING", "Suncorp Bank", "St.George Bank", "BankSA", "Bank of Melbourne", "Bankwest", "Bendigo Bank", "Bank of Queensland (BOQ)", "Great Southern Bank", "AMP Bank", "MyState Bank"],
-    },
-    {
-        label: "Customer-owned & mutual",
-        lenders: ["ubank", "People First Bank", "Beyond Bank", "IMB Bank", "Teachers Mutual Bank", "Bank Australia", "Horizon Bank"],
-    },
-    {
-        label: "Specialist & non-bank",
-        lenders: ["Liberty Financial", "Pepper Money", "La Trobe Financial", "Firstmac", "Resimac", "RedZed", "Pacific Mortgage Group"],
-    },
+const CHECKLIST = [
+    "Confirm whether your state calls it stamp duty, transfer duty, or conveyance duty",
+    "Check if you qualify for a full exemption or a partial concession",
+    "Confirm the property value thresholds and caps for your state and property type",
+    "Confirm whether the property is treated as new, off-the-plan, established, or vacant land",
+    "Check the owner-occupier residency rule (move-in timeframe + minimum months living there)",
+    "If buying with someone else, confirm both buyers' eligibility implications",
+    "Ensure the ownership structure is in individual names (not a trust or company)",
+    "Budget for other upfront costs: conveyancing, building/pest, lender fees, registration fees",
+    "Ask your conveyancer to confirm eligibility in writing based on your contract details",
+    "Use the relevant state revenue office calculator for a final stamp duty estimate",
+    "Move in within the required timeframe after settlement",
+    "Keep evidence you lived there — utilities, electoral roll, address changes",
+    "Don't rent it out or move out early without checking consequences first",
 ];
 
-const faqs = [
-    { q: "What exactly is a variable interest rate?", a: "A variable rate means your interest can fluctuate over the life of the loan. It is influenced by the Reserve Bank of Australia's (RBA) cash rate and your lender's funding costs." },
-    { q: "How often do variable rates change?", a: "Lenders can change rates at any time, though they typically review them following the RBA's monthly meetings. You will always be notified in writing before your repayment amount changes." },
-    { q: "Can I make extra repayments on a variable loan?", a: "Yes! One of the biggest advantages of a variable loan is the ability to make unlimited extra repayments without penalty, helping you pay off your home years earlier." },
-    { q: "What is an offset account?", a: "It's a transaction account linked to your mortgage. Every dollar in your offset is 'subtracted' from your loan balance before interest is calculated, potentially saving you thousands." },
-    { q: "What is a redraw facility?", a: "A redraw facility allows you to withdraw any extra repayments you've made into your loan if you need the cash back for emergencies or renovations." },
-    { q: "Will my repayments go down if interest rates drop?", a: "Yes. If your lender passes on a rate cut, your minimum monthly repayment decreases, though many borrowers choose to keep their payments high to clear the debt faster." },
-    { q: "Are there different 'levels' of variable loans?", a: "Yes. They range from 'Basic' (no-frills, lower rates) to 'Standard' (fully featured with offsets and redraws) and 'Introductory' (discounted rates for the first year)." },
-    { q: "Can I switch from a variable to a fixed rate later?", a: "Generally, yes. Most lenders allow you to fix your rate at any time during the loan term, which can be a great strategy if you think market rates are about to rise." },
-    { q: "Is there a limit to how high variable rates can go?", a: "No. There is no 'ceiling' on a variable rate. It's essential to ensure you have a financial buffer to manage potential increases in the market." },
-    { q: "Who is a variable rate loan best suited for?", a: "It's ideal for borrowers who value flexibility, want to use savings to offset interest, or plan on making substantial extra repayments." },
-];
+export default function StampdutyComponent() {
+    const [openFaq, setOpenFaq] = useState(null);
+    const [openStep, setOpenStep] = useState(null);
 
-// ─── Icon wrappers (can't use component references in data before definition) ──
-function TrendDownIcon() { return <IconTrendDown />; }
-function RefreshIcon() { return <IconRefresh />; }
-function DollarIcon() { return <IconDollar />; }
-
-// ─── Rate Impact Calculator ───────────────────────────────────────────────────
-function RateImpactCalculator() {
-    const [loanAmount, setLoanAmount] = useState(600000);
-    const [currentRate, setCurrentRate] = useState(6.2);
-    const [rateChange, setRateChange] = useState(-0.5);
-    const [loanTerm, setLoanTerm] = useState(30);
-
-    const mr = (rate) => rate / 100 / 12;
-    const nMths = loanTerm * 12;
-
-    const calcPayment = (principal, rate) =>
-        principal > 0
-            ? principal * (mr(rate) * Math.pow(1 + mr(rate), nMths)) / (Math.pow(1 + mr(rate), nMths) - 1)
-            : 0;
-
-    const newRate = Math.max(0.5, currentRate + rateChange);
-    const currentPayment = calcPayment(loanAmount, currentRate);
-    const newPayment = calcPayment(loanAmount, newRate);
-    const monthlyDiff = newPayment - currentPayment;
-    const annualDiff = monthlyDiff * 12;
-
-    const totalInterestCurrent = currentPayment * nMths - loanAmount;
-    const totalInterestNew = newPayment * nMths - loanAmount;
-    const totalDiff = totalInterestNew - totalInterestCurrent;
-
-    const fmt = (n) => "$" + Math.round(Math.abs(n)).toLocaleString("en-AU");
-    const sign = (n) => n > 0 ? "+" : n < 0 ? "−" : "";
-    const isDecrease = rateChange < 0;
-
-    return (
-        <div className="bg-white rounded-3xl border border-[#F171AC]/20 shadow-[0_8px_40px_rgba(241,113,172,0.1)] overflow-hidden">
-            <div className="flex items-center gap-3 px-8 py-6 bg-gradient-to-r from-[#86489B]/8 to-[#F171AC]/8 border-b border-[#F171AC]/15">
-                <div className="w-9 h-9 rounded-xl bg-gradient-to-r from-[#86489B]/15 to-[#F171AC]/15 border border-[#F171AC]/25 flex items-center justify-center text-[#F171AC]">
-                    <IconCalculator />
-                </div>
-                <h3 className="text-xl! font-semibold! text-gray-800">Rate change impact calculator</h3>
-            </div>
-
-            <div className="p-8 grid grid-cols-1 md:grid-cols-2 gap-10">
-                {/* Sliders */}
-                <div className="flex flex-col gap-7">
-                    {[
-                        { label: "Loan amount", val: "$" + Math.round(loanAmount).toLocaleString("en-AU"), min: 100000, max: 2000000, step: 25000, value: loanAmount, setter: setLoanAmount },
-                        { label: "Current interest rate", val: currentRate.toFixed(1) + "% p.a.", min: 3, max: 10, step: 0.1, value: currentRate, setter: setCurrentRate },
-                        { label: "Rate change scenario", val: (rateChange >= 0 ? "+" : "") + rateChange.toFixed(2) + "%", min: -3, max: 3, step: 0.25, value: rateChange, setter: setRateChange },
-                        { label: "Loan term", val: loanTerm + " years", min: 10, max: 30, step: 5, value: loanTerm, setter: setLoanTerm },
-                    ].map((f, i) => (
-                        <div key={i}>
-                            <div className="flex justify-between items-baseline mb-2">
-                                <span className="text-[14px] text-gray-500">{f.label}</span>
-                                <span className="text-[18px] font-semibold bg-gradient-to-r from-[#86489B] to-[#F171AC] bg-clip-text text-transparent">{f.val}</span>
-                            </div>
-                            <input
-                                type="range"
-                                min={f.min} max={f.max} step={f.step}
-                                value={f.value}
-                                onChange={(e) => f.setter(Number(e.target.value))}
-                                className="w-full h-[3px] rounded-full appearance-none cursor-pointer
-                                    bg-gradient-to-r from-[#86489B] to-[#F171AC]
-                                    [&::-webkit-slider-thumb]:appearance-none
-                                    [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5
-                                    [&::-webkit-slider-thumb]:rounded-full
-                                    [&::-webkit-slider-thumb]:bg-white
-                                    [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-[#F171AC]
-                                    [&::-webkit-slider-thumb]:shadow-[0_2px_8px_rgba(241,113,172,0.4)]
-                                    [&::-webkit-slider-thumb]:cursor-pointer
-                                    [&::-webkit-slider-thumb]:hover:scale-125
-                                    [&::-webkit-slider-thumb]:transition-transform"
-                            />
-                        </div>
-                    ))}
-                </div>
-
-                {/* Results */}
-                <div className="flex flex-col justify-center bg-gradient-to-br from-[#86489B]/5 to-[#F171AC]/5 rounded-2xl p-6 border border-[#F171AC]/15">
-                    <p className="text-[11px] font-semibold tracking-widests uppercase text-[#86489B] mb-4">Rate impact summary</p>
-
-                    {/* Before / After */}
-                    <div className="grid grid-cols-2 gap-3 mb-4">
-                        <div className="bg-white rounded-xl border border-[#F171AC]/15 p-4 text-center">
-                            <p className="text-[11px] text-gray-400 mb-1">Current rate</p>
-                            <p className="text-[20px] font-bold text-gray-700">{currentRate.toFixed(1)}%</p>
-                            <p className="text-[13px] text-gray-500 mt-1">{fmt(currentPayment)}/mo</p>
-                        </div>
-                        <div className={`rounded-xl border p-4 text-center ${isDecrease ? "bg-green-50 border-green-200/60" : "bg-rose-50 border-rose-200/60"}`}>
-                            <p className="text-[11px] text-gray-400 mb-1">New rate</p>
-                            <p className={`text-[20px] font-bold ${isDecrease ? "text-green-700" : "text-rose-600"}`}>{newRate.toFixed(1)}%</p>
-                            <p className={`text-[13px] mt-1 ${isDecrease ? "text-green-600" : "text-rose-500"}`}>{fmt(newPayment)}/mo</p>
-                        </div>
-                    </div>
-
-                    <div className="flex justify-between items-center py-3 border-b border-[#F171AC]/10">
-                        <span className="text-[14px] text-gray-500">Monthly repayment change</span>
-                        <span className={`text-[22px] font-bold ${isDecrease ? "text-green-600" : "text-rose-500"}`}>
-                            {sign(monthlyDiff)}{fmt(monthlyDiff)}/mo
-                        </span>
-                    </div>
-
-                    {[
-                        { label: "Annual repayment change", val: sign(annualDiff) + fmt(annualDiff) + "/yr", danger: !isDecrease },
-                        { label: "Total interest change (life of loan)", val: sign(totalDiff) + fmt(totalDiff), danger: !isDecrease },
-                    ].map((row, i) => (
-                        <div key={i} className="flex justify-between items-center py-2.5 border-b border-[#F171AC]/[0.07] last:border-0 text-sm">
-                            <span className="text-gray-500">{row.label}</span>
-                            <span className={`font-semibold ${row.danger ? "text-rose-500" : "text-green-600"}`}>{row.val}</span>
-                        </div>
-                    ))}
-
-                    <p className={`mt-3 text-[13px] leading-relaxed rounded-xl px-4 py-3 border ${isDecrease
-                        ? "bg-green-50 border-green-200/60 text-green-700"
-                        : "bg-rose-50 border-rose-200/60 text-rose-600"}`}>
-                        {isDecrease
-                            ? `✓ A ${Math.abs(rateChange).toFixed(2)}% rate cut saves you ${fmt(Math.abs(monthlyDiff))} every month.`
-                            : `⚠ A ${Math.abs(rateChange).toFixed(2)}% rate rise costs you ${fmt(Math.abs(monthlyDiff))} more every month.`}
-                    </p>
-                </div>
-            </div>
-        </div>
-    );
-}
-
-// ─── Shared design-system components ──────────────────────────────────────────
-function SectionTag({ children }) {
-    return (
-        <span className="inline-flex items-center gap-2 border border-[#F171AC]/30 rounded-full px-3.5 py-1 text-[10px] font-semibold tracking-widest uppercase text-[#F171AC] mb-4">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#F171AC] inline-block" />
-            {children}
-        </span>
-    );
-}
-function GradientText({ children, className = "" }) {
-    return (
-        <span className={`bg-gradient-to-r from-[#86489B] to-[#F171AC] bg-clip-text text-transparent ${className}`}>
-            {children}
-        </span>
-    );
-}
-function SectionHeading({ children }) {
-    return (
-        <h2 className="text-3xl! md:text-4xl! lg:text-[44px]! font-medium! leading-tight! mb-3!">
-            {children}
-        </h2>
-    );
-}
-function SectionLead({ children, className = "" }) {
-    return (
-        <p className={`text-base! text-gray-500 font-normal! leading-relaxed! max-w-xl! mb-12! ${className}`}>
-            {children}
-        </p>
-    );
-}
-function PinkDivider() {
-    return (
-        <div className="hidden! sm:block! w-full h-px bg-gradient-to-r from-transparent via-[#F171AC]/25 to-transparent" />
-    );
-}
-function AccentCard({ children, className = "" }) {
-    return (
-        <div className={`bg-white! rounded-2xl! border-l-4! border-[#F172AC]! shadow-[0_4px_15px_rgba(241,114,172,0.12)]! hover:shadow-[0_6px_20px_rgba(241,114,172,0.35)]! transition-all! duration-300! hover:-translate-y-1 p-4! sm:p-5! md:p-6! ${className}`}>
-            {children}
-        </div>
-    );
-}
-function InfoBox({ title, children }) {
-    return (
-        <div className="flex gap-4 items-start bg-gradient-to-r from-[#86489B]/[0.06] to-[#F171AC]/[0.06] border border-[#F171AC]/20 rounded-2xl p-5">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-r from-[#86489B] to-[#F171AC] flex items-center justify-center text-white flex-shrink-0">
-                <IconInfo />
-            </div>
-            <div>
-                {title && <p className="text-[15px] font-semibold text-[#86489B] mb-1">{title}</p>}
-                <p className="text-[14px] text-gray-500 leading-relaxed">{children}</p>
-            </div>
-        </div>
-    );
-}
-
-// ─── FAQ Item ─────────────────────────────────────────────────────────────────
-function FaqItem({ q, a }) {
-    const [open, setOpen] = useState(false);
     return (
         <div
-            className="border-b border-[#F171AC]/15 cursor-pointer group first:border-t first:border-[#F171AC]/15"
-            onClick={() => setOpen(!open)}
+            style={{ fontFamily: "'Georgia', serif", backgroundColor: "#FDF2F9", color: "#000000" }}
+            className="min-h-screen"
         >
-            <div className={`flex! justify-between! items-center! py-8! px-1! text-[20px]! font-medium! gap-4! transition-colors duration-200
-                ${open ? "bg-gradient-to-r from-[#86489B] to-[#F171AC] bg-clip-text text-transparent" : "text-gray-700 group-hover:text-[#F171AC]"}`}>
-                <span>{q}</span>
-                <span className="text-[#F171AC] flex-shrink-0"><IconChevron open={open} /></span>
-            </div>
-            {open && (
-                <div className="pb-5! px-1! text-[17px]! text-gray-500 leading-relaxed! font-medium!">
-                    {a}
+            <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap');
+
+        * { box-sizing: border-box; }
+        body { margin: 0; }
+
+        .font-display { font-family: 'Playfair Display', Georgia, serif; }
+        .font-body    { font-family: 'DM Sans', sans-serif; }
+
+        .purple-gradient { background: linear-gradient(135deg, #86489B, #F171AC); }
+
+        .card-hover {
+          transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+        .card-hover:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 20px 40px rgba(134,72,155,0.18);
+        }
+        .faq-item {
+          border-bottom: 1px solid rgba(134,72,155,0.15);
+          transition: background 0.2s;
+        }
+        .faq-item:last-child { border-bottom: none; }
+        .faq-item:hover { background: rgba(241,113,172,0.05); }
+
+        .step-item {
+          border-bottom: 1px solid rgba(134,72,155,0.1);
+          transition: background 0.2s;
+        }
+        .step-item:last-child { border-bottom: none; }
+
+        .nav-link {
+          position: relative;
+          transition: color 0.2s;
+          text-decoration: none;
+        }
+        .nav-link::after {
+          content: '';
+          position: absolute;
+          bottom: -2px; left: 0;
+          width: 0; height: 2px;
+          background: #F171AC;
+          transition: width 0.25s;
+        }
+        .nav-link:hover { color: #86489B; }
+        .nav-link:hover::after { width: 100%; }
+
+        .badge-pill {
+          background: linear-gradient(90deg, rgba(134,72,155,0.12), rgba(241,113,172,0.12));
+          border: 1px solid rgba(134,72,155,0.2);
+        }
+        .section-divider {
+          width: 60px; height: 3px;
+          background: linear-gradient(90deg, #86489B, #F171AC);
+          border-radius: 2px;
+        }
+        .guarantee-card {
+          background: linear-gradient(135deg, rgba(134,72,155,0.08), rgba(241,113,172,0.08));
+          border: 1px solid rgba(134,72,155,0.15);
+        }
+        .highlight-number {
+          background: linear-gradient(135deg, #86489B, #F171AC);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+        }
+        .scroll-reveal { animation: fadeUp 0.6s ease both; }
+        @keyframes fadeUp {
+          from { opacity: 0; transform: translateY(24px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+        .warning-box {
+          background: rgba(241,113,172,0.07);
+          border-left: 4px solid #F171AC;
+        }
+        .info-box {
+          background: rgba(134,72,155,0.07);
+          border-left: 4px solid #86489B;
+        }
+        .checklist-item {
+          display: flex;
+          align-items: flex-start;
+          gap: 10px;
+          padding: 10px 0;
+          border-bottom: 1px solid rgba(134,72,155,0.08);
+          font-family: 'DM Sans', sans-serif;
+          font-size: 0.875rem;
+          color: #000;
+          line-height: 1.6;
+        }
+        .checklist-item:last-child { border-bottom: none; }
+        .state-row:nth-child(even) { background: rgba(134,72,155,0.03); }
+        .flow-arrow {
+          color: #F171AC;
+          font-size: 1.5rem;
+          text-align: center;
+        }
+      `}</style>
+
+            {/* ══════════════════════════════════════
+          NAVBAR
+      ══════════════════════════════════════ */}
+            <nav
+                className="font-body sticky top-0 z-50 flex items-center justify-between px-6 md:px-12 py-4"
+                style={{ backgroundColor: "rgba(253,242,249,0.95)", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(134,72,155,0.1)" }}
+            >
+                <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-full purple-gradient flex items-center justify-center">
+                        <span className="text-white text-xs font-bold">S</span>
+                    </div>
+                    <span className="font-display font-bold text-base md:text-lg" style={{ color: "#86489B" }}>
+                        Stamp Duty Concessions
+                    </span>
                 </div>
-            )}
-        </div>
-    );
-}
-
-// ─── Main Component ────────────────────────────────────────────────────────────
-const VariablehomeComponent = () => {
-    return (
-        <div className="bg-[#FDF8FF] text-gray-800 min-h-screen">
-            <style>{`.grad-text{background:linear-gradient(90deg,#86489B,#F171AC);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}`}</style>
-
-            {/* ════════════════════ HERO ════════════════════ */}
-            <section className="relative text-center px-6 pt-24 pb-20 overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-[#86489B]/[0.04] via-transparent to-[#F171AC]/[0.06] pointer-events-none" />
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] rounded-full bg-[radial-gradient(ellipse,rgba(241,113,172,0.12)_0%,transparent_70%)] pointer-events-none" />
-
-                <SectionTag>Standard Variable Rate Home Loans</SectionTag>
-
-                <h1 className={`text-3xl! sm:text-4xl! md:text-5xl! lg:text-6xl! font-medium! mb-6! max-w-3xl mx-auto text-gray-800 ${archivo.className}`}>
-                    Freedom, Flexibility &amp; Control<br />
-                    <span className="grad-text">Over Your Mortgage</span>
-                </h1>
-
-                <p className={`text-sm! sm:text-base! md:text-lg! text-gray-500! font-normal! max-w-xl mx-auto mb-12 ${archivo.className}`}>
-                    Buying a home is one of life's biggest milestones — and your home loan should support your lifestyle, not restrict it. A Standard Variable Rate Home Loan gives you the flexibility to adjust, adapt, and stay in control as your financial journey evolves.
-                </p>
-
-                <div className="flex flex-col sm:flex-row justify-center max-w-3xl mx-auto rounded-2xl overflow-hidden shadow-[0_4px_30px_rgba(241,113,172,0.15)] border border-[#F171AC]/20">
-                    {[
-                        { val: "Unlimited", label: "Extra repayments — no penalty" },
-                        { val: "RBA", label: "Rate linked to cash rate movements" },
-                        { val: "Offset", label: "Account available on standard variable" },
-                        { val: "Flexible", label: "Switch to fixed any time" },
-                    ].map((s, i) => (
-                        <div key={i} className="flex-1 py-6 px-4 text-center bg-white border-b sm:border-b-0 sm:border-r border-[#F171AC]/15 last:border-0">
-                            <span className="text-2xl font-bold block mb-1 grad-text">{s.val}</span>
-                            <span className="text-xs text-gray-400 tracking-wide font-medium leading-tight block">{s.label}</span>
-                        </div>
+                <div className="hidden md:flex items-center gap-6">
+                    {NAV_LINKS.map((l) => (
+                        <a key={l} href={`#${l.toLowerCase().replace(/\s+/g, "-")}`} className="nav-link font-body text-sm" style={{ color: "#6B6B6B" }}>
+                            {l}
+                        </a>
                     ))}
                 </div>
-            </section>
+                <a href="#checklist" className="font-body text-sm font-medium px-5 py-2 rounded-full text-white purple-gradient" style={{ textDecoration: "none" }}>
+                    Checklist
+                </a>
+            </nav>
 
-            <PinkDivider />
+            {/* ══════════════════════════════════════
+          HERO
+      ══════════════════════════════════════ */}
+            <section className="relative overflow-hidden px-6 md:px-12 pt-20 pb-32">
+                <div className="absolute top-0 right-0 w-96 h-96 rounded-full opacity-20" style={{ background: "radial-gradient(circle, #F171AC, transparent)", transform: "translate(30%, -30%)" }} />
+                <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full opacity-15" style={{ background: "radial-gradient(circle, #86489B, transparent)", transform: "translate(-30%, 30%)" }} />
 
-            {/* ════════════════════ TWO TYPES ════════════════════ */}
-            <section className="container mx-auto px-6 py-20 mt-15 sm:mt-0">
-                <SectionTag>Loan types</SectionTag>
-                <SectionHeading>
-                    Primary types of <GradientText>variable loans</GradientText>
-                </SectionHeading>
-                <SectionLead>
-                    Variable loans come in two main flavours. Understanding the difference helps you choose the right product for your situation.
-                </SectionLead>
+                <div className="container mx-auto relative">
+                    <div className="badge-pill inline-flex items-center gap-2 px-4 py-2 rounded-full mb-8 font-body text-sm scroll-reveal" style={{ color: "#86489B" }}>
+                        <span className="w-2 h-2 rounded-full purple-gradient" style={{ display: "inline-block" }} />
+                        One of the biggest upfront costs — and one of the most overlooked savings
+                    </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                    {variableLoanTypes.map((loan, i) => {
-                        const tagMap = {
-                            blue: "bg-blue-50 border border-blue-200/60 text-blue-700",
-                            green: "bg-green-50 border border-green-200/60 text-green-700",
-                        };
-                        return (
-                            <div
-                                key={i}
-                                className={`rounded-2xl p-7 ${loan.recommended
-                                    ? "bg-white border-2 border-[#86489B]/30 shadow-[0_4px_20px_rgba(134,72,155,0.12)]"
-                                    : "bg-white border border-[#F171AC]/20 shadow-[0_4px_15px_rgba(241,114,172,0.08)]"}`}
-                            >
-                                <div className="flex items-center gap-2 mb-4">
-                                    <span className={`inline-block text-[11px] font-semibold px-3 py-0.5 rounded-full ${tagMap[loan.tagColor]}`}>{loan.tag}</span>
-                                    {loan.recommended && (
-                                        <span className="inline-block text-[11px] font-semibold px-3 py-0.5 rounded-full bg-gradient-to-r from-[#86489B]/15 to-[#F171AC]/15 border border-[#F171AC]/25 text-[#86489B]">Most popular</span>
-                                    )}
-                                </div>
-                                <p className="text-[20px] font-bold text-[#86489B] mb-3">{loan.label} loan</p>
+                    <h1 className="font-display text-5xl md:text-7xl font-black leading-none mb-6 scroll-reveal" style={{ animationDelay: "0.1s", color: "#000000" }}>
+                        Stamp Duty
+                        <br />
+                        <span className="highlight-number italic">Concessions.</span>
+                    </h1>
 
-                                <div className="mb-4">
-                                    <p className="text-[11px] font-semibold tracking-widests uppercase text-[#86489B]/70 mb-1">Best for</p>
-                                    <p className="text-[13px] text-gray-500 leading-relaxed">{loan.bestFor}</p>
-                                </div>
-                                <div className="mb-4">
-                                    <p className="text-[11px] font-semibold tracking-widests uppercase text-[#86489B]/70 mb-1">Key benefit</p>
-                                    <p className="text-[13px] text-gray-500 leading-relaxed">{loan.keyBenefit}</p>
-                                </div>
+                    <p className="font-body text-lg md:text-xl max-w-2xl mb-10 scroll-reveal" style={{ color: "#6B6B6B", animationDelay: "0.2s", lineHeight: 1.7 }}>
+                        <strong style={{ color: "#86489B" }}>Stamp duty (transfer duty)</strong> is a state and territory tax charged when you buy property — often one of the largest upfront costs after your deposit. Eligible first home buyers may receive a <strong style={{ color: "#86489B" }}>full exemption</strong> or <strong style={{ color: "#86489B" }}>partial concession</strong>, potentially saving thousands of dollars.
+                    </p>
 
-                                <div className="flex flex-col gap-1.5 mb-3">
-                                    {loan.features.map((f, j) => (
-                                        <div key={j} className="flex items-center gap-2.5 text-[13px] text-gray-500">
-                                            <div className="w-5 h-5 rounded bg-gradient-to-r from-[#86489B] to-[#F171AC] flex items-center justify-center text-white flex-shrink-0">
-                                                <IconCheck />
-                                            </div>
-                                            {f}
-                                        </div>
-                                    ))}
-                                </div>
+                    <div className="flex flex-wrap gap-4 mb-16 scroll-reveal" style={{ animationDelay: "0.3s" }}>
+                        <a href="#who-qualifies" className="font-body font-medium px-8 py-4 rounded-full text-white purple-gradient" style={{ textDecoration: "none", fontSize: "1rem" }}>
+                            Check Eligibility →
+                        </a>
+                        <a href="#by-state" className="font-body font-medium px-8 py-4 rounded-full" style={{ textDecoration: "none", fontSize: "1rem", border: "2px solid #86489B", color: "#86489B", backgroundColor: "transparent" }}>
+                            By State
+                        </a>
+                    </div>
 
-                                {loan.notIncluded.length > 0 && (
-                                    <div className="flex flex-col gap-1.5 pt-3 border-t border-[#F171AC]/10">
-                                        {loan.notIncluded.map((f, j) => (
-                                            <div key={j} className="flex items-center gap-2.5 text-[13px] text-gray-400">
-                                                <span className="w-5 h-5 rounded bg-gray-100 border border-gray-200/60 flex items-center justify-center text-gray-300 flex-shrink-0 text-[10px] font-bold">✕</span>
-                                                {f}
-                                            </div>
-                                        ))}
-                                    </div>
-                                )}
-                            </div>
-                        );
-                    })}
-                </div>
-            </section>
-
-            <PinkDivider />
-
-            {/* ════════════════════ WHY CHOOSE VARIABLE ════════════════════ */}
-            <section className="container mx-auto px-6 py-20 mt-15 sm:mt-0">
-                <SectionTag>Why choose variable</SectionTag>
-                <SectionHeading>
-                    Why many Australians choose <GradientText>variable loans</GradientText>
-                </SectionHeading>
-                <SectionLead>
-                    Unlike fixed loans, variable rates can move up or down with the market. While that may sound unpredictable, it often comes with powerful features that help you pay off your home faster.
-                </SectionLead>
-
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
-                    {[
-                        { Icon: IconTrendDown, title: "Freedom to pay off faster", desc: "Variable rate loans usually allow unlimited extra repayments without penalty — helping you reduce interest and own your home sooner." },
-                        { Icon: IconRefresh, title: "Smart money management features", desc: "Many variable loans include offset accounts and redraw facilities — tools that significantly reduce interest while keeping your savings accessible." },
-                        { Icon: IconDollar, title: "Benefit when rates drop", desc: "If interest rates decrease, your repayments could decrease too — potentially saving you thousands over the life of your loan." },
-                    ].map((b, i) => (
-                        <AccentCard key={i} className="p-7">
-                            <div className="w-11 h-11 rounded-xl bg-gradient-to-r from-[#86489B]/15 to-[#F171AC]/15 border border-[#F171AC]/25 flex items-center justify-center text-[#F171AC] mb-4">
-                                <b.Icon />
-                            </div>
-                            <p className="text-lg! font-semibold! text-[#86489b]! mb-2">{b.title}</p>
-                            <p className="text-sm! text-gray-500! leading-relaxed! font-normal!">{b.desc}</p>
-                        </AccentCard>
-                    ))}
-                </div>
-
-                {/* Is it right for you */}
-                <div className="bg-white rounded-2xl border border-[#F171AC]/15 shadow-[0_4px_15px_rgba(241,114,172,0.08)] p-6">
-                    <p className="text-[12px] font-semibold tracking-widest uppercase text-[#86489B] mb-3">This loan is perfect if you</p>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                        {isRightFor.map((t, i) => (
-                            <div key={i} className="flex items-center gap-3 text-[14px] text-gray-500 py-1">
-                                <div className="w-5 h-5 rounded-full bg-gradient-to-r from-[#86489B] to-[#F171AC] flex items-center justify-center text-white flex-shrink-0">
-                                    <IconCheck />
-                                </div>
-                                {t}
+                    {/* stat strip */}
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 scroll-reveal" style={{ animationDelay: "0.4s" }}>
+                        {[
+                            { number: "$0", label: "Duty with a full exemption" },
+                            { number: "8", label: "States & territories — each with own rules" },
+                            { number: "2", label: "Types: full exemption or partial concession" },
+                            { number: "30", label: "Days — typical window to pay at settlement" },
+                        ].map((s) => (
+                            <div key={s.label} className="guarantee-card rounded-2xl p-5 card-hover">
+                                <div className="font-display text-2xl md:text-3xl font-black highlight-number mb-1 leading-none">{s.number}</div>
+                                <div className="font-body text-xs mt-1" style={{ color: "#6B6B6B", lineHeight: 1.4 }}>{s.label}</div>
                             </div>
                         ))}
                     </div>
                 </div>
             </section>
 
-            <PinkDivider />
-
-            {/* ════════════════════ COMPARISON RATE & NEGOTIATION ════════════════════ */}
-            <section className="container mx-auto px-6 py-20 mt-15 sm:mt-0">
-                <SectionTag>Smart borrowing</SectionTag>
-                <SectionHeading>
-                    The comparison rate &amp; <GradientText>power of negotiation</GradientText>
-                </SectionHeading>
-                <SectionLead>
-                    There are two critical things most borrowers miss when choosing a variable loan — the comparison rate and discretionary pricing.
-                </SectionLead>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6">
-                    <div className="bg-white rounded-2xl border border-[#F171AC]/15 shadow-[0_4px_15px_rgba(241,114,172,0.08)] p-7">
-                        <div className="w-11 h-11 rounded-xl bg-gradient-to-r from-[#86489B]/15 to-[#F171AC]/15 border border-[#F171AC]/25 flex items-center justify-center text-[#F171AC] mb-4">
-                            <IconInfo />
-                        </div>
-                        <p className="text-[16px] font-semibold text-[#86489B] mb-3">The comparison rate — look beyond the headline</p>
-                        <p className="text-[13px] text-gray-500 leading-relaxed mb-3">
-                            The variable "headline rate" is the interest you pay, but the Comparison Rate includes the "hidden" costs like annual fees, valuation fees, and monthly service charges.
-                        </p>
-                        <p className="text-[13px] text-gray-500 leading-relaxed">
-                            <strong className="text-gray-700">Reality:</strong> Some lenders offer a "Basic Variable" with a very low headline rate but no offset. Others offer a "Pro Pack" with a higher rate but features that save you more in the long run. We help you run the math on which is cheaper for your specific loan size.
-                        </p>
-                    </div>
-
-                    <div className="bg-white rounded-2xl border border-[#F171AC]/15 shadow-[0_4px_15px_rgba(241,114,172,0.08)] p-7">
-                        <div className="w-11 h-11 rounded-xl bg-gradient-to-r from-[#86489B]/15 to-[#F171AC]/15 border border-[#F171AC]/25 flex items-center justify-center text-[#F171AC] mb-4">
-                            <IconStar />
-                        </div>
-                        <p className="text-[16px] font-semibold text-[#86489B] mb-3">Pricing discretion — the power of negotiation</p>
-                        <p className="text-[13px] text-gray-500 leading-relaxed mb-3">
-                            Unlike fixed rates, variable rates are often negotiable. If you have a high amount of equity in your home (an LVR of 60% or less), lenders are often willing to offer "below-market" rates to keep your business.
-                        </p>
-                        <p className="text-[13px] text-gray-500 leading-relaxed">
-                            As your broker, we use our software to see exactly what <strong className="text-gray-700">"discretionary discounts"</strong> each bank is currently authorised to give — and we negotiate on your behalf.
-                        </p>
-                    </div>
-                </div>
-            </section>
-
-            <PinkDivider />
-
-            {/* ════════════════════ RATE IMPACT CALCULATOR ════════════════════ */}
-            <section className="container mx-auto px-6 py-20 mt-15 sm:mt-0">
-                <SectionTag>Interactive tool</SectionTag>
-                <SectionHeading>
-                    See how rate changes <GradientText>affect your repayments</GradientText>
-                </SectionHeading>
-                <SectionLead>
-                    Variable rates move with the market. Use this calculator to see exactly what a rate rise or cut means for your monthly repayments and total interest paid.
-                </SectionLead>
-                <RateImpactCalculator />
-            </section>
-
-            <PinkDivider />
-
-            {/* ════════════════════ LENDER PANEL ════════════════════ */}
-            <section className="container mx-auto px-6 py-20 mt-15 sm:mt-0">
-                <SectionTag>Lender panel</SectionTag>
-                <SectionHeading>
-                    Lenders we <GradientText>work with</GradientText>
-                </SectionHeading>
-                <SectionLead>
-                    We compare variable rate products across the full spectrum of Australian lenders — from the Big 4 to specialist non-banks — to find the best rate and features for your situation.
-                </SectionLead>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                    {lenderGroups.map((group, i) => (
-                        <div key={i} className="bg-white rounded-2xl border border-[#F171AC]/15 shadow-[0_4px_15px_rgba(241,114,172,0.08)] p-6">
-                            <div className="flex items-center gap-2.5 mb-4">
-                                <div className="w-8 h-8 rounded-lg bg-gradient-to-r from-[#86489B]/15 to-[#F171AC]/15 border border-[#F171AC]/25 flex items-center justify-center text-[#F171AC]">
-                                    <IconBank />
-                                </div>
-                                <p className="text-[12px] font-semibold tracking-widest uppercase text-[#86489B]">{group.label}</p>
-                            </div>
-                            <div className="flex flex-wrap gap-2">
-                                {group.lenders.map((l, j) => (
-                                    <span
-                                        key={j}
-                                        className="inline-block text-[12px] font-medium px-3 py-1.5 rounded-full border border-[#F171AC]/20 text-gray-600"
-                                        style={{ background: "linear-gradient(135deg, rgba(134,72,155,0.05), rgba(241,113,172,0.08))" }}
-                                    >
-                                        {l}
-                                    </span>
-                                ))}
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </section>
-
-            <PinkDivider />
-
-            {/* ════════════════════ KUBAER APPROACH ════════════════════ */}
-            <section className="container mx-auto px-6 py-20 mt-15 sm:mt-0">
-                <div className="bg-gradient-to-r from-[#86489B]/[0.06] to-[#F171AC]/[0.06] border border-[#F171AC]/20 rounded-2xl p-8">
-                    <p className="text-[12px] font-semibold tracking-widests uppercase text-[#86489B] mb-3">How Kubaer Finance supports you</p>
-                    <p className="text-[16px] text-gray-500 leading-relaxed max-w-2xl">
-                        We don't just compare interest rates. We design loan strategies that fit your goals, lifestyle, and long-term financial plans — ensuring your mortgage works <strong className="text-gray-700">with your future, not against it.</strong>
+            {/* ══════════════════════════════════════
+          ABOUT
+      ══════════════════════════════════════ */}
+            <section id="about" className="px-6 md:px-12 py-24" style={{ backgroundColor: "#ffffff" }}>
+                <div className="container mx-auto">
+                    <div className="mb-4 section-divider" />
+                    <h2 className="font-display text-4xl md:text-5xl font-bold mb-4" style={{ color: "#000000" }}>
+                        What Is Stamp Duty?
+                    </h2>
+                    <p className="font-body text-lg mb-14 max-w-2xl" style={{ color: "#6B6B6B" }}>
+                        Stamp duty is a state/territory tax on transferring property ownership. Because every state sets its own rules, the same home bought in different states can attract very different duty — or none at all.
                     </p>
+
+                    {/* two types of concession */}
+                    <div className="grid md:grid-cols-2 gap-6 mb-10">
+                        {[
+                            {
+                                type: "Full Exemption",
+                                value: "$0",
+                                label: "Pay nothing",
+                                desc: "The best-case outcome. You pay no stamp duty at all — usually applies when the property is under a certain value threshold and/or is a new home, and you meet owner-occupier requirements.",
+                                color: "#86489B",
+                                icon: "✅",
+                            },
+                            {
+                                type: "Partial Concession",
+                                value: "Reduced",
+                                label: "Pay less",
+                                desc: "You pay a discounted amount. Often applies when the property is above the full exemption threshold but below an upper cap — think of it as a sliding scale that phases out as value increases.",
+                                color: "#F171AC",
+                                icon: "📉",
+                            },
+                        ].map((c) => (
+                            <div key={c.type} className="bg-white rounded-2xl p-8 card-hover" style={{ border: `1.5px solid ${c.color}33` }}>
+                                <div className="flex items-center gap-3 mb-4">
+                                    <span className="text-3xl">{c.icon}</span>
+                                    <div>
+                                        <div className="font-display font-black text-3xl" style={{ color: c.color }}>{c.value}</div>
+                                        <div className="font-display font-bold text-base" style={{ color: "#000000" }}>{c.type} — {c.label}</div>
+                                    </div>
+                                </div>
+                                <p className="font-body text-sm" style={{ color: "#6B6B6B", lineHeight: 1.7 }}>{c.desc}</p>
+                            </div>
+                        ))}
+                    </div>
+
+                    {/* what it covers / doesn't */}
+                    <div className="grid md:grid-cols-2 gap-6 mb-10">
+                        <div className="bg-white rounded-2xl p-6 card-hover" style={{ border: "1px solid rgba(134,72,155,0.12)" }}>
+                            <h3 className="font-display text-lg font-bold mb-4" style={{ color: "#86489B" }}>What Stamp Duty Covers</h3>
+                            <ul className="space-y-2">
+                                {[
+                                    "State/territory tax on transferring property ownership",
+                                    "Calculated on the dutiable value — higher of purchase price or market value",
+                                    "Affected by property type, buyer status, and concession eligibility",
+                                    "May include foreign buyer surcharges in some states",
+                                ].map((item) => (
+                                    <li key={item} className="flex items-start gap-2 font-body text-sm" style={{ color: "#000000" }}>
+                                        <span style={{ color: "#86489B", marginTop: 2 }}>→</span> {item}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                        <div className="bg-white rounded-2xl p-6 card-hover" style={{ border: "1px solid rgba(241,113,172,0.2)" }}>
+                            <h3 className="font-display text-lg font-bold mb-4" style={{ color: "#F171AC" }}>Not Included in Stamp Duty</h3>
+                            <ul className="space-y-2">
+                                {[
+                                    "Conveyancing / legal fees",
+                                    "Loan establishment fees",
+                                    "Building and pest inspection reports",
+                                    "Mortgage registration / title registration fees",
+                                    "Lenders Mortgage Insurance (LMI) if applicable",
+                                ].map((item) => (
+                                    <li key={item} className="flex items-center gap-2 font-body text-sm" style={{ color: "#6B6B6B" }}>
+                                        <span style={{ color: "#F171AC" }}>✕</span> {item}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div className="info-box rounded-2xl p-5">
+                        <p className="font-body text-sm" style={{ color: "#6B6B6B", lineHeight: 1.7 }}>
+                            <strong style={{ color: "#86489B" }}>Concessions are state-specific:</strong> A property eligible for a full exemption in NSW might only get a partial concession in Victoria. Two first home buyers purchasing the same-priced home in different states can see very different results. Always check your jurisdiction.
+                        </p>
+                    </div>
                 </div>
             </section>
 
-            <PinkDivider />
+            {/* ══════════════════════════════════════
+          WHO QUALIFIES
+      ══════════════════════════════════════ */}
+            <section id="who-qualifies" className="px-6 md:px-12 py-24" style={{ backgroundColor: "#FEF3F8" }}>
+                <div className="container mx-auto">
+                    <div className="mb-4 section-divider" />
+                    <h2 className="font-display text-4xl md:text-5xl font-bold mb-4" style={{ color: "#000000" }}>
+                        Who Qualifies?
+                    </h2>
+                    <p className="font-body text-lg mb-12 max-w-2xl" style={{ color: "#6B6B6B" }}>
+                        While the exact details vary by state, most first home buyer stamp duty concessions share common eligibility requirements.
+                    </p>
 
-            {/* ════════════════════ FAQ ════════════════════ */}
-            <section className="container mx-auto px-6 py-16 mt-15 sm:mt-0">
-                <SectionTag>FAQs</SectionTag>
-                <SectionHeading>
-                    Common <GradientText>questions</GradientText>
-                </SectionHeading>
-                <SectionLead className="mb-10">
-                    Everything borrowers ask about standard variable rate home loans in Australia.
-                </SectionLead>
+                    <div className="grid md:grid-cols-2 gap-6 mb-10">
+                        <div className="bg-white rounded-2xl p-8 card-hover" style={{ border: "1.5px solid rgba(134,72,155,0.2)" }}>
+                            <h3 className="font-display text-xl font-bold mb-6" style={{ color: "#86489B" }}>Common Requirements</h3>
+                            <ul className="space-y-0">
+                                {[
+                                    { label: "First home buyer status", desc: "You (and any co-buyer) haven't previously owned residential property in Australia — including inherited property depending on the scheme." },
+                                    { label: "Natural person", desc: "You must be an individual buying in your own name — not a company or trust — to claim first home buyer benefits." },
+                                    { label: "Residential property", desc: "You must be buying a residential property or eligible vacant land in that state/territory." },
+                                    { label: "Owner-occupier intent", desc: "You intend to live in the home as your principal place of residence (PPOR), not as an investment." },
+                                    { label: "Property value cap", desc: "You must be within the relevant cap for your state and property type. Caps vary significantly." },
+                                    { label: "Citizenship / residency", desc: "Often requires Australian citizenship or permanent residency. Check your state's specific rules carefully." },
+                                ].map((item) => (
+                                    <li key={item.label} className="checklist-item">
+                                        <span className="mt-0.5 w-5 h-5 rounded-full flex-shrink-0 flex items-center justify-center text-xs text-white" style={{ background: "#86489B" }}>✓</span>
+                                        <div>
+                                            <div className="font-body font-medium text-sm mb-0.5" style={{ color: "#000000" }}>{item.label}</div>
+                                            <div className="font-body text-xs" style={{ color: "#6B6B6B" }}>{item.desc}</div>
+                                        </div>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
 
-                <div>
-                    {faqs.map((f, i) => (
-                        <FaqItem key={i} q={f.q} a={f.a} />
-                    ))}
+                        <div className="space-y-5">
+                            {/* buying with others */}
+                            <div className="rounded-3xl p-7" style={{ background: "linear-gradient(135deg, #86489B, #F171AC)" }}>
+                                <h3 className="font-display text-xl font-bold text-white mb-3">⚠ Buying With Someone Else</h3>
+                                <p className="font-body text-white text-sm mb-4" style={{ opacity: 0.95, lineHeight: 1.7 }}>
+                                    This is the biggest "gotcha" area for stamp duty concessions.
+                                </p>
+                                <div className="space-y-3">
+                                    {[
+                                        "If one buyer is not a first home buyer, you may lose the concession entirely or only get a partial/proportional benefit — depends on state",
+                                        "If parents go on title to help with borrowing, that can affect eligibility and sometimes triggers other complications",
+                                        "Guarantors do not need to be on title — but if parents go on title, eligibility is at risk",
+                                    ].map((h) => (
+                                        <div key={h} className="flex items-start gap-3 rounded-xl px-4 py-3" style={{ backgroundColor: "rgba(255,255,255,0.18)" }}>
+                                            <span className="text-white mt-0.5 flex-shrink-0">→</span>
+                                            <span className="font-body text-white text-sm">{h}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+
+                            {/* occupancy requirement */}
+                            <div className="info-box rounded-2xl p-5">
+                                <h4 className="font-display font-bold text-base mb-2" style={{ color: "#86489B" }}>Owner-Occupier Residency Rule</h4>
+                                <p className="font-body text-sm" style={{ color: "#6B6B6B", lineHeight: 1.7 }}>
+                                    Most concessions require you to <strong style={{ color: "#000000" }}>move in within 12 months of settlement</strong> and <strong style={{ color: "#000000" }}>live there continuously for at least 6–12 months</strong>. If you rent it out first or renovate without moving in, you may lose the concession and need to repay it — possibly with interest or penalties.
+                                </p>
+                            </div>
+
+                            <div className="warning-box rounded-2xl p-5">
+                                <h4 className="font-display font-bold text-base mb-2" style={{ color: "#F171AC" }}>New Builds vs Established Homes</h4>
+                                <p className="font-body text-sm" style={{ color: "#6B6B6B", lineHeight: 1.7 }}>
+                                    New builds and off-the-plan purchases are often treated more generously than established homes — but not in every state. The property classification matters enormously. Check your state's current rules for the property type you're purchasing.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
 
-            <PinkDivider />
+            {/* ══════════════════════════════════════
+          BY STATE
+      ══════════════════════════════════════ */}
+            <section id="by-state" className="px-6 md:px-12 py-24" style={{ backgroundColor: "#ffffff" }}>
+                <div className="container mx-auto">
+                    <div className="mb-4 section-divider" />
+                    <h2 className="font-display text-4xl md:text-5xl font-bold mb-4" style={{ color: "#000000" }}>
+                        State-by-State Summary
+                    </h2>
+                    <p className="font-body text-lg mb-12 max-w-2xl" style={{ color: "#6B6B6B" }}>
+                        Rules change with state budgets — treat this as a high-level guide only and always confirm current thresholds with the relevant state revenue office.
+                    </p>
 
-            {/* ════════════════════ CTA ════════════════════ */}
-            <CallAction />
+                    <div className="bg-white rounded-2xl overflow-hidden mb-8" style={{ border: "1px solid rgba(134,72,155,0.15)" }}>
+                        <div className="grid grid-cols-3 md:grid-cols-4 px-6 py-4 font-display font-bold text-sm" style={{ backgroundColor: "#FDF2F9", borderBottom: "1px solid rgba(134,72,155,0.1)", color: "#86489B" }}>
+                            <span>State</span>
+                            <span className="hidden md:block">What you may get</span>
+                            <span>Often applies to</span>
+                            <span className="hidden md:block">Notes</span>
+                        </div>
+                        {STATES.map((s, i) => (
+                            <div key={s.state} className="state-row grid grid-cols-3 md:grid-cols-4 px-6 py-5 gap-2" style={{ borderBottom: i < STATES.length - 1 ? "1px solid rgba(134,72,155,0.07)" : "none" }}>
+                                <div className="font-display font-black text-xl highlight-number">{s.state}</div>
+                                <div className="hidden md:block font-body text-sm font-medium" style={{ color: "#86489B" }}>{s.get}</div>
+                                <div className="font-body text-sm" style={{ color: "#000000" }}>{s.applies}</div>
+                                <div className="hidden md:block font-body text-xs" style={{ color: "#6B6B6B", lineHeight: 1.6 }}>{s.note}</div>
+                            </div>
+                        ))}
+                    </div>
+
+                    <div className="warning-box rounded-2xl p-5">
+                        <p className="font-body text-sm" style={{ color: "#6B6B6B", lineHeight: 1.7 }}>
+                            <strong style={{ color: "#F171AC" }}>Always verify:</strong> Use the official revenue office guidance and calculators for your state, and have your conveyancer confirm eligibility based on your contract and buyer details. Thresholds are updated regularly with state budgets.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            {/* ══════════════════════════════════════
+          HOW TO APPLY
+      ══════════════════════════════════════ */}
+            <section id="how-to-apply" className="px-6 md:px-12 py-24" style={{ backgroundColor: "#FDF2F9" }}>
+                <div className="container mx-auto">
+                    <div className="mb-4 section-divider" />
+                    <h2 className="font-display text-4xl md:text-5xl font-bold mb-4" style={{ color: "#000000" }}>
+                        How to Apply
+                    </h2>
+                    <p className="font-body text-lg mb-12 max-w-2xl" style={{ color: "#6B6B6B" }}>
+                        In most cases, you don't apply in the way you apply for a loan. The process is built into the purchase and settlement workflow — handled by your conveyancer.
+                    </p>
+
+                    <div className="rounded-2xl overflow-hidden bg-white mb-10" style={{ border: "1px solid rgba(134,72,155,0.15)" }}>
+                        {STEPS.map((s, i) => (
+                            <div key={s.num} className="step-item">
+                                <button
+                                    onClick={() => setOpenStep(openStep === i ? null : i)}
+                                    className="w-full text-left flex items-start gap-5 px-6 py-6"
+                                    style={{ background: "none", border: "none", cursor: "pointer" }}
+                                >
+                                    <div className="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center font-display font-black text-base text-white purple-gradient">
+                                        {s.num}
+                                    </div>
+                                    <div className="flex-1 text-left">
+                                        <div className="font-display font-bold text-lg mb-1" style={{ color: "#000000" }}>{s.title}</div>
+                                        <p className="font-body text-sm" style={{ color: "#6B6B6B", lineHeight: 1.6 }}>{s.desc}</p>
+                                    </div>
+                                    <div className="flex items-center gap-3 flex-shrink-0">
+                                        <span className="text-2xl opacity-30">{s.icon}</span>
+                                        <span className="w-7 h-7 rounded-full flex items-center justify-center font-bold text-sm text-white" style={{ background: openStep === i ? "#86489B" : "#F171AC", transition: "background 0.2s" }}>
+                                            {openStep === i ? "−" : "+"}
+                                        </span>
+                                    </div>
+                                </button>
+                                {openStep === i && (
+                                    <div className="px-6 pb-6 pl-24">
+                                        <div className="info-box rounded-xl p-4">
+                                            <p className="font-body text-sm" style={{ color: "#6B6B6B", lineHeight: 1.7 }}>{s.detail}</p>
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+                        ))}
+                    </div>
+
+                    {/* common mistakes */}
+                    <h3 className="font-display text-2xl font-bold mb-6" style={{ color: "#000000" }}>Common Mistakes to Avoid</h3>
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        {MISTAKES.map((m) => (
+                            <div key={m.title} className="bg-white rounded-2xl p-6 card-hover" style={{ border: "1px solid rgba(134,72,155,0.12)" }}>
+                                <div className="text-2xl mb-3">{m.icon}</div>
+                                <h4 className="font-display font-bold text-base mb-2" style={{ color: "#86489B" }}>{m.title}</h4>
+                                <p className="font-body text-sm" style={{ color: "#6B6B6B", lineHeight: 1.6 }}>{m.desc}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* ══════════════════════════════════════
+          CHECKLIST
+      ══════════════════════════════════════ */}
+            <section id="checklist" className="px-6 md:px-12 py-24" style={{ backgroundColor: "#ffffff" }}>
+                <div className="container mx-auto">
+                    <div className="mb-4 section-divider" />
+                    <h2 className="font-display text-4xl md:text-5xl font-bold mb-4" style={{ color: "#000000" }}>
+                        First Home Buyer Checklist
+                    </h2>
+                    <p className="font-body text-lg mb-12 max-w-2xl" style={{ color: "#6B6B6B" }}>
+                        Use this before signing a contract. Covering these steps is how you avoid losing a concession you were entitled to.
+                    </p>
+
+                    <div className="rounded-2xl overflow-hidden bg-white mb-10" style={{ border: "1px solid rgba(134,72,155,0.15)" }}>
+                        {CHECKLIST.map((item, i) => (
+                            <div key={i} className="flex items-start gap-4 px-6 py-4" style={{ borderBottom: i < CHECKLIST.length - 1 ? "1px solid rgba(134,72,155,0.07)" : "none", backgroundColor: i % 2 === 0 ? "white" : "rgba(134,72,155,0.02)" }}>
+                                <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs text-white font-bold mt-0.5" style={{ background: i < 9 ? "#86489B" : "#F171AC" }}>
+                                    {i + 1}
+                                </span>
+                                <span className="font-body text-sm" style={{ color: "#000000", lineHeight: 1.6 }}>{item}</span>
+                            </div>
+                        ))}
+                    </div>
+
+                    <div className="grid md:grid-cols-3 gap-5">
+                        {[
+                            { title: "Before you sign", body: "Items 1–9 above should be completed before you exchange contracts. Getting these right early prevents costly surprises at settlement.", icon: "📋", color: "#86489B" },
+                            { title: "At and after settlement", body: "Items 10–13 are about what you do after settlement. The occupancy requirement is ongoing — keep evidence that you moved in and stayed.", icon: "🏠", color: "#F171AC" },
+                            { title: "Speak to your conveyancer", body: "Your conveyancer handles the duty assessment on your behalf. Ask them to confirm eligibility in writing based on your specific contract before signing.", icon: "⚖️", color: "#6B6B6B" },
+                        ].map((c) => (
+                            <div key={c.title} className="guarantee-card rounded-2xl p-6 card-hover">
+                                <div className="text-2xl mb-3">{c.icon}</div>
+                                <h4 className="font-display font-bold text-base mb-2" style={{ color: c.color }}>{c.title}</h4>
+                                <p className="font-body text-sm" style={{ color: "#6B6B6B", lineHeight: 1.7 }}>{c.body}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* ══════════════════════════════════════
+          FAQ
+      ══════════════════════════════════════ */}
+            <section id="faq" className="px-6 md:px-12 py-24" style={{ backgroundColor: "#FEF3F8" }}>
+                <div className="container mx-auto">
+                    <div className="mb-4 section-divider" />
+                    <h2 className="font-display text-4xl md:text-5xl font-bold mb-4" style={{ color: "#000000" }}>
+                        Frequently Asked Questions
+                    </h2>
+                    <p className="font-body text-lg mb-12" style={{ color: "#6B6B6B" }}>
+                        Everything first home buyers need to know about stamp duty concessions in Australia.
+                    </p>
+
+                    <div className="rounded-2xl overflow-hidden bg-white" style={{ border: "1px solid rgba(134,72,155,0.15)" }}>
+                        {FAQS.map((f, i) => (
+                            <div key={i} className="faq-item">
+                                <button
+                                    onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                                    className="w-full text-left flex items-center justify-between px-6 py-5 gap-4"
+                                    style={{ background: "none", border: "none", cursor: "pointer" }}
+                                >
+                                    <span className="font-display font-bold text-base" style={{ color: "#000000" }}>{f.q}</span>
+                                    <span className="flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center font-bold text-sm text-white" style={{ background: openFaq === i ? "#86489B" : "#F171AC", transition: "background 0.2s" }}>
+                                        {openFaq === i ? "−" : "+"}
+                                    </span>
+                                </button>
+                                {openFaq === i && (
+                                    <div className="px-6 pb-5">
+                                        <p className="font-body text-sm" style={{ color: "#6B6B6B", lineHeight: 1.8 }}>{f.a}</p>
+                                    </div>
+                                )}
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* ══════════════════════════════════════
+          CTA BANNER
+      ══════════════════════════════════════ */}
+            <section className="px-6 md:px-12 py-24" style={{ background: "linear-gradient(135deg, #86489B 0%, #F171AC 100%)" }}>
+                <div className="container mx-auto text-center">
+                    <h2 className="font-display text-4xl md:text-6xl font-black text-white mb-6 leading-tight">
+                        Don't leave thousands
+                        <br />
+                        <em>on the table.</em>
+                    </h2>
+                    <p className="font-body text-lg text-white mb-10 max-w-xl mx-auto" style={{ lineHeight: 1.7, opacity: 0.95 }}>
+                        Stamp duty concessions can save first home buyers thousands of dollars — but only if you know the rules before you sign. Check your state's revenue office, use their calculator, and confirm eligibility with your conveyancer early.
+                    </p>
+                    <div className="flex flex-wrap justify-center gap-4">
+                        {[
+                            { label: "NSW Revenue", href: "https://www.revenue.nsw.gov.au" },
+                            { label: "VIC SRO", href: "https://www.sro.vic.gov.au" },
+                            { label: "QLD OSR", href: "https://www.qro.qld.gov.au" },
+                            { label: "All States", href: "https://www.firsthome.gov.au" },
+                        ].map((link, i) => (
+                            <a
+                                key={link.label}
+                                href={link.href}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="font-body font-semibold px-6 py-3 rounded-full text-base"
+                                style={{
+                                    backgroundColor: i === 0 ? "white" : "rgba(255,255,255,0.15)",
+                                    color: i === 0 ? "#86489B" : "white",
+                                    textDecoration: "none",
+                                    border: i === 0 ? "none" : "2px solid rgba(255,255,255,0.4)",
+                                }}
+                            >
+                                {link.label}
+                            </a>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* ══════════════════════════════════════
+          FOOTER
+      ══════════════════════════════════════ */}
+            <footer className="px-6 md:px-12 py-10" style={{ backgroundColor: "#000000" }}>
+                <div className="container mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+                    <div className="flex items-center gap-3">
+                        <div className="w-7 h-7 rounded-full purple-gradient flex items-center justify-center">
+                            <span className="text-white text-xs font-bold">S</span>
+                        </div>
+                        <span className="font-display font-bold text-white text-sm">Stamp Duty Concessions — First Home Buyers</span>
+                    </div>
+                    <p className="font-body text-xs text-center" style={{ color: "#6B6B6B" }}>
+                        Informational purposes only. Always verify with your state revenue office or consult an independent conveyancer. Not financial or legal advice.
+                    </p>
+                    <p className="font-body text-xs" style={{ color: "#6B6B6B" }}>© 2025 Stamp Duty Guide</p>
+                </div>
+            </footer>
         </div>
     );
-};
-
-export default VariablehomeComponent;
+}
