@@ -5,10 +5,13 @@ import SelfemployedComponent from './SelfemployedComponent'
 
 const page = () => {
     return (
-        <div>
-            <Navbar />
+        <div className="flex flex-col min-h-screen">
 
-            <SelfemployedComponent />
+            <Navbar />
+            <main className="flex-grow">
+
+                <SelfemployedComponent />
+            </main>
 
             <Footer />
         </div>

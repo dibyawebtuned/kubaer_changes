@@ -1,6 +1,14 @@
 "use client";
 import { useState } from "react";
 import { Archivo, Roboto } from "next/font/google";
+import {
+  Wallet,
+  ShieldCheck,
+  Infinity,
+  Star,
+  TrendingUp,
+  Home,
+} from "lucide-react";
 
 
 const NAV_LINKS = ["About", "Why Use It", "Lenders", "FAQ"];
@@ -67,12 +75,36 @@ const FAQS = [
 ];
 
 const BENEFITS = [
-  { title: "Smaller Deposit", desc: "Buy with just a 5% deposit as a first home buyer, or as little as 2% as a single parent or legal guardian — years ahead of saving a traditional 20%.", icon: "💰" },
-  { title: "Zero LMI", desc: "A government guarantee replaces the need for Lenders Mortgage Insurance, saving eligible buyers thousands — sometimes tens of thousands — in upfront costs.", icon: "🛡" },
-  { title: "No Income Caps", desc: "Since 1 October 2025, income limits have been removed entirely, making the Scheme accessible to a much wider range of Australian buyers.", icon: "∞" },
-  { title: "No Waitlists", desc: "Previously capped at limited annual places, the updated Scheme now has no waitlists. Eligible buyers can apply at any time through a participating lender.", icon: "★" },
-  { title: "Higher Price Caps", desc: "Property price thresholds have been raised across all states and territories to better reflect current housing market values and give buyers more choice.", icon: "↑" },
-  { title: "Flexible Properties", desc: "New or existing homes, townhouses, apartments, house and land packages, or land with a construction contract — you choose what suits your lifestyle.", icon: "🏠" },
+  {
+    title: "Smaller Deposit",
+    desc: "Buy with just a 5% deposit as a first home buyer, or as little as 2% as a single parent or legal guardian — years ahead of saving a traditional 20%.",
+    icon: Wallet,
+  },
+  {
+    title: "Zero LMI",
+    desc: "A government guarantee replaces the need for Lenders Mortgage Insurance, saving eligible buyers thousands — sometimes tens of thousands — in upfront costs.",
+    icon: ShieldCheck,
+  },
+  {
+    title: "No Income Caps",
+    desc: "Since 1 October 2025, income limits have been removed entirely, making the Scheme accessible to a much wider range of Australian buyers.",
+    icon: Infinity,
+  },
+  {
+    title: "No Waitlists",
+    desc: "Previously capped at limited annual places, the updated Scheme now has no waitlists. Eligible buyers can apply at any time through a participating lender.",
+    icon: Star,
+  },
+  {
+    title: "Higher Price Caps",
+    desc: "Property price thresholds have been raised across all states and territories to better reflect current housing market values and give buyers more choice.",
+    icon: TrendingUp,
+  },
+  {
+    title: "Flexible Properties",
+    desc: "New or existing homes, townhouses, apartments, house and land packages, or land with a construction contract — you choose what suits your lifestyle.",
+    icon: Home,
+  },
 ];
 
 const SCHEMES = [
@@ -213,11 +245,11 @@ export default function AustraliaComponent() {
         <div className="container mx-auto relative">
           {/* rebrand notice */}
           <div className="rebrand-banner inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 font-body text-xs scroll-reveal" style={{ color: "#86489B" }}>
-            <span>🔄</span>
+            {/* <span>🔄</span> */}
             Formerly the Home Guarantee Scheme — rebranded 1 October 2025
           </div>
 
-          <h1 className="font-display text-5xl md:text-7xl font-black leading-none mb-6 scroll-reveal" style={{ animationDelay: "0.1s", color: "#000000" }}>
+          <h1 className={`${archivo.className} text-5xl! md:text-7xl! font-medium! leading-none mb-6! scroll-reveal! `} style={{ animationDelay: "0.1s", color: "#000000" }}>
             Your Home.
             <br />
             <span className="highlight-number italic">Your Deposit.</span>
@@ -225,25 +257,41 @@ export default function AustraliaComponent() {
             Your Future.
           </h1>
 
-          <p className="font-body text-lg md:text-xl max-w-2xl mb-10 scroll-reveal" style={{ color: "#6B6B6B", animationDelay: "0.2s", lineHeight: 1.7 }}>
+          <p className={`${roboto.className} text-lg! max-w-xl! font-normal! tracking-normal! mb-10 scroll-reveal`} style={{ color: "#6B6B6B", animationDelay: "0.2s", lineHeight: 1.7 }}>
             The <strong style={{ color: "#86489B" }}>Australian Government 5% Deposit Scheme</strong> helps eligible buyers purchase a home with as little as a <strong style={{ color: "#86489B" }}>5% deposit</strong> — or <strong style={{ color: "#F171AC" }}>2% for single parents</strong> — with zero LMI, no income caps, and no waitlists.
           </p>
 
-          <div className="flex flex-wrap gap-4 mb-16 scroll-reveal" style={{ animationDelay: "0.3s" }}>
+          {/* <div className="flex flex-wrap gap-4 mb-16 scroll-reveal" style={{ animationDelay: "0.3s" }}>
             <a href="#about" className="font-body font-medium px-8 py-4 rounded-full text-white purple-gradient" style={{ textDecoration: "none", fontSize: "1rem" }}>
               Learn More →
             </a>
             <a href="#lenders" className="font-body font-medium px-8 py-4 rounded-full" style={{ textDecoration: "none", fontSize: "1rem", border: "2px solid #86489B", color: "#86489B", backgroundColor: "transparent" }}>
               Find a Lender
             </a>
+          </div> */}
+
+                    <div className={`flex flex-wrap gap-4 mb-16 scroll-reveal ${roboto.className}`} style={{ animationDelay: "0.3s" }}>
+            <div className="flex gap-3 lg:p-0">
+              <div className="">
+                <a href="#about" className="extra-btn btn-default">
+                  Learn More →
+                </a>
+              </div>
+
+              <div className="">
+                <a href="#lenders" className="btn-default">
+                  Find a Lender
+                </a>
+              </div>
+            </div>
           </div>
 
           {/* stats row */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 scroll-reveal" style={{ animationDelay: "0.4s" }}>
             {STATS.map((s) => (
               <div key={s.label} className="guarantee-card rounded-2xl p-5 card-hover">
-                <div className="font-display text-2xl md:text-3xl font-black highlight-number mb-1 leading-none">{s.number}</div>
-                <div className="font-body text-xs mt-1" style={{ color: "#6B6B6B", lineHeight: 1.4 }}>{s.label}</div>
+                <div className={`${archivo.className} text-2xl! md:text-5xl! font-semibold! highlight-number mb-1! leading-none!`}>{s.number}</div>
+                <div className={`${roboto.className} text-sm! font-normal! mt-1!`} style={{ color: "#6B6B6B", lineHeight: 1.4 }}>{s.label}</div>
               </div>
             ))}
           </div>
@@ -256,10 +304,10 @@ export default function AustraliaComponent() {
       <section id="about" className="px-6 md:px-12 py-24" style={{ backgroundColor: "#ffffff" }}>
         <div className="container mx-auto">
           <div className="mb-4 section-divider" />
-          <h2 className="font-display text-4xl md:text-5xl font-bold mb-4" style={{ color: "#000000" }}>
+          <h2 className={`${archivo.className} text-4xl! md:text-5xl! font-medium! mb-4!`}>
             Two Schemes, One Umbrella
           </h2>
-          <p className="font-body text-lg mb-14 max-w-2xl" style={{ color: "#6B6B6B" }}>
+          <p className={`${roboto.className} font-normal! tracking-normal! text-[16px]! mb-14! max-w-2xl!`} style={{ color: "#6B6B6B" }}>
             The Australian Government 5% Deposit Scheme consolidates two distinct programs under a single initiative — each with its own eligibility rules and deposit requirements.
           </p>
 
@@ -274,16 +322,16 @@ export default function AustraliaComponent() {
                 <div className="inline-block px-3 py-1 rounded-full font-body text-xs font-bold text-white mb-5" style={{ backgroundColor: s.color }}>
                   {s.abbr}
                 </div>
-                <h3 className="font-display text-2xl font-bold mb-2" style={{ color: "#000000" }}>{s.name}</h3>
-                <p className="font-body text-sm mb-6" style={{ color: "#6B6B6B" }}>{s.detail}</p>
-                <div className="flex items-center gap-4">
+                <h3 className={`${archivo.className} text-2xl! font-semibold! mb-2!`} style={{ color: "#000000" }}>{s.name}</h3>
+                <p className={`${archivo.className} text-sm! mb-6! font-normal! tracking-normal!`} style={{ color: "#6B6B6B" }}>{s.detail}</p>
+                <div className="flex flex-col sm:flex-row sm:items-center gap-4">
                   <div className="rounded-xl px-5 py-3" style={{ backgroundColor: `${s.color}15` }}>
-                    <div className="font-display text-3xl font-black" style={{ color: s.color }}>{s.deposit}</div>
-                    <div className="font-body text-xs mt-1" style={{ color: "#6B6B6B" }}>deposit required</div>
+                    <div className={`${archivo.className} text-3xl! font-semibold!`} style={{ color: s.color }}>{s.deposit}</div>
+                    <div className={`${roboto.className} text-xs! mt-1!`} style={{ color: "#6B6B6B" }}>deposit required</div>
                   </div>
                   <div>
-                    <div className="font-body text-xs font-medium mb-1" style={{ color: "#6B6B6B" }}>Designed for</div>
-                    <div className="font-display font-bold text-sm" style={{ color: "#000000" }}>{s.for}</div>
+                    <div className={`${archivo.className} text-xs! font-medium! mb-1!`} style={{ color: "#6B6B6B" }}>Designed for</div>
+                    <div className={`${roboto.className} font-semibold! text-sm!`} style={{ color: "#000000" }}>{s.for}</div>
                   </div>
                 </div>
               </div>
@@ -294,10 +342,10 @@ export default function AustraliaComponent() {
           <div className="rounded-3xl p-8 md:p-10" style={{ background: "linear-gradient(135deg, #86489B, #F171AC)" }}>
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div>
-                <div className="font-body text-xs text-white opacity-70 mb-2 uppercase tracking-widest">October 2025 Update</div>
-                <h3 className="font-display text-3xl font-bold text-white mb-4">What changed with the rebrand?</h3>
-                <p className="font-body text-white text-base" style={{ opacity: 0.9, lineHeight: 1.7 }}>
-                  The Home Guarantee Scheme is now the <strong>Australian Government 5% Deposit Scheme</strong>. Along with the name change came the most significant expansion in the program's history.
+                {/* <div className="font-body text-xs text-white opacity-70 mb-2 uppercase tracking-widest">October 2025 Update</div> */}
+                <h3 className={`${archivo.className} text-2xl! font-semibold! mb-6! text-white`}>What changed with the rebrand?</h3>
+                <p className={`${archivo.className} text-sm! mb-6! font-normal! tracking-normal! text-white`} style={{ opacity: 0.9, lineHeight: 1.7 }}>
+                  The Home Guarantee Scheme is now the <strong>Australian Government 5% Deposit Scheme</strong>. Along with the name change came the most significant expansion in the {`program's`} history.
                 </p>
               </div>
               <div className="grid grid-cols-1 gap-3">
@@ -311,8 +359,8 @@ export default function AustraliaComponent() {
                   <div key={item.label} className="flex items-start gap-3 rounded-xl px-5 py-3" style={{ backgroundColor: "rgba(255,255,255,0.15)" }}>
                     <span className="text-white mt-0.5">✓</span>
                     <div>
-                      <div className="font-body text-white font-medium text-sm">{item.label}</div>
-                      <div className="font-body text-white text-xs" style={{ opacity: 0.7 }}>{item.detail}</div>
+                      <div className={`${archivo.className} text-white font-medium! text-sm!`}>{item.label}</div>
+                      <div className={`${archivo.className} text-white text-xs! font-normal!`} style={{ opacity: 0.7 }}>{item.detail}</div>
                     </div>
                   </div>
                 ))}
@@ -328,26 +376,46 @@ export default function AustraliaComponent() {
       <section id="why-use-it" className="px-6 md:px-12 py-24" style={{ backgroundColor: "#FEF3F8" }}>
         <div className="container mx-auto">
           <div className="mb-4 section-divider" />
-          <h2 className="font-display text-4xl md:text-5xl font-bold mb-4" style={{ color: "#000000" }}>
+          <h2 className={`${archivo.className} text-4xl! md:text-5xl! font-medium! mb-4!`}>
             Why Use the Scheme?
           </h2>
-          <p className="font-body text-lg mb-14 max-w-2xl" style={{ color: "#6B6B6B" }}>
+          <p className={`${roboto.className} font-normal! tracking-normal! text-[16px]! max-w-2xl!`} style={{ color: "#6B6B6B" }}>
             The Scheme removes the biggest barriers standing between eligible Australians and homeownership.
           </p>
 
           <div className="grid md:grid-cols-3 gap-6 mb-14">
+  {BENEFITS.map((b) => {
+    const Icon = b.icon;
+
+    return (
+      <div
+        key={b.title}
+        className="bg-white rounded-2xl p-6 card-hover"
+        style={{ border: "1px solid rgba(134,72,155,0.1)" }}
+      >
+        <Icon className="w-7 h-7 mb-4 text-[#86489B]" />
+
+          <h4 className={`${archivo.className} font-semibold! text-lg! mb-3!`} style={{ color: "#86489B" }}>{b.title}</h4>
+                <p className={`${roboto.className} text-sm! font-normal! tracking-normal!`} style={{ color: "#6B6B6B", lineHeight: 1.7 }}>{b.desc}</p>
+              
+      </div>
+    );
+  })}
+</div>
+
+          {/* <div className="grid md:grid-cols-3 gap-6 mb-14">
             {BENEFITS.map((b) => (
               <div key={b.title} className="bg-white rounded-2xl p-6 card-hover" style={{ border: "1px solid rgba(134,72,155,0.1)" }}>
                 <div className="text-3xl mb-4">{b.icon}</div>
-                <h4 className="font-display font-bold text-lg mb-3" style={{ color: "#86489B" }}>{b.title}</h4>
-                <p className="font-body text-sm" style={{ color: "#6B6B6B", lineHeight: 1.7 }}>{b.desc}</p>
+                <h4 className={`${archivo.className} font-semibold! text-lg! mb-3!`} style={{ color: "#86489B" }}>{b.title}</h4>
+                <p className={`${roboto.className} text-sm! font-normal! tracking-normal!`} style={{ color: "#6B6B6B", lineHeight: 1.7 }}>{b.desc}</p>
               </div>
             ))}
-          </div>
+          </div> */}
 
           {/* How it works — simple 4 steps */}
           <div className="bg-white rounded-3xl p-8 md:p-10" style={{ border: "1px solid rgba(134,72,155,0.12)" }}>
-            <h3 className="font-display text-2xl font-bold mb-8" style={{ color: "#000000" }}>How it works — in 4 steps</h3>
+            <h3 className={`${archivo.className} text-2xl! font-semibold! mb-8!`} style={{ color: "#000000" }}>How it works — in 4 steps</h3>
             <div className="grid md:grid-cols-4 gap-6">
               {[
                 { n: "1", title: "Meet eligibility criteria", desc: "Confirm you qualify based on residency, buyer status, and deposit." },
@@ -357,8 +425,8 @@ export default function AustraliaComponent() {
               ].map((step) => (
                 <div key={step.n} className="flex flex-col items-start">
                   <div className="w-10 h-10 rounded-full step-dot flex items-center justify-center font-display font-black text-white text-lg mb-4">{step.n}</div>
-                  <h5 className="font-display font-bold text-base mb-2" style={{ color: "#000000" }}>{step.title}</h5>
-                  <p className="font-body text-sm" style={{ color: "#6B6B6B", lineHeight: 1.6 }}>{step.desc}</p>
+                  <h5 className={`${archivo.className} font-semibold! text-base! mb-2!`} style={{ color: "#000000" }}>{step.title}</h5>
+                  <p className={`${roboto.className} text-sm! font-normal! tracking-normal!`} style={{ color: "#6B6B6B", lineHeight: 1.6 }}>{step.desc}</p>
                 </div>
               ))}
             </div>
@@ -372,21 +440,21 @@ export default function AustraliaComponent() {
       <section id="lenders" className="px-6 md:px-12 py-24" style={{ backgroundColor: "#ffffff" }}>
         <div className="container mx-auto">
           <div className="mb-4 section-divider" />
-          <h2 className="font-display text-4xl md:text-5xl font-bold mb-4" style={{ color: "#000000" }}>
+          <h2 className={`${archivo.className} text-4xl! md:text-5xl! font-medium! mb-4!`}>
             Participating Lenders
           </h2>
-          <p className="font-body text-lg mb-4 max-w-2xl" style={{ color: "#6B6B6B" }}>
+          <p className={`${roboto.className} font-normal! tracking-normal! text-[16px]! max-w-2xl!`} style={{ color: "#6B6B6B" }}>
             Over 30 authorised lenders across Australia are approved to offer the Scheme. They will assess your eligibility, guide you through suitable loan options, and submit your application on your behalf.
           </p>
-          <p className="font-body text-sm mb-12 font-medium" style={{ color: "#86489B" }}>
+          <p className={`${roboto.className} font-medium! tracking-normal! text-[16px]! max-w-2xl!`} style={{ color: "#86489B" }}>
             Important: You must apply through a participating lender — applications cannot be made directly with the government.
           </p>
 
           {/* major lenders */}
-          <h4 className="font-display font-bold text-lg mb-4" style={{ color: "#86489B" }}>Major Banks</h4>
+          <h4 className={`${archivo.className} font-semibold! mb-3!`} style={{ color: "#86489B" }}>Major Banks</h4>
           <div className="flex flex-wrap gap-3 mb-10">
             {MAJOR_LENDERS.map((b) => (
-              <div key={b} className="lender-chip rounded-full px-5 py-2 font-body text-sm font-medium" style={{ color: "#000000" }}>{b}</div>
+              <div key={b} className={`${archivo.className} lender-chip rounded-full px-5 py-2 font-body text-sm font-medium`} style={{ color: "#6B6B6B" }}>{b}</div>
             ))}
           </div>
 
@@ -394,14 +462,14 @@ export default function AustraliaComponent() {
           <h4 className="font-display font-bold text-lg mb-4" style={{ color: "#F171AC" }}>All Participating Lenders</h4>
           <div className="flex flex-wrap gap-3 mb-6">
             {visibleLenders.map((b) => (
-              <div key={b} className="lender-chip rounded-full px-4 py-2 font-body text-sm" style={{ color: "#6B6B6B" }}>{b}</div>
+              <div key={b} className={`${archivo.className} lender-chip rounded-full px-4 py-2 font-body text-sm`} style={{ color: "#6B6B6B" }}>{b}</div>
             ))}
           </div>
 
           {!showAllLenders && (
             <button
               onClick={() => setShowAllLenders(true)}
-              className="font-body text-sm font-medium px-6 py-3 rounded-full"
+              className={`${archivo.className} text-sm! font-medium! px-6! py-3! rounded-full!`}
               style={{ border: "1.5px solid #86489B", color: "#86489B", background: "none", cursor: "pointer" }}
             >
               Show all {LENDERS.length} lenders ↓
@@ -409,7 +477,7 @@ export default function AustraliaComponent() {
           )}
 
           <div className="mt-10 guarantee-card rounded-2xl p-6">
-            <p className="font-body text-sm" style={{ color: "#6B6B6B", lineHeight: 1.7 }}>
+            <p className={`${archivo.className} m-0! text-sm! font-normal! tracking-normal! italic!`} style={{ color: "#6B6B6B", lineHeight: 1.7 }}>
               <strong style={{ color: "#86489B" }}>Lender tip:</strong> Each participating lender has its own credit policies and assessment criteria. A mortgage broker can compare multiple lenders simultaneously, helping you find the best interest rate and most suitable loan structure — often at no cost to you. For the most current full lender list, visit <strong>housingaustralia.gov.au</strong>.
             </p>
           </div>
@@ -422,10 +490,10 @@ export default function AustraliaComponent() {
       <section id="faq" className="px-6 md:px-12 py-24" style={{ backgroundColor: "#FDF2F9" }}>
         <div className="container mx-auto">
           <div className="mb-4 section-divider" />
-          <h2 className="font-display text-4xl md:text-5xl font-bold mb-4" style={{ color: "#000000" }}>
+          <h2 className={`${archivo.className} text-4xl! md:text-5xl! font-medium! mb-4!`}>
             Frequently Asked Questions
           </h2>
-          <p className="font-body text-lg mb-12" style={{ color: "#6B6B6B" }}>
+          <p className={`${roboto.className} font-normal! tracking-normal! text-[16px]! max-w-2xl!`} style={{ color: "#6B6B6B" }}>
             Everything you need to know about the Australian Government 5% Deposit Scheme.
           </p>
 
@@ -434,17 +502,17 @@ export default function AustraliaComponent() {
               <div key={i} className="faq-item">
                 <button
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                  className="w-full text-left flex items-center justify-between px-6 py-5 gap-4"
+                  className="w-full text-left flex items-center justify-between px-6 py-4 gap-4"
                   style={{ background: "none", border: "none", cursor: "pointer" }}
                 >
-                  <span className="font-display font-bold text-base" style={{ color: "#000000" }}>{f.q}</span>
+                  <span className={`${archivo.className} font-bold text-base`} style={{ color: "#000000" }}>{f.q}</span>
                   <span className="flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center font-bold text-sm text-white" style={{ background: openFaq === i ? "#86489B" : "#F171AC", transition: "background 0.2s" }}>
                     {openFaq === i ? "−" : "+"}
                   </span>
                 </button>
                 {openFaq === i && (
-                  <div className="px-6 pb-5">
-                    <p className="font-body text-sm" style={{ color: "#6B6B6B", lineHeight: 1.8 }}>{f.a}</p>
+                  <div className="px-6 pb-2">
+                    <p className={`${roboto.className} text-[16px]! font-normal! tracking-normal!`} style={{ color: "#6B6B6B", lineHeight: 1.8 }}>{f.a}</p>
                   </div>
                 )}
               </div>
@@ -456,7 +524,7 @@ export default function AustraliaComponent() {
       {/* ══════════════════════════════════════
           CTA BANNER
       ══════════════════════════════════════ */}
-      <section className="px-6 md:px-12 py-24" style={{ background: "linear-gradient(135deg, #86489B 0%, #F171AC 100%)" }}>
+      {/* <section className="px-6 md:px-12 py-24" style={{ background: "linear-gradient(135deg, #86489B 0%, #F171AC 100%)" }}>
         <div className="container mx-auto text-center">
           <h2 className="font-display text-4xl md:text-6xl font-black text-white mb-6 leading-tight">
             Own your home
@@ -488,7 +556,7 @@ export default function AustraliaComponent() {
             </a>
           </div>
         </div>
-      </section>
+      </section> */}
 
     </div>
   );

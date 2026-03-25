@@ -5,9 +5,11 @@ import RfhbgComponent from './RfhbgComponent'
 
 const page = () => {
     return (
-        <div>
+        <div className="flex flex-col min-h-screen">
             <Navbar />
+            <main className="flex-grow">
             <RfhbgComponent />
+            </main>
             <Footer />
         </div>
     )

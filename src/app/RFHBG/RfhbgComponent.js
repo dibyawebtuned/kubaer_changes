@@ -1,7 +1,18 @@
 "use client";
 import { useState } from "react";
+import { Archivo, Roboto } from "next/font/google";
+import { Rocket, DollarSign, Landmark } from "lucide-react";
+import { Search, Scale, FileText, Compass } from "lucide-react";
+import { Wallet, Home } from "lucide-react";
+import { Hammer, Building2 } from "lucide-react";
+import { TrendingDown, Key } from "lucide-react";
 
 const NAV_LINKS = ["About", "Eligibility", "Changes 2025", "Benefits", "Properties", "FAQ"];
+
+const archivo = Archivo({ subsets: ["latin"], weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"] });
+const roboto = Roboto({ subsets: ["latin"], weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"] });
+
+
 
 const FAQS = [
   {
@@ -58,11 +69,18 @@ const FAQS = [
   },
 ];
 
+// const PROPERTY_TYPES = [
+//   { type: "Existing house, townhouse, or apartment", icon: "🏠" },
+//   { type: "House and land package", icon: "🏗️" },
+//   { type: "Vacant land with a separate contract to build", icon: "📋" },
+//   { type: "Off-the-plan apartment or townhouse", icon: "🏢" },
+// ];
+
 const PROPERTY_TYPES = [
-  { type: "Existing house, townhouse, or apartment", icon: "🏠" },
-  { type: "House and land package", icon: "🏗️" },
-  { type: "Vacant land with a separate contract to build", icon: "📋" },
-  { type: "Off-the-plan apartment or townhouse", icon: "🏢" },
+  { type: "Existing house, townhouse, or apartment", icon: Home },
+  { type: "House and land package", icon: Hammer },
+  { type: "Vacant land with a separate contract to build", icon: FileText },
+  { type: "Off-the-plan apartment or townhouse", icon: Building2 },
 ];
 
 const OLD_RULES = [
@@ -87,11 +105,10 @@ export default function RfhbgComponent() {
 
   return (
     <div
-      style={{ fontFamily: "'Georgia', serif", backgroundColor: "#FDF2F9", color: "#000000" }}
+      style={{ backgroundColor: "#FDF2F9", color: "#000000" }}
       className="min-h-screen"
     >
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap');
 
         * { box-sizing: border-box; }
         body { margin: 0; }
@@ -196,23 +213,39 @@ export default function RfhbgComponent() {
             Now merged into the expanded First Home Guarantee from Oct 2025
           </div>
 
-          <h1 className="font-display text-5xl md:text-7xl font-black leading-none mb-6 scroll-reveal" style={{ animationDelay: "0.1s", color: "#000000" }}>
+          <h1 className={`${archivo.className} text-5xl! md:text-7xl! font-medium! leading-none mb-6! scroll-reveal! `} style={{ animationDelay: "0.1s", color: "#000000" }}>
             Regional First Home
             <br />
             <span className="highlight-number italic">Buyer Guarantee.</span>
           </h1>
 
-          <p className="font-body text-lg md:text-xl max-w-2xl mb-10 scroll-reveal" style={{ color: "#6B6B6B", animationDelay: "0.2s", lineHeight: 1.7 }}>
+          <p className={`${roboto.className} text-lg! max-w-xl! font-normal! tracking-normal! mb-10 scroll-reveal`} style={{ color: "#6B6B6B", animationDelay: "0.2s", lineHeight: 1.7 }}>
             The <strong style={{ color: "#86489B" }}>RFHBG</strong> helped eligible first-home buyers in regional Australia purchase with just a <strong style={{ color: "#86489B" }}>5% deposit</strong> and no LMI — the government guaranteed up to <strong style={{ color: "#86489B" }}>15% of the loan</strong>. From October 2025, it merged into the unified First Home Guarantee with expanded access.
           </p>
 
-          <div className="flex flex-wrap gap-4 mb-16 scroll-reveal" style={{ animationDelay: "0.3s" }}>
+          {/* <div className="flex flex-wrap gap-4 mb-16 scroll-reveal" style={{ animationDelay: "0.3s" }}>
             <a href="#eligibility" className="font-body font-medium px-8 py-4 rounded-full text-white purple-gradient" style={{ textDecoration: "none", fontSize: "1rem" }}>
               Check Eligibility →
             </a>
             <a href="#changes-2025" className="font-body font-medium px-8 py-4 rounded-full" style={{ textDecoration: "none", fontSize: "1rem", border: "2px solid #86489B", color: "#86489B", backgroundColor: "transparent" }}>
               2025 Changes
             </a>
+          </div> */}
+
+          <div className={`flex flex-wrap gap-4 mb-16 scroll-reveal ${roboto.className}`} style={{ animationDelay: "0.3s" }}>
+            <div className="flex gap-3 lg:p-0">
+              <div className="">
+                <a href="#eligibility" className="extra-btn btn-default">
+                  Check Eligibility →
+                </a>
+              </div>
+
+              <div className="">
+                <a href="#changes-2025" className="btn-default">
+                  2025 Changes
+                </a>
+              </div>
+            </div>
           </div>
 
           {/* stat strip */}
@@ -224,8 +257,8 @@ export default function RfhbgComponent() {
               { number: "$0", label: "Lenders Mortgage Insurance" },
             ].map((s) => (
               <div key={s.label} className="guarantee-card rounded-2xl p-5 card-hover">
-                <div className="font-display text-2xl md:text-3xl font-black highlight-number mb-1 leading-none">{s.number}</div>
-                <div className="font-body text-xs mt-1" style={{ color: "#6B6B6B", lineHeight: 1.4 }}>{s.label}</div>
+                <div className={`${archivo.className} text-2xl! md:text-5xl! font-semibold! highlight-number mb-1! leading-none!`}>{s.number}</div>
+                <div className={`${roboto.className} text-sm! font-normal! mt-1!`} style={{ color: "#6B6B6B", lineHeight: 1.4 }}>{s.label}</div>
               </div>
             ))}
           </div>
@@ -238,15 +271,15 @@ export default function RfhbgComponent() {
       <section id="about" className="px-6 md:px-12 py-24" style={{ backgroundColor: "#ffffff" }}>
         <div className="container mx-auto">
           <div className="mb-4 section-divider" />
-          <h2 className="font-display text-4xl md:text-5xl font-bold mb-4" style={{ color: "#000000" }}>
+          <h2 className={`${archivo.className} text-4xl! md:text-5xl! font-medium! mb-4!`}>
             How the Guarantee Works
           </h2>
-          <p className="font-body text-lg mb-14 max-w-2xl" style={{ color: "#6B6B6B" }}>
-            The RFHBG doesn't give you money — it gives lenders confidence. By guaranteeing part of your loan, the government removes the need for LMI and lets you buy sooner with a smaller deposit.
+          <p className={`${roboto.className} font-normal! tracking-normal! text-[16px]! mb-14! max-w-2xl!`} style={{ color: "#6B6B6B" }}>
+            The RFHBG does not give you money — it gives lenders confidence. By guaranteeing part of your loan, the government removes the need for LMI and lets you buy sooner with a smaller deposit.
           </p>
 
           {/* visual flow */}
-          <div className="grid md:grid-cols-5 gap-3 items-center mb-14">
+          {/* <div className="grid md:grid-cols-5 gap-3 items-center mb-14">
             {[
               { label: "Save a 5% deposit", sub: "From your own genuine savings", color: "#86489B", icon: "💰" },
               null,
@@ -258,16 +291,79 @@ export default function RfhbgComponent() {
                 <div key={i} className="flow-arrow hidden md:block">→</div>
               ) : (
                 <div key={i} className="rounded-2xl p-6 text-center card-hover" style={{ backgroundColor: "#FDF2F9", border: `2px solid ${item.color}22` }}>
-                  <div className="text-3xl mb-3">{item.icon}</div>
-                  <div className="font-display font-bold text-sm mb-1" style={{ color: item.color }}>{item.label}</div>
-                  <div className="font-body text-xs" style={{ color: "#6B6B6B" }}>{item.sub}</div>
+                  <div className="flex justify-center mb-3">{item.icon}</div>
+                  <div className={`${archivo.className} font-bold text-sm mb-1`}
+                    style={{ color: item.color }}>{item.label}</div>
+                  <div className={`${roboto.className} text-xs font-normal`}
+                    style={{ color: "#6B6B6B" }}>{item.sub}</div>
                 </div>
               )
             )}
-          </div>
+          </div> */}
+
+          <div className="grid md:grid-cols-5 gap-3 items-center mb-14">
+  {[
+    {
+      label: "Save a 5% deposit",
+      sub: "From your own genuine savings",
+      color: "#86489B",
+      icon: Wallet,
+    },
+    null,
+    {
+      label: "Gov guarantees up to 15%",
+      sub: "Not cash — a legal guarantee to lender",
+      color: "#F171AC",
+      icon: Landmark,
+    },
+    null,
+    {
+      label: "Borrow up to 95% — no LMI",
+      sub: "You save thousands upfront",
+      color: "#86489B",
+      icon: Home,
+    },
+  ].map((item, i) =>
+    item === null ? (
+      <div key={i} className="flow-arrow hidden md:flex justify-center text-xl text-[#86489B]">
+        →
+      </div>
+    ) : (
+      <div
+        key={i}
+        className="rounded-2xl p-6 text-center card-hover"
+        style={{
+          backgroundColor: "#FDF2F9",
+          border: `2px solid ${item.color}22`,
+        }}
+      >
+        <div className="flex justify-center mb-3">
+          {(() => {
+            const Icon = item.icon;
+            return <Icon className="w-7 h-7" style={{ color: item.color }} />;
+          })()}
+        </div>
+
+        <div
+          className={`${archivo.className} font-bold text-sm mb-1`}
+          style={{ color: item.color }}
+        >
+          {item.label}
+        </div>
+
+        <div
+          className={`${roboto.className} text-xs font-normal`}
+          style={{ color: "#6B6B6B" }}
+        >
+          {item.sub}
+        </div>
+      </div>
+    )
+  )}
+</div>
 
           {/* Newcastle worked example */}
-          <h3 className="font-display text-2xl font-bold mb-6" style={{ color: "#000000" }}>Example: $800,000 Property in Newcastle</h3>
+          <h3 className={`${archivo.className} text-2xl! font-semibold! mb-6!`}>Example: $800,000 Property in Newcastle</h3>
           <div className="grid md:grid-cols-3 gap-5 mb-10">
             {[
               { value: "$40,000", label: "Your 5% deposit", desc: "The minimum genuine savings required to enter the scheme.", color: "#F171AC" },
@@ -275,15 +371,15 @@ export default function RfhbgComponent() {
               { value: "$0", label: "LMI you pay", desc: "Without the scheme, LMI on a 95% LVR loan could add thousands of dollars to your upfront costs.", color: "#86489B" },
             ].map((c) => (
               <div key={c.label} className="bg-white rounded-2xl p-6 card-hover" style={{ border: `1.5px solid ${c.color}33` }}>
-                <div className="font-display text-4xl font-black mb-2" style={{ color: c.color }}>{c.value}</div>
-                <div className="font-display font-bold text-base mb-2" style={{ color: "#000000" }}>{c.label}</div>
-                <p className="font-body text-sm" style={{ color: "#6B6B6B", lineHeight: 1.6 }}>{c.desc}</p>
+                <div className={`${archivo.className} text-4xl font-black mb-2`} style={{ color: c.color }}>{c.value}</div>
+                <div className={`${archivo.className} font-bold text-base mb-2`} style={{ color: "#000000" }}>{c.label}</div>
+                <p className={`${archivo.className} text-sm font-normal! tracking-normal!`} style={{ color: "#6B6B6B", lineHeight: 1.6 }}>{c.desc}</p>
               </div>
             ))}
           </div>
 
-          <div className="info-box rounded-2xl p-5">
-            <p className="font-body text-sm" style={{ color: "#6B6B6B", lineHeight: 1.7 }}>
+          <div className="info-box rounded-2xl px-5 py-4 m-0!">
+            <p className={`${archivo.className} text-sm! font-normal! tracking-normal! m-0! italic!`} style={{ color: "#6B6B6B", lineHeight: 1.7 }}>
               <strong style={{ color: "#86489B" }}>Important:</strong> The government guarantee is not cash paid to the borrower. It is a legal backing that gives lenders confidence so they can waive LMI fees and allow a smaller deposit. You still own 100% of your home.
             </p>
           </div>
@@ -296,23 +392,23 @@ export default function RfhbgComponent() {
       <section id="eligibility" className="px-6 md:px-12 py-24" style={{ backgroundColor: "#FEF3F8" }}>
         <div className="container mx-auto">
           <div className="mb-4 section-divider" />
-          <h2 className="font-display text-4xl md:text-5xl font-bold mb-4" style={{ color: "#000000" }}>
+          <h2 className={`${archivo.className} text-4xl! md:text-5xl! font-medium! mb-4!`}>
             Eligibility Criteria
           </h2>
-          <p className="font-body text-lg mb-12 max-w-2xl" style={{ color: "#6B6B6B" }}>
+          <p className={`${roboto.className} font-normal! tracking-normal! text-[16px]! max-w-2xl!`} style={{ color: "#6B6B6B" }}>
             The traditional RFHBG rules applied before October 2025. Regional buyers now access the same benefits through the expanded First Home Guarantee — with broader eligibility.
           </p>
 
           <div className="grid md:grid-cols-2 gap-6 mb-10">
             <div className="bg-white rounded-2xl p-8 card-hover" style={{ border: "1.5px solid rgba(134,72,155,0.2)" }}>
-              <h3 className="font-display text-xl font-bold mb-6" style={{ color: "#86489B" }}>Traditional Rules (Pre-Oct 2025)</h3>
+              <h3 className={`${archivo.className} text-xl font-medium! mb-6!`} style={{ color: "#86489B" }}>Traditional Rules (Pre-Oct 2025)</h3>
               <ul className="space-y-0">
                 {OLD_RULES.map((item) => (
                   <li key={item.label} className="checklist-item">
                     <span className="mt-0.5 w-5 h-5 rounded-full flex-shrink-0 flex items-center justify-center text-xs text-white" style={{ background: "#86489B" }}>✓</span>
                     <div>
-                      <div className="font-body font-medium text-sm mb-0.5" style={{ color: "#000000" }}>{item.label}</div>
-                      <div className="font-body text-xs" style={{ color: "#6B6B6B" }}>{item.desc}</div>
+                      <div className={`${archivo.className} font-medium text-sm mb-0.5`} style={{ color: "#000000" }}>{item.label}</div>
+                      <div className={`${roboto.className} text-xs font-normal tracking-normal`} style={{ color: "#6B6B6B" }}>{item.desc}</div>
                     </div>
                   </li>
                 ))}
@@ -322,7 +418,7 @@ export default function RfhbgComponent() {
             <div className="space-y-5">
               {/* regional area definition */}
               <div className="bg-white rounded-2xl p-6 card-hover" style={{ border: "1.5px solid rgba(241,113,172,0.25)" }}>
-                <h3 className="font-display text-xl font-bold mb-4" style={{ color: "#F171AC" }}>What Is a Regional Area?</h3>
+                <h3 className={`${archivo.className} text-xl font-medium! mb-6!`} style={{ color: "#F171AC" }}>What Is a Regional Area?</h3>
                 <ul className="space-y-2">
                   {[
                     "ABS Statistical Area Level 4 (SA4) regions outside capital cities",
@@ -331,13 +427,13 @@ export default function RfhbgComponent() {
                     "Christmas Island",
                     "Cocos (Keeling) Islands",
                   ].map((p) => (
-                    <li key={p} className="flex items-center gap-2 font-body text-sm" style={{ color: "#000000" }}>
+                    <li key={p} className={`${archivo.className} flex items-center gap-2 text-sm! font-normal tracking-normal`} style={{ color: "#000000" }}>
                       <span style={{ color: "#86489B" }}>✓</span> {p}
                     </li>
                   ))}
                 </ul>
                 <div className="mt-4 rounded-xl px-4 py-3" style={{ backgroundColor: "rgba(241,113,172,0.07)", border: "1px solid rgba(241,113,172,0.2)" }}>
-                  <p className="font-body text-xs" style={{ color: "#6B6B6B" }}>
+                  <p className={`${roboto.className} text-xs font-normal! tracking-normal! m-0!`} style={{ color: "#6B6B6B" }}>
                     <strong style={{ color: "#F171AC" }}>Excluded:</strong> The Australian Capital Territory (ACT) and all greater capital city areas are not eligible under the RFHBG.
                   </p>
                 </div>
@@ -345,17 +441,17 @@ export default function RfhbgComponent() {
 
               {/* occupier requirement */}
               <div className="info-box rounded-2xl p-5">
-                <h4 className="font-display font-bold text-base mb-2" style={{ color: "#86489B" }}>Owner-Occupier Requirement</h4>
-                <p className="font-body text-sm" style={{ color: "#6B6B6B", lineHeight: 1.7 }}>
+                <h4 className={`${archivo.className} font-medium! text-sm! mb-2!`} style={{ color: "#86489B" }}>Owner-Occupier Requirement</h4>
+                <p className={`${archivo.className} text-sm! font-normal! tracking-normal! m-0!`} style={{ color: "#6B6B6B", lineHeight: 1.7 }}>
                   The property must be your <strong style={{ color: "#000000" }}>principal place of residence</strong>. Investment properties do not qualify. If your circumstances change after purchase, you must notify your lender.
                 </p>
               </div>
 
               {/* loan criteria note */}
               <div className="warning-box rounded-2xl p-5">
-                <h4 className="font-display font-bold text-base mb-2" style={{ color: "#F171AC" }}>Still Need to Qualify for a Loan</h4>
-                <p className="font-body text-sm" style={{ color: "#6B6B6B", lineHeight: 1.7 }}>
-                  The guarantee removes LMI — but you must still meet the lender's servicing requirements, pass credit checks, provide full income verification, and satisfy responsible lending obligations. The scheme does not guarantee loan approval.
+                <h4 className={`${archivo.className} font-medium! text-sm! mb-2!`} style={{ color: "#86489B" }}>Still Need to Qualify for a Loan</h4>
+                <p className={`${archivo.className} text-sm! font-normal! tracking-normal! m-0!`} style={{ color: "#6B6B6B", lineHeight: 1.7 }}>
+                  The guarantee removes LMI — but you must still meet the {`lender's`} servicing requirements, pass credit checks, provide full income verification, and satisfy responsible lending obligations. The scheme does not guarantee loan approval.
                 </p>
               </div>
             </div>
@@ -369,10 +465,10 @@ export default function RfhbgComponent() {
       <section id="changes-2025" className="px-6 md:px-12 py-24" style={{ backgroundColor: "#ffffff" }}>
         <div className="container mx-auto">
           <div className="mb-4 section-divider" />
-          <h2 className="font-display text-4xl md:text-5xl font-bold mb-4" style={{ color: "#000000" }}>
+          <h2 className={`${archivo.className} text-4xl! md:text-5xl! font-medium! mb-4!`}>
             Changes from October 2025
           </h2>
-          <p className="font-body text-lg mb-12 max-w-2xl" style={{ color: "#6B6B6B" }}>
+          <p className={`${roboto.className} font-normal! tracking-normal! text-[16px]! max-w-2xl!`} style={{ color: "#6B6B6B" }}>
             From 1 October 2025, the RFHBG merged into the expanded First Home Guarantee under the broader Home Guarantee Scheme — simplifying access and broadening eligibility for regional buyers.
           </p>
 
@@ -380,8 +476,8 @@ export default function RfhbgComponent() {
           <div className="grid md:grid-cols-2 gap-6 mb-10">
             <div className="bg-white rounded-2xl p-8 card-hover" style={{ border: "1.5px solid rgba(134,72,155,0.15)" }}>
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center text-lg" style={{ backgroundColor: "rgba(134,72,155,0.1)" }}>📋</div>
-                <h3 className="font-display text-xl font-bold" style={{ color: "#86489B" }}>Before — RFHBG</h3>
+                {/* <div className="w-10 h-10 rounded-xl flex items-center justify-center text-lg" style={{ backgroundColor: "rgba(134,72,155,0.1)" }}>📋</div> */}
+                <h3 className={`${archivo.className} text-xl font-semibold!`} style={{ color: "#86489B" }}>Before — RFHBG</h3>
               </div>
               <ul className="space-y-3">
                 {[
@@ -391,7 +487,7 @@ export default function RfhbgComponent() {
                   "Annual place limit (e.g. 10,000 in FY2024–25)",
                   "Separate price caps for regional areas",
                 ].map((item) => (
-                  <li key={item} className="flex items-start gap-2 font-body text-sm" style={{ color: "#6B6B6B" }}>
+                  <li key={item} className={`${roboto.className} flex items-start gap-2 text-sm font-normal tracking-normal`} style={{ color: "#6B6B6B" }}>
                     <span style={{ color: "#86489B", marginTop: 2 }}>→</span> {item}
                   </li>
                 ))}
@@ -400,16 +496,16 @@ export default function RfhbgComponent() {
 
             <div className="rounded-3xl p-8" style={{ background: "linear-gradient(135deg, #86489B, #F171AC)" }}>
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center text-lg" style={{ backgroundColor: "rgba(255,255,255,0.2)" }}>✨</div>
-                <h3 className="font-display text-xl font-bold text-white">After — Unified First Home Guarantee</h3>
+                {/* <div className="w-10 h-10 rounded-xl flex items-center justify-center text-lg" style={{ backgroundColor: "rgba(255,255,255,0.2)" }}>✨</div> */}
+                <h3 className={`${archivo.className} text-xl font-semibold! text-white`}>After — Unified First Home Guarantee</h3>
               </div>
               <ul className="space-y-3">
                 {NEW_RULES.map((item) => (
                   <li key={item.label} className="flex items-start gap-3 rounded-xl px-4 py-3" style={{ backgroundColor: "rgba(255,255,255,0.18)" }}>
                     <span className="text-white mt-0.5">✓</span>
                     <div>
-                      <div className="font-body text-sm font-medium text-white">{item.label}</div>
-                      <div className="font-body text-xs text-white" style={{ opacity: 0.85 }}>{item.desc}</div>
+                      <div className={`${archivo.className} text-sm font-medium text-white`}>{item.label}</div>
+                      <div className={`${roboto.className} text-xs font-normal text-white`} style={{ opacity: 0.85 }}>{item.desc}</div>
                     </div>
                   </li>
                 ))}
@@ -417,8 +513,8 @@ export default function RfhbgComponent() {
             </div>
           </div>
 
-          <div className="info-box rounded-2xl p-5">
-            <p className="font-body text-sm" style={{ color: "#6B6B6B", lineHeight: 1.7 }}>
+          <div className="info-box rounded-2xl px-5 py-4">
+            <p className={`${roboto.className} text-sm m-0! tracking-normal! font-normal! italic!`} style={{ color: "#6B6B6B", lineHeight: 1.7 }}>
               <strong style={{ color: "#86489B" }}>What stays the same:</strong> Regional buyers continue to purchase with a 5% deposit, borrow up to 95% of the property value, and pay no LMI. Price caps and other conditions still apply — confirm your area with a Participating Lender.
             </p>
           </div>
@@ -431,14 +527,49 @@ export default function RfhbgComponent() {
       <section id="benefits" className="px-6 md:px-12 py-24" style={{ backgroundColor: "#FDF2F9" }}>
         <div className="container mx-auto">
           <div className="mb-4 section-divider" />
-          <h2 className="font-display text-4xl md:text-5xl font-bold mb-4" style={{ color: "#000000" }}>
+          <h2 className={`${archivo.className} text-4xl! md:text-5xl! font-medium! mb-4!`}>
             Key Benefits
           </h2>
-          <p className="font-body text-lg mb-12 max-w-2xl" style={{ color: "#6B6B6B" }}>
+          <p className={`${roboto.className} font-normal! tracking-normal! text-[16px]! max-w-2xl!`} style={{ color: "#6B6B6B" }}>
             The RFHBG was designed to make regional homeownership more accessible — with real financial advantages for eligible buyers.
           </p>
 
           <div className="grid md:grid-cols-3 gap-5 mb-10">
+            {[
+              {
+                icon: Rocket,
+                title: "Buy sooner",
+                desc: "Enter the property market earlier without needing to save the traditional 20% deposit — cutting years off your savings timeline.",
+                color: "#86489B",
+              },
+              {
+                icon: DollarSign,
+                title: "No LMI costs",
+                desc: "Eligible buyers avoid Lenders Mortgage Insurance entirely — saving thousands of dollars that would otherwise be added to your upfront costs or loan.",
+                color: "#F171AC",
+              },
+              {
+                icon: Landmark,
+                title: "Government-backed",
+                desc: "The government guarantees up to 15% of the loan value, reducing lender risk and allowing you to borrow up to 95% of the property value confidently.",
+                color: "#86489B",
+              },
+            ].map((b) => {
+              const Icon = b.icon;
+
+              return (
+                <div key={b.title} className="guarantee-card rounded-2xl p-7 card-hover">
+                  <Icon className="w-8 h-8 mb-4" style={{ color: b.color }} />
+
+                  <h4 className={`${archivo.className} font-semibold! text-lg! mb-2!`} style={{ color: b.color }}>{b.title}</h4>
+                  <p className={`${roboto.className} text-sm! tracking-normal! font-normal! m-0! itlaic!`} style={{ color: "#6B6B6B", lineHeight: 1.7 }}>{b.desc}</p>
+
+                </div>
+              );
+            })}
+          </div>
+
+          {/* <div className="grid md:grid-cols-3 gap-5 mb-10">
             {[
               { icon: "🏃", title: "Buy sooner", desc: "Enter the property market earlier without needing to save the traditional 20% deposit — cutting years off your savings timeline.", color: "#86489B" },
               { icon: "💸", title: "No LMI costs", desc: "Eligible buyers avoid Lenders Mortgage Insurance entirely — saving thousands of dollars that would otherwise be added to your upfront costs or loan.", color: "#F171AC" },
@@ -446,16 +577,16 @@ export default function RfhbgComponent() {
             ].map((b) => (
               <div key={b.title} className="guarantee-card rounded-2xl p-7 card-hover">
                 <div className="text-3xl mb-4">{b.icon}</div>
-                <h4 className="font-display font-bold text-lg mb-2" style={{ color: b.color }}>{b.title}</h4>
-                <p className="font-body text-sm" style={{ color: "#6B6B6B", lineHeight: 1.7 }}>{b.desc}</p>
+                <h4 className={`${archivo.className} font-semibold! text-lg! mb-2!`} style={{ color: b.color }}>{b.title}</h4>
+                <p className={`${roboto.className} text-sm! tracking-normal! font-normal! m-0! itlaic!`} style={{ color: "#6B6B6B", lineHeight: 1.7 }}>{b.desc}</p>
               </div>
             ))}
-          </div>
+          </div> */}
 
           {/* broker value */}
           <div className="bg-white rounded-2xl p-8 card-hover" style={{ border: "1px solid rgba(134,72,155,0.12)" }}>
-            <h3 className="font-display text-2xl font-bold mb-6" style={{ color: "#000000" }}>Why Use a Mortgage Broker?</h3>
-            <div className="grid md:grid-cols-2 gap-4">
+            <h3 className={`${archivo.className} text-xl! font-bold! mb-6!`} style={{ color: "#F171AC" }}>Why Use a Mortgage Broker?</h3>
+            {/* <div className="grid md:grid-cols-2 gap-4">
               {[
                 { label: "Assess eligibility", desc: "Brokers determine whether you qualify for the RFHBG or other Home Guarantee Schemes before you apply.", icon: "🔍" },
                 { label: "Compare lender options", desc: "Evaluate multiple participating lenders to find the best loan structure, interest rates, and features for your situation.", icon: "⚖️" },
@@ -465,11 +596,66 @@ export default function RfhbgComponent() {
                 <div key={item.label} className="flex items-start gap-4 rounded-xl p-4" style={{ backgroundColor: "#FDF2F9", border: "1px solid rgba(134,72,155,0.1)" }}>
                   <div className="text-xl mt-0.5">{item.icon}</div>
                   <div>
-                    <div className="font-body font-medium text-sm mb-1" style={{ color: "#86489B" }}>{item.label}</div>
-                    <div className="font-body text-xs" style={{ color: "#6B6B6B", lineHeight: 1.6 }}>{item.desc}</div>
+                    <div className={`${roboto.className} font-medium text-sm mb-1`} style={{ color: "#86489B" }}>{item.label}</div>
+                    <div className={`${roboto.className}  text-xs font-normal tracking-normal`} style={{ color: "#6B6B6B", lineHeight: 1.6 }}>{item.desc}</div>
                   </div>
                 </div>
               ))}
+            </div> */}
+            <div className="grid md:grid-cols-2 gap-4">
+              {[
+                {
+                  label: "Assess eligibility",
+                  desc: "Brokers determine whether you qualify for the RFHBG or other Home Guarantee Schemes before you apply.",
+                  icon: Search,
+                },
+                {
+                  label: "Compare lender options",
+                  desc: "Evaluate multiple participating lenders to find the best loan structure, interest rates, and features for your situation.",
+                  icon: Scale,
+                },
+                {
+                  label: "Prepare your application",
+                  desc: "Ensure your application is complete, accurate, and meets all lender and government requirements — reducing errors.",
+                  icon: FileText,
+                },
+                {
+                  label: "Guide you to settlement",
+                  desc: "From submission through to settlement, receive step-by-step support that makes the journey smoother and less stressful.",
+                  icon: Compass,
+                },
+              ].map((item) => {
+                const Icon = item.icon;
+
+                return (
+                  <div
+                    key={item.label}
+                    className="flex items-start gap-4 rounded-xl p-4"
+                    style={{
+                      backgroundColor: "#FDF2F9",
+                      border: "1px solid rgba(134,72,155,0.1)",
+                    }}
+                  >
+                    <Icon className="w-5 h-5 mt-1" style={{ color: "#86489B" }} />
+
+                    <div>
+                      <div
+                        className={`${roboto.className} font-medium text-sm mb-1`}
+                        style={{ color: "#86489B" }}
+                      >
+                        {item.label}
+                      </div>
+
+                      <div
+                        className={`${roboto.className} text-xs font-normal tracking-normal`}
+                        style={{ color: "#6B6B6B", lineHeight: 1.6 }}
+                      >
+                        {item.desc}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -481,52 +667,92 @@ export default function RfhbgComponent() {
       <section id="properties" className="px-6 md:px-12 py-24" style={{ backgroundColor: "#ffffff" }}>
         <div className="container mx-auto">
           <div className="mb-4 section-divider" />
-          <h2 className="font-display text-4xl md:text-5xl font-bold mb-4" style={{ color: "#000000" }}>
+          <h2 className={`${archivo.className} text-4xl! md:text-5xl! font-medium! mb-4!`}>
             Eligible Properties
           </h2>
-          <p className="font-body text-lg mb-12 max-w-2xl" style={{ color: "#6B6B6B" }}>
-            The property must be purchased as your principal place of residence and fall within the scheme's regional price caps for your area.
+          <p className={`${roboto.className} font-normal! tracking-normal! text-[16px]! max-w-2xl!`} style={{ color: "#6B6B6B" }}>
+            The property must be purchased as your principal place of residence and fall within the {`scheme's`} regional price caps for your area.
           </p>
 
+{/* =======================  ======================= */}
           <div className="grid md:grid-cols-2 gap-6 mb-10">
-            <div className="bg-white rounded-2xl p-8 card-hover" style={{ border: "1.5px solid rgba(134,72,155,0.2)" }}>
-              <h3 className="font-display text-xl font-bold mb-6" style={{ color: "#86489B" }}>Eligible Property Types</h3>
+            {/* <div className="bg-white rounded-2xl p-8 card-hover" style={{ border: "1.5px solid rgba(134,72,155,0.2)" }}>
+              <h3 className={`${archivo.className} text-xl! font-semibold! mb-5!`} style={{ color: "#86489B" }}>Eligible Property Types</h3>
               <div className="space-y-4">
                 {PROPERTY_TYPES.map((p) => (
                   <div key={p.type} className="flex items-center gap-4 rounded-xl p-4" style={{ backgroundColor: "#FDF2F9", border: "1px solid rgba(134,72,155,0.1)" }}>
                     <span className="text-2xl">{p.icon}</span>
-                    <span className="font-body text-sm font-medium" style={{ color: "#000000" }}>{p.type}</span>
+                    <span className={`${archivo.className} text-sm font-medium`} style={{ color: "#000000" }}>{p.type}</span>
                   </div>
                 ))}
               </div>
-            </div>
+            </div> */}
+            <div
+  className="bg-white rounded-2xl p-8 card-hover"
+  style={{ border: "1.5px solid rgba(134,72,155,0.2)" }}
+>
+  <h3
+    className={`${archivo.className} text-xl font-semibold mb-5`}
+    style={{ color: "#86489B" }}
+  >
+    Eligible Property Types
+  </h3>
+
+  <div className="space-y-4">
+    {PROPERTY_TYPES.map((p) => {
+      const Icon = p.icon;
+
+      return (
+        <div
+          key={p.type}
+          className="flex items-center gap-4 rounded-xl p-4"
+          style={{
+            backgroundColor: "#FDF2F9",
+            border: "1px solid rgba(134,72,155,0.1)",
+          }}
+        >
+          <Icon className="w-6 h-6 text-[#86489B]" />
+
+          <span
+            className={`${archivo.className} text-sm font-medium`}
+            style={{ color: "#000000" }}
+          >
+            {p.type}
+          </span>
+        </div>
+      );
+    })}
+  </div>
+</div>
+
+{/* =======================  ======================= */}
 
             <div className="space-y-5">
               <div className="bg-white rounded-2xl p-6 card-hover" style={{ border: "1.5px solid rgba(241,113,172,0.25)" }}>
-                <h3 className="font-display text-xl font-bold mb-4" style={{ color: "#F171AC" }}>Refinancing Rules</h3>
+                <h3 className={`${archivo.className} text-xl! font-semibold! mb-5!`} style={{ color: "#F171AC" }}>Refinancing Rules</h3>
                 <div className="space-y-3">
                   {[
                     { label: "New purchases only", desc: "The RFHBG cannot be used to refinance an existing home loan — it is for new home purchases or new builds only." },
                     { label: "Refinancing later", desc: "You may refinance, but the guarantee only transfers if the new lender is also a participating lender under the Home Guarantee Scheme." },
                   ].map((r) => (
                     <div key={r.label} className="rounded-xl p-4" style={{ backgroundColor: "#FEF3F8", border: "1px solid rgba(241,113,172,0.15)" }}>
-                      <div className="font-body text-sm font-medium mb-1" style={{ color: "#000000" }}>{r.label}</div>
-                      <div className="font-body text-xs" style={{ color: "#6B6B6B", lineHeight: 1.6 }}>{r.desc}</div>
+                      <div className={`${roboto.className} text-sm font-medium mb-1`} style={{ color: "#000000" }}>{r.label}</div>
+                      <div className={`${roboto.className} text-xs font-normal tracking-normal`} style={{ color: "#6B6B6B", lineHeight: 1.6 }}>{r.desc}</div>
                     </div>
                   ))}
                 </div>
               </div>
 
               <div className="warning-box rounded-2xl p-5">
-                <h4 className="font-display font-bold text-base mb-2" style={{ color: "#F171AC" }}>Price Cap Rule</h4>
-                <p className="font-body text-sm" style={{ color: "#6B6B6B", lineHeight: 1.7 }}>
+                <h4 className={`${archivo.className} font-medium! text-xl! mb-2!`} style={{ color: "#86489B" }}>Price Cap Rule</h4>
+                <p className={`${roboto.className} font-normal! text-sm! tracking-normal!`} style={{ color: "#6B6B6B", lineHeight: 1.6 }}>
                   If the purchase price exceeds the property price cap for your region, you will not be eligible — even if it exceeds the cap by a small amount. Always confirm the cap for your specific area with a Participating Lender before proceeding.
                 </p>
               </div>
 
               <div className="info-box rounded-2xl p-5">
-                <h4 className="font-display font-bold text-base mb-2" style={{ color: "#86489B" }}>Combining with Other Grants</h4>
-                <p className="font-body text-sm" style={{ color: "#6B6B6B", lineHeight: 1.7 }}>
+                <h4 className={`${archivo.className} font-medium! text-xl! mb-2!`} style={{ color: "#86489B" }}>Combining with Other Grants</h4>
+                <p className={`${roboto.className} font-normal! text-sm! tracking-normal!`} style={{ color: "#6B6B6B", lineHeight: 1.6 }}>
                   You may be able to combine the RFHBG with state-based benefits such as <strong style={{ color: "#000000" }}>stamp duty concessions</strong> or the <strong style={{ color: "#000000" }}>First Home Owner Grant</strong>, depending on your eligibility and state regulations.
                 </p>
               </div>
@@ -534,18 +760,57 @@ export default function RfhbgComponent() {
           </div>
 
           {/* negative equity note */}
-          <div className="grid md:grid-cols-2 gap-5">
+          {/* <div className="grid md:grid-cols-2 gap-5">
             {[
               { title: "If property values fall", body: "You remain responsible for repaying the full loan amount. The government guarantee only covers a portion of the loan to the lender in case of default — it does not protect you from market fluctuations or negative equity.", icon: "📉", color: "#F171AC" },
               { title: "Government doesn't own your home", body: "The government guarantee is not shared equity. The government does not take ownership of your property or receive a share of any future capital gains — you own 100% from settlement.", icon: "🔑", color: "#86489B" },
             ].map((c) => (
               <div key={c.title} className="guarantee-card rounded-2xl p-6 card-hover">
                 <div className="text-2xl mb-3">{c.icon}</div>
-                <h4 className="font-display font-bold text-base mb-2" style={{ color: c.color }}>{c.title}</h4>
-                <p className="font-body text-sm" style={{ color: "#6B6B6B", lineHeight: 1.7 }}>{c.body}</p>
+                <h4 className={`${archivo.className} font-semibold! text-base! mb-2!`} style={{ color: c.color }}>{c.title}</h4>
+                <p className={`${roboto.className} font-normal! text-sm! tracking-normal!`} style={{ color: "#6B6B6B", lineHeight: 1.7 }}>{c.body}</p>
               </div>
             ))}
-          </div>
+          </div> */}
+
+          <div className="grid md:grid-cols-2 gap-5">
+  {[
+    {
+      title: "If property values fall",
+      body: "You remain responsible for repaying the full loan amount. The government guarantee only covers a portion of the loan to the lender in case of default — it does not protect you from market fluctuations or negative equity.",
+      icon: TrendingDown,
+      color: "#F171AC",
+    },
+    {
+      title: "Government doesn't own your home",
+      body: "The government guarantee is not shared equity. The government does not take ownership of your property or receive a share of any future capital gains — you own 100% from settlement.",
+      icon: Key,
+      color: "#86489B",
+    },
+  ].map((c) => {
+    const Icon = c.icon;
+
+    return (
+      <div key={c.title} className="guarantee-card rounded-2xl p-6 card-hover">
+        <Icon className="w-6 h-6 mb-3" style={{ color: c.color }} />
+
+        <h4
+          className={`${archivo.className} font-semibold text-base mb-2`}
+          style={{ color: c.color }}
+        >
+          {c.title}
+        </h4>
+
+        <p
+          className={`${roboto.className} font-normal text-sm tracking-normal`}
+          style={{ color: "#6B6B6B", lineHeight: 1.7 }}
+        >
+          {c.body}
+        </p>
+      </div>
+    );
+  })}
+</div>
         </div>
       </section>
 
@@ -555,10 +820,10 @@ export default function RfhbgComponent() {
       <section id="faq" className="px-6 md:px-12 py-24" style={{ backgroundColor: "#FEF3F8" }}>
         <div className="container mx-auto">
           <div className="mb-4 section-divider" />
-          <h2 className="font-display text-4xl md:text-5xl font-bold mb-4" style={{ color: "#000000" }}>
+          <h2 className={`${archivo.className} text-4xl! md:text-5xl! font-medium! mb-4!`}>
             Frequently Asked Questions
           </h2>
-          <p className="font-body text-lg mb-12" style={{ color: "#6B6B6B" }}>
+          <p className={`${roboto.className} font-normal! tracking-normal! text-[16px]! max-w-2xl!`} style={{ color: "#6B6B6B" }}>
             Everything you need to know about the Regional First Home Buyer Guarantee.
           </p>
 
@@ -567,17 +832,17 @@ export default function RfhbgComponent() {
               <div key={i} className="faq-item">
                 <button
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                  className="w-full text-left flex items-center justify-between px-6 py-5 gap-4"
+                  className="w-full text-left flex items-center justify-between px-6 py-4 gap-4"
                   style={{ background: "none", border: "none", cursor: "pointer" }}
                 >
-                  <span className="font-display font-bold text-base" style={{ color: "#000000" }}>{f.q}</span>
+                  <span className={`${archivo.className} font-bold text-base`} style={{ color: "#000000" }}>{f.q}</span>
                   <span className="flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center font-bold text-sm text-white" style={{ background: openFaq === i ? "#86489B" : "#F171AC", transition: "background 0.2s" }}>
                     {openFaq === i ? "−" : "+"}
                   </span>
                 </button>
                 {openFaq === i && (
-                  <div className="px-6 pb-5">
-                    <p className="font-body text-sm" style={{ color: "#6B6B6B", lineHeight: 1.8 }}>{f.a}</p>
+                  <div className="px-6 pb-2">
+                    <p className={`${roboto.className} text-[16px]! font-normal! tracking-normal!`} style={{ color: "#6B6B6B", lineHeight: 1.8 }}>{f.a}</p>
                   </div>
                 )}
               </div>
@@ -589,7 +854,7 @@ export default function RfhbgComponent() {
       {/* ══════════════════════════════════════
           CTA BANNER
       ══════════════════════════════════════ */}
-      <section className="px-6 md:px-12 py-24" style={{ background: "linear-gradient(135deg, #86489B 0%, #F171AC 100%)" }}>
+      {/* <section className="px-6 md:px-12 py-24" style={{ background: "linear-gradient(135deg, #86489B 0%, #F171AC 100%)" }}>
         <div className="container mx-auto text-center">
           <h2 className="font-display text-4xl md:text-6xl font-black text-white mb-6 leading-tight">
             Regional home ownership,
@@ -620,7 +885,7 @@ export default function RfhbgComponent() {
             </a>
           </div>
         </div>
-      </section>
+      </section> */}
 
     </div>
   );

@@ -216,35 +216,50 @@ export default function FirstHomeGuaranteePage() {
             Updated October 1, 2025 — Major Expansions Now Active
           </div>
 
-          <h1 className={`${roboto.className} font-display text-5xl! font-black leading-none mb-6 scroll-reveal`} style={{ animationDelay: "0.1s", color: "#000000" }}>
+          <h1 className={`${archivo.className} text-5xl! md:text-7xl! font-medium! leading-none mb-6! scroll-reveal! `} style={{ animationDelay: "0.1s", color: "#000000" }}>
             Own Your First
             <br />
             <span className="highlight-number italic">Home Sooner.</span>
           </h1>
 
-          <p className={`font-body text-lg! font-normal! max-w-2xl mb-10 scroll-reveal ${archivo.className}`} style={{ color: "#6B6B6B", animationDelay: "0.2s", lineHeight: 1.7 }}>
-            The Australian Government's First Home Guarantee lets eligible buyers purchase with as little as a <strong style={{ color: "#86489B" }}>5% deposit</strong> — with <strong style={{ color: "#86489B" }}>zero Lenders Mortgage Insurance</strong>. No income caps. No waitlists.
+          <p className={`${roboto.className} text-lg! max-w-xl! font-normal! tracking-normal! mb-10 scroll-reveal`} style={{ color: "#6B6B6B", animationDelay: "0.2s", lineHeight: 1.7 }}>
+            The Australian {`Government's`} First Home Guarantee lets eligible buyers purchase with as little as a <strong style={{ color: "#86489B" }}>5% deposit</strong> — with <strong style={{ color: "#86489B" }}>zero Lenders Mortgage Insurance</strong>. No income caps. No waitlists.
           </p>
 
-          <div className="flex flex-wrap gap-4 scroll-reveal" style={{ animationDelay: "0.3s" }}>
+          {/* <div className="flex flex-wrap gap-4 scroll-reveal" style={{ animationDelay: "0.3s" }}>
             <Link href="#eligibility" className=" font-medium px-8 py-4 rounded-full text-white purple-gradient" style={{ textDecoration: "none", fontSize: "1rem" }}>
               Check Eligibility →
             </Link>
             <a href="#how-it-works" className="font-body font-medium px-8 py-4 rounded-full" style={{ textDecoration: "none", fontSize: "1rem", border: "2px solid #86489B", color: "#86489B", backgroundColor: "transparent" }}>
               How It Works
             </a>
+          </div> */}
+
+          <div className={`flex flex-wrap gap-4 mb-16 scroll-reveal ${roboto.className}`} style={{ animationDelay: "0.3s" }}>
+            <div className="flex gap-3 lg:p-0">
+              <div className="">
+                <a href="#eligibility" className="extra-btn btn-default">
+                  Check Eligibility →
+                </a>
+              </div>
+
+              <div className="">
+                <a href="#how-it-works" className="btn-default">
+                  How It Works
+                </a>
+              </div>
+            </div>
           </div>
 
           {/* stat strip */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-20 scroll-reveal" style={{ animationDelay: "0.4s" }}>
+          {/* <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-20 scroll-reveal" style={{ animationDelay: "0.4s" }}>
             {CHANGES.map((c) => (
               <div key={c.label} className="guarantee-card rounded-2xl p-5 card-hover">
-                <div className="font-display text-3xl font-bold highlight-number mb-1">{c.icon}</div>
-                <div className="font-display font-bold text-base" style={{ color: "#000000" }}>{c.label}</div>
-                <div className="font-body text-xs mt-1" style={{ color: "#6B6B6B" }}>{c.sub}</div>
+                <div className={`${archivo.className} text-2xl! md:text-5xl! font-semibold! highlight-number mb-1! leading-none!`}>{c.label}</div>
+                <div className={`${roboto.className} text-sm! font-normal! mt-1!`} style={{ color: "#6B6B6B" }}>{c.sub}</div>
               </div>
             ))}
-          </div>
+          </div> */}
         </div>
       </section>
 
@@ -254,10 +269,10 @@ export default function FirstHomeGuaranteePage() {
       <section id="how-it-works" className="px-6 md:px-12 py-24" style={{ backgroundColor: "#ffffff" }}>
         <div className="container mx-auto">
           <div className="mb-4 section-divider" />
-          <h2 className="font-display text-4xl md:text-5xl font-bold mb-4" style={{ color: "#000000" }}>
+          <h2 className={`${archivo.className} text-4xl! md:text-5xl! font-medium! mb-4!`}>
             How the Guarantee Works
           </h2>
-          <p className="font-body text-lg mb-16 max-w-2xl" style={{ color: "#6B6B6B" }}>
+          <p className={`${roboto.className} font-normal! tracking-normal! text-[16px]! mb-7! max-w-2xl!`} style={{ color: "#6B6B6B" }}>
             The Government acts as your mortgage insurer — not a co-owner. You keep 100% of your property.
           </p>
 
@@ -269,9 +284,9 @@ export default function FirstHomeGuaranteePage() {
               { pct: "80%", label: "Your Home Loan", color: "#000000", desc: "Standard loan — you repay 100% of the mortgage" },
             ].map((s) => (
               <div key={s.label} className="rounded-2xl p-8 card-hover" style={{ backgroundColor: "#FDF2F9", border: `2px solid ${s.color}22` }}>
-                <div className="font-display text-5xl font-black mb-3" style={{ color: s.color }}>{s.pct}</div>
-                <div className="font-display font-bold text-xl mb-2" style={{ color: "#000000" }}>{s.label}</div>
-                <p className="font-body text-sm" style={{ color: "#6B6B6B", lineHeight: 1.6 }}>{s.desc}</p>
+                <div className={`${archivo.className} text-5xl! font-semibold! mb-3!`} style={{ color: s.color }}>{s.pct}</div>
+                <div className={`${archivo.className} font-medium! text-xl! mb-2!`} style={{ color: "#000000" }}>{s.label}</div>
+                <p className={`${roboto.className} text-sm! font-normal! tracking-normal!`} style={{ color: "#6B6B6B", lineHeight: 1.6 }}>{s.desc}</p>
               </div>
             ))}
           </div>
@@ -280,16 +295,16 @@ export default function FirstHomeGuaranteePage() {
           <div className="rounded-3xl p-8 md:p-12" style={{ background: "linear-gradient(135deg, #86489B, #F171AC)" }}>
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div>
-                <h3 className="font-display text-3xl font-bold text-white mb-4">Why does this matter?</h3>
-                <p className="font-body text-white opacity-90 text-lg" style={{ lineHeight: 1.7 }}>
+                <h3 className={`${archivo.className} text-2xl! text-white font-semibold! mb-6!`}>Why does this matter?</h3>
+                <p className={`${roboto.className} font-normal! tracking-normal! text-[16px]! mb-7! max-w-2xl! text-white`} style={{ lineHeight: 1.7 }}>
                   Normally, if your deposit is under 20%, lenders charge LMI — a fee that protects <em>them</em>, not you. This can add <strong>$10,000–$60,000</strong> to your upfront costs. The FHBG eliminates this entirely.
                 </p>
               </div>
               <div className="grid grid-cols-1 gap-4">
                 {["No LMI payment required", "Interest rates equivalent to 80% LVR loans", "You own 100% of your property", "No repayment to government"].map((b) => (
-                  <div key={b} className="flex items-center gap-3 bg-white bg-opacity-20 rounded-xl px-5 py-3">
-                    <span className="text-white text-lg">✓</span>
-                    <span className="font-body text-white font-medium text-sm">{b}</span>
+                  <div key={b} className="flex items-center gap-3 bg-white/40 bg-opacity-20 rounded-xl px-5 py-3">
+                    <span className={`${roboto.className} text-white text-lg`}>✓</span>
+                    <span className={`${roboto.className} text-white font-medium! text-sm! tracking-normal!`}>{b}</span>
                   </div>
                 ))}
               </div>
@@ -304,10 +319,10 @@ export default function FirstHomeGuaranteePage() {
       <section id="eligibility" className="px-6 md:px-12 py-24" style={{ backgroundColor: "#FEF3F8" }}>
         <div className="container mx-auto">
           <div className="mb-4 section-divider" />
-          <h2 className="font-display text-4xl md:text-5xl font-bold mb-4" style={{ color: "#000000" }}>
+          <h2 className={`${archivo.className} text-4xl! md:text-5xl! font-medium! mb-4!`}>
             Eligibility Criteria
           </h2>
-          <p className="font-body text-lg mb-12 max-w-2xl" style={{ color: "#6B6B6B" }}>
+          <p className={`${roboto.className} font-normal! tracking-normal! text-[16px]! max-w-2xl!`} style={{ color: "#6B6B6B" }}>
             Significant changes from October 1, 2025 have opened this scheme to more Australians than ever before.
           </p>
 
@@ -337,10 +352,10 @@ export default function FirstHomeGuaranteePage() {
               },
             ].map((col) => (
               <div key={col.title} className="bg-white rounded-2xl p-8 card-hover" style={{ border: `1.5px solid ${col.accent}33` }}>
-                <h3 className="font-display text-xl font-bold mb-6" style={{ color: col.accent }}>{col.title}</h3>
+                <h3 className={`${archivo.className} text-xl font-medium! mb-6!`} style={{ color: "#86489B" }}>{col.title}</h3>
                 <ul className="space-y-3">
                   {col.items.map((item) => (
-                    <li key={item} className="flex items-start gap-3 font-body text-sm" style={{ color: "#000000", lineHeight: 1.6 }}>
+                    <li key={item} className={`${archivo.className} flex items-start gap-3 font-normal! text-sm!`} style={{ color: "#000000", lineHeight: 1.6 }}>
                       <span className="mt-0.5 w-5 h-5 rounded-full flex-shrink-0 flex items-center justify-center text-xs text-white" style={{ background: col.accent }}>✓</span>
                       {item}
                     </li>
@@ -352,8 +367,8 @@ export default function FirstHomeGuaranteePage() {
 
           {/* NOT eligible */}
           <div className="rounded-2xl p-6" style={{ background: "rgba(0,0,0,0.03)", border: "1px solid rgba(0,0,0,0.08)" }}>
-            <h4 className="font-display font-bold text-lg mb-4" style={{ color: "#000000" }}>⚠ Not Eligible Under FHBG</h4>
-            <div className="grid md:grid-cols-3 gap-3 font-body text-sm" style={{ color: "#6B6B6B" }}>
+            <h4 className={`${archivo.className} font-semibold! text-lg! mb-4!`}>⚠ Not Eligible Under FHBG</h4>
+            <div className={`grid md:grid-cols-3 gap-3 font-normal! tracking-normal! text-sm! ${archivo.className}`} style={{ color: "#6B6B6B" }}>
               {["Owner-builder arrangements", "Investment properties (not owner-occupied)", "Properties above price caps", "Non-citizens / non-permanent residents", "Company title interests owned within 10 years", "Loans without principal & interest repayments"].map((x) => (
                 <div key={x} className="flex items-center gap-2">
                   <span style={{ color: "#F171AC" }}>✕</span> {x}
@@ -370,39 +385,67 @@ export default function FirstHomeGuaranteePage() {
       <section id="benefits" className="px-6 md:px-12 py-24" style={{ backgroundColor: "#ffffff" }}>
         <div className="container mx-auto">
           <div className="mb-4 section-divider" />
-          <h2 className="font-display text-4xl md:text-5xl font-bold mb-4" style={{ color: "#000000" }}>
+          <h2 className={`${archivo.className} text-4xl! md:text-5xl! font-medium! mb-4!`}>
             Your LMI Savings
           </h2>
-          <p className="font-body text-lg mb-12 max-w-2xl" style={{ color: "#6B6B6B" }}>
-            Avoiding Lenders Mortgage Insurance is the scheme's most immediate benefit. Here's what you could save.
+          <p className={`${roboto.className} font-normal! tracking-normal! text-[16px]! max-w-2xl!`} style={{ color: "#6B6B6B" }}>
+            {`Avoiding Lenders Mortgage Insurance is the scheme's most immediate benefit. Here's what you could save.`}
           </p>
 
-          <div className="overflow-hidden rounded-2xl" style={{ border: "1px solid rgba(134,72,155,0.15)" }}>
-            <table className="w-full font-body text-sm">
-              <thead>
-                <tr style={{ background: "linear-gradient(90deg, #86489B, #F171AC)" }}>
-                  {["Property Price", "Your 5% Deposit", "LMI Without Scheme", "LMI With FHBG", "Your Saving"].map((h) => (
-                    <th key={h} className="text-left px-5 py-4 text-white font-medium">{h}</th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {LMI_SAVINGS.map((row, i) => (
-                  <tr key={row.price} className="table-row-alt">
-                    <td className="px-5 py-4 font-display font-bold" style={{ color: "#86489B" }}>{row.price}</td>
-                    <td className="px-5 py-4" style={{ color: "#000000" }}>{row.deposit}</td>
-                    <td className="px-5 py-4" style={{ color: "#6B6B6B" }}>{row.lmiWithout}</td>
-                    <td className="px-5 py-4 font-bold" style={{ color: "#F171AC" }}>{row.lmiWith}</td>
-                    <td className="px-5 py-4">
-                      <span className="inline-block px-3 py-1 rounded-full text-white text-xs font-bold" style={{ background: "linear-gradient(90deg,#86489B,#F171AC)" }}>
-                        Save {row.saving}
-                      </span>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <div className="overflow-x-auto rounded-2xl border border-[rgba(134,72,155,0.15)]">
+  <table className="w-full min-w-[700px] font-body text-sm">
+    <thead>
+      <tr className="bg-gradient-to-r from-[#86489B] to-[#F171AC]">
+        {["Property Price", "Your 5% Deposit", "LMI Without Scheme", "LMI With FHBG", "Your Saving"].map((h) => (
+          <th
+            key={h}
+            className="text-left px-5 py-4 text-white font-medium"
+          >
+            {h}
+          </th>
+        ))}
+      </tr>
+    </thead>
+    <tbody>
+      {LMI_SAVINGS.map((row) => (
+        <tr key={row.price} className="table-row-alt border-t border-[rgba(134,72,155,0.06)]">
+          <td
+            className={`${archivo.className} px-5 py-4 font-display font-bold`}
+            style={{ color: "#86489B" }}
+          >
+            {row.price}
+          </td>
+          <td
+            className={`${archivo.className} px-5 py-4`}
+            style={{ color: "#000000" }}
+          >
+            {row.deposit}
+          </td>
+          <td
+            className={`${archivo.className} px-5 py-4`}
+            style={{ color: "#6B6B6B" }}
+          >
+            {row.lmiWithout}
+          </td>
+          <td
+            className={`${archivo.className} px-5 py-4 font-bold`}
+            style={{ color: "#F171AC" }}
+          >
+            {row.lmiWith}
+          </td>
+          <td className={`${archivo.className} px-5 py-4`}>
+            <span
+              className="inline-block px-3 py-1 rounded-full text-white text-xs font-bold"
+              style={{ background: "linear-gradient(90deg,#86489B,#F171AC)" }}
+            >
+              Save {row.saving}
+            </span>
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
 
           <div className="grid md:grid-cols-3 gap-6 mt-10">
             {[
@@ -411,8 +454,8 @@ export default function FirstHomeGuaranteePage() {
               { title: "Greater Borrowing Power", body: "Because LMI is waived (not added to the loan balance), your overall debt stays lower and your monthly repayments remain manageable." },
             ].map((c) => (
               <div key={c.title} className="guarantee-card rounded-2xl p-6 card-hover">
-                <h4 className="font-display font-bold text-lg mb-3" style={{ color: "#86489B" }}>{c.title}</h4>
-                <p className="font-body text-sm" style={{ color: "#6B6B6B", lineHeight: 1.7 }}>{c.body}</p>
+                <h4 className={`${archivo.className} font-medium! text-sm! mb-2!`} style={{ color: "#86489B" }}>{c.title}</h4>
+                <p className={`${archivo.className} text-sm! font-normal! tracking-normal!`} style={{ color: "#6B6B6B", lineHeight: 1.7 }}>{c.body}</p>
               </div>
             ))}
           </div>
@@ -425,34 +468,58 @@ export default function FirstHomeGuaranteePage() {
       <section id="property-caps" className="px-6 md:px-12 py-24" style={{ backgroundColor: "#FDF2F9" }}>
         <div className="container mx-auto">
           <div className="mb-4 section-divider" />
-          <h2 className="font-display text-4xl md:text-5xl font-bold mb-4" style={{ color: "#000000" }}>
+          <h2 className={`${archivo.className} text-4xl! md:text-5xl! font-medium! mb-4!`}>
             Property Price Caps
           </h2>
-          <p className="font-body text-lg mb-10 max-w-2xl" style={{ color: "#6B6B6B" }}>
-            Effective October 2025, caps have been raised to better reflect today's market. Your property must fall below these thresholds.
+          <p className={`${roboto.className} font-normal! tracking-normal! text-[16px]! max-w-2xl!`} style={{ color: "#6B6B6B" }}>
+            {`Effective October 2025, caps have been raised to better reflect today's market. Your property must fall below these thresholds.`}
           </p>
 
-          <div className="overflow-hidden rounded-2xl bg-white" style={{ border: "1px solid rgba(134,72,155,0.15)" }}>
-            <table className="w-full font-body text-sm">
-              <thead>
-                <tr style={{ background: "linear-gradient(90deg, #86489B, #F171AC)" }}>
-                  <th className="text-left px-6 py-4 text-white font-medium">State / Territory</th>
-                  <th className="text-left px-6 py-4 text-white font-medium">Metro / Capital City</th>
-                  <th className="text-left px-6 py-4 text-white font-medium">Regional</th>
-                </tr>
-              </thead>
-              <tbody>
-                {PRICE_CAPS.map((row, i) => (
-                  <tr key={row.state} className="table-row-alt" style={{ borderTop: "1px solid rgba(134,72,155,0.06)" }}>
-                    <td className="px-6 py-4 font-medium" style={{ color: "#000000" }}>{row.state}</td>
-                    <td className="px-6 py-4 font-display font-bold text-base" style={{ color: "#86489B" }}>{row.metro}</td>
-                    <td className="px-6 py-4 font-display font-bold text-base" style={{ color: "#F171AC" }}>{row.regional}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <p className="font-body text-xs mt-4" style={{ color: "#6B6B6B" }}>
+          <div className="overflow-x-auto rounded-2xl bg-white border border-[rgba(134,72,155,0.15)]">
+  <table className="w-full min-w-[600px] font-body text-sm">
+    <thead>
+      <tr className="bg-gradient-to-r from-[#86489B] to-[#F171AC]">
+        <th className={`${archivo.className} text-left px-6 py-4 text-white font-medium`}>
+          State / Territory
+        </th>
+        <th className={`${archivo.className} text-left px-6 py-4 text-white font-medium`}>
+          Metro / Capital City
+        </th>
+        <th className={`${archivo.className} text-left px-6 py-4 text-white font-medium`}>
+          Regional
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      {PRICE_CAPS.map((row) => (
+        <tr
+          key={row.state}
+          className="table-row-alt border-t border-[rgba(134,72,155,0.06)]"
+        >
+          <td
+            className={`${archivo.className} px-6 py-4 font-medium`}
+            style={{ color: "#000000" }}
+          >
+            {row.state}
+          </td>
+          <td
+            className={`${archivo.className} px-6 py-4 font-display font-bold text-base`}
+            style={{ color: "#86489B" }}
+          >
+            {row.metro}
+          </td>
+          <td
+            className={`${archivo.className} px-6 py-4 font-display font-bold text-base`}
+            style={{ color: "#F171AC" }}
+          >
+            {row.regional}
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+          <p className={`${archivo.className} text-xs mt-4 italic`} style={{ color: "#6B6B6B" }}>
             * The Regional First Home Buyer Guarantee has been consolidated into the FHBG from October 2025. Always verify current caps at housingaustralia.gov.au.
           </p>
         </div>
@@ -464,24 +531,24 @@ export default function FirstHomeGuaranteePage() {
       <section id="application" className="px-6 md:px-12 py-24" style={{ backgroundColor: "#ffffff" }}>
         <div className="container mx-auto">
           <div className="mb-4 section-divider" />
-          <h2 className="font-display text-4xl md:text-5xl font-bold mb-4" style={{ color: "#000000" }}>
+          <h2 className={`${archivo.className} text-4xl! md:text-5xl! font-medium! mb-4!`}>
             How to Apply
           </h2>
-          <p className="font-body text-lg mb-16 max-w-2xl" style={{ color: "#6B6B6B" }}>
-            Applications are made through approved lenders — not directly with the government. Here's the full journey.
+          <p className={`${roboto.className} font-normal! tracking-normal! text-[16px]! max-w-2xl!`} style={{ color: "#6B6B6B" }}>
+            {`Applications are made through approved lenders — not directly with the government. Here's the full journey.`}
           </p>
 
           <div className="relative space-y-6">
             {STEPS.map((s, idx) => (
               <div key={s.num} className="flex gap-6 items-start card-hover rounded-2xl p-6" style={{ backgroundColor: "#FDF2F9", border: "1px solid rgba(134,72,155,0.1)" }}>
-                <div className="flex-shrink-0 w-14 h-14 rounded-2xl flex items-center justify-center font-display font-black text-xl text-white purple-gradient">
+                <div className={`${archivo.className} flex-shrink-0 w-14 h-14 rounded-2xl flex items-center justify-center font-display font-black text-xl text-white purple-gradient`}>
                   {s.num}
                 </div>
                 <div>
-                  <h4 className="font-display font-bold text-xl mb-2" style={{ color: "#000000" }}>{s.title}</h4>
-                  <p className="font-body text-sm" style={{ color: "#6B6B6B", lineHeight: 1.7 }}>{s.desc}</p>
+                  <h4 className={`${archivo.className} font-semibold! text-xl! mb-2!`} style={{ color: "#000000" }}>{s.title}</h4>
+                  <p className={`${roboto.className} text-sm! tracking-normal! font-normal!`} style={{ color: "#6B6B6B", lineHeight: 1.7 }}>{s.desc}</p>
                 </div>
-                <div className="ml-auto flex-shrink-0 text-2xl opacity-40">{s.icon}</div>
+                {/* <div className="ml-auto flex-shrink-0 text-2xl opacity-40">{s.icon}</div> */}
               </div>
             ))}
           </div>
@@ -494,33 +561,33 @@ export default function FirstHomeGuaranteePage() {
       <section className="px-6 md:px-12 py-24" style={{ backgroundColor: "#FEF3F8" }}>
         <div className="container mx-auto">
           <div className="mb-4 section-divider" />
-          <h2 className="font-display text-4xl md:text-5xl font-bold mb-4" style={{ color: "#000000" }}>
+          <h2 className={`${archivo.className} text-4xl! md:text-5xl! font-medium! mb-4!`}>
             Participating Lenders
           </h2>
-          <p className="font-body text-lg mb-10 max-w-2xl" style={{ color: "#6B6B6B" }}>
+          <p className={`${roboto.className} font-normal! tracking-normal! text-[16px]! max-w-2xl!`} style={{ color: "#6B6B6B" }}>
             30+ lenders are approved to offer the FHBG. Choose one that suits your needs — or use a mortgage broker to compare.
           </p>
 
           <div className="mb-6">
-            <h4 className="font-display font-bold text-lg mb-4" style={{ color: "#86489B" }}>Major Banks</h4>
+            <h4 className={`${archivo.className} font-semibold! text-lg! mb-4!`} style={{ color: "#86489B" }}>Major Banks</h4>
             <div className="flex flex-wrap gap-3">
               {["Commonwealth Bank", "National Australia Bank", "Westpac", "St. George Bank", "Bank of Melbourne", "BankSA"].map((b) => (
-                <div key={b} className="lender-chip rounded-full px-5 py-2 font-body text-sm font-medium" style={{ color: "#000000" }}>{b}</div>
+                <div key={b} className={`${archivo.className} lender-chip rounded-full px-5 py-2 text-sm! font-normal! tracking-normal!`} style={{ color: "#6B6B6B" }}>{b}</div>
               ))}
             </div>
           </div>
 
           <div>
-            <h4 className="font-display font-bold text-lg mb-4" style={{ color: "#F171AC" }}>Regional & Customer-Owned Banks</h4>
+            <h4 className={`${archivo.className} font-semibold! text-lg! mb-4!`} style={{ color: "#F171AC" }}>Regional & Customer-Owned Banks</h4>
             <div className="flex flex-wrap gap-3">
               {["Bendigo Bank", "Great Southern Bank", "Bank Australia", "Auswide Bank", "MyState Bank", "Beyond Bank Australia", "Regional Australia Bank", "Gateway Bank", "QBank", "Unity Bank", "Teachers Mutual Bank", "Police Bank", "Australian Military Bank"].map((b) => (
-                <div key={b} className="lender-chip rounded-full px-5 py-2 font-body text-sm" style={{ color: "#6B6B6B" }}>{b}</div>
+                <div key={b} className={`${archivo.className} lender-chip rounded-full px-5 py-2 text-sm! font-normal! tracking-normal!`} style={{ color: "#6B6B6B" }}>{b}</div>
               ))}
             </div>
           </div>
 
           <div className="mt-8 guarantee-card rounded-2xl p-6">
-            <p className="font-body text-sm" style={{ color: "#6B6B6B", lineHeight: 1.7 }}>
+            <p className={`${archivo.className} m-0! text-sm! font-normal! tracking-normal! italic!`} style={{ color: "#6B6B6B", lineHeight: 1.7 }}>
               <strong style={{ color: "#86489B" }}>Tip:</strong> A mortgage broker can access multiple participating lenders simultaneously, helping you find the best interest rate and most flexible approval policy for your situation — at no cost to you.
             </p>
           </div>
@@ -533,10 +600,10 @@ export default function FirstHomeGuaranteePage() {
       <section id="faq" className="px-6 md:px-12 py-24" style={{ backgroundColor: "#ffffff" }}>
         <div className="container mx-auto">
           <div className="mb-4 section-divider" />
-          <h2 className="font-display text-4xl md:text-5xl font-bold mb-4" style={{ color: "#000000" }}>
+          <h2 className={`${archivo.className} text-4xl! md:text-5xl! font-medium! mb-4!`}>
             Frequently Asked Questions
           </h2>
-          <p className="font-body text-lg mb-12" style={{ color: "#6B6B6B" }}>
+          <p className={`${roboto.className} font-normal! tracking-normal! text-[16px]! max-w-2xl!`} style={{ color: "#6B6B6B" }}>
             Everything you need to know before you apply.
           </p>
 
@@ -545,17 +612,17 @@ export default function FirstHomeGuaranteePage() {
               <div key={i} className="faq-item">
                 <button
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                  className="w-full text-left flex items-center justify-between px-6 py-5 gap-4"
+                  className="w-full text-left flex items-center justify-between px-6 py-4 gap-4"
                   style={{ background: "none", border: "none", cursor: "pointer" }}
                 >
-                  <span className="font-display font-bold text-base" style={{ color: "#000000" }}>{f.q}</span>
+                  <span className={`${archivo.className} font-bold text-base`} style={{ color: "#000000" }}>{f.q}</span>
                   <span className="flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center font-bold text-sm text-white" style={{ background: openFaq === i ? "#86489B" : "#F171AC", transition: "background 0.2s" }}>
                     {openFaq === i ? "−" : "+"}
                   </span>
                 </button>
                 {openFaq === i && (
-                  <div className="px-6 pb-5">
-                    <p className="font-body text-sm" style={{ color: "#6B6B6B", lineHeight: 1.8 }}>{f.a}</p>
+                                    <div className="px-6 pb-2">
+                    <p className={`${roboto.className} text-[16px]! font-normal! tracking-normal!`} style={{ color: "#6B6B6B", lineHeight: 1.8 }}>{f.a}</p>
                   </div>
                 )}
               </div>
@@ -567,7 +634,7 @@ export default function FirstHomeGuaranteePage() {
       {/* ══════════════════════════════════════
           CTA FOOTER BANNER
       ══════════════════════════════════════ */}
-      <section className="px-6 md:px-12 py-24" style={{ background: "linear-gradient(135deg, #86489B 0%, #F171AC 100%)" }}>
+      {/* <section className="px-6 md:px-12 py-24" style={{ background: "linear-gradient(135deg, #86489B 0%, #F171AC 100%)" }}>
         <div className="container mx-auto text-center">
           <h2 className="font-display text-4xl md:text-6xl font-black text-white mb-6 leading-tight">
             Ready to take the
@@ -575,7 +642,7 @@ export default function FirstHomeGuaranteePage() {
             <em>first step?</em>
           </h2>
           <p className="font-body text-lg text-white opacity-90 mb-10 max-w-xl mx-auto" style={{ lineHeight: 1.7 }}>
-            Verify your eligibility today through Housing Australia's official portal and speak to a participating lender or broker to get started.
+            {`Verify your eligibility today through Housing Australia's official portal and speak to a participating lender or broker to get started.`}
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <a
@@ -596,7 +663,7 @@ export default function FirstHomeGuaranteePage() {
             </a>
           </div>
         </div>
-      </section>
+      </section> */}
 
     </div>
   );

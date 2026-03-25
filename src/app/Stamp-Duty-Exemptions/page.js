@@ -5,9 +5,16 @@ import StampdutyComponent from './StampdutyComponent'
 
 const page = () => {
     return (
-        <div>
+        <div className="flex flex-col min-h-screen">
+            {/* Navbar */}
             <Navbar />
-            <StampdutyComponent />
+
+            {/* Main content grows to fill space */}
+            <main className="flex-grow">
+                <StampdutyComponent />
+            </main>
+
+            {/* Footer sticks at the bottom */}
             <Footer />
         </div>
     )

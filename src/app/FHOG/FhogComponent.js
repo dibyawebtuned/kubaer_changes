@@ -1,6 +1,23 @@
 "use client";
 import { useState } from "react";
 import { Archivo, Roboto } from "next/font/google";
+import {
+    Home,
+    Ruler,
+    Hammer,
+    Construction,
+    Wrench,
+    HousePlus,
+} from "lucide-react";
+import { CalendarDays } from "lucide-react";
+import { Medal, DollarSign } from "lucide-react";
+import {
+    IdCard,
+    Users,
+    FileSignature,
+    Landmark,
+} from "lucide-react";
+import { Tag, ShieldCheck, Handshake } from "lucide-react";
 
 const NAV_LINKS = ["About", "Eligibility", "State Grants", "How to Apply", "FAQ"];
 
@@ -20,12 +37,36 @@ const STATE_GRANTS = [
 ];
 
 const ELIGIBLE_PROPERTY_TYPES = [
-    { type: "New Home", desc: "A recently built property that has not previously been occupied or sold as a place of residence — houses, duplexes, townhouses, units, apartments.", icon: "🏠" },
-    { type: "Off-the-Plan Apartment", desc: "A property not yet built, or currently under construction but not substantially completed. Purchased based on architectural plans before construction finishes.", icon: "📐" },
-    { type: "Substantially Renovated Home", desc: "Major structural changes (not cosmetic) purchased from a GST-registered developer who has claimed GST credits on the renovation work.", icon: "🔨" },
-    { type: "House & Land Package", desc: "Building a home on vacant land you already own, or purchasing vacant land and a building contract together as a package.", icon: "🏗️" },
-    { type: "Owner-Builder Project", desc: "Building your own home without a full building contract. Must be a permanent, fixed dwelling providing complete living facilities.", icon: "🪚" },
-    { type: "Knock-Down Rebuild", desc: "Demolish an existing home and build new — or subdivide land and build. Only eligible for contracts entered before 13 February 2025.", icon: "🏚️" },
+    {
+        type: "New Home",
+        desc: "A recently built property that has not previously been occupied or sold as a place of residence — houses, duplexes, townhouses, units, apartments.",
+        icon: Home,
+    },
+    {
+        type: "Off-the-Plan Apartment",
+        desc: "A property not yet built, or currently under construction but not substantially completed. Purchased based on architectural plans before construction finishes.",
+        icon: Ruler,
+    },
+    {
+        type: "Substantially Renovated Home",
+        desc: "Major structural changes (not cosmetic) purchased from a GST-registered developer who has claimed GST credits on the renovation work.",
+        icon: Hammer,
+    },
+    {
+        type: "House & Land Package",
+        desc: "Building a home on vacant land you already own, or purchasing vacant land and a building contract together as a package.",
+        icon: Construction,
+    },
+    {
+        type: "Owner-Builder Project",
+        desc: "Building your own home without a full building contract. Must be a permanent, fixed dwelling providing complete living facilities.",
+        icon: Wrench,
+    },
+    {
+        type: "Knock-Down Rebuild",
+        desc: "Demolish an existing home and build new — or subdivide land and build. Only eligible for contracts entered before 13 February 2025.",
+        icon: HousePlus,
+    },
 ];
 
 const INELIGIBLE = [
@@ -83,33 +124,59 @@ const FAQS = [
 const DOCUMENTS = [
     {
         title: "Proof of Identity",
-        items: ["Australian birth certificate", "Australian passport", "Australian citizenship certificate", "Australian ImmiCard", "Australian driver's licence", "Medicare card", "Current passport + permanent residency visa (if not a citizen)"],
-        icon: "🪪",
+        items: [
+            "Australian birth certificate",
+            "Australian passport",
+            "Australian citizenship certificate",
+            "Australian ImmiCard",
+            "Australian driver's licence",
+            "Medicare card",
+            "Current passport + permanent residency visa (if not a citizen)",
+        ],
+        icon: IdCard,
     },
     {
         title: "Spouse / Partner Details",
-        items: ["Full name and date of birth", "Proof of identity", "Citizenship or residency status"],
-        icon: "👥",
+        items: [
+            "Full name and date of birth",
+            "Proof of identity",
+            "Citizenship or residency status",
+        ],
+        icon: Users,
     },
     {
         title: "Name Change Documents",
         items: ["Marriage certificate", "Change of name certificate"],
-        icon: "📝",
+        icon: FileSignature,
     },
     {
         title: "Property Documents (Buying)",
-        items: ["Signed Contract of Sale", "Proof of settlement or property registration", "Vendor statement confirming not previously occupied", "Certificate of occupancy (off-the-plan)"],
-        icon: "🏠",
+        items: [
+            "Signed Contract of Sale",
+            "Proof of settlement or property registration",
+            "Vendor statement confirming not previously occupied",
+            "Certificate of occupancy (off-the-plan)",
+        ],
+        icon: Home,
     },
     {
         title: "Property Documents (Building)",
-        items: ["Signed building contract", "First progress payment invoice (usually foundations)", "Statutory declaration (owner-builder) confirming complete and ready to occupy"],
-        icon: "🏗️",
+        items: [
+            "Signed building contract",
+            "First progress payment invoice (usually foundations)",
+            "Statutory declaration (owner-builder) confirming complete and ready to occupy",
+        ],
+        icon: Construction,
     },
     {
         title: "Payment Details",
-        items: ["Financial institution name", "Account name", "BSB number", "Account number"],
-        icon: "🏦",
+        items: [
+            "Financial institution name",
+            "Account name",
+            "BSB number",
+            "Account number",
+        ],
+        icon: Landmark,
     },
 ];
 
@@ -309,33 +376,99 @@ export default function FhogComponent() {
                     </p>
 
                     {/* eligible property types */}
-                    <h3 className="font-display text-2xl font-bold mb-6" style={{ color: "#000000" }}>Eligible Property Types</h3>
-                    <div className="grid md:grid-cols-3 gap-5 mb-10">
+                    <h3 className={`${archivo.className} text-2xl! font-bold! mb-6!`}>Eligible Property Types</h3>
+                    {/* <div className="grid md:grid-cols-3 gap-5 mb-10">
                         {ELIGIBLE_PROPERTY_TYPES.map((p) => (
                             <div key={p.type} className="bg-white rounded-2xl p-6 card-hover" style={{ border: "1px solid rgba(134,72,155,0.12)", backgroundColor: "#FDF2F9" }}>
                                 <div className="text-3xl mb-3">{p.icon}</div>
-                                <h4 className="font-display font-bold text-base mb-2" style={{ color: "#86489B" }}>{p.type}</h4>
-                                <p className="font-body text-sm" style={{ color: "#6B6B6B", lineHeight: 1.6 }}>{p.desc}</p>
+                                <h4 className={`${archivo.className} font-semibold! text-lg! mb-2!`}>{p.type}</h4>
+                                <p className={`${roboto.className} text-sm! font-normal! tracking-normal!`} style={{ color: "#6B6B6B", lineHeight: 1.6 }}>{p.desc}</p>
                             </div>
                         ))}
+                    </div> */}
+                    <div className="grid md:grid-cols-3 gap-5 mb-10">
+                        {ELIGIBLE_PROPERTY_TYPES.map((p) => {
+                            const Icon = p.icon;
+
+                            return (
+                                <div
+                                    key={p.type}
+                                    className="bg-white rounded-2xl p-6 card-hover"
+                                    style={{
+                                        border: "1px solid rgba(134,72,155,0.12)",
+                                        backgroundColor: "#FDF2F9",
+                                    }}
+                                >
+                                    <Icon className="w-7 h-7 mb-3 text-[#86489B]" />
+
+                                    <h4 className={`${archivo.className} font-semibold! text-lg! mb-2!`}>{p.type}</h4>
+                                    <p className={`${roboto.className} text-sm! font-normal! tracking-normal!`} style={{ color: "#6B6B6B", lineHeight: 1.6 }}>{p.desc}</p>
+
+                                </div>
+                            );
+                        })}
                     </div>
 
                     {/* contract date callout */}
-                    <div className="grid md:grid-cols-2 gap-5 mb-10">
+                    {/* <div className="grid md:grid-cols-2 gap-5 mb-10">
                         <div className="info-box rounded-2xl p-6">
-                            <h4 className="font-display font-bold text-base mb-3" style={{ color: "#86489B" }}>📅 Contracts from 13 Feb 2025 onwards</h4>
-                            <p className="font-body text-sm" style={{ color: "#6B6B6B", lineHeight: 1.7 }}>You may still be eligible if you build a new home on vacant land. Knock-down rebuild projects are <strong>not eligible</strong> for contracts entered on or after this date.</p>
+                            <h4 className={`${archivo.className} font-semibold! text-md! mb-3!`} style={{ color: "#86489B" }}>📅 Contracts from 13 Feb 2025 onwards</h4>
+                            <p className={`${roboto.className} text-sm! font-normal! tracking-normal!`} style={{ color: "#6B6B6B", lineHeight: 1.7 }}>You may still be eligible if you build a new home on vacant land. Knock-down rebuild projects are <strong>not eligible</strong> for contracts entered on or after this date.</p>
                         </div>
                         <div className="warning-box rounded-2xl p-6">
-                            <h4 className="font-display font-bold text-base mb-3" style={{ color: "#F171AC" }}>📅 Contracts before 13 Feb 2025</h4>
-                            <p className="font-body text-sm" style={{ color: "#6B6B6B", lineHeight: 1.7 }}>Knock-down rebuild projects may still qualify, provided all other FHOG eligibility conditions are met. Check with your state revenue office to confirm.</p>
+                            <h4 className={`${archivo.className} font-semibold! text-md! mb-3!`} style={{ color: "#F171AC" }}>📅 Contracts before 13 Feb 2025</h4>
+                            <p className={`${roboto.className} text-sm! font-normal! tracking-normal!`} style={{ color: "#6B6B6B", lineHeight: 1.7 }}>Knock-down rebuild projects may still qualify, provided all other FHOG eligibility conditions are met. Check with your state revenue office to confirm.</p>
+                        </div>
+                    </div> */}
+                    {/* contract date callout */}
+                    <div className="grid md:grid-cols-2 gap-5 mb-10">
+                        <div className="info-box rounded-2xl p-6">
+                            <div className="flex items-start gap-3 mb-3">
+                                <CalendarDays className="w-5 h-5 mt-1 text-[#86489B]" />
+                                <h4
+                                    className={`${archivo.className} font-semibold text-md`}
+                                    style={{ color: "#86489B" }}
+                                >
+                                    Contracts from 13 Feb 2025 onwards
+                                </h4>
+                            </div>
+
+                            <p
+                                className={`${roboto.className} text-sm font-normal tracking-normal`}
+                                style={{ color: "#6B6B6B", lineHeight: 1.7 }}
+                            >
+                                You may still be eligible if you build a new home on vacant land.
+                                Knock-down rebuild projects are <strong>not eligible</strong> for
+                                contracts entered on or after this date.
+                            </p>
+                        </div>
+
+                        <div className="warning-box rounded-2xl p-6">
+                            <div className="flex items-start gap-3 mb-3">
+                                <CalendarDays className="w-5 h-5 mt-1 text-[#F171AC]" />
+                                <h4
+                                    className={`${archivo.className} font-semibold text-md`}
+                                    style={{ color: "#F171AC" }}
+                                >
+                                    Contracts before 13 Feb 2025
+                                </h4>
+                            </div>
+
+                            <p
+                                className={`${roboto.className} text-sm font-normal tracking-normal`}
+                                style={{ color: "#6B6B6B", lineHeight: 1.7 }}
+                            >
+                                Knock-down rebuild projects may still qualify, provided all other FHOG
+                                eligibility conditions are met. Check with your state revenue office to
+                                confirm.
+                            </p>
                         </div>
                     </div>
 
                     {/* ineligible */}
                     <div className="rounded-2xl p-6" style={{ background: "rgba(0,0,0,0.03)", border: "1px solid rgba(0,0,0,0.08)" }}>
-                        <h4 className="font-display font-bold text-lg mb-4" style={{ color: "#000000" }}>⚠ Properties Not Eligible for the FHOG</h4>
-                        <div className="grid md:grid-cols-3 gap-3 font-body text-sm" style={{ color: "#6B6B6B" }}>
+                        <h4 className={`${archivo.className} font-semibold! text-lg! mb-4!`}>⚠ Properties Not Eligible for the FHOG</h4>
+                        <div className="grid md:grid-cols-3 gap-3 font-body text-sm! font-normal!" style={{ color: "#6B6B6B" }}>
                             {INELIGIBLE.map((x) => (
                                 <div key={x} className="flex items-center gap-2">
                                     <span style={{ color: "#F171AC" }}>✕</span> {x}
@@ -352,16 +485,16 @@ export default function FhogComponent() {
             <section id="eligibility" className="px-6 md:px-12 py-24" style={{ backgroundColor: "#FEF3F8" }}>
                 <div className="container mx-auto">
                     <div className="mb-4 section-divider" />
-                    <h2 className="font-display text-4xl md:text-5xl font-bold mb-4" style={{ color: "#000000" }}>
+                    <h2 className={`${archivo.className} text-4xl! md:text-5xl! font-medium! mb-4!`}>
                         Eligibility Criteria
                     </h2>
-                    <p className="font-body text-lg mb-12 max-w-2xl" style={{ color: "#6B6B6B" }}>
+                    <p className={`${roboto.className} font-normal! tracking-normal! text-[16px]! max-w-2xl!`} style={{ color: "#6B6B6B" }}>
                         While rules vary slightly by state, these core requirements apply across Australia.
                     </p>
 
                     <div className="grid md:grid-cols-2 gap-6 mb-10">
                         <div className="bg-white rounded-2xl p-8 card-hover" style={{ border: "1.5px solid rgba(134,72,155,0.2)" }}>
-                            <h3 className="font-display text-xl font-bold mb-6" style={{ color: "#86489B" }}>You Must</h3>
+                            <h3 className={`${archivo.className} text-xl font-medium! mb-4!`}>You Must</h3>
                             <ul className="space-y-3">
                                 {[
                                     "Be at least 18 years old and apply as an individual (not a company or trust)",
@@ -372,7 +505,7 @@ export default function FhogComponent() {
                                     "Purchase below your state's property price cap",
                                     "Move in within 12 months and live there for at least 6 continuous months",
                                 ].map((item) => (
-                                    <li key={item} className="flex items-start gap-3 font-body text-sm" style={{ color: "#000000", lineHeight: 1.6 }}>
+                                    <li key={item} className={`${archivo.className} flex items-center gap-2 text-sm! font-normal!`} style={{ color: "#000000" }}>
                                         <span className="mt-0.5 w-5 h-5 rounded-full flex-shrink-0 flex items-center justify-center text-xs text-white" style={{ background: "#86489B" }}>✓</span>
                                         {item}
                                     </li>
@@ -383,29 +516,60 @@ export default function FhogComponent() {
                         <div className="space-y-5">
                             {/* residency requirement detail */}
                             <div className="bg-white rounded-2xl p-6 card-hover" style={{ border: "1.5px solid rgba(241,113,172,0.25)" }}>
-                                <h3 className="font-display text-xl font-bold mb-4" style={{ color: "#F171AC" }}>Residency Requirement</h3>
+                                <h3 className={`${archivo.className} font-medium! text-md! mb-4!`} style={{ color: "#86489B" }}>Residency Requirement</h3>
                                 <div className="space-y-3 font-body text-sm" style={{ color: "#6B6B6B", lineHeight: 1.7 }}>
-                                    <p>All applicants must move in within <strong style={{ color: "#000000" }}>12 months</strong> and live in the property for at least <strong style={{ color: "#000000" }}>6 continuous months</strong>.</p>
-                                    <p>For building contracts or owner-builder projects, the 12-month period starts <strong style={{ color: "#000000" }}>when the home is ready for occupation</strong>.</p>
-                                    <p>You can rent out a portion (e.g., a room) during the 6-month period. After meeting the requirement, there are no FHOG restrictions on selling or renting.</p>
+                                    <p className={`${archivo.className} text-sm! font-normal! tracking-normal!`} style={{ color: "#6B6B6B", lineHeight: 1.7 }}>All applicants must move in within <strong style={{ color: "#000000" }}>12 months</strong> and live in the property for at least <strong style={{ color: "#000000" }}>6 continuous months</strong>.</p>
+                                    <p className={`${archivo.className} text-sm! font-normal! tracking-normal!`} style={{ color: "#6B6B6B", lineHeight: 1.7 }}>For building contracts or owner-builder projects, the 12-month period starts <strong style={{ color: "#000000" }}>when the home is ready for occupation</strong>.</p>
+                                    <p className={`${archivo.className} text-sm! font-normal! tracking-normal!`} style={{ color: "#6B6B6B", lineHeight: 1.7 }}>You can rent out a portion (e.g., a room) during the 6-month period. After meeting the requirement, there are no FHOG restrictions on selling or renting.</p>
                                 </div>
                             </div>
 
                             {/* ADF exemption */}
                             <div className="guarantee-card rounded-2xl p-6">
-                                <h4 className="font-display font-bold text-base mb-3" style={{ color: "#86489B" }}>🎖 Australian Defence Force Personnel</h4>
-                                <p className="font-body text-sm" style={{ color: "#6B6B6B", lineHeight: 1.7 }}>
+                                <div className="flex items-center gap-2 mb-2">
+                                    <Medal className="w-5 h-5 mt-1 text-[#86489B]" />
+
+                                    <h4 className={`${archivo.className} font-medium! text-sm!`} style={{ color: "#86489B" }}>Australian Defence Force Personnel</h4>
+
+                                </div>
+
+                                <p className={`${archivo.className} text-sm! font-normal! tracking-normal!`} style={{ color: "#6B6B6B", lineHeight: 1.7 }}>
                                     Permanent Forces members unable to meet the 6-month residency requirement due to service may apply for an exemption — if enrolled to vote in South Australian elections at the date of contract. Does not apply to reservists or APS staff.
                                 </p>
                             </div>
 
                             {/* tax treatment */}
-                            <div className="bg-white rounded-2xl p-6" style={{ border: "1px solid rgba(134,72,155,0.12)" }}>
-                                <h4 className="font-display font-bold text-base mb-2" style={{ color: "#86489B" }}>💰 Is the FHOG Taxable?</h4>
-                                <p className="font-body text-sm" style={{ color: "#6B6B6B", lineHeight: 1.7 }}>
-                                    No. The FHOG is <strong style={{ color: "#000000" }}>not taxable income</strong>. You don't need to include it in your tax return. It does not affect your income tax obligations. Normal investment property tax rules apply only if you later rent the property out.
+                            <div
+                                className="bg-white rounded-2xl p-6"
+                                style={{ border: "1px solid rgba(134,72,155,0.12)" }}
+                            >
+                                <div className="flex items-center gap-2 mb-2">
+                                    <DollarSign className="w-5 h-5 mt-1 text-[#86489B]" />
+
+                                    <h4 className={`${archivo.className} font-semibold! text-sm!`} style={{ color: "#86489B" }}>Is the FHOG Taxable?</h4>
+
+                                </div>
+
+                                <p className={`${archivo.className} text-sm! font-normal! tracking-normal!`} style={{ color: "#6B6B6B", lineHeight: 1.7 }}>
+                                    No. The FHOG is <strong style={{ color: "#000000" }}>not taxable income</strong>. You do not need to include it in your tax return. It does not affect your income tax obligations. Normal investment property tax rules apply only if you later rent the property out.
                                 </p>
                             </div>
+
+                            {/* ADF exemption */}
+                            {/* <div className="guarantee-card rounded-2xl p-6">
+                                <h4 className={`${archivo.className} font-medium! text-sm! mb-2!`} style={{ color: "#86489B" }}>🎖 Australian Defence Force Personnel</h4>
+                                <p className={`${archivo.className} text-sm! font-normal! tracking-normal!`} style={{ color: "#6B6B6B", lineHeight: 1.7 }}>
+                                    Permanent Forces members unable to meet the 6-month residency requirement due to service may apply for an exemption — if enrolled to vote in South Australian elections at the date of contract. Does not apply to reservists or APS staff.
+                                </p>
+                            </div> */}
+
+                            {/* tax treatment */}
+                            {/* <div className="bg-white rounded-2xl p-6" style={{ border: "1px solid rgba(134,72,155,0.12)" }}>
+                                <h4 className={`${archivo.className} font-semibold! text-sm! mb-2!`} style={{ color: "#86489B" }}>💰 Is the FHOG Taxable?</h4>
+                                <p className={`${archivo.className} text-sm! font-normal! tracking-normal!`} style={{ color: "#6B6B6B", lineHeight: 1.7 }}>
+                                    No. The FHOG is <strong style={{ color: "#000000" }}>not taxable income</strong>. You do not need to include it in your tax return. It does not affect your income tax obligations. Normal investment property tax rules apply only if you later rent the property out.
+                                </p>
+                            </div> */}
                         </div>
                     </div>
                 </div>
@@ -417,10 +581,10 @@ export default function FhogComponent() {
             <section id="state-grants" className="px-6 md:px-12 py-24" style={{ backgroundColor: "#ffffff" }}>
                 <div className="container mx-auto">
                     <div className="mb-4 section-divider" />
-                    <h2 className="font-display text-4xl md:text-5xl font-bold mb-4" style={{ color: "#000000" }}>
+                    <h2 className={`${archivo.className} text-4xl! md:text-5xl! font-medium! mb-4!`}>
                         Grant Amounts by State
                     </h2>
-                    <p className="font-body text-lg mb-12 max-w-2xl" style={{ color: "#6B6B6B" }}>
+                    <p className={`${roboto.className} font-normal! tracking-normal! text-[16px]! max-w-2xl!`} style={{ color: "#6B6B6B" }}>
                         Each state and territory sets its own grant amount, property value caps, and eligibility conditions. Always verify current rules with your state revenue office before applying.
                     </p>
 
@@ -437,17 +601,17 @@ export default function FhogComponent() {
                                 >
                                     {s.abbr}
                                 </div>
-                                <div className="font-display text-2xl font-black mb-1" style={{ color: s.color === "#6B6B6B" ? "#6B6B6B" : s.color }}>
+                                <div className={`${archivo.className} text-2xl! font-semibold! mb-1!`} style={{ color: s.color === "#6B6B6B" ? "#6B6B6B" : s.color }}>
                                     {s.amount}
                                 </div>
-                                <div className="font-display font-bold text-sm mb-2" style={{ color: "#000000" }}>{s.state}</div>
-                                <p className="font-body text-xs" style={{ color: "#6B6B6B", lineHeight: 1.5 }}>{s.note}</p>
+                                <div className={`${roboto.className} font-semibold! text-sm! mb-2!`} style={{ color: "#000000" }}>{s.state}</div>
+                                <p className={`${roboto.className} text-xs! font-normal!`} style={{ color: "#6B6B6B", lineHeight: 1.5 }}>{s.note}</p>
                             </div>
                         ))}
                     </div>
 
-                    <div className="warning-box rounded-2xl p-5">
-                        <p className="font-body text-sm" style={{ color: "#6B6B6B", lineHeight: 1.7 }}>
+                    <div className="warning-box rounded-2xl px-5 py-4">
+                        <p className={`${roboto.className} m-0! italic! text-sm font-normal! tracking-normal!`} style={{ color: "#6B6B6B", lineHeight: 1.7 }}>
                             <strong style={{ color: "#86489B" }}>Note:</strong> Grant amounts and eligibility rules change regularly. The ACT does not offer a FHOG but provides the Home Buyer Concession Scheme as an alternative. Always confirm current amounts and conditions directly with your state or territory revenue office.
                         </p>
                     </div>
@@ -460,39 +624,61 @@ export default function FhogComponent() {
             <section className="px-6 md:px-12 py-24" style={{ backgroundColor: "#FDF2F9" }}>
                 <div className="container mx-auto">
                     <div className="mb-4 section-divider" />
-                    <h2 className="font-display text-4xl md:text-5xl font-bold mb-4" style={{ color: "#000000" }}>
+                    <h2 className={`${archivo.className} text-4xl! md:text-5xl! font-medium! mb-4!`}>
                         FHOG vs First Home Buyer Scheme
                     </h2>
-                    <p className="font-body text-lg mb-12 max-w-2xl" style={{ color: "#6B6B6B" }}>
+                    <p className={`${roboto.className} font-normal! tracking-normal! text-[16px]! max-w-2xl!`} style={{ color: "#6B6B6B" }}>
                         These two programs are often confused — but they work very differently. You may be eligible for <em>both</em>.
                     </p>
 
-                    <div className="overflow-hidden rounded-2xl mb-8" style={{ border: "1px solid rgba(134,72,155,0.15)" }}>
-                        <table className="w-full font-body text-sm compare-table">
-                            <thead>
-                                <tr style={{ background: "linear-gradient(90deg, #86489B, #F171AC)" }}>
-                                    <th className="text-left px-6 py-4 text-white font-medium w-1/3"></th>
-                                    <th className="text-left px-6 py-4 text-white font-medium">First Home Owner Grant (FHOG)</th>
-                                    <th className="text-left px-6 py-4 text-white font-medium">First Home Buyer Scheme</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {COMPARISON_ROWS.map((row) => (
-                                    <tr key={row.label} style={{ borderTop: "1px solid rgba(134,72,155,0.06)" }}>
-                                        <td className="px-6 py-4 font-medium" style={{ color: "#000000" }}>{row.label}</td>
-                                        <td className="px-6 py-4 font-body" style={{ color: "#86489B" }}>{row.fhog}</td>
-                                        <td className="px-6 py-4 font-body" style={{ color: "#F171AC" }}>{row.scheme}</td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
-                    </div>
+<div className="overflow-x-auto rounded-2xl mb-8 border border-[rgba(134,72,155,0.15)]">
+  <table className="w-full min-w-[600px] font-body text-sm compare-table">
+    <thead>
+      <tr className="bg-gradient-to-r from-[#86489B] to-[#F171AC]">
+        <th className={`${archivo.className} text-left px-6 py-4 text-white font-medium w-1/3`}></th>
+        <th className={`${archivo.className} text-left px-6 py-4 text-white font-medium`}>
+          First Home Owner Grant (FHOG)
+        </th>
+        <th className={`${archivo.className} text-left px-6 py-4 text-white font-medium`}>
+          First Home Buyer Scheme
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      {COMPARISON_ROWS.map((row) => (
+        <tr
+          key={row.label}
+          className="border-t border-[rgba(134,72,155,0.06)]"
+        >
+          <td
+            className={`${archivo.className} px-6 py-4 font-medium`}
+            style={{ color: "#000000" }}
+          >
+            {row.label}
+          </td>
+          <td
+            className={`${archivo.className} px-6 py-4 font-medium`}
+            style={{ color: "#86489B" }}
+          >
+            {row.fhog}
+          </td>
+          <td
+            className={`${archivo.className} px-6 py-4 font-medium`}
+            style={{ color: "#F171AC" }}
+          >
+            {row.scheme}
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
 
                     <div className="rounded-3xl p-8 md:p-10" style={{ background: "linear-gradient(135deg, #86489B, #F171AC)" }}>
                         <div className="grid md:grid-cols-2 gap-8 items-center">
                             <div>
-                                <h3 className="font-display text-2xl font-bold text-white mb-3">Can you use both?</h3>
-                                <p className="font-body text-white text-base" style={{ opacity: 0.95, lineHeight: 1.7 }}>
+                                <h3 className={`${archivo.className} text-2xl! font-semibold! text-white mb-3!`}>Can you use both?</h3>
+                                <p className={`${roboto.className} text-white text-base! font-normal! tracking-normal!`} style={{ opacity: 0.95, lineHeight: 1.7 }}>
                                     Yes — and this is where first-home buyers benefit the most. If you qualify for both, you can use the First Home Buyer Scheme to purchase with a <strong>5% deposit</strong> and use the FHOG to <strong>boost your deposit or reduce construction costs</strong>.
                                 </p>
                             </div>
@@ -503,8 +689,8 @@ export default function FhogComponent() {
                                     { label: "Building a new home?", detail: "You may qualify for all three — FHOG, 5% Deposit Scheme, and stamp duty concessions" },
                                 ].map((item) => (
                                     <div key={item.label} className="rounded-xl px-5 py-4" style={{ backgroundColor: "rgba(255,255,255,0.18)" }}>
-                                        <div className="font-body text-white font-medium text-sm">{item.label}</div>
-                                        <div className="font-body text-white text-xs mt-1" style={{ opacity: 0.8 }}>{item.detail}</div>
+                                        <div className={`${archivo.className} text-white font-medium! text-sm! tracking-normal!`}>{item.label}</div>
+                                        <div className={`${archivo.className} text-white text-xs! mt-1! tracking-normal!`} style={{ opacity: 0.8 }}>{item.detail}</div>
                                     </div>
                                 ))}
                             </div>
@@ -519,20 +705,20 @@ export default function FhogComponent() {
             <section className="px-6 md:px-12 py-24" style={{ backgroundColor: "#ffffff" }}>
                 <div className="container mx-auto">
                     <div className="mb-4 section-divider" />
-                    <h2 className="font-display text-4xl md:text-5xl font-bold mb-4" style={{ color: "#000000" }}>
+                    <h2 className={`${archivo.className} text-4xl! md:text-5xl! font-medium! mb-4!`}>
                         Document Checklist
                     </h2>
-                    <p className="font-body text-lg mb-10 max-w-2xl" style={{ color: "#6B6B6B" }}>
+                    <p className={`${roboto.className} font-normal! tracking-normal! text-[16px]! max-w-2xl!`} style={{ color: "#6B6B6B" }}>
                         Prepare these documents before applying. Having them ready prevents delays and ensures your application is assessed quickly.
                     </p>
 
                     {/* tab navigation */}
-                    <div className="flex flex-wrap gap-2 mb-6">
+                    {/* <div className="flex flex-wrap gap-2 mb-6">
                         {DOCUMENTS.map((d, i) => (
                             <button
                                 key={d.title}
                                 onClick={() => setActiveDoc(i)}
-                                className={`doc-tab font-body text-sm px-4 py-2 rounded-full ${activeDoc === i ? "doc-tab-active" : ""}`}
+                                className={`doc-tab ${archivo.className} text-sm! font-normal! tracking-normal! px-4 py-2 rounded-full ${activeDoc === i ? "doc-tab-active" : ""}`}
                                 style={{ color: activeDoc === i ? "white" : "#6B6B6B", border: "1px solid rgba(134,72,155,0.2)" }}
                             >
                                 {d.icon} {d.title}
@@ -542,8 +728,8 @@ export default function FhogComponent() {
 
                     <div className="bg-white rounded-2xl p-8" style={{ border: "1px solid rgba(134,72,155,0.15)" }}>
                         <div className="flex items-center gap-3 mb-6">
-                            <span className="text-3xl">{DOCUMENTS[activeDoc].icon}</span>
-                            <h3 className="font-display font-bold text-xl" style={{ color: "#86489B" }}>{DOCUMENTS[activeDoc].title}</h3>
+                            <span className={`${archivo.className} text-3xl`}>{DOCUMENTS[activeDoc].icon}</span>
+                            <h3 className={`${archivo.className} font-semibold! text-xl! font-normal! tracking-normal!`} style={{ color: "#86489B" }}>{DOCUMENTS[activeDoc].title}</h3>
                         </div>
                         <ul className="space-y-3">
                             {DOCUMENTS[activeDoc].items.map((item) => (
@@ -553,7 +739,65 @@ export default function FhogComponent() {
                                 </li>
                             ))}
                         </ul>
-                    </div>
+                    </div> */}
+
+                    {/* Tab navigation */}
+<div className="flex flex-wrap gap-2 mb-6">
+  {DOCUMENTS.map((d, i) => {
+    const Icon = d.icon;
+    return (
+      <button
+        key={d.title}
+        onClick={() => setActiveDoc(i)}
+        className={`doc-tab ${archivo.className} text-sm font-normal tracking-normal px-4 py-2 rounded-full flex items-center gap-2 ${
+          activeDoc === i ? "doc-tab-active" : ""
+        }`}
+        style={{
+          color: activeDoc === i ? "white" : "#6B6B6B",
+          border: "1px solid rgba(134,72,155,0.2)",
+        }}
+      >
+        <Icon className="w-4 h-4" />
+        {d.title}
+      </button>
+    );
+  })}
+</div>
+
+{/* Active document panel */}
+<div
+  className="bg-white rounded-2xl p-6 sm:p-8 overflow-x-auto"
+  style={{ border: "1px solid rgba(134,72,155,0.15)" }}
+>
+  <div className="flex flex-col sm:flex-row sm:items-center gap-3 mb-6">
+    {/* Optional Icon */}
+    {/* <DOCUMENTS[activeDoc].icon className="w-7 h-7 text-[#86489B]" /> */}
+    <h3
+      className={`${archivo.className} font-semibold text-xl tracking-normal`}
+      style={{ color: "#86489B" }}
+    >
+      {DOCUMENTS[activeDoc].title}
+    </h3>
+  </div>
+
+  <ul className="space-y-3">
+    {DOCUMENTS[activeDoc].items.map((item) => (
+      <li
+        key={item}
+        className="flex items-start gap-3 text-sm"
+        style={{ color: "#000000", lineHeight: 1.6 }}
+      >
+        <span
+          className="mt-0.5 w-5 h-5 rounded-full flex-shrink-0 flex items-center justify-center text-xs text-white"
+          style={{ background: "linear-gradient(135deg, #86489B, #F171AC)" }}
+        >
+          ✓
+        </span>
+        {item}
+      </li>
+    ))}
+  </ul>
+</div>
                 </div>
             </section>
 
@@ -563,30 +807,30 @@ export default function FhogComponent() {
             <section id="how-to-apply" className="px-6 md:px-12 py-24" style={{ backgroundColor: "#FEF3F8" }}>
                 <div className="container mx-auto">
                     <div className="mb-4 section-divider" />
-                    <h2 className="font-display text-4xl md:text-5xl font-bold mb-4" style={{ color: "#000000" }}>
+                    <h2 className={`${archivo.className} text-4xl! md:text-5xl! font-medium! mb-4!`}>
                         How to Apply
                     </h2>
-                    <p className="font-body text-lg mb-14 max-w-2xl" style={{ color: "#6B6B6B" }}>
-                        Apply through your lender or mortgage broker (simplest), or directly via your state's revenue office. Follow these five steps.
+                    <p className={`${roboto.className} font-normal! tracking-normal! text-[16px]! max-w-2xl!`} style={{ color: "#6B6B6B" }}>
+                        {`Apply through your lender or mortgage broker (simplest), or directly via your state's revenue office. Follow these five steps.`}
                     </p>
 
                     <div className="space-y-5 mb-12">
                         {STEPS.map((s) => (
-                            <div key={s.num} className="flex gap-6 items-start card-hover rounded-2xl p-6 bg-white" style={{ border: "1px solid rgba(134,72,155,0.1)" }}>
+                            <div key={s.num} className="flex gap-6 items-start card-hover rounded-2xl px-6 py-3 bg-white" style={{ border: "1px solid rgba(134,72,155,0.1)" }}>
                                 <div className="flex-shrink-0 w-14 h-14 rounded-2xl flex items-center justify-center font-display font-black text-xl text-white purple-gradient">
                                     {s.num}
                                 </div>
                                 <div>
-                                    <h4 className="font-display font-bold text-xl mb-2" style={{ color: "#000000" }}>{s.title}</h4>
-                                    <p className="font-body text-sm" style={{ color: "#6B6B6B", lineHeight: 1.7 }}>{s.desc}</p>
+                                    <h4 className={`${archivo.className} font-semibold! text-xl! mb-2!`} style={{ color: "#000000" }}>{s.title}</h4>
+                                    <p className={`${roboto.className} text-sm! font-normal! tracking-normal!`} style={{ color: "#6B6B6B", lineHeight: 1.7 }}>{s.desc}</p>
                                 </div>
-                                <div className="ml-auto flex-shrink-0 text-2xl opacity-40">{s.icon}</div>
+                                {/* <div className="ml-auto flex-shrink-0 text-2xl opacity-40">{s.icon}</div> */}
                             </div>
                         ))}
                     </div>
 
                     {/* payment timing */}
-                    <h3 className="font-display text-2xl font-bold mb-6" style={{ color: "#000000" }}>When Is the Grant Paid?</h3>
+                    <h3 className={`${archivo.className} text-xl! font-bold! mb-6!`} style={{ color: "#F171AC" }}>When Is the Grant Paid?</h3>
                     <div className="grid md:grid-cols-2 gap-6">
                         {[
                             {
@@ -610,13 +854,13 @@ export default function FhogComponent() {
                         ].map((col) => (
                             <div key={col.method} className="bg-white rounded-2xl overflow-hidden" style={{ border: `1.5px solid ${col.color}33` }}>
                                 <div className="px-6 py-4" style={{ background: `${col.color}15` }}>
-                                    <h4 className="font-display font-bold text-base" style={{ color: col.color }}>{col.method}</h4>
+                                    <h4 className={`${archivo.className} font-semibold! text-base!`} style={{ color: col.color }}>{col.method}</h4>
                                 </div>
                                 <div className="divide-y" style={{ borderColor: `${col.color}15` }}>
                                     {col.rows.map((r) => (
                                         <div key={r.type} className="px-6 py-4">
-                                            <div className="font-body text-sm font-medium mb-1" style={{ color: "#000000" }}>{r.type}</div>
-                                            <div className="font-body text-xs" style={{ color: "#6B6B6B" }}>{r.timing}</div>
+                                            <div className={`${roboto.className} text-md! font-medium! mb-1!`} style={{ color: "#000000" }}>{r.type}</div>
+                                            <div className={`${roboto.className} text-[14px]! font-normal! tracking-normal!`} style={{ color: "#6B6B6B" }}>{r.timing}</div>
                                         </div>
                                     ))}
                                 </div>
@@ -632,10 +876,10 @@ export default function FhogComponent() {
             <section className="px-6 md:px-12 py-20" style={{ backgroundColor: "#ffffff" }}>
                 <div className="container mx-auto">
                     <div className="mb-4 section-divider" />
-                    <h2 className="font-display text-3xl md:text-4xl font-bold mb-8" style={{ color: "#000000" }}>
+                    <h2 className={`${archivo.className} text-4xl! md:text-5xl! font-medium! mb-5!`}>
                         Other Benefits for First-Home Buyers in South Australia
                     </h2>
-                    <div className="grid md:grid-cols-3 gap-5">
+                    {/* <div className="grid md:grid-cols-3 gap-5">
                         {[
                             { title: "Stamp Duty Exemption", desc: "Full exemption on new homes and vacant land in South Australia — with no value cap. Normal stamp duty applies for established homes or if eligibility isn't met.", icon: "🏷️" },
                             { title: "First Home Guarantee", desc: "Buy with just a 5% deposit through the Australian Government 5% Deposit Scheme and avoid Lenders Mortgage Insurance entirely.", icon: "🛡" },
@@ -643,10 +887,42 @@ export default function FhogComponent() {
                         ].map((b) => (
                             <div key={b.title} className="guarantee-card rounded-2xl p-6 card-hover">
                                 <div className="text-3xl mb-4">{b.icon}</div>
-                                <h4 className="font-display font-bold text-lg mb-3" style={{ color: "#86489B" }}>{b.title}</h4>
-                                <p className="font-body text-sm" style={{ color: "#6B6B6B", lineHeight: 1.7 }}>{b.desc}</p>
+                                <h4 className={`${archivo.className} font-semibold! text-lg! mb-3!`} style={{ color: "#86489B" }}>{b.title}</h4>
+                                <p className={`${roboto.className} text-sm! font-normal! tracking-normal!`} style={{ color: "#6B6B6B", lineHeight: 1.7 }}>{b.desc}</p>
                             </div>
                         ))}
+                    </div> */}
+
+                    <div className="grid md:grid-cols-3 gap-5">
+                        {[
+                            {
+                                title: "Stamp Duty Exemption",
+                                desc: "Full exemption on new homes and vacant land in South Australia — with no value cap. Normal stamp duty applies for established homes or if eligibility isn't met.",
+                                icon: Tag,
+                            },
+                            {
+                                title: "First Home Guarantee",
+                                desc: "Buy with just a 5% deposit through the Australian Government 5% Deposit Scheme and avoid Lenders Mortgage Insurance entirely.",
+                                icon: ShieldCheck,
+                            },
+                            {
+                                title: "HomeStart Shared Equity",
+                                desc: "Borrow up to 25% of the property value interest-free and repayment-free. HomeStart shares proportionally in any gain or loss when you sell or refinance.",
+                                icon: Handshake,
+                            },
+                        ].map((b) => {
+                            const Icon = b.icon;
+
+                            return (
+                                <div key={b.title} className="guarantee-card rounded-2xl p-6 card-hover">
+                                    <Icon className="w-7 h-7 mb-4 text-[#86489B]" />
+
+                                    <h4 className={`${archivo.className} font-semibold! text-lg! mb-3!`} style={{ color: "#86489B" }}>{b.title}</h4>
+                                <p className={`${roboto.className} text-sm! font-normal! tracking-normal!`} style={{ color: "#6B6B6B", lineHeight: 1.7 }}>{b.desc}</p>
+                            
+                                </div>
+                            );
+                        })}
                     </div>
                 </div>
             </section>
@@ -657,10 +933,10 @@ export default function FhogComponent() {
             <section id="faq" className="px-6 md:px-12 py-24" style={{ backgroundColor: "#FDF2F9" }}>
                 <div className="container mx-auto">
                     <div className="mb-4 section-divider" />
-                    <h2 className="font-display text-4xl md:text-5xl font-bold mb-4" style={{ color: "#000000" }}>
+                    <h2 className={`${archivo.className} text-4xl! md:text-5xl! font-medium! mb-4!`}>
                         Frequently Asked Questions
                     </h2>
-                    <p className="font-body text-lg mb-12" style={{ color: "#6B6B6B" }}>
+                    <p className={`${roboto.className} font-normal! tracking-normal! text-[16px]! max-w-2xl!`} style={{ color: "#6B6B6B" }}>
                         Common questions about the First Home Owner Grant answered.
                     </p>
 
@@ -669,17 +945,17 @@ export default function FhogComponent() {
                             <div key={i} className="faq-item">
                                 <button
                                     onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                                    className="w-full text-left flex items-center justify-between px-6 py-5 gap-4"
+                                    className="w-full text-left flex items-center justify-between px-6 py-4 gap-4"
                                     style={{ background: "none", border: "none", cursor: "pointer" }}
                                 >
-                                    <span className="font-display font-bold text-base" style={{ color: "#000000" }}>{f.q}</span>
+                                    <span className={`${archivo.className} font-bold text-base`} style={{ color: "#000000" }}>{f.q}</span>
                                     <span className="flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center font-bold text-sm text-white" style={{ background: openFaq === i ? "#86489B" : "#F171AC", transition: "background 0.2s" }}>
                                         {openFaq === i ? "−" : "+"}
                                     </span>
                                 </button>
                                 {openFaq === i && (
-                                    <div className="px-6 pb-5">
-                                        <p className="font-body text-sm" style={{ color: "#6B6B6B", lineHeight: 1.8 }}>{f.a}</p>
+                                    <div className="px-6 pb-2">
+                                        <p className={`${roboto.className} text-[16px]! font-normal! tracking-normal!`} style={{ color: "#6B6B6B", lineHeight: 1.8 }}>{f.a}</p>
                                     </div>
                                 )}
                             </div>
@@ -691,55 +967,36 @@ export default function FhogComponent() {
             {/* ══════════════════════════════════════
           CTA BANNER
       ══════════════════════════════════════ */}
-            <section className="px-6 md:px-12 py-24" style={{ background: "linear-gradient(135deg, #86489B 0%, #F171AC 100%)" }}>
+            {/* <section className="px-6 md:px-12 py-24" style={{ background: "linear-gradient(135deg, #86489B 0%, #F171AC 100%)" }}>
                 <div className="container mx-auto text-center">
-                    <h2 className="font-display text-4xl md:text-6xl font-black text-white mb-6 leading-tight">
+                    <h2 className={`${archivo.className} text-4xl! md:text-5xl! font-medium! mb-4! text-white`}>
                         Ready to claim
                         <br />
                         <em>your grant?</em>
                     </h2>
-                    <p className="font-body text-lg text-white mb-10 max-w-xl mx-auto" style={{ lineHeight: 1.7, opacity: 0.95 }}>
-                        Speak to a participating lender or mortgage broker to apply for the FHOG alongside your home loan — or apply directly through your state's revenue office.
+                    <p className={`${roboto.className} font-normal! tracking-normal! text-[16px]! mb-7! max-w-2xl! mx-auto! text-white`} style={{ lineHeight: 1.7, opacity: 0.95 }}>
+                        {`Speak to a participating lender or mortgage broker to apply for the FHOG alongside your home loan — or apply directly through your state's revenue office.`}
                     </p>
-                    <div className="flex flex-wrap justify-center gap-4">
-                        <a
-                            href="https://www.revenuesa.sa.gov.au"
-                            target="_blank"
-                            rel="noreferrer"
-                            className="font-body font-semibold px-8 py-4 rounded-full text-lg"
-                            style={{ backgroundColor: "white", color: "#86489B", textDecoration: "none" }}
-                        >
-                            RevenueSA → Apply Now
-                        </a>
-                        <a
-                            href="#faq"
-                            className="font-body font-semibold px-8 py-4 rounded-full text-lg"
-                            style={{ backgroundColor: "rgba(255,255,255,0.15)", color: "white", textDecoration: "none", border: "2px solid rgba(255,255,255,0.4)" }}
-                        >
-                            Read the FAQs
-                        </a>
-                    </div>
-                </div>
-            </section>
 
-            {/* ══════════════════════════════════════
-          FOOTER
-      ══════════════════════════════════════ */}
-            <footer className="px-6 md:px-12 py-10" style={{ backgroundColor: "#000000" }}>
-                <div className="container mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-                    <div className="flex items-center gap-3">
-                        <div className="w-7 h-7 rounded-full purple-gradient flex items-center justify-center">
-                            <span className="text-white text-xs font-bold">$</span>
+
+                    <div className={`flex flex-wrap justify-center gap-4  scroll-reveal ${roboto.className}`} style={{ animationDelay: "0.3s" }}>
+                        <div className="flex gap-3 lg:p-0">
+                            <div className="">
+                                <a href="https://www.housingaustralia.gov.au/support-buy/help-buy" className="extra-btn">
+                                    RevenueSA → Apply Now
+                                </a>
+                            </div>
+
+                            <div className="">
+                                <a href="https://www.commbank.com.au/home-loans/help-to-buy.html" className="extra-btn">
+                                    Read the FAQs
+                                </a>
+                            </div>
                         </div>
-                        <span className="font-display font-bold text-white text-sm">First Home Owner Grant</span>
                     </div>
-                    <p className="font-body text-xs text-center" style={{ color: "#6B6B6B" }}>
-                        Informational purposes only. Verify current details at{" "}
-                        <a href="https://www.revenuesa.sa.gov.au" style={{ color: "#F171AC" }}>revenuesa.sa.gov.au</a> or your state revenue office. Not financial advice.
-                    </p>
-                    <p className="font-body text-xs" style={{ color: "#6B6B6B" }}>© 2025 FHOG Information</p>
                 </div>
-            </footer>
+            </section> */}
+
         </div>
     );
 }

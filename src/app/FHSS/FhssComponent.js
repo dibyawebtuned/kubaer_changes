@@ -280,7 +280,7 @@ export default function FhssComponent() {
           </div>
 
           {/* stat strip */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 scroll-reveal" style={{ animationDelay: "0.4s" }}>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 scroll-reveal" style={{ animationDelay: "0.4s" }}>
             {[
               { number: "$50,000", label: "Maximum total withdrawal" },
               { number: "$15,000", label: "Maximum per financial year" },
@@ -391,7 +391,7 @@ export default function FhssComponent() {
           </div>
 
           <div className="info-box rounded-2xl px-5 py-4 m-0!">
-            <p className={`${archivo.className} text-sm! font-normal! tracking-normal! m-0!`} style={{ color: "#6B6B6B", lineHeight: 1.7 }}>
+            <p className={`${archivo.className} text-sm! font-normal! tracking-normal! m-0! italic!`} style={{ color: "#6B6B6B", lineHeight: 1.7 }}>
               <strong style={{ color: "#86489B" }}>Plus associated earnings:</strong> In addition to your contributions, you also receive a calculated amount of associated earnings determined by the ATO. These deemed earnings may differ from actual earnings in your super fund.
             </p>
           </div>
@@ -751,107 +751,111 @@ export default function FhssComponent() {
       {/* ══════════════════════════════════════
           HOW TO ACCESS
       ══════════════════════════════════════ */}
-      <section id="how-to-access" className="px-6 md:px-12 py-24" style={{ backgroundColor: "#ffffff" }}>
-        <div className="container mx-auto">
-          <div className="mb-4 section-divider" />
-          <h2 className={`${archivo.className} text-4xl! md:text-5xl! font-medium! mb-4!`}>
-            How to Access Your FHSS Savings
-          </h2>
-          <p className={`${roboto.className} font-normal! tracking-normal! text-[16px]! max-w-2xl!`} style={{ color: "#6B6B6B" }}>
-            Access is managed through your myGov account linked to the ATO. The process has four steps — and the order matters.
-          </p>
+<section id="how-to-access" className="px-6 md:px-12 py-24" style={{ backgroundColor: "#ffffff" }}>
+  <div className="container mx-auto">
+    {/* Divider */}
+    <div className="mb-4 section-divider" />
 
-          <div className="rounded-2xl overflow-hidden bg-white mb-10" style={{ border: "1px solid rgba(134,72,155,0.15)" }}>
-            {STEPS.map((s, i) => (
-              <div key={s.num} className="step-item">
-                <button
-                  onClick={() => setOpenStep(openStep === i ? null : i)}
-                  className="w-full text-left flex items-start gap-5 px-6 py-6"
-                  style={{ background: "none", border: "none", cursor: "pointer" }}
-                >
-                  <div className="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center font-display font-black text-base text-white purple-gradient">
-                    {s.num}
-                  </div>
-                  <div className="flex-1 text-left">
-                    <div className={`${archivo.className} font-bold text-lg! `}>{s.title}</div>
-                    <p className={`${archivo.className} text-sm! font-normal!`} style={{ color: "#6B6B6B", lineHeight: 1.6 }}>{s.desc}</p>
-                  </div>
-                  <div className="flex items-center gap-3 flex-shrink-0">
-                    {/* <span className="text-2xl opacity-30">{s.icon}</span> */}
-                    <span className="w-7 h-7 rounded-full flex items-center justify-center font-bold text-sm text-white" style={{ background: openStep === i ? "#86489B" : "#F171AC", transition: "background 0.2s" }}>
-                      {openStep === i ? "−" : "+"}
-                    </span>
-                  </div>
-                </button>
-                {openStep === i && (
-                  <div className="px-6 pb-6 pl-24">
-                    <div className="info-box rounded-xl p-4">
-                      <p className={`${roboto.className} font-body! text-sm! p-0! m-0! font-normal! tracking-normal!`} style={{ color: "#6B6B6B", lineHeight: 1.7 }}>{s.detail}</p>
-                    </div>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
+    {/* Section Heading */}
+    <h2 className={`${archivo.className} text-4xl! md:text-5xl! font-medium! mb-4!`}>
+      How to Access Your FHSS Savings
+    </h2>
+    <p className={`${roboto.className} font-normal! tracking-normal! text-[16px]! max-w-2xl!`} style={{ color: "#6B6B6B" }}>
+      Access is managed through your myGov account linked to the ATO. The process has four steps — and the order matters.
+    </p>
 
-          {/* mistakes / timing summary */}
-          {/* <div className="grid md:grid-cols-3 gap-5">
-            {[
-              { title: "If you don't buy within 12 months", body: "You can recontribute to super as non-concessional (no tax deduction), or keep the funds and pay 20% FHSS tax on the assessable amount. Extensions of up to 24 months may apply.", icon: "⏱", color: "#F171AC" },
-              { title: "Before submitting a release", body: "You can request a new determination or amend your existing one online, provided you meet eligibility requirements and haven't signed a contract yet.", icon: "✏️", color: "#86489B" },
-              { title: "After processing begins", body: "Changes cannot be made without potentially delaying payment. If errors are found, contact the ATO as soon as possible to minimise delays.", icon: "⚠️", color: "#6B6B6B" },
-            ].map((c) => (
-              <div key={c.title} className="guarantee-card rounded-2xl p-6 card-hover">
-                <div className="text-2xl mb-3">{c.icon}</div>
-                <h4 className={`${archivo.className} font-bold! text-base! mb-2!`} style={{ color: c.color }}>{c.title}</h4>
-                <p className={`${roboto.className} text-sm! font-normal! tracking-normal!`} style={{ color: "#6B6B6B", lineHeight: 1.7 }}>{c.body}</p>
-              </div>
-            ))}
-          </div> */}
-          {/* mistakes / timing summary */}
-          <div className="grid md:grid-cols-3 gap-5">
-            {[
-              {
-                title: "If you don't buy within 12 months",
-                body: "You can recontribute to super as non-concessional (no tax deduction), or keep the funds and pay 20% FHSS tax on the assessable amount. Extensions of up to 24 months may apply.",
-                icon: <Clock className="h-6 w-6" />,
-                color: "#F171AC",
-              },
-              {
-                title: "Before submitting a release",
-                body: "You can request a new determination or amend your existing one online, provided you meet eligibility requirements and haven't signed a contract yet.",
-                icon: <Pencil className="h-6 w-6" />,
-                color: "#86489B",
-              },
-              {
-                title: "After processing begins",
-                body: "Changes cannot be made without potentially delaying payment. If errors are found, contact the ATO as soon as possible to minimise delays.",
-                icon: <AlertTriangle className="h-6 w-6" />,
-                color: "#6B6B6B",
-              },
-            ].map((c) => (
-              <div
-                key={c.title}
-                className="guarantee-card rounded-2xl p-6 card-hover"
+    {/* Accordion Steps */}
+    <div className="rounded-2xl overflow-hidden bg-white mb-10 border border-[rgba(134,72,155,0.15)]">
+      {STEPS.map((s, i) => (
+        <div key={s.num} className="step-item border-b last:border-b-0">
+          <button
+            onClick={() => setOpenStep(openStep === i ? null : i)}
+            className="w-full text-left flex flex-col sm:flex-row items-start sm:items-center gap-2 px-6 py-6"
+            style={{ background: "none", border: "none", cursor: "pointer" }}
+          >
+            {/* Step Number */}
+            <div className="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center font-display font-black text-base text-white purple-gradient">
+              {s.num}
+            </div>
+
+            {/* Title + Description */}
+            <div className="flex-1 text-left">
+              <div className={`${archivo.className} font-bold text-lg!`}>{s.title}</div>
+              <p className={`${archivo.className} text-sm! font-normal!`} style={{ color: "#6B6B6B", lineHeight: 1.6 }}>
+                {s.desc}
+              </p>
+            </div>
+
+            {/* Expand/Collapse Icon */}
+            <div className="flex items-center gap-3 flex-shrink-0 mt-2 sm:mt-0">
+              <span
+                className="w-7 h-7 rounded-full flex items-center justify-center font-bold text-sm text-white transition-colors duration-200"
+                style={{ background: openStep === i ? "#86489B" : "#F171AC" }}
               >
-                {/* ICON */}
-                <div
-                  className="mb-3"
-                  style={{ color: c.color }}
+                {openStep === i ? "−" : "+"}
+              </span>
+            </div>
+          </button>
+
+          {/* Step Details */}
+          {openStep === i && (
+            <div className="px-6 pb-6 sm:pl-24">
+              <div className="info-box rounded-xl p-4">
+                <p
+                  className={`${roboto.className} font-body! text-sm! p-0! m-0! font-normal! tracking-normal!`}
+                  style={{ color: "#6B6B6B", lineHeight: 1.7 }}
                 >
-                  {c.icon}
-                </div>
-
-                {/* TITLE */}
-                <h4 className={`${archivo.className} font-bold! text-base! mb-2!`} style={{ color: c.color }}>{c.title}</h4>
-
-                {/* BODY */}
-                <p className={`${roboto.className} text-sm! font-normal! tracking-normal!`} style={{ color: "#6B6B6B", lineHeight: 1.7 }}>{c.body}</p>
+                  {s.detail}
+                </p>
               </div>
-            ))}
-          </div>
+            </div>
+          )}
         </div>
-      </section>
+      ))}
+    </div>
+
+    {/* Mistakes / Timing Summary Cards */}
+    <div className="grid gap-5 md:grid-cols-3">
+      {[
+        {
+          title: "If you don't buy within 12 months",
+          body: "You can recontribute to super as non-concessional (no tax deduction), or keep the funds and pay 20% FHSS tax on the assessable amount. Extensions of up to 24 months may apply.",
+          icon: <Clock className="h-6 w-6" />,
+          color: "#F171AC",
+        },
+        {
+          title: "Before submitting a release",
+          body: "You can request a new determination or amend your existing one online, provided you meet eligibility requirements and haven't signed a contract yet.",
+          icon: <Pencil className="h-6 w-6" />,
+          color: "#86489B",
+        },
+        {
+          title: "After processing begins",
+          body: "Changes cannot be made without potentially delaying payment. If errors are found, contact the ATO as soon as possible to minimise delays.",
+          icon: <AlertTriangle className="h-6 w-6" />,
+          color: "#6B6B6B",
+        },
+      ].map((c) => (
+        <div key={c.title} className="guarantee-card rounded-2xl p-6 card-hover">
+          {/* ICON */}
+          <div className="mb-3" style={{ color: c.color }}>
+            {c.icon}
+          </div>
+
+          {/* TITLE */}
+          <h4 className={`${archivo.className} font-bold! text-base! mb-2!`} style={{ color: c.color }}>
+            {c.title}
+          </h4>
+
+          {/* BODY */}
+          <p className={`${roboto.className} text-sm! font-normal! tracking-normal!`} style={{ color: "#6B6B6B", lineHeight: 1.7 }}>
+            {c.body}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* ══════════════════════════════════════
           COMBINATIONS & OTHER SCHEMES
@@ -955,7 +959,7 @@ export default function FhssComponent() {
       {/* ══════════════════════════════════════
           CTA BANNER
       ══════════════════════════════════════ */}
-      <section className="px-6 md:px-12 py-24" style={{ background: "linear-gradient(135deg, #86489B 0%, #F171AC 100%)" }}>
+      {/* <section className="px-6 md:px-12 py-24" style={{ background: "linear-gradient(135deg, #86489B 0%, #F171AC 100%)" }}>
         <div className="container mx-auto text-center">
           <h2 className={`${archivo.className} text-4xl! md:text-5xl! font-medium! mb-4! text-white`}>
             Start saving smarter
@@ -979,30 +983,10 @@ export default function FhssComponent() {
                 </a>
               </div>
             </div>
-
           </div>
-          {/* <div className="flex flex-wrap justify-center gap-4">
-            <a
-              href="https://my.gov.au"
-              target="_blank"
-              rel="noreferrer"
-              className="font-body font-semibold px-8 py-4 rounded-full text-lg"
-              style={{ backgroundColor: "white", color: "#86489B", textDecoration: "none" }}
-            >
-              Access via myGov →
-            </a>
-            <a
-              href="https://www.ato.gov.au/individuals-and-families/super-for-individuals-and-families/super/growing-and-keeping-track-of-your-super/how-to-save-more-in-your-super/first-home-super-saver-scheme"
-              target="_blank"
-              rel="noreferrer"
-              className="font-body font-semibold px-8 py-4 rounded-full text-lg"
-              style={{ backgroundColor: "rgba(255,255,255,0.15)", color: "white", textDecoration: "none", border: "2px solid rgba(255,255,255,0.4)" }}
-            >
-              ATO FHSS Guide
-            </a>
-          </div> */}
+
         </div>
-      </section>
+      </section> */}
     </div>
   );
 }

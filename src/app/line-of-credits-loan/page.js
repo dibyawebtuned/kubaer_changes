@@ -5,10 +5,13 @@ import LinecreditComponent from './LinecreditComponent'
 
 const page = () => {
     return (
-        <div>
-            <Navbar />
+        <div className="flex flex-col min-h-screen">
 
-            <LinecreditComponent />
+            <Navbar />
+            <main className="flex-grow">
+
+                <LinecreditComponent />
+            </main>
 
             <Footer />
         </div>

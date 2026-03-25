@@ -5,9 +5,14 @@ import HomeloansComponent from './HomeloansComponent'
 
 const page = () => {
     return (
-        <div>
+        <div className="flex flex-col min-h-screen">
+
             <Navbar />
-            <HomeloansComponent />
+            <main className="flex-grow">
+
+                <HomeloansComponent />
+            </main>
+
             <Footer />
         </div>
     )

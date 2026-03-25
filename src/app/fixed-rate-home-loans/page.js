@@ -5,10 +5,13 @@ import FixedrateComponent from './FixedrateComponent'
 
 const page = () => {
     return (
-        <div>
-            <Navbar />
+        <div className="flex flex-col min-h-screen">
 
-            <FixedrateComponent />
+            <Navbar />
+            <main className="flex-grow">
+
+                <FixedrateComponent />
+            </main>
 
             <Footer />
         </div>

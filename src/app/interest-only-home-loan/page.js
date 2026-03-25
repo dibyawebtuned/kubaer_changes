@@ -5,9 +5,14 @@ import InteresthomeComponent from './InteresthomeComponent'
 
 const page = () => {
     return (
-        <div>
+                <div className="flex flex-col min-h-screen">
+
             <Navbar />
+            <main className="flex-grow">
+
             <InteresthomeComponent />
+            </main>
+
             <Footer />
         </div>
     )

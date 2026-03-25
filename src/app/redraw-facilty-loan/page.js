@@ -5,9 +5,12 @@ import RedrawComponent from './RedrawComponent'
 
 const page = () => {
     return (
-        <div>
+                <div className="flex flex-col min-h-screen">
+
             <Navbar />
+            <main className="flex-grow">
             <RedrawComponent />
+            </main>
             <Footer />
         </div>
     )

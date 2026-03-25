@@ -5,9 +5,14 @@ import LowdocComponent from './LowdocComponent'
 
 const page = () => {
     return (
-        <div>
+                <div className="flex flex-col min-h-screen">
+
             <Navbar />
+            <main className="flex-grow">
+
             <LowdocComponent />
+            </main>
+
             <Footer />
         </div>
     )

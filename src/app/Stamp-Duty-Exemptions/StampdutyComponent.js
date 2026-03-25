@@ -553,22 +553,55 @@ export default function StampdutyComponent() {
             Rules change with state budgets — treat this as a high-level guide only and always confirm current thresholds with the relevant state revenue office.
           </p>
 
-          <div className="bg-white rounded-2xl overflow-hidden mb-8" style={{ border: "1px solid rgba(134,72,155,0.15)" }}>
-            <div className="grid grid-cols-3 md:grid-cols-4 px-6 py-4 font-display font-bold text-sm" style={{ backgroundColor: "#FDF2F9", borderBottom: "1px solid rgba(134,72,155,0.1)", color: "#86489B" }}>
-              <span className={`${archivo.className}`}>State</span>
-              <span className={`hidden md:block ${archivo.className}`}>What you may get</span>
-              <span className={`${archivo.className}`}>Often applies to</span>
-              <span className={`hidden md:block ${archivo.className}`}>Notes</span>
-            </div>
-            {STATES.map((s, i) => (
-              <div key={s.state} className="state-row grid grid-cols-3 md:grid-cols-4 px-6 py-5 gap-2" style={{ borderBottom: i < STATES.length - 1 ? "1px solid rgba(134,72,155,0.07)" : "none" }}>
-                <div className={`${archivo.className} font-semibold! text-xl! highlight-number`}>{s.state}</div>
-                <div className={`${archivo.className} hidden md:block text-sm! font-medium!`} style={{ color: "#86489B" }}>{s.get}</div>
-                <div className={`${archivo.className} font-body! text-sm! font-medium!`} style={{ color: "#000000" }}>{s.applies}</div>
-                <div className={`${archivo.className} hidden md:block text-sm! font-medium!`} style={{ color: "#6B6B6B", lineHeight: 1.6 }}>{s.note}</div>
-              </div>
-            ))}
-          </div>
+          <div className="bg-white rounded-2xl overflow-hidden mb-8 border border-[rgba(134,72,155,0.15)]">
+  {/* Header Row */}
+  <div
+    className="grid grid-cols-3 md:grid-cols-4 px-6 py-4 font-display font-bold text-sm"
+    style={{
+      backgroundColor: "#FDF2F9",
+      borderBottom: "1px solid rgba(134,72,155,0.1)",
+      color: "#86489B",
+    }}
+  >
+    <span className={`${archivo.className}`}>State</span>
+    <span className={`hidden md:block ${archivo.className}`}>What you may get</span>
+    <span className={`${archivo.className}`}>Often applies to</span>
+    <span className={`hidden md:block ${archivo.className}`}>Notes</span>
+  </div>
+
+  {/* Data Rows */}
+  {STATES.map((s, i) => (
+    <div
+      key={s.state}
+      className="state-row grid grid-cols-3 md:grid-cols-4 px-6 py-5 gap-2"
+      style={{
+        borderBottom: i < STATES.length - 1 ? "1px solid rgba(134,72,155,0.07)" : "none",
+      }}
+    >
+      <div className={`${archivo.className} font-semibold! text-xl! highlight-number`}>
+        {s.state}
+      </div>
+      <div
+        className={`${archivo.className} hidden md:block text-sm! font-medium!`}
+        style={{ color: "#86489B" }}
+      >
+        {s.get}
+      </div>
+      <div
+        className={`${archivo.className} font-body! text-sm! font-medium!`}
+        style={{ color: "#000000" }}
+      >
+        {s.applies}
+      </div>
+      <div
+        className={`${archivo.className} hidden md:block text-sm! font-medium!`}
+        style={{ color: "#6B6B6B", lineHeight: 1.6 }}
+      >
+        {s.note}
+      </div>
+    </div>
+  ))}
+</div>
 
           <div className="warning-box rounded-2xl p-5">
             <p className="font-body text-sm" style={{ color: "#6B6B6B", lineHeight: 1.7 }}>
@@ -591,41 +624,57 @@ export default function StampdutyComponent() {
             In most cases, you donot apply in the way you apply for a loan. The process is built into the purchase and settlement workflow — handled by your conveyancer.
           </p>
 
-          <div className="rounded-2xl overflow-hidden bg-white mb-10" style={{ border: "1px solid rgba(134,72,155,0.15)" }}>
-            {STEPS.map((s, i) => (
-              <div key={s.num} className="step-item">
-                <button
-                  onClick={() => setOpenStep(openStep === i ? null : i)}
-                  className="w-full text-left flex items-center gap-5 px-6 py-6"
-                  style={{ background: "none", border: "none", cursor: "pointer" }}
-                >
-                  <div className="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center font-display font-black text-base text-white purple-gradient">
-                    {s.num}
-                  </div>
+          <div className="rounded-2xl overflow-hidden bg-white mb-10 border border-[rgba(134,72,155,0.15)]">
+  {STEPS.map((s, i) => (
+    <div key={s.num} className="step-item border-b last:border-b-0">
+      <button
+        onClick={() => setOpenStep(openStep === i ? null : i)}
+        className="w-full text-left flex flex-col sm:flex-row items-start sm:items-center gap-2 px-6 py-6"
+        style={{ background: "none", border: "none", cursor: "pointer" }}
+      >
+        {/* Step Number */}
+        <div className="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center font-display font-black text-base text-white purple-gradient">
+          {s.num}
+        </div>
 
-                  <div className="flex-1 text-left">
-                    <div className={`${archivo.className} font-bold text-lg! `}>{s.title}</div>
-                    <p className={`${archivo.className} text-sm! font-normal!`} style={{ color: "#6B6B6B", lineHeight: 1.6 }}>{s.desc}</p>
-                  </div>
+        {/* Title + Description */}
+        <div className="flex-1 text-left">
+          <div className={`${archivo.className} font-bold text-lg!`}>{s.title}</div>
+          <p
+            className={`${archivo.className} text-sm! font-normal!`}
+            style={{ color: "#6B6B6B", lineHeight: 1.6 }}
+          >
+            {s.desc}
+          </p>
+        </div>
 
-                  <div className="flex items-center gap-3 flex-shrink-0">
-                    {/* <span className="text-2xl opacity-30">{s.icon}</span> */}
-                    <span className="w-7 h-7 rounded-full flex items-center justify-center font-bold text-sm text-white" style={{ background: openStep === i ? "#86489B" : "#F171AC", transition: "background 0.2s" }}>
-                      {openStep === i ? "−" : "+"}
-                    </span>
-                  </div>
-                </button>
-                {openStep === i && (
-                  <div className="px-6 pb-6">
-                    <div className="info-box rounded-xl p-4">
-                      <p className={`${roboto.className} font-body! text-sm! p-0! m-0! font-normal! tracking-normal!`} style={{ color: "#6B6B6B", lineHeight: 1.7 }}>{s.detail}</p>
-                    </div>
-                  </div>
-                )}
-              </div>
-            ))}
+        {/* Expand/Collapse Icon */}
+        <div className="flex items-center gap-3 flex-shrink-0 mt-2 sm:mt-0">
+          <span
+            className="w-7 h-7 rounded-full flex items-center justify-center font-bold text-sm text-white transition-colors duration-200"
+            style={{ background: openStep === i ? "#86489B" : "#F171AC" }}
+          >
+            {openStep === i ? "−" : "+"}
+          </span>
+        </div>
+      </button>
+
+      {/* Step Details */}
+      {openStep === i && (
+        <div className="px-6 pb-6 sm:pl-24">
+          <div className="info-box rounded-xl p-4">
+            <p
+              className={`${roboto.className} font-body! text-sm! p-0! m-0! font-normal! tracking-normal!`}
+              style={{ color: "#6B6B6B", lineHeight: 1.7 }}
+            >
+              {s.detail}
+            </p>
           </div>
-
+        </div>
+      )}
+    </div>
+  ))}
+</div>
           {/* common mistakes */}
           <h3 className={`${archivo.className} text-xl! sm:text-3xl! font-semibold! mb-4!`}>Common Mistakes to Avoid</h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -697,12 +746,12 @@ export default function StampdutyComponent() {
                   className="guarantee-card rounded-2xl p-6 card-hover"
                 >
                   {/* Icon */}
-                  <div className="mb-3">
+                  {/* <div className="mb-3">
                     <Icon
                       className="w-7 h-7 p-1.5 rounded-md"
                       style={{ color: c.color }}
                     />
-                  </div>
+                  </div> */}
 
                   <h4
                     className={`${archivo.className} font-semibold! text-[18px]! sm:text-[20px]! mb-2!`}
@@ -764,16 +813,13 @@ export default function StampdutyComponent() {
       {/* ══════════════════════════════════════
           CTA BANNER
       ══════════════════════════════════════ */}
-      <section className="px-2 md:px-12 py-24" style={{ background: "linear-gradient(135deg, #86489B 0%, #F171AC 100%)" }}>
+      {/* <section className="px-2 md:px-12 py-24" style={{ background: "linear-gradient(135deg, #86489B 0%, #F171AC 100%)" }}>
         <div className="container mx-auto text-center">
           <h2 className={`${archivo.className} text-4xl! md:text-5xl! font-medium! mb-4! text-white`}>
             Do not leave thousands
             <br />
             <em>on the table.</em>
           </h2>
-          {/* <p className="font-body text-lg text-white mb-10 max-w-xl mx-auto" style={{ lineHeight: 1.7, opacity: 0.95 }}>
-            Stamp duty concessions can save first home buyers thousands of dollars — but only if you know the rules before you sign. Check your state's revenue office, use their calculator, and confirm eligibility with your conveyancer early.
-          </p> */}
           <p className={`${roboto.className} font-normal! tracking-normal! text-[16px]! mb-7! max-w-2xl! mx-auto! text-white`} style={{ lineHeight: 1.7, opacity: 0.95 }}>
             Stamp duty concessions can save first home buyers thousands of dollars — but only if you know the rules before you sign. Check your {`state's`} revenue office, use their calculator, and confirm eligibility with your conveyancer early.
           </p>
@@ -802,7 +848,7 @@ export default function StampdutyComponent() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
     </div>
   );

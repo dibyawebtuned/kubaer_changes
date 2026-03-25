@@ -5,9 +5,11 @@ import AustraliaComponent from './AustraliaComponent'
 
 const page = () => {
     return (
-        <div>
+        <div className="flex flex-col min-h-screen">
             <Navbar />
+            <main className="flex-grow">
             <AustraliaComponent />
+            </main>
             <Footer />
         </div>
     )

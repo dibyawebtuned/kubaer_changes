@@ -5,10 +5,13 @@ import GuarantorComponent from './GuarantorComponent'
 
 const page = () => {
     return (
-        <div>
-            <Navbar />
+        <div className="flex flex-col min-h-screen">
 
-            <GuarantorComponent />
+            <Navbar />
+            <main className="flex-grow">
+
+                <GuarantorComponent />
+            </main>
 
             <Footer />
         </div>
