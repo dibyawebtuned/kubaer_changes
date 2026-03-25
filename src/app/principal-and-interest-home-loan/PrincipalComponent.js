@@ -307,21 +307,29 @@ function AmortisationCalculator() {
             <div className="px-8 pb-8">
                 <p className="text-[12px] font-semibold tracking-widest uppercase text-[#86489B] mb-4">Amortisation at a glance — how your loan balance reduces over time</p>
                 <div className="bg-white rounded-2xl border border-[#F171AC]/15 overflow-hidden">
-                    <div className="grid grid-cols-5 px-5 py-3 bg-gradient-to-r from-[#86489B]/8 to-[#F171AC]/8 border-b border-[#F171AC]/15">
-                        {["Year", "Remaining balance", "Cumul. interest", "Cumul. principal", "% paid off"].map((h, i) => (
-                            <span key={i} className="text-[11px] font-semibold tracking-widest uppercase text-[#86489B]">{h}</span>
-                        ))}
-                    </div>
-                    {snapshots.map((s, i) => (
-                        <div key={i} className="grid grid-cols-5 px-5 py-3.5 border-b border-[#F171AC]/[0.07] last:border-0 text-[13px]">
-                            <span className="font-semibold text-gray-700">Yr {s.year}</span>
-                            <span className="text-gray-500">{fmtCurrency(s.balance)}</span>
-                            <span className="text-rose-500">{fmtCurrency(s.cumInt)}</span>
-                            <span className="text-green-600">{fmtCurrency(s.cumPrin)}</span>
-                            <span className="font-semibold bg-gradient-to-r from-[#86489B] to-[#F171AC] bg-clip-text text-transparent">{s.pctPaid.toFixed(1)}%</span>
-                        </div>
-                    ))}
-                </div>
+  {/* Table header */}
+  <div className="grid grid-cols-5 sm:grid-cols-5 px-3 sm:px-5 py-2 sm:py-3 bg-gradient-to-r from-[#86489B]/8 to-[#F171AC]/8 border-b border-[#F171AC]/15 text-[10px] sm:text-[11px]">
+    {["Year", "Remaining balance", "Cumul. interest", "Cumul. principal", "% paid off"].map((h, i) => (
+      <span key={i} className="font-semibold tracking-widest uppercase text-[#86489B] text-center sm:text-left">
+        {h}
+      </span>
+    ))}
+  </div>
+
+  {/* Table rows */}
+  {snapshots.map((s, i) => (
+    <div
+      key={i}
+      className="grid grid-cols-2 sm:grid-cols-5 gap-2 sm:gap-0 px-3 sm:px-5 py-2 sm:py-3.5 border-b border-[#F171AC]/[0.07] last:border-0 text-[12px] sm:text-[13px] items-center"
+    >
+      <span className="font-semibold text-gray-700">Yr {s.year}</span>
+      <span className="text-gray-500">{fmtCurrency(s.balance)}</span>
+      <span className="text-rose-500 sm:text-center">{fmtCurrency(s.cumInt)}</span>
+      <span className="text-green-600 sm:text-center">{fmtCurrency(s.cumPrin)}</span>
+      <span className="font-semibold bg-gradient-to-r from-[#86489B] to-[#F171AC] bg-clip-text text-transparent sm:text-center">{s.pctPaid.toFixed(1)}%</span>
+    </div>
+  ))}
+</div>
             </div>
         </div>
     );

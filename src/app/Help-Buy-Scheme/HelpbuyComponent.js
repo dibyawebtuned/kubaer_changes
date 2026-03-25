@@ -276,7 +276,7 @@ export default function HelpbuyComponent() {
                     </div>
 
                     {/* stat strip */}
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 scroll-reveal" style={{ animationDelay: "0.4s" }}>
+                    <div className="grid grid-cols-1 md:grid-cols-4 gap-4 scroll-reveal" style={{ animationDelay: "0.4s" }}>
                         {[
                             { number: "2%", label: "Minimum deposit required" },
                             { number: "40%", label: "Government contribution for new homes" },
@@ -505,109 +505,109 @@ export default function HelpbuyComponent() {
             {/* ══════════════════════════════════════
           HOW IT WORKS / APPLICATION STEPS
       ══════════════════════════════════════ */}
-<section id="how-it-works" className="px-6 md:px-12 py-24" style={{ backgroundColor: "#ffffff" }}>
-  <div className="container mx-auto">
-    {/* Divider */}
-    <div className="mb-4 section-divider" />
+            <section id="how-it-works" className="px-6 md:px-12 py-24" style={{ backgroundColor: "#ffffff" }}>
+                <div className="container mx-auto">
+                    {/* Divider */}
+                    <div className="mb-4 section-divider" />
 
-    {/* Section Heading */}
-    <h2 className={`${archivo.className} text-4xl! md:text-5xl! font-medium! mb-4!`}>
-      How to Apply
-    </h2>
-    <p className={`${roboto.className} font-normal! tracking-normal! text-[16px]! max-w-2xl!`} style={{ color: "#6B6B6B" }}>
-      The application process is managed through a Participating Lender and Housing Australia. The order matters — follow these steps carefully.
-    </p>
+                    {/* Section Heading */}
+                    <h2 className={`${archivo.className} text-4xl! md:text-5xl! font-medium! mb-4!`}>
+                        How to Apply
+                    </h2>
+                    <p className={`${roboto.className} font-normal! tracking-normal! text-[16px]! max-w-2xl!`} style={{ color: "#6B6B6B" }}>
+                        The application process is managed through a Participating Lender and Housing Australia. The order matters — follow these steps carefully.
+                    </p>
 
-    {/* Accordion Steps */}
-    <div className="rounded-2xl overflow-hidden bg-white mb-10 border border-[rgba(134,72,155,0.15)]">
-      {STEPS.map((s, i) => (
-        <div key={s.num} className="step-item border-b last:border-b-0">
-          <button
-            onClick={() => setOpenStep(openStep === i ? null : i)}
-            className="w-full text-left flex flex-col sm:flex-row items-start sm:items-center gap-2 px-6 py-6"
-            style={{ background: "none", border: "none", cursor: "pointer" }}
-          >
-            {/* Step Number */}
-            <div className={`${archivo.className} flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center font-semibold text-base text-white purple-gradient`}>
-              {s.num}
-            </div>
+                    {/* Accordion Steps */}
+                    <div className="rounded-2xl overflow-hidden bg-white mb-10 border border-[rgba(134,72,155,0.15)]">
+                        {STEPS.map((s, i) => (
+                            <div key={s.num} className="step-item border-b last:border-b-0">
+                                <button
+                                    onClick={() => setOpenStep(openStep === i ? null : i)}
+                                    className="w-full text-left flex flex-col sm:flex-row items-start sm:items-center gap-2 px-6 py-6"
+                                    style={{ background: "none", border: "none", cursor: "pointer" }}
+                                >
+                                    {/* Step Number */}
+                                    <div className={`${archivo.className} flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center font-semibold text-base text-white purple-gradient`}>
+                                        {s.num}
+                                    </div>
 
-            {/* Title + Description */}
-            <div className="flex-1 text-left">
-              <div className={`${archivo.className} font-bold text-lg mb-1`} style={{ color: "#000000" }}>
-                {s.title}
-              </div>
-              <p className={`${archivo.className} text-sm! font-normal!`} style={{ color: "#6B6B6B", lineHeight: 1.6 }}>
-                {s.desc}
-              </p>
-            </div>
+                                    {/* Title + Description */}
+                                    <div className="flex-1 text-left">
+                                        <div className={`${archivo.className} font-bold text-lg mb-1`} style={{ color: "#000000" }}>
+                                            {s.title}
+                                        </div>
+                                        <p className={`${archivo.className} text-sm! font-normal!`} style={{ color: "#6B6B6B", lineHeight: 1.6 }}>
+                                            {s.desc}
+                                        </p>
+                                    </div>
 
-            {/* Expand/Collapse Icon */}
-            <div className="flex items-center gap-3 flex-shrink-0 mt-2 sm:mt-0">
-              <span
-                className="w-7 h-7 rounded-full flex items-center justify-center font-bold text-sm text-white transition-colors duration-200"
-                style={{ background: openStep === i ? "#86489B" : "#F171AC" }}
-              >
-                {openStep === i ? "−" : "+"}
-              </span>
-            </div>
-          </button>
+                                    {/* Expand/Collapse Icon */}
+                                    <div className="flex items-center gap-3 flex-shrink-0 mt-2 sm:mt-0">
+                                        <span
+                                            className="w-7 h-7 rounded-full flex items-center justify-center font-bold text-sm text-white transition-colors duration-200"
+                                            style={{ background: openStep === i ? "#86489B" : "#F171AC" }}
+                                        >
+                                            {openStep === i ? "−" : "+"}
+                                        </span>
+                                    </div>
+                                </button>
 
-          {/* Step Details */}
-          {openStep === i && (
-            <div className="px-6 pb-6 sm:pl-24">
-              <div className="info-box rounded-xl p-4">
-                <p
-                  className={`${roboto.className} font-body! text-sm! p-0! m-0! font-normal! tracking-normal!`}
-                  style={{ color: "#6B6B6B", lineHeight: 1.7 }}
-                >
-                  {s.detail}
-                </p>
-              </div>
-            </div>
-          )}
-        </div>
-      ))}
-    </div>
+                                {/* Step Details */}
+                                {openStep === i && (
+                                    <div className="px-6 pb-6 sm:pl-24">
+                                        <div className="info-box rounded-xl p-4">
+                                            <p
+                                                className={`${roboto.className} font-body! text-sm! p-0! m-0! font-normal! tracking-normal!`}
+                                                style={{ color: "#6B6B6B", lineHeight: 1.7 }}
+                                            >
+                                                {s.detail}
+                                            </p>
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+                        ))}
+                    </div>
 
-    {/* Key Timing Notes / Icon Cards */}
-    <div className="grid gap-5 md:grid-cols-3">
-      {[
-        {
-          title: "Pre-approval window",
-          body: "Your Help to Buy place is reserved for 90 days, aligned with your loan pre-approval. A 90-day extension is available if needed (not guaranteed).",
-          icon: <Clock className="w-8 h-8 text-[#F171AC]" />,
-        },
-        {
-          title: "Contract settlement gap",
-          body: "Contracts must allow at least 30 days between signing and settlement. Ensure your lender has all documents at least 29 days prior to settlement.",
-          icon: <FileText className="w-8 h-8 text-[#86489B]" />,
-        },
-        {
-          title: "Home insurance",
-          body: "Home insurance is mandatory under Help to Buy and must be arranged before settlement. Factor premiums into your overall affordability calculations.",
-          icon: <Shield className="w-8 h-8 text-[#6B6B6B]" />,
-        },
-      ].map((c) => (
-        <div key={c.title} className="guarantee-card rounded-2xl p-6 card-hover">
-          <div className="mb-3">{c.icon}</div>
-          <h4
-            className={`${archivo.className} font-medium! text-xl! mb-2!`}
-            style={{ color: "#86489B" }}
-          >
-            {c.title}
-          </h4>
-          <p
-            className={`${roboto.className} font-normal! text-sm! tracking-normal!`}
-            style={{ color: "#6B6B6B", lineHeight: 1.6 }}
-          >
-            {c.body}
-          </p>
-        </div>
-      ))}
-    </div>
-  </div>
-</section>
+                    {/* Key Timing Notes / Icon Cards */}
+                    <div className="grid gap-5 md:grid-cols-3">
+                        {[
+                            {
+                                title: "Pre-approval window",
+                                body: "Your Help to Buy place is reserved for 90 days, aligned with your loan pre-approval. A 90-day extension is available if needed (not guaranteed).",
+                                icon: <Clock className="w-8 h-8 text-[#F171AC]" />,
+                            },
+                            {
+                                title: "Contract settlement gap",
+                                body: "Contracts must allow at least 30 days between signing and settlement. Ensure your lender has all documents at least 29 days prior to settlement.",
+                                icon: <FileText className="w-8 h-8 text-[#86489B]" />,
+                            },
+                            {
+                                title: "Home insurance",
+                                body: "Home insurance is mandatory under Help to Buy and must be arranged before settlement. Factor premiums into your overall affordability calculations.",
+                                icon: <Shield className="w-8 h-8 text-[#6B6B6B]" />,
+                            },
+                        ].map((c) => (
+                            <div key={c.title} className="guarantee-card rounded-2xl p-6 card-hover">
+                                <div className="mb-3">{c.icon}</div>
+                                <h4
+                                    className={`${archivo.className} font-medium! text-xl! mb-2!`}
+                                    style={{ color: "#86489B" }}
+                                >
+                                    {c.title}
+                                </h4>
+                                <p
+                                    className={`${roboto.className} font-normal! text-sm! tracking-normal!`}
+                                    style={{ color: "#6B6B6B", lineHeight: 1.6 }}
+                                >
+                                    {c.body}
+                                </p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
 
             {/* ══════════════════════════════════════
           REPAYMENT
@@ -643,46 +643,46 @@ export default function HelpbuyComponent() {
                             </div> */}
 
                             <div className="space-y-4">
-  {[
-    {
-      type: "Incremental buy-back",
-      desc: "Purchase portions of the Government's share over time as your finances allow. Each repayment must be at least 5% of your home's current market value.",
-      icon: <TrendingUp className="w-5 h-5 text-[#F171AC]" />,
-    },
-    {
-      type: "Full buy-back",
-      desc: "You can repay the Government's share in one go if you wish, or as required by your circumstances (e.g. income exceeds thresholds for 2 consecutive years).",
-      icon: <CheckCircle className="w-5 h-5 text-[#86489B]" />,
-    },
-    {
-      type: "When you sell",
-      desc: "The Government receives its proportional share of the sale price — not the original contribution. Both gains and losses are shared proportionally.",
-      icon: <Tag className="w-5 h-5 text-[#6B6B6B]" />,
-    },
-  ].map((r) => (
-    <div
-      key={r.type}
-      className="rounded-xl p-4"
-      style={{ backgroundColor: "#FDF2F9", border: "1px solid rgba(134,72,155,0.1)" }}
-    >
-      <div className="flex items-center gap-2 mb-1">
-        {r.icon}
-        <div
-          className={`${archivo.className} text-sm font-medium`}
-          style={{ color: "#000000" }}
-        >
-          {r.type}
-        </div>
-      </div>
-      <div
-        className={`${roboto.className} text-xs font-normal tracking-normal`}
-        style={{ color: "#6B6B6B", lineHeight: 1.7 }}
-      >
-        {r.desc}
-      </div>
-    </div>
-  ))}
-</div>
+                                {[
+                                    {
+                                        type: "Incremental buy-back",
+                                        desc: "Purchase portions of the Government's share over time as your finances allow. Each repayment must be at least 5% of your home's current market value.",
+                                        icon: <TrendingUp className="w-5 h-5 text-[#F171AC]" />,
+                                    },
+                                    {
+                                        type: "Full buy-back",
+                                        desc: "You can repay the Government's share in one go if you wish, or as required by your circumstances (e.g. income exceeds thresholds for 2 consecutive years).",
+                                        icon: <CheckCircle className="w-5 h-5 text-[#86489B]" />,
+                                    },
+                                    {
+                                        type: "When you sell",
+                                        desc: "The Government receives its proportional share of the sale price — not the original contribution. Both gains and losses are shared proportionally.",
+                                        icon: <Tag className="w-5 h-5 text-[#6B6B6B]" />,
+                                    },
+                                ].map((r) => (
+                                    <div
+                                        key={r.type}
+                                        className="rounded-xl p-4"
+                                        style={{ backgroundColor: "#FDF2F9", border: "1px solid rgba(134,72,155,0.1)" }}
+                                    >
+                                        <div className="flex items-center gap-2 mb-1">
+                                            {r.icon}
+                                            <div
+                                                className={`${archivo.className} text-sm font-medium`}
+                                                style={{ color: "#000000" }}
+                                            >
+                                                {r.type}
+                                            </div>
+                                        </div>
+                                        <div
+                                            className={`${roboto.className} text-xs font-normal tracking-normal`}
+                                            style={{ color: "#6B6B6B", lineHeight: 1.7 }}
+                                        >
+                                            {r.desc}
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
 
                         {/* worked repayment example */}

@@ -607,7 +607,7 @@ const VariablehomeComponent = () => {
                                 <div className="w-8 h-8 rounded-lg bg-gradient-to-r from-[#86489B]/15 to-[#F171AC]/15 border border-[#F171AC]/25 flex items-center justify-center text-[#F171AC]">
                                     <IconBank />
                                 </div>
-                                <p className="text-[12px] font-semibold tracking-widest uppercase text-[#86489B]">{group.label}</p>
+                                <p className="text-[16px] font-semibold! tracking-widest uppercase text-[#86489B]! m-0!">{group.label}</p>
                             </div>
                             <div className="flex flex-wrap gap-2">
                                 {group.lenders.map((l, j) => (
@@ -630,8 +630,8 @@ const VariablehomeComponent = () => {
             {/* ════════════════════ KUBAER APPROACH ════════════════════ */}
             <section className="container mx-auto px-6 py-20 mt-15 sm:mt-0">
                 <div className="bg-gradient-to-r from-[#86489B]/[0.06] to-[#F171AC]/[0.06] border border-[#F171AC]/20 rounded-2xl p-8">
-                    <p className="text-[12px] font-semibold tracking-widests uppercase text-[#86489B] mb-3">How Kubaer Finance supports you</p>
-                    <p className="text-[16px] text-gray-500 leading-relaxed max-w-2xl">
+                    <h4 className="font-semibold! tracking-normal! uppercase text-[#86489B] mb-3">How Kubaer Finance supports you</h4>
+                    <p className="text-[16px] text-gray-500 leading-relaxed max-w-2xl font-normal! tracking-normal!">
                         We donot just compare interest rates. We design loan strategies that fit your goals, lifestyle, and long-term financial plans — ensuring your mortgage works <strong className="text-gray-700">with your future, not against it.</strong>
                     </p>
                 </div>

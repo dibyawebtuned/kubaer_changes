@@ -346,7 +346,7 @@ export default function FhogComponent() {
                     </div>
 
                     {/* stat strip */}
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 scroll-reveal" style={{ animationDelay: "0.4s" }}>
+                    <div className="grid grid-cols-1 md:grid-cols-4 gap-4 scroll-reveal" style={{ animationDelay: "0.4s" }}>
                         {[
                             { number: "$10K–$50K", label: "Grant amount by state" },
                             { number: "New", label: "Homes only — not established" },

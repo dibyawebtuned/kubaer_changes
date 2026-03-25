@@ -387,8 +387,8 @@ function InfoBox({ title, children }) {
                 <IconInfo />
             </div>
             <div>
-                {title && <p className="text-[15px] font-semibold text-[#86489B] mb-1">{title}</p>}
-                <p className="text-[14px] text-gray-500 leading-relaxed">{children}</p>
+                {title && <p className="text-[15px]! font-semibold! text-[#86489B]! mb-1!">{title}</p>}
+                <p className="text-[14px]! text-gray-500 leading-relaxed tracking-normal! font-normal!">{children}</p>
             </div>
         </div>
     );

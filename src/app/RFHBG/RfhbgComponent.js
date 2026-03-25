@@ -249,7 +249,7 @@ export default function RfhbgComponent() {
           </div>
 
           {/* stat strip */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 scroll-reveal" style={{ animationDelay: "0.4s" }}>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 scroll-reveal" style={{ animationDelay: "0.4s" }}>
             {[
               { number: "5%", label: "Minimum deposit required" },
               { number: "15%", label: "Government guarantee on loan" },
@@ -794,19 +794,11 @@ export default function RfhbgComponent() {
       <div key={c.title} className="guarantee-card rounded-2xl p-6 card-hover">
         <Icon className="w-6 h-6 mb-3" style={{ color: c.color }} />
 
-        <h4
-          className={`${archivo.className} font-semibold text-base mb-2`}
-          style={{ color: c.color }}
-        >
-          {c.title}
-        </h4>
+                        <h4 className={`${archivo.className} font-semibold! text-base! mb-2!`} style={{ color: c.color }}>{c.title}</h4>
 
-        <p
-          className={`${roboto.className} font-normal text-sm tracking-normal`}
-          style={{ color: "#6B6B6B", lineHeight: 1.7 }}
-        >
-          {c.body}
-        </p>
+
+                        <p className={`${roboto.className} font-normal! text-sm! tracking-normal!`} style={{ color: "#6B6B6B", lineHeight: 1.7 }}>{c.body}</p>
+
       </div>
     );
   })}

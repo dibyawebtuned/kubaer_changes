@@ -41,7 +41,6 @@ const HomeLoanTestimonials = [
 ];
 
 
-
 const loanOptions = [
   {
     title: "Bridging Loan",
@@ -277,9 +276,7 @@ export default function HomeLoanPage() {
                 <a
                   key={idx}
                   href={link} // now link comes from destructuring
-                  className=" flex gap-4 flex-1 basis-full sm:basis-[calc(33.333%-16px)] p-6 bg-white rounded-2xl border-l-4 border-[#F172AC] shadow-[0_4px_15px_rgba(241,114,172,0.2)] transform transition-all duration-1500 ease-in-out hover:shadow-[0_12px_40px_rgba(241,114,172,0.25)] items-start"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  className="flex gap-4 flex-1 basis-full sm:basis-[calc(33.333%-16px)] p-6 bg-white rounded-2xl border-l-4 border-[#F172AC] shadow-[0_4px_15px_rgba(241,114,172,0.2)] transform transition-all duration-1500 ease-in-out hover:shadow-[0_12px_40px_rgba(241,114,172,0.25)] items-start"
                   data-aos="fade-up"
                   data-aos-duration="800"
                   data-aos-delay={idx * 100}

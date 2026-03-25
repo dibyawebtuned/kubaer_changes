@@ -532,26 +532,29 @@ export default function FhgComponent() {
             Effective October 2025, caps have been raised across all states and territories. Your property must fall at or below these thresholds.
           </p>
 
-          <div className="overflow-hidden rounded-2xl bg-white" style={{ border: "1px solid rgba(134,72,155,0.15)" }}>
-            <table className="w-full font-body text-sm">
-              <thead>
-                <tr style={{ background: newLocal }}>
-                  <th className={`${archivo.className} text-left px-6 py-4 text-white font-medium`}>State / Territory</th>
-                  <th className={`${archivo.className} text-left px-6 py-4 text-white font-medium`}>Metro / Capital City</th>
-                  <th className={`${archivo.className} text-left px-6 py-4 text-white font-medium`}>Regional</th>
-                </tr>
-              </thead>
-              <tbody>
-                {PRICE_CAPS.map((row) => (
-                  <tr key={row.state} className="table-row-alt" style={{ borderTop: "1px solid rgba(134,72,155,0.06)" }}>
-                    <td className="px-6 py-4 font-medium" style={{ color: "#000000" }}>{row.state}</td>
-                    <td className="px-6 py-4 font-body text-sm" style={{ color: "#86489B" }}>{row.metro}</td>
-                    <td className="px-6 py-4 font-body text-sm" style={{ color: "#F171AC" }}>{row.regional}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+<div className="overflow-x-auto rounded-2xl bg-white border border-[#86489B]/15">
+  <table className="w-full min-w-[600px] font-body text-sm">
+    <thead>
+      <tr className="bg-gradient-to-r from-[#86489B] to-[#F171AC]">
+        <th className={`${archivo.className} text-left px-4 sm:px-6 py-3 text-white font-medium`}>State / Territory</th>
+        <th className={`${archivo.className} text-left px-4 sm:px-6 py-3 text-white font-medium`}>Metro / Capital City</th>
+        <th className={`${archivo.className} text-left px-4 sm:px-6 py-3 text-white font-medium`}>Regional</th>
+      </tr>
+    </thead>
+    <tbody>
+      {PRICE_CAPS.map((row) => (
+        <tr
+          key={row.state}
+          className="border-t border-[#86489B]/10 even:bg-[#f9f6fb] last:border-b-0"
+        >
+          <td className="px-4 sm:px-6 py-3 font-medium text-black">{row.state}</td>
+          <td className="px-4 sm:px-6 py-3 text-[#86489B]">{row.metro}</td>
+          <td className="px-4 sm:px-6 py-3 text-[#F171AC]">{row.regional}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
           <p className="font-body text-xs mt-4" style={{ color: "#6B6B6B" }}>
             * Exact price caps vary by region. Always verify the most current thresholds at <strong>housingaustralia.gov.au</strong> before proceeding.
           </p>
